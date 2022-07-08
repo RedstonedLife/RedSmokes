@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main.utils.nms.refl;
 
+import jdk.internal.util.Preconditions;
+
 import java.util.regex.Pattern;
 
 public final class ReflUtil {
@@ -18,7 +20,9 @@ public final class ReflUtil {
             this.release = release;
         }
 
-        
+        public static NMSVersion fromString(String string) {
+            Preconditions.checkNotNull()
+        }
     }
 }
 
