@@ -57,7 +57,9 @@ public class RedSmokesLogger {
 
     public static LoggerProvider getLoggerProvider(final String pluginName) {
         if(loggerProviders.containsKey(pluginName)) {
-            
+            return loggerProviders.get(pluginName);
         }
+
+        
     }
 }
