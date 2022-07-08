@@ -8,6 +8,6 @@ public interface IUser {
     boolean isAuthorized(IrsCommand cmd, String permissionPrefix);
     boolean isPermissionSet(String node);
     /*
-        RedSmokes Balance
+        RedSmokes Balance (IF
      */
 }
