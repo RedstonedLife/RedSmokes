@@ -5,6 +5,7 @@ import com.bss.inc.redsmokes.main.utils.nms.refl.ReflUtil;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +18,8 @@ public class RedSmokesLogger {
             final Field loggerField = ReflUtil.getFieldCached(JavaPlugin.class, "logger");
             //noinspection ConstantConditions
             loggerFieldHandle = loggerField;
+        } catch (Throwable t) {
+            
         }
     }
 }
