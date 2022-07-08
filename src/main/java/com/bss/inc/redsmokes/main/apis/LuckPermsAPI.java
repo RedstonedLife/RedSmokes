@@ -13,7 +13,7 @@ public class LuckPermsAPI implements ILuckPerms {
 
     public LuckPerms onStart() {
         if(provider != null) {
-            
+            luckPerms = provider.getProvider();
         }
     }
 
