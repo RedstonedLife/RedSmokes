@@ -8,7 +8,7 @@ dependencies {
     compileOnly('com.github.milkbowl:VaultAPI:1.7') {
         exclude group: "org.bukkit", module: "bukkit"
     }
-    compileOnly 'net.luckperms:api:5.0'
+    compileOnly 'net.luckperms:api:5.4'
 
     api 'io.papermc:paperlib:1.0.6'
     api 'org.bstats:bstats-bukkit:3.0.0'
