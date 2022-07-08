@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.main.utils.logging.BaseLoggerProvider;
 import com.bss.inc.redsmokes.main.utils.logging.LoggerProvider;
 import com.bss.inc.redsmokes.main.utils.nms.refl.ReflUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -60,6 +61,6 @@ public class RedSmokesLogger {
             return loggerProviders.get(pluginName);
         }
 
-        
+        final Plugin plugin = Bukkit.getPluginManager().getPlugin(pluginName);
     }
 }
