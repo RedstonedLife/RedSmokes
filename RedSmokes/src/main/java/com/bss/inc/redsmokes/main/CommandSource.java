@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.api.IRedSmokes;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -21,5 +22,5 @@ public class CommandSource {
         return null;
     }
 
-    
+    public final com.bss.inc.redsmokes.api.IUser getUser(final IRedSmokes )
 }
