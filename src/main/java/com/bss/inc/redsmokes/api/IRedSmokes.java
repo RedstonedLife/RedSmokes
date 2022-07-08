@@ -1,3 +1,10 @@
 package com.bss.inc.redsmokes.api;
 
-public interface IRedSmokes {}
+import org.bukkit.plugin.RegisteredServiceProvider;
+
+public interface IRedSmokes {
+
+
+    public RegisteredServiceProvider<T>
+
+}
