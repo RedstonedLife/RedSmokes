@@ -9,6 +9,6 @@ public interface IUser {
     boolean isPermissionSet(String node);
     /*
         RedSmokes Balance (IF ESSENTIALS is not found)
-        Will be deprecated in the future to be included in SoyuzCore (Private Project by: Tal A. Baskin
+        Will be deprecated in the future to be included in SoyuzCore (Private Project by: <p href="https://>Tal A. Baskin</p>
      */
 }
