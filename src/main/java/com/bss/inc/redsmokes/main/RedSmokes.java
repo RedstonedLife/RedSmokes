@@ -10,12 +10,12 @@ import java.util.logging.Logger;
 
 public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
-    private  Logger logger
+    private Logger logger;
 
     @Override
     public void onEnable() {
         super.onEnable();
-
+        logger = 
     }
 
     @Override
