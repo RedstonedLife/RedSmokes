@@ -62,5 +62,8 @@ public class RedSmokesLogger {
         }
 
         final Plugin plugin = Bukkit.getPluginManager().getPlugin(pluginName);
+        if(plugin==null) {
+            
+        }
     }
 }
