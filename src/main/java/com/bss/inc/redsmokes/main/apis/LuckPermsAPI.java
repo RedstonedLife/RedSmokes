@@ -20,6 +20,6 @@ public class LuckPermsAPI implements ILuckPerms {
     public void onStop() {luckPerms=null;}
 
     public boolean isLoaded() {
-        return (luckPerms != null);
+        return Buk
     }
 }
