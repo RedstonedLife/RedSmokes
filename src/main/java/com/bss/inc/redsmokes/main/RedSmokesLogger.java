@@ -54,4 +54,8 @@ public class RedSmokesLogger {
             provider.log(Level.SEVERE, "Failed to update " + plugin.getName() + " logger", e);
         }
     }
+
+    public static LoggerProvider getLoggerProvider(final String pluginName) {
+        
+    }
 }
