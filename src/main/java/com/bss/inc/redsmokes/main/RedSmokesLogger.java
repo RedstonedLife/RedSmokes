@@ -23,4 +23,8 @@ public class RedSmokesLogger {
             throw new RuntimeException("Failed to get logger field handle", t);
         }
     }
+
+    private RedSmokesLogger() {}
+
+    
 }
