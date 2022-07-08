@@ -42,6 +42,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
     private void handleCrash(final Throwable exception) {
         final PluginManager pm = getServer().getPluginManager();
-        LOGGER.log(Level.SEVERE, );
+        LOGGER.log(Level.SEVERE, exception.toString());
+        exception.printStackTrace();
     }
 }
