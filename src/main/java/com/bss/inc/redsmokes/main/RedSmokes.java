@@ -3,7 +3,10 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.api.IRedSmokes;
 import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -46,7 +49,10 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         LOGGER.log(Level.SEVERE, exception.toString());
         exception.printStackTrace();
         pm.registerEvents(new Listener() {
-            @EventHandler(priority)
+            @EventHandler(priority = EventPriority.LOW)
+            public void onPlayerJoin(final PlayerJoinEvent event) {
+                
+            }
         });
     }
 }
