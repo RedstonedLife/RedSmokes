@@ -19,7 +19,7 @@ public class RedSmokesLogger {
             //noinspection ConstantConditions
             loggerFieldHandle = loggerField;
         } catch (Throwable t) {
-            
+            throw new RuntimeException("Failed to get logger field handle", t);
         }
     }
 }
