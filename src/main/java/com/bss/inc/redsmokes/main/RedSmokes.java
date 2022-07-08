@@ -46,6 +46,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         LOGGER.log(Level.SEVERE, exception.toString());
         exception.printStackTrace();
         pm.registerEvents(new Listener() {
+            @EventHandler(priority)
         });
     }
 }
