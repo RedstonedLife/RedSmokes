@@ -16,5 +16,5 @@ dependencies {
     implementation 'org.spongepowered:configurate-yaml:4.1.2'
     implementation 'org.checkframework:checker-qual:3.14.0'
 
-    
+    // Providers
 }
