@@ -34,6 +34,7 @@ rootProject.name = "RedSmokesParent"
 // Modules
 sequenceOf(
         "",
+        "RedSmokes"
 ).forEach {
     include(":RedSmokes$it")
     project(":RedSmokes$it").projectDir = file("RedSmokes$it")

@@ -56,7 +56,3 @@ shadowJar {
         include(dependency('org.checkerframework:checker-qual'))
     }
 }
-
-repositories {
-    mavenCentral()
-}
