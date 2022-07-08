@@ -6,6 +6,6 @@ public class CommandSource {
     protected CommandSender sender;
 
     public CommandSource(final CommandSender base) {
-        
+        this.sender = sender;
     }
 }
