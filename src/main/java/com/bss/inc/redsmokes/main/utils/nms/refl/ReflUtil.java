@@ -34,6 +34,74 @@ public final class ReflUtil {
             }
             return new NMSVersion(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)), Integer.parseInt(matcher.group(3)));
         }
+        public boolean isHigherThan(final NMSVersion o) {
+            return compareTo(o) > 0;
+        }
+
+        public boolean isHigherThanOrEqualTo(final NMSVersion o) {
+            return compareTo(o) >= 0;
+        }
+
+        public boolean isLowerThan(final NMSVersion o) {
+            return compareTo(o) < 0;
+        }
+
+        public boolean isLowerThanOrEqualTo(final NMSVersion o) {
+            return compareTo(o) <= 0;
+        }
+
+        public int getMajor() {
+            return major;
+        }
+
+        public int getMinor() {
+            return minor;
+        }
+
+        public int getRelease() {
+            return release;
+        }
+
+        @Override
+        public boolean equals(final Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            final NMSVersion that = (NMSVersion) o;
+            return major == that.major &&
+                    minor == that.minor &&
+                    release == that.release;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hashCode(major, minor, release);
+        }
+
+        @Override
+        public String toString() {
+            return "v" + major + "_" + minor + "_R" + release;
+        }
+
+        @Override
+        public int compareTo(final NMSVersion o) {
+            if (major < o.major) {
+                return -1;
+            } else if (major > o.major) {
+                return 1;
+            } else { // equal major
+                if (minor < o.minor) {
+                    return -1;
+                } else if (minor > o.minor) {
+                    return 1;
+                } else {
+                    return Integer.compare(release, o.release);
+                }
+            }
+        }
     }
 }
 
