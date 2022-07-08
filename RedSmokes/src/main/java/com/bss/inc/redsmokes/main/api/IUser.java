@@ -12,6 +12,7 @@ public interface IUser {
         Will be deprecated in the future to be included in <br>SoyuzCore</br>
 
         <h3>SoyuzCore</h3>
-        SoyuzCore is a private project by <p href="https://github.com/RedstonedLife>Tal A. Baskin</p>
+        SoyuzCore is a private project by <p href="https://github.com/RedstonedLife">Tal A. Baskin</p> as part of a
+        
      */
 }
