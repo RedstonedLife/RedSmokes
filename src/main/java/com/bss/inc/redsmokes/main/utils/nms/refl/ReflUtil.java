@@ -13,6 +13,7 @@ public final class ReflUtil {
         private final int release;
 
         private NMSVersion(int major, int minor, int release) {
+            this.major = major;
             
         }
     }
