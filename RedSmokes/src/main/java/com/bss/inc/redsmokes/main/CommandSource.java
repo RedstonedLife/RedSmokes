@@ -23,6 +23,8 @@ public class CommandSource {
     }
 
     public final com.bss.inc.redsmokes.api.IUser getUser(final IRedSmokes redSmokes) {
-        
+        if(sender instanceof Player) {
+            return redSmokes.getU
+        }
     }
 }
