@@ -22,7 +22,7 @@ public final class ReflUtil {
 
         public static NMSVersion fromString(String string) {
             Preconditions.checkNotNull(string, "String cannot be null");
-            
+            Matcher matcher = VERSION_PATTENR.matcher(string);
         }
     }
 }
