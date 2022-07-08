@@ -46,6 +46,6 @@ public class RedSmokesLogger {
     }
 
     public static void updatePluginLogger(final Plugin plugin) {
-        final LoggerProvider provider = getLoggerProvider()
+        final LoggerProvider provider = getLoggerProvider(plugin);
     }
 }
