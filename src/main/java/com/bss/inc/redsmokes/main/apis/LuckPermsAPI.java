@@ -12,8 +12,9 @@ public class LuckPermsAPI implements ILuckPerms {
     private static final RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
 
     public LuckPerms onStart() {
-        if(provider != null) {luckPerms = provider.getProvider();}
-        
+        if(provider != null) {luckPerms = provider.getProvider();return luckPerms;}
+        else {return null;}
+
     }
 
     public void onStop() {
