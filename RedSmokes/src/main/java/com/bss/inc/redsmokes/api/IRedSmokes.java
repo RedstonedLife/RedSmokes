@@ -8,4 +8,5 @@ import java.util.Map;
 public interface IRedSmokes extends Plugin {
     void reload();
     Map<String, IrsCommand> getCommandMap();
+    
 }
