@@ -1,5 +1,5 @@
 plugins {
-    id("essentials.shadow-module")
+    id("redsmokes.shadow-module")
 }
 
 dependencies {
