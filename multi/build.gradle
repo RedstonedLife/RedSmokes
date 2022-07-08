@@ -5,5 +5,5 @@ plugins {
 repositories {}
 
 dependencies {
-    
+    compileOnly ""
 }
