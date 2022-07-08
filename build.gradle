@@ -6,3 +6,40 @@ buildscript {
         classpath "gradle.plugin.com.github.johnrengelman:shadow:7.1.0"
     }
 }
+
+apply plugin: 'java-library'
+jar.enabled = false
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    group = 'com.bss.inc'
+    version = '1_0_0'
+
+    repositories {
+        mavenCentral()
+        //OpenCollab
+        maven { url 'https://repo.opencollab.dev/maven-snapshots/' }
+        maven { url 'https://repo.opencollab.dev/maven-releases/'}
+        //JitPack
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://mvnrepository.com/artifact' }
+    }
+
+    jar.enabled = false
+    shadowJar {
+        destinationDirectory = file("$rootDir/build/libs")
+        archiveClassifier.set('')
+        manifest {
+            attributes(
+                    'Implementation-Title': project.name,
+                    'Implementation-Version': project.version
+            )
+        }
+    }
+
+    artifacts {
+        archives shadowJar
+    }
+}
