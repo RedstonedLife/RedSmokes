@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
     private static final Logger BUKKIT_LOGGER = Logger.getLogger("RedSmokes");
+    private static Logger LOGGER;
 
     @Override
     public void onEnable() {
