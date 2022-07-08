@@ -4,16 +4,19 @@ import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class ReflUtil {
     public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
-    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_11_R1");
-    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
-    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
-    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
-    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
+    public static final NMSVersion V1_11_R1 = NMSVersion.fromString("v1_11_R1");
+    public static final NMSVersion V1_17_R1 = NMSVersion.fromString("v1_17_R1");
+    public static final NMSVersion V1_18_R1 = NMSVersion.fromString("v1_18_R1");
+    public static final NMSVersion V1_19_R1 = NMSVersion.fromString("v1_19_R1");
+    private static final Map<String, Class<?>> classCache = new HashMap<>();
+    private static finakl
 
     public static final class NMSVersion implements Comparable<NMSVersion> {
         private static final Pattern VERSION_PATTENR = Pattern.compile("^v(\\d+)_(\\d+)_R(\\d+)");
