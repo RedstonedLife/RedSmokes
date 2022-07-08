@@ -7,5 +7,5 @@ public interface IUser {
     boolean isAuthorized(IrsCommand cmd);
     boolean isAuthorized(IrsCommand cmd, String permissionPrefix);
     boolean isPermissionSet(String node);
-    boolean 
+    boolean
 }
