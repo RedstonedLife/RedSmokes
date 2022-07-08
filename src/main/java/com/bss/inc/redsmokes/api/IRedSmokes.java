@@ -1,4 +1,6 @@
 package com.bss.inc.redsmokes.api;
 
-public interface IRedSmokes {
+import org.bukkit.plugin.java.JavaPlugin;
+
+public interface IRedSmokes extends JavaPlugin {
 }
