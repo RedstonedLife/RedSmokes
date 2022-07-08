@@ -35,7 +35,7 @@ shadowJar {
         //include (project(':providers:1_8Provider'))
         //include (project(':providers:1_12Provider'))
     }
-    relocate 'io.papermc.lib', 'com.bss.inc..paperlib'
+    relocate 'io.papermc.lib', 'com.bss.inc.libs.paperlib'
     relocate 'org.bstats', 'com.earth2me.essentials.libs.bstats'
     relocate 'org.spongepowered.configurate', 'com.earth2me.essentials.libs.configurate'
     relocate 'org.yaml.snakeyaml', 'com.earth2me.essentials.libs.snakeyaml'
