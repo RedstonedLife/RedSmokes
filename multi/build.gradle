@@ -35,12 +35,12 @@ shadowJar {
         //include (project(':providers:1_8Provider'))
         //include (project(':providers:1_12Provider'))
     }
-    relocate 'io.papermc.lib', 'com.bss.inc.libs.paperlib'
-    relocate 'org.bstats', 'com.bss.inc.libs.bstats'
-    relocate 'org.spongepowered.configurate', 'com.bss.inc.libs.configurate'
-    relocate 'org.yaml.snakeyaml', 'com.bss.inc.libs.snakeyaml'
-    relocate 'io.leangen.geantyref', 'com.bss.inc.libs.geantyref'
-    relocate 'org.checkerframework', 'com.bss.inc.libs.checkerframework'
+    relocate 'io.papermc.lib', 'com.bss.inc.redsmokes.main.libs.paperlib'
+    relocate 'org.bstats', 'com.bss.inc.redsmokes.main.libs.bstats'
+    relocate 'org.spongepowered.configurate', 'com.bss.inc.redsmokes.main.libs.configurate'
+    relocate 'org.yaml.snakeyaml', 'com.bss.inc.redsmokes.main.libs.snakeyaml'
+    relocate 'io.leangen.geantyref', 'com.bss.inc.redsmokes.main.libs.geantyref'
+    relocate 'org.checkerframework', 'com.bss.inc.redsmokes.main.libs.checkerframework'
 
     minimize {
         include(dependency('org.checkerframework:checker-qual'))
