@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
 public class PlayerExtension {
@@ -11,5 +12,5 @@ public class PlayerExtension {
 
     public final Player getBase() {return base;}
     public final Player setBase(final Player base) {return this.base = base;}
-    public Server getServer() {}
+    public Server getServer() {return }
 }
