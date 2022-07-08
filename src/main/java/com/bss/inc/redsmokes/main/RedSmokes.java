@@ -53,6 +53,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             public void onPlayerJoin(final PlayerJoinEvent event) {
                 event.getPlayer().sendMessage("Essentials failed to load, read the log file");
             }
-        });
+        }, this);
     }
 }
