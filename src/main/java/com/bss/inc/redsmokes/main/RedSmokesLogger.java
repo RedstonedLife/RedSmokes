@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.utils.logging.BaseLoggerProvider;
 import com.bss.inc.redsmokes.main.utils.logging.LoggerProvider;
 import com.bss.inc.redsmokes.main.utils.nms.refl.ReflUtil;
 import org.bukkit.plugin.Plugin;
@@ -35,6 +36,11 @@ public class RedSmokesLogger {
 
         final Logger parentLogger = Logger.getLogger(plugin.getName());
         final LoggerProvider provider;
+        /*
+        @TODO Add support for PaperMC API Logger
+         */
+        provider = new BaseLoggerProvider(plugin, parentLogger);
+        provider.setParent(parentLogger);
         loggerProviders.put(plugin.getName(), provider);
         return provider;
     }
