@@ -8,7 +8,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class ReflUtil {
-    public static final NMSVersion
+    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
+    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_11_R1");
+    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
+    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
+    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
+    public static final NMSVersion V1_12_R1 = NMSVersion.fromString("v1_12_R1");
 
     public static final class NMSVersion implements Comparable<NMSVersion> {
         private static final Pattern VERSION_PATTENR = Pattern.compile("^v(\\d+)_(\\d+)_R(\\d+)");
