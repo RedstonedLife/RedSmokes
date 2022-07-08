@@ -6,9 +6,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.logging.Logger;
+
 public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
-    Logger
+    final static Logger logger;
 
     @Override
     public void onEnable() {
