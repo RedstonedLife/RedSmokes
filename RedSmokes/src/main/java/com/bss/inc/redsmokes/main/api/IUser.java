@@ -15,5 +15,5 @@ public interface IUser {
         SoyuzCore is a private project by <p href="https://github.com/RedstonedLife">Tal A. Baskin</p> as part of a
         RP-CMP meant to simulate a geopolitical world with established countries with constitutions, laws, etc....
      */
-
+    
 }
