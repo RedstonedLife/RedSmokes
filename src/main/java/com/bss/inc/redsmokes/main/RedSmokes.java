@@ -11,6 +11,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     @Override
     public void onEnable() {
         super.onEnable();
+        
     }
 
     @Override
