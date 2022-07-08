@@ -1,6 +1,9 @@
 package com.bss.inc.redsmokes.main.api;
 
+import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
+
+import java.math.BigDecimal;
 
 public interface IUser {
     boolean isAuthorized(String node);
@@ -15,5 +18,6 @@ public interface IUser {
         SoyuzCore is a private project by <p href="https://github.com/RedstonedLife">Tal A. Baskin</p> as part of a
         RP-CMP meant to simulate a geopolitical world with established countries with constitutions, laws, etc....
      */
-    void 
+    void giveMoney(BigDecimal value) throws MaxMoneyException;
+    
 }
