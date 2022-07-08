@@ -38,9 +38,9 @@ shadowJar {
     relocate 'io.papermc.lib', 'com.bss.inc.libs.paperlib'
     relocate 'org.bstats', 'com.bss.inc.libs.bstats'
     relocate 'org.spongepowered.configurate', 'com.bss.inc.libs.configurate'
-    relocate 'org.yaml.snakeyaml', 'com.earth2me.essentials.libs.snakeyaml'
-    relocate 'io.leangen.geantyref', 'com.earth2me.essentials.libs.geantyref'
-    relocate 'org.checkerframework', 'com.earth2me.essentials.libs.checkerframework'
+    relocate 'org.yaml.snakeyaml', 'com.bss.inc.libs.snakeyaml'
+    relocate 'io.leangen.geantyref', 'com.bss.inc.libs.geantyref'
+    relocate 'org.checkerframework', 'com.bss.inc.libs.checkerframework'
 
     minimize {
         include(dependency('org.checkerframework:checker-qual'))
