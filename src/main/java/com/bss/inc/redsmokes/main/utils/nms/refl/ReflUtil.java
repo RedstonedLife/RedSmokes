@@ -29,6 +29,7 @@ public final class ReflUtil {
                 if(!Bukkit.getName().equals("RedSmoke Fake Server")) {
                     throw new IllegalArgumentException(string + " is not in valid version format. e.g. v1_10_R1");
                 }
+                matcher = VERSION_PATTENR.matcher(V_12_R1.toString());
             }
         }
     }
