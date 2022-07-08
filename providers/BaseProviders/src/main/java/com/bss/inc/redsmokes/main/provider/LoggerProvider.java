@@ -1,4 +1,4 @@
-package com.bss.inc.main.provider;
+package com.bss.inc.redsmokes.main.provider;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginLogger;

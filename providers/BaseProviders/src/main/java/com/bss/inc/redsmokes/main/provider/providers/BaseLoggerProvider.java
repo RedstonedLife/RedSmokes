@@ -1,6 +1,6 @@
-package com.bss.inc.main.provider.providers;
+package com.bss.inc.redsmokes.main.provider.providers;
 
-import com.bss.inc.main.provider.LoggerProvider;
+import com.bss.inc.redsmokes.main.provider.LoggerProvider;
 import org.bukkit.plugin.Plugin;
 
 import java.util.logging.Level;
