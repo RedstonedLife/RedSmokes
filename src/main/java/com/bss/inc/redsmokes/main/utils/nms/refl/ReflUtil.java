@@ -26,7 +26,9 @@ public final class ReflUtil {
             Preconditions.checkNotNull(string, "String cannot be null");
             Matcher matcher = VERSION_PATTENR.matcher(string);
             if(!matcher.matches()) {
-                if(!Bukkit.getName().equals("RedSmoke Fake Server"))
+                if(!Bukkit.getName().equals("RedSmoke Fake Server")) {
+                    
+                }
             }
         }
     }
