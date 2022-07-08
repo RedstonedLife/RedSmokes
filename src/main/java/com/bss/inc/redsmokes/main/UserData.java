@@ -1,4 +1,8 @@
 package com.bss.inc.redsmokes.main;
 
-public class UserData {
+import com.bss.inc.redsmokes.api.IConf;
+import com.bss.inc.redsmokes.api.IRedSmokes;
+
+public abstract class UserData extends PlayerExtension implements IConf {
+    protected final transient IRedSmokes
 }
