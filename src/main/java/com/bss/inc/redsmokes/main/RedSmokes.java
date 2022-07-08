@@ -18,7 +18,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public void onEnable() {
         try {
             if(BUKKIT_LOGGER != super.getLogger()) {
-                BUKKIT_LOGGER.setParent();
+                BUKKIT_LOGGER.setParent(super.getLogger());
             }
         }
     }
