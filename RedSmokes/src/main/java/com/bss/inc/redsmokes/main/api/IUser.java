@@ -13,6 +13,6 @@ public interface IUser {
 
         <h3>SoyuzCore</h3>
         SoyuzCore is a private project by <p href="https://github.com/RedstonedLife">Tal A. Baskin</p> as part of a
-        
+        Roleplay CMP
      */
 }
