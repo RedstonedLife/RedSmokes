@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -15,5 +16,5 @@ public class PlayerExtension {
     public final Player setBase(final Player base) {return this.base = base;}
     public Server getServer() {return base.getServer();}
     public World getWorld() {return base.getWorld();}
-    public Location getLocation() {return base.getLocation()}
+    public Location getLocation() {return base.getLocation();}
 }
