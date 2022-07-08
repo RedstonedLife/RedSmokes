@@ -19,5 +19,5 @@ public interface IUser {
         RP-CMP meant to simulate a geopolitical world with established countries with constitutions, laws, etc....
      */
     void giveMoney(BigDecimal value) throws MaxMoneyException;
-    
+    void 
 }
