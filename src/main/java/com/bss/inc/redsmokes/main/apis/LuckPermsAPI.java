@@ -5,7 +5,7 @@ import net.luckperms.api.LuckPerms;
 
 public class LuckPermsAPI implements ILuckPerms {
 
-    private LuckPerms
+    private LuckPerms luckPerms;
 
     public LuckPerms onStart() {
 
