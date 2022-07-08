@@ -14,7 +14,8 @@ public final class ReflUtil {
 
         private NMSVersion(int major, int minor, int release) {
             this.major = major;
-            
+            this.minor = minor;
+            this.release = release;
         }
     }
 }
