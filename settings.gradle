@@ -1,5 +1,0 @@
-rootProject.name = 'RedSmokes'
-include(
-    'multi'
-)
-findProject(':multi')?.name = 'RedSmokes-Multi'
