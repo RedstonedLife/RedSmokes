@@ -10,12 +10,12 @@ import java.util.logging.Logger;
 
 public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
-    private Logger logger;
+    private static final Logger BUKKIT_LOGGER = Logger.getLogger("RedSmokes");
 
     @Override
     public void onEnable() {
         super.onEnable();
-        logger = 
+        logger =
     }
 
     @Override
