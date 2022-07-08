@@ -11,7 +11,7 @@ public class LuckPermsAPI implements ILuckPerms {
 
     public LuckPerms onStart() {
         if(RedSmokes.getProvidingPlugin(LuckPerms.class) != null) {
-            luckPerms = RedSmokes.getProvidingPlugin(LuckPerms.class).
+            luckPerms = RedSmokes.getProvidingPlugin(LuckPerms.class)
         }
     }
 
