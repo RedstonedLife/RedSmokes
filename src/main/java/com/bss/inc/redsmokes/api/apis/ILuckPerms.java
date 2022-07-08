@@ -4,4 +4,5 @@ import net.luckperms.api.LuckPerms;
 
 public interface ILuckPerms {
     LuckPerms onStart();
+    void onStop();
 }
