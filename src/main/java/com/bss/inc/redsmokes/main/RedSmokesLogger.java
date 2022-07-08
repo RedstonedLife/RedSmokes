@@ -18,7 +18,7 @@ public class RedSmokesLogger {
         try {
             final Field loggerField = ReflUtil.getFieldCached(JavaPlugin.class, "logger");
             //noinspection ConstantConditions
-            loggerFieldHandle = MethodHandles.lookup().unreflectSetter();
+            loggerFieldHandle = MethodHandles.lookup().unreflectSetter(loggerField);
         } catch (Throwable t) {
             throw new RuntimeException("Failed to get logger field handle", t);
         }
