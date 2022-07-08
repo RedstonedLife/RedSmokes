@@ -26,5 +26,6 @@ public class CommandSource {
         if(sender instanceof Player) {
             return redSmokes.getUser((Player) sender);
         }
+        return null;
     }
 }
