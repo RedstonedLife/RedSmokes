@@ -7,7 +7,7 @@ public interface IUser {
     boolean isAuthorized(IrsCommand cmd);
     boolean isAuthorized(IrsCommand cmd, String permissionPrefix);
     boolean isPermissionSet(String node);
-    /*
+    /**
         RedSmokes Balance (IF ESSENTIALS is not found)
         Will be deprecated in the future to be included in SoyuzCore (Private Project by: <p href="https://github.com/RedstonedLife">Tal A. Baskin</p>
      */
