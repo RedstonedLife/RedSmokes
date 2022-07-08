@@ -27,7 +27,7 @@ public final class ReflUtil {
             Matcher matcher = VERSION_PATTENR.matcher(string);
             if(!matcher.matches()) {
                 if(!Bukkit.getName().equals("RedSmoke Fake Server")) {
-                    throw new IllegalArgumentException()
+                    throw new IllegalArgumentException(string + " is not in ")
                 }
             }
         }
