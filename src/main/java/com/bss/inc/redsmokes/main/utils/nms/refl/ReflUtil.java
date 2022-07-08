@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main.utils.nms.refl;
 
 import com.google.common.base.Preconditions;
+import org.bukkit.Bukkit;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,7 +25,9 @@ public final class ReflUtil {
         public static NMSVersion fromString(String string) {
             Preconditions.checkNotNull(string, "String cannot be null");
             Matcher matcher = VERSION_PATTENR.matcher(string);
-            
+            if(!matcher.matches()) {
+                if(!Bukkit.getName().equals("RedSmoke Fake Server"))
+            }
         }
     }
 }
