@@ -21,7 +21,8 @@ public final class ReflUtil {
         }
 
         public static NMSVersion fromString(String string) {
-            Preconditions.checkNotNull()
+            Preconditions.checkNotNull(string, "String cannot be null");
+            
         }
     }
 }
