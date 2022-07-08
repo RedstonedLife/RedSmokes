@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
-    final Logger logger
+    private  Logger logger
 
     @Override
     public void onEnable() {
