@@ -22,5 +22,7 @@ public class CommandSource {
         return null;
     }
 
-    public final com.bss.inc.redsmokes.api.IUser getUser(final IRedSmokes )
+    public final com.bss.inc.redsmokes.api.IUser getUser(final IRedSmokes redSmokes) {
+        
+    }
 }
