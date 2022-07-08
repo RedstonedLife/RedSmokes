@@ -1,5 +1,5 @@
 package com.bss.inc.redsmokes.main.utils.nms.refl;
 
 public final class ReflUtil {
-    public static 
+    public static final 
 }
