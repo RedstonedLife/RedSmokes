@@ -8,4 +8,7 @@ public class PlayerExtension {
     public PlayerExtension(final Player base) {
         this.base = base;
     }
+
+    public final Player getBase() {return base;}
+    
 }
