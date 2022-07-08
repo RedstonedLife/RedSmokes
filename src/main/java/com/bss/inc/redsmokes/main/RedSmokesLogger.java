@@ -8,5 +8,5 @@ import java.util.Map;
 
 public class RedSmokesLogger {
     private final static Map<String, LoggerProvider> loggerProviders = new HashMap<>();
-    private final static MethodHandle
+    private final static MethodHandle loggerFieldHandle;
 }
