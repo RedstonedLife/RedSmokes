@@ -63,7 +63,7 @@ public class RedSmokesLogger {
 
         final Plugin plugin = Bukkit.getPluginManager().getPlugin(pluginName);
         if(plugin==null) {
-            throw new IllegalArgumentException("Plugin not found: ")
+            throw new IllegalArgumentException("Plugin not found: " + pluginName);
         }
     }
 }
