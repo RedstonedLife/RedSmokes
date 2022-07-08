@@ -18,5 +18,6 @@ public class CommandSource {
         if(sender instanceof Player) {
             return (Player) sender;
         }
+        return null;
     }
 }
