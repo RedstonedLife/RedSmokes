@@ -44,4 +44,8 @@ public class RedSmokesLogger {
         loggerProviders.put(plugin.getName(), provider);
         return provider;
     }
+
+    public static void updatePluginLogger(final Plugin plugin) {
+        
+    }
 }
