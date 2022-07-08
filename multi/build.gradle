@@ -2,6 +2,5 @@ plugins {
     id "net.kyori.blossom" version "1.2.0" // For Updating Version in RedSmokes/resources/plugin.yml && RedSmokes.java
 }
 
-repositories {
-    maven { url 'https://oss.'}
-}
+repositories {}
+
