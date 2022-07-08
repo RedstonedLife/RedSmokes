@@ -9,7 +9,7 @@ public class LuckPermsAPI implements ILuckPerms {
     private LuckPerms luckPerms;
 
     public LuckPerms onStart() {
-        
+
     }
 
     public void onStop() {
