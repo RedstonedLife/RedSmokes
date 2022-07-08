@@ -65,5 +65,6 @@ public class RedSmokesLogger {
         if(plugin==null) {
             throw new IllegalArgumentException("Plugin not found: " + pluginName);
         }
+        return getLoggerProvider(plugin);
     }
 }
