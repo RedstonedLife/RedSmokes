@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.utils.logging.LoggerProvider;
 import com.bss.inc.redsmokes.main.utils.nms.refl.ReflUtil;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.invoke.MethodHandle;
