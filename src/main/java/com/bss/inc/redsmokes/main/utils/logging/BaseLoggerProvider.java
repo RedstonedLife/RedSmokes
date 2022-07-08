@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main.utils.logging;
 
 import org.bukkit.plugin.Plugin;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BaseLoggerProvider extends LoggerProvider {
@@ -12,5 +13,6 @@ public class BaseLoggerProvider extends LoggerProvider {
         this.logger = logger;
     }
 
-    
+    @Override protected void doTheLog(Level level, String message, Throwable throwable) {logger.log(level, message, throwable);}
+    @Override protected void doTheLog(Level level, String message) {logger.log(level, message);}
 }
