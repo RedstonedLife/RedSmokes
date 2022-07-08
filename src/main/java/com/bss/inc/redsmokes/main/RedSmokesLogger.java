@@ -11,6 +11,7 @@ import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class RedSmokesLogger {
@@ -50,7 +51,7 @@ public class RedSmokesLogger {
         try {
             loggerFieldHandle.invoke(plugin, provider);
         } catch (Throwable e) {
-            
+            provider.log(Level.SEVERE, "Failed to update " + plugin.getName() + " logger", e);
         }
     }
 }
