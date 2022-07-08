@@ -7,7 +7,7 @@ plugins {
     id("net.kyori.indra.publishing")
 }
 
-val baseExtension = extensions.create<RedSmokesBaseExtention>("redsmokes", project)
+val baseExtension = extensions.create<RedSmokesBaseExtension>("redsmokes", project)
 
 val checkstyleVersion = "8.36.2"
 val spigotVersion = "1.19-R0.1-SNAPSHOT"
