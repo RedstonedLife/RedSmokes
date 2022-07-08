@@ -8,6 +8,7 @@ public interface IUser {
     boolean isAuthorized(IrsCommand cmd, String permissionPrefix);
     boolean isPermissionSet(String node);
     /*
-        RedSmokes Balance (IF
+        RedSmokes Balance (IF ESSENTIALS is not found)
+        Will be deprecated in the future to be included in 
      */
 }
