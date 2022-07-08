@@ -34,6 +34,7 @@ public class RedSmokesLogger {
         }
 
         final Logger parentLogger = Logger.getLogger(plugin.getName());
-        final LoggerProvider provider = 
+        final LoggerProvider provider;
+        
     }
 }
