@@ -2,8 +2,14 @@ package com.bss.inc.redsmokes.main.utils.nms.refl;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 import org.bukkit.Bukkit;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -23,6 +29,208 @@ public final class ReflUtil {
     private static final Table<Class<?>, ConstructorParams, Constructor<?>> constructorParamCache = HashBasedTable.create();
     private static NMSVersion nmsVersionObject;
     private static String nmsVersion;
+
+    private ReflUtil() {
+    }
+
+    public static String getNMSVersion() {
+        if (nmsVersion == null) {
+            final String name = Bukkit.getServer().getClass().getName();
+            final String[] parts = name.split("\\.");
+            if (parts.length > 3) {
+                return nmsVersion = parts[3];
+            }
+            // We're not on craftbukkit, return an empty string so we can silently fail
+            return nmsVersion = "";
+        }
+        return nmsVersion;
+    }
+
+    public static NMSVersion getNmsVersionObject() {
+        if (nmsVersionObject == null) {
+            try {
+                nmsVersionObject = NMSVersion.fromString(getNMSVersion());
+            } catch (final IllegalArgumentException e) {
+                try {
+                    Class.forName("org.bukkit.craftbukkit.CraftServer");
+                    nmsVersionObject = new NMSVersion(99, 99, 99); // Mojang Dev Mappings
+                } catch (final ClassNotFoundException ignored) {
+                    throw e;
+                }
+            }
+        }
+        return nmsVersionObject;
+    }
+
+    public static boolean isMojMap() {
+        return getNmsVersionObject().getMajor() == 99;
+    }
+
+    public static Class<?> getNMSClass(final String className) {
+        return getClassCached("net.minecraft.server" + (ReflUtil.getNmsVersionObject().isLowerThan(ReflUtil.V1_17_R1) ? "." + getNMSVersion() : "") + "." + className);
+    }
+
+    public static Class<?> getOBCClass(final String className) {
+        return getClassCached("org.bukkit.craftbukkit" + (getNmsVersionObject().getMajor() == 99 ? "" : ("." + getNMSVersion())) + "." + className);
+    }
+
+    public static Class<?> getClassCached(final String className) {
+        if (classCache.containsKey(className)) {
+            return classCache.get(className);
+        }
+        try {
+            final Class<?> classForName = Class.forName(className);
+            classCache.put(className, classForName);
+            return classForName;
+        } catch (final ClassNotFoundException e) {
+            return null;
+        }
+    }
+
+    public static Method getMethodCached(final Class<?> clazz, final String methodName) {
+        if (methodCache.contains(clazz, methodName)) {
+            return methodCache.get(clazz, methodName);
+        }
+        try {
+            final Method method = clazz.getDeclaredMethod(methodName);
+            method.setAccessible(true);
+            methodCache.put(clazz, methodName, method);
+            return method;
+        } catch (final NoSuchMethodException e) {
+            return null;
+        }
+    }
+
+    public static Method getMethodCached(final Class<?> clazz, final String methodName, final Class<?>... params) {
+        final MethodParams methodParams = new MethodParams(methodName, params);
+        if (methodParamCache.contains(clazz, methodParams)) {
+            return methodParamCache.get(clazz, methodParams);
+        }
+        try {
+            final Method method = clazz.getDeclaredMethod(methodName, params);
+            method.setAccessible(true);
+            methodParamCache.put(clazz, methodParams, method);
+            return method;
+        } catch (final NoSuchMethodException e) {
+            return null;
+        }
+    }
+
+    public static Field getFieldCached(final Class<?> clazz, final String fieldName) {
+        if (fieldCache.contains(clazz, fieldName)) {
+            return fieldCache.get(clazz, fieldName);
+        }
+        try {
+            final Field field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            fieldCache.put(clazz, fieldName, field);
+            return field;
+        } catch (final NoSuchFieldException e) {
+            return null;
+        }
+    }
+
+    public static Constructor<?> getConstructorCached(final Class<?> clazz) {
+        if (constructorCache.containsKey(clazz)) {
+            return constructorCache.get(clazz);
+        }
+        try {
+            final Constructor<?> constructor = clazz.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            constructorCache.put(clazz, constructor);
+            return constructor;
+        } catch (final NoSuchMethodException e) {
+            return null;
+        }
+    }
+
+    public static Constructor<?> getConstructorCached(final Class<?> clazz, final Class<?>... params) {
+        final ConstructorParams constructorParams = new ConstructorParams(params);
+        if (constructorParamCache.contains(clazz, constructorParams)) {
+            return constructorParamCache.get(clazz, constructorParams);
+        }
+        try {
+            final Constructor<?> constructor = clazz.getDeclaredConstructor(params);
+            constructor.setAccessible(true);
+            constructorParamCache.put(clazz, constructorParams, constructor);
+            return constructor;
+        } catch (final NoSuchMethodException e) {
+            return null;
+        }
+    }
+
+    // Adapted from @minecrafter
+    private static class MethodParams {
+        private final String name;
+        private final Class<?>[] params;
+
+        MethodParams(final String name, final Class<?>[] params) {
+            this.name = name;
+            this.params = params;
+        }
+
+        // Ugly autogenned Lombok code
+        @Override
+        public boolean equals(final Object o) {
+            if (o == this) {
+                return true;
+            }
+            if (!(o instanceof MethodParams)) {
+                return false;
+            }
+            final MethodParams that = (MethodParams) o;
+            if (!that.canEqual(this)) {
+                return false;
+            }
+            final Object thisName = this.name;
+            final Object thatName = that.name;
+            if (thisName == null) {
+                if (thatName == null) {
+                    return Arrays.deepEquals(this.params, that.params);
+                }
+            } else if (thisName.equals(thatName)) {
+                return Arrays.deepEquals(this.params, that.params);
+            }
+            return false;
+        }
+
+        boolean canEqual(final Object that) {
+            return that instanceof MethodParams;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = 1;
+            final Object thisName = this.name;
+            result = result * 31 + ((thisName == null) ? 0 : thisName.hashCode());
+            result = result * 31 + Arrays.deepHashCode(this.params);
+            return result;
+        }
+    }
+
+    // Necessary for deepequals
+    private static class ConstructorParams {
+        private final Class<?>[] params;
+
+        ConstructorParams(final Class<?>[] params) {
+            this.params = params;
+        }
+
+        @Override
+        public boolean equals(final Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            final ConstructorParams that = (ConstructorParams) o;
+
+            return Arrays.deepEquals(params, that.params);
+        }
+
+        @Override
+        public int hashCode() {
+            return Arrays.deepHashCode(params);
+        }
+    }
 
     public static final class NMSVersion implements Comparable<NMSVersion> {
         private static final Pattern VERSION_PATTENR = Pattern.compile("^v(\\d+)_(\\d+)_R(\\d+)");
