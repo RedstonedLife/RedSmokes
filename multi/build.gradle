@@ -5,5 +5,5 @@ plugins {
 repositories {}
 
 dependencies {
-    compileOnly ""
+    compileOnly('com.github.milkbowl:VaultAPI:1.7')
 }
