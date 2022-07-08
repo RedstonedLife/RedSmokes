@@ -12,8 +12,8 @@ public class LuckPermsAPI implements ILuckPerms {
     private static final RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
 
     public LuckPerms onStart() {
-        if(RedSmokes.getProvidingPlugin(LuckPerms.class) != null) {
-            luckPerms = RedSmokes.getProvidingPlugin(LuckPerms.class)
+        if(provider != null) {
+            
         }
     }
 
