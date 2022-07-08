@@ -11,5 +11,5 @@ public abstract class LoggerProvider extends PluginLogger {
     }
 
     protected abstract void doTheLog(Level level, String message, Throwable throwable);
-    protected abstract void 
+    protected abstract void doTheLog(Level level, String message);
 }
