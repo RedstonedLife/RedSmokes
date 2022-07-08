@@ -7,6 +7,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class RedSmokes extends JavaPlugin implements IRedSmokes {
@@ -41,6 +42,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
     private void handleCrash(final Throwable exception) {
         final PluginManager pm = getServer().getPluginManager();
-        LOGGER
+        LOGGER.log(Level.SEVERE, );
     }
 }
