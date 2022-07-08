@@ -10,6 +10,7 @@ import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class RedSmokesLogger {
     private final static Map<String, LoggerProvider> loggerProviders = new HashMap<>();
@@ -29,7 +30,10 @@ public class RedSmokesLogger {
 
     public static LoggerProvider getLoggerProvider(final Plugin plugin) {
         if(loggerProviders.containsKey(plugin.getName())) {
-            return loggerProviders
+            return loggerProviders.get(plugin.getName());
         }
+
+        final Logger parentLogger = Logger.getLogger(plugin.getName());
+        final LoggerProvider provider = 
     }
 }
