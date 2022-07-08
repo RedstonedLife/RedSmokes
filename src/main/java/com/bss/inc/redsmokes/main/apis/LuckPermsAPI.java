@@ -18,7 +18,7 @@ public class LuckPermsAPI implements ILuckPerms {
     }
 
     public void onStop() {
-
+        provider=null;
     }
 
     public boolean isLoaded() {
