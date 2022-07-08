@@ -49,6 +49,8 @@ public class RedSmokesLogger {
         final LoggerProvider provider = getLoggerProvider(plugin);
         try {
             loggerFieldHandle.invoke(plugin, provider);
+        } catch (Throwable e) {
+            
         }
     }
 }
