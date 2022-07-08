@@ -15,7 +15,8 @@ public class RedSmokesLogger {
     static {
         try {
             final Field loggerField = ReflUtil.getFieldCached(JavaPlugin.class, "logger");
-            
+            //noinspection ConstantConditions
+            loggerFieldHandle = loggerField;
         }
     }
 }
