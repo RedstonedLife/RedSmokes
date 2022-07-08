@@ -5,5 +5,7 @@ import com.bss.inc.redsmokes.api.commands.IrsCommand;
 public interface IUser {
     boolean isAuthorized(String node);
     boolean isAuthorized(IrsCommand cmd);
-    boolean isAuthorized()
+    boolean isAuthorized(IrsCommand cmd, String permissionPrefix);
+    boolean isPermissionSet(String node);
+    
 }
