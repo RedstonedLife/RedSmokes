@@ -29,5 +29,7 @@ public class CommandSource {
         return null;
     }
 
-    
+    public final boolean isPlayer() {
+        return sender instanceof Player;
+    }
 }
