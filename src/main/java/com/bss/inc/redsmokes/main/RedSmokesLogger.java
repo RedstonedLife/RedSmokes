@@ -27,6 +27,6 @@ public class RedSmokesLogger {
     private RedSmokesLogger() {}
 
     public static LoggerProvider getLoggerProvider(final Plugin plugin) {
-        
+        if(loggerProviders.containsKey(plugin.getName()))
     }
 }
