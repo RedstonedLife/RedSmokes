@@ -36,7 +36,7 @@ sequenceOf(
         "",
 ).forEach {
     include(":RedSmokes$it")
-    project(":RedSmokes$it").projectDir = file("multi$it")
+    project(":RedSmokes$it").projectDir = file("RedSmokes$it")
 }
 
 // Providers
