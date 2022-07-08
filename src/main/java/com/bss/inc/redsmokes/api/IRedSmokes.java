@@ -5,6 +5,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 public interface IRedSmokes {
 
 
-    public T RegisteredServiceProvider<T> getServiceProvider()
+    public <T> RegisteredServiceProvider<T> getServiceProvider(Class<T> clazz);
 
 }
