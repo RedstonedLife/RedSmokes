@@ -36,6 +36,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
     private void handleCrash(final Throwable exception) {
         final PluginManager pm = getServer().getPluginManager();
-        
+        LOGGER
     }
 }
