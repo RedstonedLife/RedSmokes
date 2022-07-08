@@ -21,4 +21,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public void onLoad() {
         super.onLoad();
     }
+
+    public <T> RegisteredServiceProvider<T> getServiceProvider(Class<T> clazz) {
+        return 
+    }
 }
