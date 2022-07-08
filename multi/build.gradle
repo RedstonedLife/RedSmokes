@@ -13,7 +13,7 @@ dependencies {
     api 'org.bstats:bstats-bukkit:3.0.0'
 
     implementation 'org.spongepowered:configurate-yaml:4.1.2'
-    implementation 'org.checkerframework:checker-qual:3.14.0'
+    implementation 'org.checkerframework:checker-qual:3.22.1'
 
     // Providers
     api project(':providers:BaseProviders')
