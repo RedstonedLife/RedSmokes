@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.api.IRedSmokes;
 import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -44,6 +45,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         final PluginManager pm = getServer().getPluginManager();
         LOGGER.log(Level.SEVERE, exception.toString());
         exception.printStackTrace();
-        pm.registerEvents();
+        pm.registerEvents(new Listener() {
+        });
     }
 }
