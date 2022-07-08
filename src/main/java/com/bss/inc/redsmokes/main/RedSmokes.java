@@ -7,8 +7,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
-    private static final RegisteredServiceProvider<?> provider
-
     @Override
     public void onEnable() {
         super.onEnable();
