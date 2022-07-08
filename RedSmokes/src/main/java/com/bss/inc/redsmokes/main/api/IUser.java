@@ -10,5 +10,8 @@ public interface IUser {
     /**
         RedSmokes Balance (IF ESSENTIALS is not found)
         Will be deprecated in the future to be included in <br>SoyuzCore</br>
+
+        <h3>SoyuzCore</h3>
+        SoyuzCore is a private project by <p href="https://github.com/RedstonedLife>Tal A. Baskin</p>
      */
 }
