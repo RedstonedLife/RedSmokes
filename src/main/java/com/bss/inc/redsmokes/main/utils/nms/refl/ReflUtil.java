@@ -17,6 +17,8 @@ public final class ReflUtil {
             this.minor = minor;
             this.release = release;
         }
+
+        
     }
 }
 
