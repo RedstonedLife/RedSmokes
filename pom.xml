@@ -7,7 +7,7 @@
     <groupId>com.bss.inc</groupId>
     <artifactId>redsmokes</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>CameraOn</name>
+    <name>RedSmokes</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
