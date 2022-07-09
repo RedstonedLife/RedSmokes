@@ -2,6 +2,8 @@ package com.bss.inc.redsmokes.main.api;
 
 import org.bukkit.entity.Player;
 
+import java.util.Locale;
+
 /**
  * Provides access to the current locale in use.
  *
@@ -14,5 +16,5 @@ public interface II18n {
      *
      * @return the current locale, if not set it will return the default locale
      */
-    Locale getCurrentLocale()
+    Locale getCurrentLocale();
 }
