@@ -22,5 +22,5 @@ public interface IRedSmokes extends Plugin {
     User getUser(UUID base);
     User getUser(String base);
     User getUser(Player base);
-    
+    User matchUser(Server server, User sourceUser, )
 }
