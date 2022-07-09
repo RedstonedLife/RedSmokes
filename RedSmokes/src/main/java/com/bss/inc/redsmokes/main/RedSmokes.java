@@ -31,6 +31,14 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         }
     }
 
+    public static Logger getWrappedLogger() {
+        if (LOGGER != null) {
+            return LOGGER;
+        }
+
+        return BUKKIT_LOGGER;
+    }
+    
     @Override
     public void onDisable() {
         super.onDisable();
