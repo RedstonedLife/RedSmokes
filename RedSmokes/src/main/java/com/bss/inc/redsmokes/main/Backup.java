@@ -34,5 +34,10 @@ public class Backup implements Runnable {
         }
         taskId = -1;
     }
-    
+
+    private synchronized void startTask() {
+        if(!running) {
+            final long interval = 
+        }
+    }
 }
