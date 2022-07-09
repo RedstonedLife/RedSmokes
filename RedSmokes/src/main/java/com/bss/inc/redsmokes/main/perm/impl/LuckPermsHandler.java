@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main.perm.impl;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
+import com.bss.inc.redsmokes.main.User;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.context.ContextCalculator;
 import net.luckperms.api.context.ContextConsumer;
