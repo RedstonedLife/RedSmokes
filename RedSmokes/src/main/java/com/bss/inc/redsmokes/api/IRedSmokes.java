@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.api;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.*;
 import com.bss.inc.redsmokes.main.commands.PlayerNotFoundException;
+import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -43,4 +44,5 @@ public interface IRedSmokes extends Plugin {
     UpdateChecker getUpdateChecker();
     BukkitTask runTaskAsynchronously(Runnable run);
     BukkitTask runTaskLaterAsynchronously(Runnable run, long delay);
+    BukkitTask runTaskTimerAsynchronously()
 }
