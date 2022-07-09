@@ -8,6 +8,7 @@ import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -59,4 +60,5 @@ public interface IRedSmokes extends Plugin {
 
     Collection<Player> getOnlinePlayers();
     Iterable<User> getOnlineUsers();
+    PluginCommand getPluginCommand(String cmd);
 }
