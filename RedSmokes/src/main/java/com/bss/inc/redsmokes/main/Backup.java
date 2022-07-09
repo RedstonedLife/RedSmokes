@@ -45,4 +45,8 @@ public class Backup implements Runnable {
             running = true;
         }
     }
+
+    public CompletableFuture<Object> getTaskLock() {
+        return taskLock;
+    }
 }
