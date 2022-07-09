@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public class UpdateChecker {
-    private static final String REPO = "RedSmokes/RedSmokes";
+    private static final String REPO = "RedstonedLife/RedSmokes";
     private static final String BRANCH = "main";
 
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/"+REPO+"/releases/latest";
