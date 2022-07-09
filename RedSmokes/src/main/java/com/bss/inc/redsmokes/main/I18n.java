@@ -25,5 +25,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
     public I18n(final IRedSmokes redSmokes) {
         this.redSmokes = redSmokes;
         defaultBundle = ResourceBundle.getBundle(MESSAGES, Locale.ENGLISH, new UTF8PropertiesControl());
+        localeBundle = defaultBundle;
+        customBundle = NULL_BUNDLE;
     }
 }
