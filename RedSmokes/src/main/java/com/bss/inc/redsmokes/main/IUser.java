@@ -65,5 +65,5 @@ public interface IUser {
     void setAcceptingPay(boolean acceptingPay);
     boolean isPromptingPayConfirm();
     void setPromptingPayConfirm(boolean prompt);
-    
+    boolean isPromptingClearConfirm();
 }
