@@ -242,7 +242,7 @@ public class UpdateChecker {
                 }
                 case BEHIND: {
                     return new String[] {tl("versionReleaseNew", this.getLatestRelease()),
-                            tl("versionReleaseNewLink", "https://essentialsx.net/downloads.html?branch=stable")};
+                            tl("versionReleaseNewLink", "https://github.com/RedstonedLife/RedSmokes/archive/refs/tags/"++".zip")};
                 }
                 case DIVERGED: //WhatChamp
                 case AHEAD: //monkaW?
