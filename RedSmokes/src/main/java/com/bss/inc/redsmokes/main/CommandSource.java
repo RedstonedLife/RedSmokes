@@ -34,6 +34,10 @@ public class CommandSource {
     }
 
     public final CommandSender setSender(final CommandSender base) {
+        return this.sender = base;
+    }
+
+    public void sendMessage(final String message) {
         
     }
 }
