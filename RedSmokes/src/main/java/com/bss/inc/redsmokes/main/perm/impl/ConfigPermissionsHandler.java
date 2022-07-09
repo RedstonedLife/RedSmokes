@@ -16,7 +16,7 @@ public class ConfigPermissionsHandler extends SuperpermsHandler {
     @Override
     public boolean hasPermission(final Player base, final String node) {
         final String[] cmds = node.split("\\.", 2);
-        return ess.getSettings().isPlayerCommand(cmds[cmds.length - 1]) || super.hasPermission(base, node);
+        return redSmokes.getSettings().isPlayerCommand(cmds[cmds.length - 1]) || super.hasPermission(base, node);
     }
 
     @Override
