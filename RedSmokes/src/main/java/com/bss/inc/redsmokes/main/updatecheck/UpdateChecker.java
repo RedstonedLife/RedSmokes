@@ -282,6 +282,10 @@ public class UpdateChecker {
         public int getDistance() {
             return distance;
         }
+
+        public String getTagname() {
+            return tag_name;
+        }
     }
 
     private enum BranchStatus {
