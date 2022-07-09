@@ -78,4 +78,34 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         return messageFormat.format(objects).replace(' ', ' '); // replace nbsp with a space
     }
 
+    public void updateLocale(final String loc) {
+        if (loc != null && !loc.isEmpty()) {
+            final String[] parts = loc.split("[_\\.]");
+            if (parts.length == 1) {
+                currentLocale = new Locale(parts[0]);
+            }
+            if (parts.length == 2) {
+                currentLocale = new Locale(parts[0], parts[1]);
+            }
+            if (parts.length == 3) {
+                currentLocale = new Locale(parts[0], parts[1], parts[2]);
+            }
+        }
+        ResourceBundle.clearCache();
+        messageFormatCache = new HashMap<>();
+        ess.getLogger().log(Level.INFO, String.format("Using locale %s", currentLocale.toString()));
+
+        try {
+            localeBundle = ResourceBundle.getBundle(MESSAGES, currentLocale, new UTF8PropertiesControl());
+        } catch (final MissingResourceException ex) {
+            localeBundle = NULL_BUNDLE;
+        }
+
+        try {
+            customBundle = ResourceBundle.getBundle(MESSAGES, currentLocale, new FileResClassLoader(I18n.class.getClassLoader(), ess), new UTF8PropertiesControl());
+        } catch (final MissingResourceException ex) {
+            customBundle = NULL_BUNDLE;
+        }
+    }
+
 }
