@@ -64,6 +64,7 @@ public class Backup implements Runnable {
             return;
         }
         active = true;
-        taskLock = new CompletableFuture<>()
+        taskLock = new CompletableFuture<>();
+        
     }
 }
