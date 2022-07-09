@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main.perm.impl;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
+import com.bss.inc.redsmokes.main.utils.TriState;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
