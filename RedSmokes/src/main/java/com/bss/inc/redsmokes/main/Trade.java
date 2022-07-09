@@ -31,5 +31,7 @@ public class Trade {
         this(null, null, null, items, null, redSmokes);
     }
 
-    public Trade(final )
+    public Trade(final int exp, final IRedSmokes redSmokes) {
+        
+    }
 }
