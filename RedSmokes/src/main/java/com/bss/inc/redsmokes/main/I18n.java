@@ -38,5 +38,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         }
     }
 
-    
+    public static String capitalCase(final String input) {
+        
+    }
 }
