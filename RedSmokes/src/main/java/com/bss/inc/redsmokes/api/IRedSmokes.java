@@ -53,7 +53,7 @@ public interface IRedSmokes extends Plugin {
     int scheduleSyncRepeatingTask(Runnable run, long delay, long period);
     PermissionHandler getPermissionsHandler();
     void showError(CommandSource sender, Throwable exception, String commandLabel);
-    IItemDB getItemDb();
+    IItemDb getItemDb();
     UserMap getUserMap();
     BalanceTop getBalanceTop();
     RedSmokesTimer getTimer();
