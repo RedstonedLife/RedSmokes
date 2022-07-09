@@ -32,4 +32,8 @@ public class CommandSource {
     public final boolean isPlayer() {
         return sender instanceof Player;
     }
+
+    public final CommandSender setSender(final CommandSender base) {
+        
+    }
 }
