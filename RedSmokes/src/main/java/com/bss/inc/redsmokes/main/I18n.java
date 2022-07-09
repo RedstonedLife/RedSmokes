@@ -47,7 +47,11 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
     @Override public Locale getCurrentLocale() {return currentLocale;}
 
     private String translate(final String string) {
-        
+        try {
+            try {
+                
+            }
+        }
     }
 
 }
