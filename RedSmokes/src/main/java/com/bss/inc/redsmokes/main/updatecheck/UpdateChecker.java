@@ -25,7 +25,7 @@ public class UpdateChecker {
 
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/"+REPO+"/releases/latest";
     // 0 = base for comparison, 1 = head for comparison - *not* the same as what this class calls them
-    private static final String DISTANCE_URL = "https://api.github.com/repos/RedSmokes/RedSmokes/compare/{0}...{1}";
+    private static final String DISTANCE_URL = "https://api.github.com/repos/RedstonedLife/RedSmokes/compare/{0}...{1}";
 
     private final RedSmokes redSmokes;
     private final String versionIdentifier;
