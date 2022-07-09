@@ -33,5 +33,5 @@ public interface IUser {
     void setMoney(final BigDecimal value) throws MaxMoneyException;
     String getGroup();
     boolean inGroup(final String group);
-    
+    void sendMessage(String message);
 }
