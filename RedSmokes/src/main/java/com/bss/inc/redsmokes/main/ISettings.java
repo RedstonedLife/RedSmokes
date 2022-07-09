@@ -42,6 +42,8 @@ public interface ISettings extends IConf {
     boolean getRepairEnchanted();
     int getSignUsePerSecond();
     int getMailsPerMinute();
+    long getEconomyLagWarning();
+    long getPermissionsLagWarning();
     int getMaxUserCacheCount();
     boolean isNotifyNoNewMail();
     BigDecimal getMinimumPayAmount();
