@@ -4,6 +4,8 @@ import com.bss.inc.redsmokes.main.User;
 import org.bukkit.entity.Player;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public interface IPermissionsHandler {
     String getGroup(Player base);
@@ -15,5 +17,5 @@ public interface IPermissionsHandler {
     TriState isPermissionSetExact(Player base, String node);
     String getPrefix(Player base);
     String getSuffix(Player base);
-    void registerContext(String context, Function<User, Iterable<String>>)
+    void registerContext(String context, Function<User, Iterable<String>> calculator, Supplier<Iterable<String>> suggestions);
 }
