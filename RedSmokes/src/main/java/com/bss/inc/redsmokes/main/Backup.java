@@ -63,50 +63,69 @@ public class Backup implements Runnable {
 
     @Override
     public void run() {
-        if(active) {
+        if (active) {
             return;
         }
-        final String command = redSmokes.getSettings().getBackupCommand();
-        if(command == null || "".equals(command)) {
+        final String command = ess.getSettings().getBackupCommand();
+        if (command == null || "".equals(command)) {
             return;
         }
         active = true;
         taskLock = new CompletableFuture<>();
-        if("save-all".equalsIgnoreCase(command)) {
+        if ("save-all".equalsIgnoreCase(command)) {
             final CommandSender cs = server.getConsoleSender();
             server.dispatchCommand(cs, "save-all");
             active = false;
             taskLock.complete(new Object());
             return;
         }
-        redSmokes.getLogger().log(Level.INFO, tl("backupStarted"));
+        ess.getLogger().log(Level.INFO, tl("backupStarted"));
         final CommandSender cs = server.getConsoleSender();
         server.dispatchCommand(cs, "save-all");
         server.dispatchCommand(cs, "save-off");
 
-        redSmokes.runTaskAsynchronously(() -> {
+        ess.runTaskAsynchronously(() -> {
             try {
                 final ProcessBuilder childBuilder = new ProcessBuilder(command.split(" "));
                 childBuilder.redirectErrorStream(true);
-                childBuilder.directory(redSmokes.getDataFolder().getParentFile().getParentFile());
+                childBuilder.directory(ess.getDataFolder().getParentFile().getParentFile());
                 final Process child = childBuilder.start();
-                redSmokes.runTaskLaterAsynchronously(() -> {
-                    try (final BufferedReader reader = new BufferedReader(new InputStreamReader(child.getInputStream()))) {
-                        String line;
-                        do {
-                            line = reader.readLine();
-                            if(line != null) {
-                                redSmokes.getLogger().log(Level.INFO, line);
-                            }
-                        } while (line != null);
+                ess.runTaskAsynchronously(() -> {
+                    try {
+                        try (final BufferedReader reader = new BufferedReader(new InputStreamReader(child.getInputStream()))) {
+                            String line;
+                            do {
+                                line = reader.readLine();
+                                if (line != null) {
+                                    ess.getLogger().log(Level.INFO, line);
+                                }
+                            } while (line != null);
+                        }
                     } catch (final IOException ex) {
-                        redSmokes.getLogger().log(Level.SEVERE, null, ex);}});
+                        ess.getLogger().log(Level.SEVERE, null, ex);
+                    }
+                });
                 child.waitFor();
             } catch (final InterruptedException | IOException ex) {
-                redSmokes.getLogger().log(Level.SEVERE, null, ex);
+                ess.getLogger().log(Level.SEVERE, null, ex);
             } finally {
+                class BackupEnableSaveTask implements Runnable {
+                    @Override
+                    public void run() {
+                        server.dispatchCommand(cs, "save-on");
+                        if (!ess.getSettings().isAlwaysRunBackup() && ess.getOnlinePlayers().isEmpty()) {
+                            stopTask();
+                        }
+                        active = false;
+                        taskLock.complete(new Object());
+                        ess.getLogger().log(Level.INFO, tl("backupFinished"));
+                    }
+                }
 
+                if (!pendingShutdown.get()) {
+                    ess.scheduleSyncDelayedTask(new BackupEnableSaveTask());
+                }
             }
-        })
+        });
     }
 }
