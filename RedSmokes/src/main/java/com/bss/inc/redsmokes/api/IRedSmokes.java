@@ -15,7 +15,6 @@ import com.bss.inc.redsmokes.main.provider.SerializationProvider;
 import com.bss.inc.redsmokes.main.provider.FormattedCommandAliasProvider;
 import com.bss.inc.redsmokes.main.provider.SyncCommandsProvider;
 import com.bss.inc.redsmokes.main.provider.PersistentDataProvider;
-import com.bss.inc.redsmokes.main.nms.refl.providers.ReflOnlineModeProvider;
 import com.bss.inc.redsmokes.main.provider.ItemUnbreakableProvider;
 import com.bss.inc.redsmokes.main.provider.WorldInfoProvider;
 import com.bss.inc.redsmokes.main.provider.SignDataProvider;
@@ -60,7 +59,7 @@ public interface IRedSmokes extends Plugin {
     Backup getBackup();
     UpdateChecker getUpdateChecker();
     BukkitTask runTaskAsynchronously(Runnable run);
-    BukkitTask runTaskLaterAsynchronously(Runnable run, long delay);
+    BukkitTask runTaskLaterAsynchronously(Runnable run);
     BukkitTask runTaskTimerAsynchronously(Runnable run, long delay, long period);
     int scheduleSyncDelayedTask(Runnable run);
     int scheduleSyncDelayedTask(Runnable run, long delay);
