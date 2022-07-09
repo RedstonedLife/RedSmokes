@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 public class UserMap extends CacheLoader<String, User> implements IConf {
     private static boolean legacy = false;
     private static Method getLegacy;
-    private final transient IEssentials ess;
+    private final transient IEssentials redSmokes
     private final transient ConcurrentSkipListSet<UUID> keys = new ConcurrentSkipListSet<>();
     private final transient ConcurrentSkipListMap<String, UUID> names = new ConcurrentSkipListMap<>();
     private final transient ConcurrentSkipListMap<UUID, ArrayList<String>> history = new ConcurrentSkipListMap<>();
@@ -42,7 +42,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
 
     public UserMap(final IEssentials ess) {
         super();
-        this.ess = ess;
+        this.ess = redSmokes
         uuidMap = new UUIDMap(ess);
         //RemovalListener<UUID, User> remListener = new UserMapRemovalListener();
         //users = CacheBuilder.newBuilder().maximumSize(ess.getSettings().getMaxUserCacheCount()).softValues().removalListener(remListener).build(this);
