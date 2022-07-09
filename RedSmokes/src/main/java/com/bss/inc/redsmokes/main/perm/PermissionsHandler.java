@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main.perm;
 
+import com.bss.inc.redsmokes.main.RedSmokes;
+
 import java.util.Arrays;
 import java.util.logging.Level;
 
@@ -104,7 +106,7 @@ public class PermissionsHandler implements IPermissionsHandler {
     }
 
     @Override
-    public boolean tryProvider(Essentials ess) {
+    public boolean tryProvider(RedSmokes ess) {
         return true;
     }
 
