@@ -95,7 +95,7 @@ public class Backup implements Runnable {
                         do {
                             line = reader.readLine();
                             if(line != null) {
-                                
+                                redSmokes.getLogger().log(Level.INFO, line);
                             }
                         }
                     }
