@@ -19,15 +19,17 @@ import java.util.stream.Collectors;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
-public class UpdateChecker {
-    private static final String REPO = "RedstonedLife/RedSmokes";
-    private static final String BRANCH = "main";
+public final class UpdateChecker {
+    private static final String REPO = "EssentialsX/Essentials";
+    private static final String BRANCH = "2.x";
 
-    private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/"+REPO+"/releases/latest";
+    private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/" + REPO + "/releases/latest";
+    private static final String LATEST_RELEASE_PROXY_URL = "https://webapi.essentialsx.net/api/v1/github/essx-v2/releases/latest";
     // 0 = base for comparison, 1 = head for comparison - *not* the same as what this class calls them
-    private static final String DISTANCE_URL = "https://api.github.com/repos/RedstonedLife/RedSmokes/compare/{0}...{1}";
+    private static final String DISTANCE_URL = "https://api.github.com/repos/EssentialsX/Essentials/compare/{0}...{1}";
+    private static final String DISTANCE_PROXY_URL = "https://webapi.essentialsx.net/api/v1/github/essx-v2/compare/{0}/{1}";
 
-    private final RedSmokes redSmokes;
+    private final Essentials ess;
     private final String versionIdentifier;
     private final String versionBranch;
     private final boolean devBuild;
@@ -39,7 +41,7 @@ public class UpdateChecker {
     private RemoteVersion cachedDev = null;
     private RemoteVersion cachedRelease = null;
 
-    public UpdateChecker(RedSmokes redSmokes) {
+    public UpdateChecker(Essentials ess) {
         String identifier = "INVALID";
         String branch = "INVALID";
         boolean dev = false;
@@ -58,7 +60,7 @@ public class UpdateChecker {
             }
         }
 
-        this.redSmokes = redSmokes;
+        this.ess = ess;
         this.versionIdentifier = identifier;
         this.versionBranch = branch;
         this.devBuild = dev;
@@ -74,7 +76,7 @@ public class UpdateChecker {
                 return pendingDevFuture;
             }
             pendingDevFuture = new CompletableFuture<>();
-            redSmokes.runTaskAsynchronously(() -> {
+            ess.runTaskAsynchronously(() -> {
                 pendingDevFuture.complete(cachedDev = fetchDistance(BRANCH, getVersionIdentifier()));
                 pendingDevFuture = null;
                 lastFetchTime = System.currentTimeMillis();
@@ -90,10 +92,10 @@ public class UpdateChecker {
                 return pendingReleaseFuture;
             }
             pendingReleaseFuture = new CompletableFuture<>();
-            redSmokes.runTaskAsynchronously(() -> {
+            ess.runTaskAsynchronously(() -> {
                 catchBlock:
                 try {
-                    final HttpURLConnection connection = tryRequestWithFallback(LATEST_RELEASE_URL);
+                    final HttpURLConnection connection = tryRequestWithFallback(LATEST_RELEASE_URL, LATEST_RELEASE_PROXY_URL);
 
                     if (connection.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
                         // Locally built?
@@ -140,7 +142,7 @@ public class UpdateChecker {
         return latestRelease;
     }
 
-    private HttpURLConnection tryRequestWithFallback(final String githubUrl) throws IOException {
+    private HttpURLConnection tryRequestWithFallback(final String githubUrl, final String fallbackUrl) throws IOException {
         HttpURLConnection connection = (HttpURLConnection) new URL(githubUrl).openConnection();
         try {
             connection.connect();
@@ -153,7 +155,7 @@ public class UpdateChecker {
 
         // Connection failed, GitHub's down or we hit a ratelimit, so use the fallback URL
         // If the fallback fails, let the exception or error status bubble up
-        connection = (HttpURLConnection) new URL(githubUrl).openConnection();
+        connection = (HttpURLConnection) new URL(fallbackUrl).openConnection();
         connection.connect();
 
         return connection;
@@ -187,7 +189,7 @@ public class UpdateChecker {
 
     private RemoteVersion fetchDistance(final String head, final String hash) {
         try {
-            final HttpURLConnection connection = tryRequestWithFallback(MessageFormat.format(DISTANCE_URL, head, hash), MessageFormat.format(DISTANCE_URL, head, hash));
+            final HttpURLConnection connection = tryRequestWithFallback(MessageFormat.format(DISTANCE_URL, head, hash), MessageFormat.format(DISTANCE_PROXY_URL, head, hash));
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
                 // Locally built?
@@ -205,7 +207,7 @@ public class UpdateChecker {
     }
 
     public String[] getVersionMessages(final boolean sendLatestMessage, final boolean verboseErrors) {
-        if (!redSmokes.getSettings().isUpdateCheckEnabled()) {
+        if (!ess.getSettings().isUpdateCheckEnabled()) {
             return new String[] {tl("versionCheckDisabled")};
         }
 
@@ -217,7 +219,7 @@ public class UpdateChecker {
                 }
                 case BEHIND: {
                     return new String[] {tl("versionDevBehind", latestDev.getDistance()),
-                            tl("versionReleaseNewLink", "https://github.com/RedstonedLife/RedSmokes/archive/refs/tags/"+latestDev.getTagname()+".zip")};
+                            tl("versionReleaseNewLink", "https://essentialsx.net/downloads.html")};
                 }
                 case AHEAD:
                 case DIVERGED: {
@@ -242,7 +244,7 @@ public class UpdateChecker {
                 }
                 case BEHIND: {
                     return new String[] {tl("versionReleaseNew", this.getLatestRelease()),
-                            tl("versionReleaseNewLink", "https://github.com/RedstonedLife/RedSmokes/archive/refs/tags/"+latestRelease.getTagname()+".zip")};
+                            tl("versionReleaseNewLink", "https://essentialsx.net/downloads.html?branch=stable")};
                 }
                 case DIVERGED: //WhatChamp
                 case AHEAD: //monkaW?
@@ -263,15 +265,12 @@ public class UpdateChecker {
         private final BranchStatus branchStatus;
         private final int distance;
 
-        private final String tag_name;
-
         RemoteVersion(BranchStatus branchStatus) {
-            this(branchStatus, "1.0.0.11-dev", 0); // 1.0.0.11-dev is the first version of RedSmokes.
+            this(branchStatus, 0);
         }
 
-        RemoteVersion(BranchStatus branchStatus, String tag_name, int distance) {
+        RemoteVersion(BranchStatus branchStatus, int distance) {
             this.branchStatus = branchStatus;
-            this.tag_name = tag_name;
             this.distance = distance;
         }
 
@@ -281,10 +280,6 @@ public class UpdateChecker {
 
         public int getDistance() {
             return distance;
-        }
-
-        public String getTagname() {
-            return tag_name;
         }
     }
 
