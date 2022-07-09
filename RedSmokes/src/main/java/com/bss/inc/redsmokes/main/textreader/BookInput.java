@@ -30,7 +30,7 @@ public class BookInput implements IText {
                         length = input.read(buffer);
                     }
                 }
-                
+                redSmokes.getLogger().info("File " + filename + ".txt does not exist. Creating one for you");
             }
         }
     }
