@@ -10,5 +10,5 @@ public class BookInput implements IText {
     private final transient List<String> lines;
     private final transient List<String> chapters;
     private final transient Map<String, Integer> bookmarks;
-    private final transient 
+    private final transient long lastChange;
 }
