@@ -28,7 +28,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             }
             LOGGER = RedSmokesLogger.getLoggerProvider(this);
             RedSmokesLogger.updatePluginLogger(this);
-        }
+        } catch (final NumberFormatException ex) {
+            handleCrash(ex);
+        } catch (final )
     }
 
     public static Logger getWrappedLogger() {
@@ -37,9 +39,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         }
 
         return BUKKIT_LOGGER;
-    } catch (final NumberFormatException ex) {
-        handleCrash(ex);
-    } 
+    }
 
     @Override
     public void onDisable() {
