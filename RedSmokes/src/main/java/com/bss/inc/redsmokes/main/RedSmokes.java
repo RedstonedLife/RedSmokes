@@ -34,6 +34,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             handleCrash(ex);
             throw ex;
         }
+        getBackup()
     }
 
     public static Logger getWrappedLogger() {
