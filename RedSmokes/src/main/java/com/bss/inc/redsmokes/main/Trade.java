@@ -23,5 +23,5 @@ public class Trade {
         this(command, fallback, null, null, null, redSmokes);
     }
 
-    public Trade()
+    public Trade(final)
 }
