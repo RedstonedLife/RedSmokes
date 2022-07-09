@@ -2,6 +2,8 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
+import com.bss.inc.redsmokes.main.utils.NumberUtil;
+import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.earth2me.essentials.textreader.BookInput;
 import com.earth2me.essentials.textreader.BookPager;
 import com.earth2me.essentials.textreader.IText;
@@ -523,7 +525,7 @@ public class MetaItemStack {
             if (isValidPotion()) {
                 final PotionMeta pmeta = (PotionMeta) stack.getItemMeta();
                 pEffect = pEffectType.createEffect(duration, power);
-                if (pmeta.getCustomEffects().size() > 1 && !hasMetaPermission(sender, "potions.multiple", true, false, ess)) {
+                if (pmeta.getCustomEffects().size() > 1 && !hasMetaPermission(sender, "potions.multiple", true, false, redSmokes)) {
                     throw new Exception(tl("multiplePotionEffects"));
                 }
                 pmeta.addCustomEffect(pEffect, true);
@@ -544,12 +546,12 @@ public class MetaItemStack {
         }
     }
 
-    private boolean parseEnchantmentStrings(final CommandSource sender, final boolean allowUnsafe, final String[] split, final IRedSmokes ess) throws Exception {
+    private boolean parseEnchantmentStrings(final CommandSource sender, final boolean allowUnsafe, final String[] split, final IRedSmokes redSmokes) throws Exception {
         final Enchantment enchantment = Enchantments.getByName(split[0]);
         if (enchantment == null) {
             return false;
         }
-        if (hasMetaPermission(sender, "enchantments." + enchantment.getName().toLowerCase(Locale.ENGLISH), false, false, ess)) {
+        if (hasMetaPermission(sender, "enchantments." + enchantment.getName().toLowerCase(Locale.ENGLISH), false, false, redSmokes)) {
             int level = -1;
             if (split.length > 1) {
                 try {
