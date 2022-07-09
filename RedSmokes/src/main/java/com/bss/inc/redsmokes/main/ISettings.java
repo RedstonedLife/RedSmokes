@@ -5,6 +5,7 @@ import com.bss.inc.redsmokes.api.commands.IrsCommand;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.util.Set;
 
 public interface ISettings extends IConf {
     File getConfigFile();
@@ -19,5 +20,5 @@ public interface ISettings extends IConf {
     BigDecimal getStartingBalance();
     boolean isCommandDisabled(final IrsCommand cmd);
     boolean isCommandDisabled(String label);
-    Set<String> getDis
+    Set<String> getDisabledCommands();
 }
