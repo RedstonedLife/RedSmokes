@@ -23,5 +23,5 @@ public interface IRedSmokes extends Plugin {
     User getUser(UUID base);
     User getUser(String base);
     User getUser(Player base);
-    User matchUser(Server server, User sourceUser, String searchTerm, Boolean getHidden, boolean )
+    User matchUser(Server server, User sourceUser, String searchTerm, Boolean getHidden, boolean getOffline) throws PlayerNotFoundException;
 }
