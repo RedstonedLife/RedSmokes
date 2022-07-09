@@ -2,9 +2,7 @@ package com.bss.inc.redsmokes.main.textreader;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +22,9 @@ public class BookInput implements IText {
         }
         if(!file.exists()) {
             if(createFile) {
-                try (final InputStream input = redSmokes.getResource(filename + ".txt");)
+                try (final InputStream input = redSmokes.getResource(filename + ".txt"); final OutputStream output = new FileOutputStream(file)) {
+                    
+                }
             }
         }
     }
