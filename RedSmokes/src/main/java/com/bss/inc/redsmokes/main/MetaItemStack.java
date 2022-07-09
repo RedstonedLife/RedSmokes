@@ -666,13 +666,13 @@ public class MetaItemStack {
         }
     }
 
-    private boolean hasMetaPermission(final CommandSource sender, final String metaPerm, final boolean graceful, final boolean includeBase, final IEssentials ess) throws Exception {
-        final User user = sender != null && sender.isPlayer() ? ess.getUser(sender.getPlayer()) : null;
+    private boolean hasMetaPermission(final CommandSource sender, final String metaPerm, final boolean graceful, final boolean includeBase, final IRedSmokes redSmokes) throws Exception {
+        final User user = sender != null && sender.isPlayer() ? redSmokes.getUser(sender.getPlayer()) : null;
         return hasMetaPermission(user, metaPerm, graceful, includeBase);
     }
 
     private boolean hasMetaPermission(final User user, final String metaPerm, final boolean graceful, final boolean includeBase) throws Exception {
-        final String permBase = includeBase ? "essentials.itemspawn.meta-" : "essentials.";
+        final String permBase = includeBase ? "redsmokes.itemspawn.meta-" : "essentials.";
         if (user == null || user.isAuthorized(permBase + metaPerm)) {
             return true;
         }
