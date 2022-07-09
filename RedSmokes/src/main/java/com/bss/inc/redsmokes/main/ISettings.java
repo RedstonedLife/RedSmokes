@@ -39,4 +39,5 @@ public interface ISettings extends IConf {
     int getSignUsePerSecond();
     int getMailsPerMinute();
     int getMaxUserCacheCount();
+    
 }
