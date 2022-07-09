@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
 import org.bukkit.Server;
+import org.bukkit.command.CommandSender;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -65,6 +66,8 @@ public class Backup implements Runnable {
         }
         active = true;
         taskLock = new CompletableFuture<>();
-        
+        if("save-all".equalsIgnoreCase(command)) {
+            final CommandSender cs = server.getConsoleSender();
+        }
     }
 }
