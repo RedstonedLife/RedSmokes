@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
