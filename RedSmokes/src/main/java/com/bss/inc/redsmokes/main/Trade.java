@@ -158,7 +158,7 @@ public class Trade {
             try {
                 fw.close();
             } catch (final IOException ex) {
-                Essentials.getWrappedLogger().log(Level.SEVERE, null, ex);
+                RedSmokes.getWrappedLogger().log(Level.SEVERE, null, ex);
             }
             fw = null;
         }
@@ -179,8 +179,8 @@ public class Trade {
     }
 
     public void isAffordableFor(final IUser user, final CompletableFuture<Boolean> future) {
-        if (ess.getSettings().isDebug()) {
-            ess.getLogger().log(Level.INFO, "checking if " + user.getName() + " can afford charge.");
+        if (redSmokes.getSettings().isDebug()) {
+            redSmokes.getLogger().log(Level.INFO, "checking if " + user.getName() + " can afford charge.");
         }
 
         if (getMoney() != null && getMoney().signum() > 0 && !user.canAfford(getMoney())) {
