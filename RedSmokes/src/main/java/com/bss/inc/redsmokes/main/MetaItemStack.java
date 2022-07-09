@@ -8,7 +8,6 @@ import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.earth2me.essentials.textreader.BookInput;
 import com.earth2me.essentials.textreader.BookPager;
-
 import com.google.common.base.Joiner;
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
