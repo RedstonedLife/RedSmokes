@@ -11,7 +11,6 @@ import com.earth2me.essentials.utils.MaterialUtil;
 import com.earth2me.essentials.utils.NumberUtil;
 import com.earth2me.essentials.utils.VersionUtil;
 import com.google.common.base.Joiner;
-import net.ess3.api.IEssentials;
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.FireworkEffect;
