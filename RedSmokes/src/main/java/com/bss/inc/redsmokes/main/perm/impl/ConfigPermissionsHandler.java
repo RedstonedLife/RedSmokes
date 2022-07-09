@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main.perm.impl;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
+import com.bss.inc.redsmokes.main.RedSmokes;
 import com.bss.inc.redsmokes.main.utils.TriState;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -31,11 +32,11 @@ public class ConfigPermissionsHandler extends SuperpermsHandler {
 
     @Override
     public String getBackendName() {
-        return "Essentials";
+        return "RedSmokes";
     }
 
     @Override
-    public boolean tryProvider(Essentials ess) {
+    public boolean tryProvider(RedSmokes ess) {
         return true;
     }
 }
