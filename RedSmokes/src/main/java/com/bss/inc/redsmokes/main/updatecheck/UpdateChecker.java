@@ -217,7 +217,7 @@ public class UpdateChecker {
                 }
                 case BEHIND: {
                     return new String[] {tl("versionDevBehind", latestDev.getDistance()),
-                            tl("versionReleaseNewLink", "https://essentialsx.net/downloads.html")};
+                            tl("versionReleaseNewLink", "https://github.com/RedstonedLife/RedSmokes/archive/refs/tags/"+latestDev.getTagname()+".zip")};
                 }
                 case AHEAD:
                 case DIVERGED: {
