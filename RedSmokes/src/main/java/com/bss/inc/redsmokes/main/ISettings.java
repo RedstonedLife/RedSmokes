@@ -2,9 +2,11 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IConf;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
+import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Set;
 
 public interface ISettings extends IConf {
@@ -27,5 +29,5 @@ public interface ISettings extends IConf {
     boolean isDebug();
     void setDebug(boolean debug);
     boolean isEcoDisabled();
-
+    List<RedSmokesSign> enabledSigns();
 }
