@@ -5,7 +5,7 @@ import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import org.bukkit.event.HandlerList;
 
 /**
- * Fired when an Essentials sign is broken.
+ * Fired when an RedSmokes sign is broken.
  *
  * This is primarily intended for use with EssentialsX's sign abstraction - external plugins should not listen on this event.
  */
