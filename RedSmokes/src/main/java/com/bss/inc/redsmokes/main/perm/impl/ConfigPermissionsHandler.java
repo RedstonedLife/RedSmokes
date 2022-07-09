@@ -31,7 +31,7 @@ public class ConfigPermissionsHandler extends SuperpermsHandler {
     }
 
     @Override
-    public boolean tryProvider(RedSmokes ess) {
+    public boolean tryProvider(RedSmokes redSmokes) {
         return true;
     }
 }
