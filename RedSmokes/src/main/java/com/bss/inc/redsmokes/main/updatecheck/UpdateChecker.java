@@ -5,5 +5,5 @@ public class UpdateChecker {
     private static final String BRANCH = "main";
 
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/"+REPO+"/releases/latest";
-    // 0 = base for comparison, 1 = head for comparison
+    // 0 = base for comparison, 1 = head for comparison - *not* the same as what this class calls them
 }
