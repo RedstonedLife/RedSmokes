@@ -5,6 +5,7 @@ import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -99,7 +100,7 @@ public class Backup implements Runnable {
                             }
                         } while (line != null);
                     }
-                } catch)
+                } catch (final IOException ex))
             }
         })
     }
