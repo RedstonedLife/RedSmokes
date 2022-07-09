@@ -23,5 +23,7 @@ public class Trade {
         this(command, fallback, null, null, null, redSmokes);
     }
 
-    public T
+    public Trade(final BigDecimal money, final IRedSmokes redSmokes) {
+        this(null, null)
+    }
 }
