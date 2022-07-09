@@ -89,7 +89,7 @@ public class UpdateChecker {
                 return pendingReleaseFuture;
             }
             pendingReleaseFuture = new CompletableFuture<>();
-            ess.runTaskAsynchronously(() -> {
+            redSmokes.runTaskAsynchronously(() -> {
                 catchBlock:
                 try {
                     final HttpURLConnection connection = tryRequestWithFallback(LATEST_RELEASE_URL);
