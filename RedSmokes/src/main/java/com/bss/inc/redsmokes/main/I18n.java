@@ -14,5 +14,6 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
     };
     private static I18n instance;
     private final transient Locale defaultLocale = Locale.getDefault();
+    private final transient ResourceBundle defaultBundle;
     private final transient 
 }
