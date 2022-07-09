@@ -4,5 +4,5 @@ import java.io.FileWriter;
 
 public class Trade {
     private static FileWriter fw = null;
-    private 
+    private final transient String command;
 }
