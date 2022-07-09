@@ -5,9 +5,9 @@ import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import org.bukkit.event.HandlerList;
 
 /**
- * Fired when an Essentials sign is interacted with.
+ * Fired when an RedSmokes sign is interacted with.
  *
- * This is primarily intended for use with EssentialsX's sign abstraction - external plugins should not listen on this event.
+ * This is primarily intended for use with RedSmokesX's sign abstraction - external plugins should not listen on this event.
  */
 public class SignInteractEvent extends SignEvent {
     private static final HandlerList handlers = new HandlerList();

@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * An entity which is allowed to send mail to an {@link com.bss.inc.redsmokes.api.IUser IUser}.
  *
- * In Essentials, IUser and Console are the entities that implement this interface.
+ * In RedSmokes, IUser and Console are the entities that implement this interface.
  */
 public interface MailSender {
     /**
