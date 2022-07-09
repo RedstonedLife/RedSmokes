@@ -49,4 +49,13 @@ public class Backup implements Runnable {
     public CompletableFuture<Object> getTaskLock() {
         return taskLock;
     }
+
+    public void setPendingShutdown(final boolean shutdown) {
+        pendingShutdown.set(shutdown);
+    }
+
+    @Override
+    public void run() {
+        
+    }
 }
