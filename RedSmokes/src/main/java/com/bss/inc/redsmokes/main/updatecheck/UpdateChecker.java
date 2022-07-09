@@ -13,4 +13,5 @@ public class UpdateChecker {
     private final RedSmokes redSmokes;
     private final String versionIdentifier;
     private final String versionBranch;
+    private final boolean devBuild;
 }
