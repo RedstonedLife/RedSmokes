@@ -7,6 +7,7 @@ import com.bss.inc.redsmokes.api.events.SignCreateEvent;
 import com.bss.inc.redsmokes.api.events.SignInteractEvent;
 import com.bss.inc.redsmokes.main.ChargeException;
 import com.bss.inc.redsmokes.main.CommandSource;
+import com.bss.inc.redsmokes.main.MetaItemStack;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
