@@ -41,7 +41,7 @@ public class BookInput implements IText {
             bookmarks = Collections.emptyMap();
             throw new FileNotFoundException("Could not create " + filename + ".txt");
         } else {
-            
+            lastChange = file.lastModified();
         }
     }
 }
