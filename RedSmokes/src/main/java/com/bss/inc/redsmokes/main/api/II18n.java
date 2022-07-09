@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main.api;
 
+import org.bukkit.entity.Player;
+
 /**
  * Provides access to the current locale in use.
  *
