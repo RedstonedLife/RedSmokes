@@ -27,7 +27,7 @@ public class BookInput implements IText {
                     int length = input.read(buffer);
                     while (length > 0) {
                         output.write(buffer, 0, length);
-                        
+                        length = input
                     }
                 }
             }
