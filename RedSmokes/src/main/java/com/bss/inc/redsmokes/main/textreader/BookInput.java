@@ -22,7 +22,9 @@ public class BookInput implements IText {
             file = new File(redSmokes.getDataFolder(), filename + ".txt");
         }
         if(!file.exists()) {
-            if(createFile)
+            if(createFile) {
+                try ()
+            }
         }
     }
 }
