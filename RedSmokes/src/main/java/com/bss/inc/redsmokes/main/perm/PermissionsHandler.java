@@ -6,19 +6,21 @@ import com.bss.inc.redsmokes.main.utils.TriState;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Level;
 
 public class PermissionsHandler implements IPermissionsHandler {
     private final transient String defaultGroup = "default";
-    private final transient Essentials ess;
+    private final transient RedSmokes ess;
     private transient IPermissionsHandler handler = null;
     private transient boolean useSuperperms;
 
     private Class<?> lastHandler = null;
 
-    public PermissionsHandler(final Essentials plugin, final boolean useSuperperms) {
+    public PermissionsHandler(final RedSmokes plugin, final boolean useSuperperms) {
         this.ess = plugin;
         this.useSuperperms = useSuperperms;
     }
@@ -43,11 +45,6 @@ public class PermissionsHandler implements IPermissionsHandler {
         }
         checkPermLag(start, String.format("Getting groups for %s", base.getName()));
         return Collections.unmodifiableList(groups);
-    }
-
-    @Override
-    public boolean canBuild(final Player base, final String group) {
-        return handler.canBuild(base, group);
     }
 
     @Override
