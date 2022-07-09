@@ -38,7 +38,7 @@ public class BookInput implements IText {
             lastChange = 0;
             lines = Collections.emptyList();
             chapters = Collections.emptyList();
-            bookmarks = Collections.emptyList();
+            bookmarks = Collections.emptyMap();
         }
     }
 }
