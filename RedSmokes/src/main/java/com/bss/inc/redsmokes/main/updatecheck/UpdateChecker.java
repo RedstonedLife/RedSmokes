@@ -22,5 +22,5 @@ public class UpdateChecker {
     private CompletableFuture<RemoteVersion> pendingReleaseFuture;
     private String latestRelease = null;
     private RemoteVersion cachedDev = null;
-    
+    private RemoteVersion cachedRelease = null;
 }
