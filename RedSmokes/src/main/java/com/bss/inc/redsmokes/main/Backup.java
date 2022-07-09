@@ -81,6 +81,8 @@ public class Backup implements Runnable {
         server.dispatchCommand(cs, "save-all");
         server.dispatchCommand(cs, "save-off");
 
-        
+        redSmokes.runTaskAsynchronously(() -> {
+            
+        })
     }
 }
