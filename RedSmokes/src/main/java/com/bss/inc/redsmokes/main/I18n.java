@@ -55,7 +55,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
             }
         } catch (final MissingResourceException ex) {
             if(redSmokes == null || redSmokes.getSettings().isDebug()) {
-                
+                redSmokes.getLogger()
             }
         }
     }
