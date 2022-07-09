@@ -47,7 +47,11 @@ public class BookInput implements IText {
                 final SoftReference<BookInput> inputRef = cache.get(file.getName());
                 final BookInput input;
                 if(inputRef == null || (input = inputRef.get()) == null || input.lastChange < lastChange) {
-                    
+                    lines = new ArrayList<>();
+                    chapters = new ArrayList<>();
+                    bookmarks = new HashMap<>();
+                    cache.put(file.getName(), new SoftReference<>(this));
+                    readFromfile = true;
                 }
             }
         }
