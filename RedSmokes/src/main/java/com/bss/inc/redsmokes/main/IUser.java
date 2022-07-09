@@ -40,5 +40,6 @@ public interface IUser {
     void sendMail(MailSender sender, String message);
     void sendMail(MailSender sender, String message, long expireAt);
     ArrayList<MailMessage> getMailMessages();
-    void setMailList(ArrayList<>)
+    void setMailList(ArrayList<MailMessage> messages);
+    int getMails
 }
