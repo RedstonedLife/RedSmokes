@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
+import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import org.bukkit.Location;
 import org.bukkit.entity.Item;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
@@ -182,18 +184,18 @@ public class Trade {
         }
 
         if (getMoney() != null && getMoney().signum() > 0 && !user.canAfford(getMoney())) {
-            future.completeExceptionally(new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(getMoney(), ess))));
+            future.completeExceptionally(new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(getMoney(), redSmokes))));
             return;
         }
 
         if (getItemStack() != null && !user.getBase().getInventory().containsAtLeast(itemStack, itemStack.getAmount())) {
-            future.completeExceptionally(new ChargeException(tl("missingItems", getItemStack().getAmount(), ess.getItemDb().name(getItemStack()))));
+            future.completeExceptionally(new ChargeException(tl("missingItems", getItemStack().getAmount(), redSmokes.getItemDb().name(getItemStack()))));
             return;
         }
 
         final BigDecimal money;
         if (command != null && !command.isEmpty() && (money = getCommandCost(user)).signum() > 0 && !user.canAfford(money)) {
-            future.completeExceptionally(new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(money, ess))));
+            future.completeExceptionally(new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(money, redSmokes))));
             return;
         }
 
@@ -208,8 +210,8 @@ public class Trade {
 
     public Map<Integer, ItemStack> pay(final IUser user, final OverflowType type) throws MaxMoneyException {
         if (getMoney() != null && getMoney().signum() > 0) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.INFO, "paying user " + user.getName() + " via trade " + getMoney().toPlainString());
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().log(Level.INFO, "paying user " + user.getName() + " via trade " + getMoney().toPlainString());
             }
             user.giveMoney(getMoney());
         }
@@ -220,8 +222,8 @@ public class Trade {
             if (overFlow != null) {
                 switch (type) {
                     case ABORT:
-                        if (ess.getSettings().isDebug()) {
-                            ess.getLogger().log(Level.INFO, "abort paying " + user.getName() + " itemstack " + getItemStack().toString() + " due to lack of inventory space ");
+                        if (redSmokes.getSettings().isDebug()) {
+                            redSmokes.getLogger().log(Level.INFO, "abort paying " + user.getName() + " itemstack " + getItemStack().toString() + " due to lack of inventory space ");
                         }
 
                         return overFlow;
@@ -231,8 +233,8 @@ public class Trade {
                         final Map<Integer, ItemStack> returnStack = InventoryWorkaround.addItems(user.getBase().getInventory(), getItemStack());
                         user.getBase().updateInventory();
 
-                        if (ess.getSettings().isDebug()) {
-                            ess.getLogger().log(Level.INFO, "paying " + user.getName() + " partial itemstack " + getItemStack().toString() + " with overflow " + returnStack.get(0).toString());
+                        if (redSmokes.getSettings().isDebug()) {
+                            redSmokes.getLogger().log(Level.INFO, "paying " + user.getName() + " partial itemstack " + getItemStack().toString() + " with overflow " + returnStack.get(0).toString());
                         }
 
                         return returnStack;
