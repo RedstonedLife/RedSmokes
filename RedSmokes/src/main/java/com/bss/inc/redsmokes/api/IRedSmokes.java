@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.api;
 
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
+import com.bss.inc.redsmokes.main.CommandSource;
 import com.bss.inc.redsmokes.main.IRedSmokesModule;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.commands.PlayerNotFoundException;
@@ -26,6 +27,5 @@ public interface IRedSmokes extends Plugin {
     User getUser(Player base);
     User matchUser(Server server, User sourceUser, String searchTerm, Boolean getHidden, boolean getOffline) throws PlayerNotFoundException;
     boolean canInteractWith(CommandSource interactor, User interactee);
-
     boolean canInteractWith(User interactor, User interactee);
 }
