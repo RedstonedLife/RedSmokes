@@ -22,5 +22,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
     private transient ResourceBundle localeBundle;
     private transient Map<String, MessageFormat> messageFormatCache = new HashMap<>();
 
-    public I18n(final IRedSmokes)
+    public I18n(final IRedSmokes redSmokes) {
+        
+    }
 }
