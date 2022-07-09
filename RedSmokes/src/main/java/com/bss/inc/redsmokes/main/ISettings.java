@@ -43,5 +43,5 @@ public interface ISettings extends IConf {
     boolean isNotifyNoNewMail();
     BigDecimal getMinimumPayAmount();
     long getCommandCooldownMs(String label);
-    Entry<Pattern>
+    Entry<Pattern, Long>
 }
