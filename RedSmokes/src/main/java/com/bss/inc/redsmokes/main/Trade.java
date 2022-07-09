@@ -255,13 +255,13 @@ public class Trade {
                                 itemStacks[stacks] = loc.getWorld().dropItem(loc, stack);
                             }
                         }
-                        if (ess.getSettings().isDebug()) {
-                            ess.getLogger().log(Level.INFO, "paying " + user.getName() + " partial itemstack " + getItemStack().toString() + " and dropping overflow " + leftOver.get(0).toString());
+                        if (redSmokes.getSettings().isDebug()) {
+                            redSmokes.getLogger().log(Level.INFO, "paying " + user.getName() + " partial itemstack " + getItemStack().toString() + " and dropping overflow " + leftOver.get(0).toString());
                         }
                         break;
                 }
-            } else if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.INFO, "paying " + user.getName() + " itemstack " + getItemStack().toString());
+            } else if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().log(Level.INFO, "paying " + user.getName() + " itemstack " + getItemStack().toString());
             }
             user.getBase().updateInventory();
         }
