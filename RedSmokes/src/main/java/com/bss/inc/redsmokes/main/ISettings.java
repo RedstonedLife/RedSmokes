@@ -50,5 +50,5 @@ public interface ISettings extends IConf {
     boolean isCommandCooldownPersistent(String label);
     boolean isNpcsInBalanceRanking();
     NumberFormat getCurrencyFormat();
-    List<RedSmokesSign>
+    List<RedSmokesSign> getUnprotectedSignNames();
 }
