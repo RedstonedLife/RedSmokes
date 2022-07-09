@@ -28,7 +28,7 @@ public class UUIDMap {
     private final transient Pattern splitPattern = Pattern.compile(",");
     private final Runnable writeTaskRunnable;
 
-    public UUIDMap(final net.ess3.api.IRedSmokes ess) {
+    public UUIDMap(final com.bss.inc.redsmokes.api.IRedSmokes ess) {
         this.ess = ess;
         userList = new File(ess.getDataFolder(), "usermap.csv");
         pendingWrite = false;
