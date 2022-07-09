@@ -187,7 +187,7 @@ public class UpdateChecker {
 
     private RemoteVersion fetchDistance(final String head, final String hash) {
         try {
-            final HttpURLConnection connection = tryRequestWithFallback(MessageFormat.format(DISTANCE_URL, head, hash), MessageFormat.format(DISTANCE_PROXY_URL, head, hash));
+            final HttpURLConnection connection = tryRequestWithFallback(MessageFormat.format(DISTANCE_URL, head, hash), MessageFormat.format(DISTANCE_URL, head, hash));
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
                 // Locally built?
