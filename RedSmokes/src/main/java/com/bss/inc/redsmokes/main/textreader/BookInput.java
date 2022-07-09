@@ -4,6 +4,7 @@ import com.bss.inc.redsmokes.api.IRedSmokes;
 
 import java.io.*;
 import java.lang.ref.SoftReference;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class BookInput implements IText {
@@ -80,4 +81,6 @@ public class BookInput implements IText {
             }
         }
     }
+
+    
 }
