@@ -45,7 +45,6 @@ import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
-import static com.earth2me.essentials.I18n.tl;
 
 public class MetaItemStack {
     private static final Map<String, DyeColor> colorMap = new HashMap<>();
