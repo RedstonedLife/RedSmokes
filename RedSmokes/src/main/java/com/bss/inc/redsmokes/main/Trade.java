@@ -1,2 +1,4 @@
-package com.bss.inc.redsmokes.main;public class Trade {
+package com.bss.inc.redsmokes.main;
+
+public class Trade {
 }
