@@ -38,7 +38,7 @@ public interface IRedSmokes extends Plugin {
     void reload();
     Map<String, IrsCommand> getCommandMap();
     List<String> onTabCompleteRedSmokes(CommandSender sender, Command command, String commandLabel, String[] args, ClassLoader classLoader, String commandPath, String permissionPrefix, IRedSmokesModule module);
-    boolean onCommandEssentials(CommandSender sender, Command command, String commandLabel, String[] args, ClassLoader classLoader, String commandPath, String permissionPrefix, IRedSmokesModule module);
+    boolean onCommandRedSmokes(CommandSender sender, Command command, String commandLabel, String[] args, ClassLoader classLoader, String commandPath, String permissionPrefix, IRedSmokesModule module);
     @Deprecated
     User getUser(Object base);
     User getUser(UUID base);

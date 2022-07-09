@@ -646,7 +646,7 @@ public class MetaItemStack {
             } catch (final Exception ignored) {
             }
 
-            // Hacky fix for accessing Shield meta - https://github.com/drtshock/Essentials/pull/745#issuecomment-234843795
+            // Hacky fix for accessing Shield meta - https://github.com/drtshock/RedSmokes/pull/745#issuecomment-234843795
             final BlockStateMeta meta = (BlockStateMeta) stack.getItemMeta();
             final Banner banner = (Banner) meta.getBlockState();
             if (split[0].equalsIgnoreCase("basecolor")) {

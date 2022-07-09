@@ -17,7 +17,7 @@ public interface IUser {
     boolean isAuthorized(IrsCommand cmd, String permissionPrefix);
     boolean isPermissionSet(String node);
     /**
-        RedSmokes Balance (IF ESSENTIALS is not found)
+        RedSmokes Balance (IF RedSmokes is not found)
         Will be deprecated in the future included in <br>SoyuzCore</br> and will be imported from its API.
 
         <h3>SoyuzCore</h3>
@@ -32,7 +32,7 @@ public interface IUser {
     boolean canAfford(BigDecimal value);
 
     /**
-     * Will use Essentials API if present, If not will use RedSmokes Balance
+     * Will use RedSmokes API if present, If not will use RedSmokes Balance
      * @return amount of money
      */
     BigDecimal getMoney();
