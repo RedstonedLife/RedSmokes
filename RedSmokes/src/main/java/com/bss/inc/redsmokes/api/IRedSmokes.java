@@ -4,7 +4,8 @@ import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.*;
 import com.bss.inc.redsmokes.main.api.IItemDb;
 import com.bss.inc.redsmokes.main.commands.PlayerNotFoundException;
-import com.bss.inc.redsmokes.main.provider.SignDataProvider;
+import com.bss.inc.redsmokes.main.nms.refl.providers.ReflOnlineModeProvider;
+import com.bss.inc.redsmokes.main.provider.*;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -61,6 +62,32 @@ public interface IRedSmokes extends Plugin {
 
     Collection<Player> getOnlinePlayers();
     Iterable<User> getOnlineUsers();
+    SpawnerItemProvider getSpawnerItemProvider();
+
+    SpawnerBlockProvider getSpawnerBlockProvider();
+
+    ServerStateProvider getServerStateProvider();
+
+    MaterialTagProvider getMaterialTagProvider();
+
+    ContainerProvider getContainerProvider();
+
+    KnownCommandsProvider getKnownCommandsProvider();
+
+    SerializationProvider getSerializationProvider();
+
+    FormattedCommandAliasProvider getFormattedCommandAliasProvider();
+
+    SyncCommandsProvider getSyncCommandsProvider();
+
+    PersistentDataProvider getPersistentDataProvider();
+
+    ReflOnlineModeProvider getOnlineModeProvider();
+
+    ItemUnbreakableProvider getItemUnbreakableProvider();
+
+    WorldInfoProvider getWorldInfoProvider();
+
     SignDataProvider getSignDataProvider();
     PluginCommand getPluginCommand(String cmd);
 }
