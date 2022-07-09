@@ -23,7 +23,7 @@ public class BookInput implements IText {
         if(!file.exists()) {
             if(createFile) {
                 try (final InputStream input = redSmokes.getResource(filename + ".txt"); final OutputStream output = new FileOutputStream(file)) {
-                    
+                    final byte[] buffer = new byte[1024];
                 }
             }
         }
