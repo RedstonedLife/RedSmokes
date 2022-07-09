@@ -51,4 +51,5 @@ public interface ISettings extends IConf {
     boolean isNpcsInBalanceRanking();
     NumberFormat getCurrencyFormat();
     List<RedSmokesSign> getUnprotectedSignNames();
+    
 }
