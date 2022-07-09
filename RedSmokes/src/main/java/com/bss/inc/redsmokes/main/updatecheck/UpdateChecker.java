@@ -21,7 +21,7 @@ import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public final class UpdateChecker {
     private static final String REPO = "RedstonedLife/RedSmokes";
-    private static final String BRANCH = "2.x";
+    private static final String BRANCH = "main";
 
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/" + REPO + "/releases/latest";
     private static final String LATEST_RELEASE_PROXY_URL = "https://api.github.com/repos/" + REPO + "/releases/latest";
