@@ -1,4 +1,8 @@
 package com.bss.inc.redsmokes.main.textreader;
 
-public class BookInput {
+import java.lang.ref.SoftReference;
+import java.util.HashMap;
+
+public class BookInput implements IText {
+    private final static HashMap<String, SoftReference<BookInput>>
 }
