@@ -8,5 +8,6 @@ public interface IPermissionsHandler {
     String getGroup(Player base);
     List<String> getGroups(Player base);
     boolean inGroup(Player base, String group);
-    boolean hasPermission(Player base, String node)
+    boolean hasPermission(Player base, String node);
+    
 }
