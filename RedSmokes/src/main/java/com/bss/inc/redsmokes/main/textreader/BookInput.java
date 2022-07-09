@@ -50,7 +50,10 @@ public class BookInput implements IText {
                     cache.put(file.getName(), new SoftReference<>(this));
                     readFromfile = true;
                 } else {
-                    
+                    lines = Collections.unmodifiableList(input.getLines());
+                    chapters = Collections.unmodifiableList(input.getChapters());
+                    bookmarks = Collections.unmodifiableMap(input.getBookmarks());
+                    readFromfile = false;
                 }
             }
         }
