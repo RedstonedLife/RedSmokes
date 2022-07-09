@@ -13,5 +13,6 @@ public interface ISettings extends IConf {
     boolean isAlwaysRunBackup();
     BigDecimal getCommandCost(IrsCommand cmd);
     BigDecimal getCommandCost(String label);
+    String getCurrencySymbol();
     
 }
