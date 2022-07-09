@@ -37,5 +37,6 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
             return instance.format(string, objects);
         }
     }
+
     
 }
