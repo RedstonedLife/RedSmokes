@@ -93,7 +93,7 @@ public class UpdateChecker {
             ess.runTaskAsynchronously(() -> {
                 catchBlock:
                 try {
-                    final HttpURLConnection connection = tryRequestWithFallback(LATEST_RELEASE_URL, LATEST_RELEASE_PROXY_URL);
+                    final HttpURLConnection connection = tryRequestWithFallback(LATEST_RELEASE_URL);
 
                     if (connection.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
                         // Locally built?
