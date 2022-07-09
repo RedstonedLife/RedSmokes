@@ -29,7 +29,7 @@ public final class UpdateChecker {
     private static final String DISTANCE_URL = "https://api.github.com/repos/EssentialsX/Essentials/compare/{0}...{1}";
     private static final String DISTANCE_PROXY_URL = "https://webapi.essentialsx.net/api/v1/github/essx-v2/compare/{0}/{1}";
 
-    private final Essentials ess;
+    private final RedSmokes ess;
     private final String versionIdentifier;
     private final String versionBranch;
     private final boolean devBuild;
