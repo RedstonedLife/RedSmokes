@@ -52,4 +52,5 @@ public interface ISettings extends IConf {
     NumberFormat getCurrencyFormat();
     List<RedSmokesSign> getUnprotectedSignNames();
     int getNotifyPlayerOfMailCooldown();
+    
 }
