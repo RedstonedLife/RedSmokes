@@ -7,6 +7,7 @@ import com.bss.inc.redsmokes.api.services.mail.MailSender;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
 
 public interface IUser {
@@ -44,5 +45,6 @@ public interface IUser {
     void setMailList(ArrayList<MailMessage> messages);
     int getMailAmount();
     Set<String> getConfigKeys();
-    
+    Map<String, Object> getConfigMap();
+    Map<String, Object>
 }
