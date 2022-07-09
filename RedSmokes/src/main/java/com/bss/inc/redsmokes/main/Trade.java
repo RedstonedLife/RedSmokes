@@ -27,5 +27,5 @@ public class Trade {
         this(null, null, money, null, null, redSmokes);
     }
 
-    public Trade(final ItemStack items)
+    public Trade(final ItemStack items, final IRedSmokes)
 }
