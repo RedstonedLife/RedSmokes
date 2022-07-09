@@ -1,5 +1,8 @@
 package com.bss.inc.redsmokes.main.textreader;
 
+import com.bss.inc.redsmokes.api.IRedSmokes;
+
+import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.List;
@@ -11,4 +14,8 @@ public class BookInput implements IText {
     private final transient List<String> chapters;
     private final transient Map<String, Integer> bookmarks;
     private final transient long lastChange;
+
+    public BookInput(final String filename, final boolean createFile, final IRedSmokes redSmokes) throws IOException {
+        
+    }
 }
