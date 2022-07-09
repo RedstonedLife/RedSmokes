@@ -60,5 +60,10 @@ public class Backup implements Runnable {
             return;
         }
         final String command = redSmokes.getSettings().getBackupCommand();
+        if(command == null || "".equals(command)) {
+            return;
+        }
+        active = true;
+        taskLock = new CompletableFuture<>()
     }
 }
