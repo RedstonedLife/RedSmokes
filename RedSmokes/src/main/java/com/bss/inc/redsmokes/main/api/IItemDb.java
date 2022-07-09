@@ -5,7 +5,6 @@ import com.bss.inc.redsmokes.main.utils.MaterialUtil;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.StringUtil;
 
 import java.util.Collection;
 import java.util.List;
