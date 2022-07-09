@@ -63,5 +63,7 @@ public interface IUser {
     String getDisplayName();
     boolean isAcceptingPay();
     void setAcceptingPay(boolean acceptingPay);
-    boolean
+    boolean isPromptingPayConfirm();
+    void setPromptingPayConfirm(boolean prompt);
+    
 }
