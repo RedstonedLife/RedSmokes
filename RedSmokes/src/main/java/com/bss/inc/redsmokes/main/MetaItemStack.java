@@ -1,13 +1,14 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
+import com.bss.inc.redsmokes.main.textreader.BookInput;
+import com.bss.inc.redsmokes.main.textreader.BookPager;
+import com.bss.inc.redsmokes.main.textreader.IText;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
-import com.earth2me.essentials.textreader.BookInput;
-import com.earth2me.essentials.textreader.BookPager;
 import com.google.common.base.Joiner;
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
