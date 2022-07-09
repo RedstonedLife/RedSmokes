@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
+
+import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public class Trade {
     private static FileWriter fw = null;
@@ -295,8 +298,8 @@ public class Trade {
             user.takeMoney(getMoney());
         }
         if (getItemStack() != null) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.INFO, "charging user " + user.getName() + " itemstack " + getItemStack().toString());
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().log(Level.INFO, "charging user " + user.getName() + " itemstack " + getItemStack().toString());
             }
             if (!user.getBase().getInventory().containsAtLeast(getItemStack(), getItemStack().getAmount())) {
                 future.completeExceptionally(new ChargeException(tl("missingItems", getItemStack().getAmount(), getItemStack().getType().toString().toLowerCase(Locale.ENGLISH).replace("_", " "))));
@@ -308,14 +311,14 @@ public class Trade {
         if (command != null) {
             final BigDecimal cost = getCommandCost(user);
             if (!user.canAfford(cost) && cost.signum() > 0) {
-                future.completeExceptionally(new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(cost, ess))));
+                future.completeExceptionally(new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(cost, redSmokes))));
                 return;
             }
             user.takeMoney(cost);
         }
         if (getExperience() != null) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.INFO, "charging user " + user.getName() + " exp " + getExperience());
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().log(Level.INFO, "charging user " + user.getName() + " exp " + getExperience());
             }
             final int experience = SetExpFix.getTotalExperience(user.getBase());
             if (experience < getExperience() && getExperience() > 0) {
@@ -324,8 +327,8 @@ public class Trade {
             }
             SetExpFix.setTotalExperience(user.getBase(), experience - getExperience());
         }
-        if (ess.getSettings().isDebug()) {
-            ess.getLogger().log(Level.INFO, "charge user " + user.getName() + " completed");
+        if (redSmokes.getSettings().isDebug()) {
+            redSmokes.getLogger().log(Level.INFO, "charge user " + user.getName() + " completed");
         }
     }
 
