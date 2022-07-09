@@ -37,7 +37,7 @@ public class Backup implements Runnable {
 
     private synchronized void startTask() {
         if(!running) {
-            final long interval = redSmokes.getSettings().getBackupInterval() * 1200;
+            final long interval = redSmokes.getSettings().getBackupInterval() * 1200; // minutes -> ticks
         }
     }
 }
