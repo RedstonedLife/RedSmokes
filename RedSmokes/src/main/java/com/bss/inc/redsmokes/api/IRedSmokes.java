@@ -12,7 +12,6 @@ import java.util.Map;
 public interface IRedSmokes extends Plugin {
     void reload();
     Map<String, IrsCommand> getCommandMap();
-
-    List<String> onTabCompleteEssentials(CommandSender sender, Command command, String commandLabel, String[] args, ClassLoader classLoader, String commandPath, String permissionPrefix, IRedSmokesModule module);
+    List<String> onTabCompleteRedSmokes(CommandSender sender, Command command, String commandLabel, String[] args, ClassLoader classLoader, String commandPath, String permissionPrefix, IRedSmokesModule module);
 
 }
