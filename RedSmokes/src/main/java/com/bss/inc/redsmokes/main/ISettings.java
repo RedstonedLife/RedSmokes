@@ -53,4 +53,5 @@ public interface ISettings extends IConf {
     List<RedSmokesSign> getUnprotectedSignNames();
     int getNotifyPlayerOfMailCooldown();
     boolean allowOldIdSigns();
+    
 }
