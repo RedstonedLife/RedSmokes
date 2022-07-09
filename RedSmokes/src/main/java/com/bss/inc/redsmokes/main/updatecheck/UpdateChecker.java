@@ -2,6 +2,8 @@ package com.bss.inc.redsmokes.main.updatecheck;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
 
+import java.util.concurrent.CompletableFuture;
+
 public class UpdateChecker {
     private static final String REPO = "RedSmokes/RedSmokes";
     private static final String BRANCH = "main";
@@ -15,5 +17,6 @@ public class UpdateChecker {
     private final String versionBranch;
     private final boolean devBuild;
 
-    private 
+    private long lastFetchTime = 0;
+    private CompletableFuture<RemoteVersion>
 }
