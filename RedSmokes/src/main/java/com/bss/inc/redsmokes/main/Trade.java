@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
@@ -284,15 +285,15 @@ public class Trade {
     }
 
     public void charge(final IUser user, final CompletableFuture<Boolean> future) {
-        if (ess.getSettings().isDebug()) {
-            ess.getLogger().log(Level.INFO, "attempting to charge user " + user.getName());
+        if (redSmokes.getSettings().isDebug()) {
+            redSmokes.getLogger().log(Level.INFO, "attempting to charge user " + user.getName());
         }
         if (getMoney() != null) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.INFO, "charging user " + user.getName() + " money " + getMoney().toPlainString());
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().log(Level.INFO, "charging user " + user.getName() + " money " + getMoney().toPlainString());
             }
             if (!user.canAfford(getMoney()) && getMoney().signum() > 0) {
-                future.completeExceptionally(new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(getMoney(), ess))));
+                future.completeExceptionally(new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(getMoney(), redSmokes))));
                 return;
             }
             user.takeMoney(getMoney());
