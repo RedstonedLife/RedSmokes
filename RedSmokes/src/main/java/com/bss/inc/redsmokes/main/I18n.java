@@ -93,7 +93,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         }
         ResourceBundle.clearCache();
         messageFormatCache = new HashMap<>();
-        ess.getLogger().log(Level.INFO, String.format("Using locale %s", currentLocale.toString()));
+        redSmokes.getLogger().log(Level.INFO, String.format("Using locale %s", currentLocale.toString()));
 
         try {
             localeBundle = ResourceBundle.getBundle(MESSAGES, currentLocale, new UTF8PropertiesControl());
@@ -102,7 +102,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         }
 
         try {
-            customBundle = ResourceBundle.getBundle(MESSAGES, currentLocale, new FileResClassLoader(I18n.class.getClassLoader(), ess), new UTF8PropertiesControl());
+            customBundle = ResourceBundle.getBundle(MESSAGES, currentLocale, new FileResClassLoader(I18n.class.getClassLoader(), redSmokes), new UTF8PropertiesControl());
         } catch (final MissingResourceException ex) {
             customBundle = NULL_BUNDLE;
         }
