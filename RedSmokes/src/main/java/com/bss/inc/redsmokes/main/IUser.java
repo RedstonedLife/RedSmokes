@@ -36,4 +36,6 @@ public interface IUser {
     boolean inGroup(final String group);
     void sendMessage(String message);
     void sendMail(MailSender sender, String message);
+    void sendMail(MailSender sender, String message, long expireAt);
+    
 }
