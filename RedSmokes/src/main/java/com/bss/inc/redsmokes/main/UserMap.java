@@ -47,7 +47,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
         //RemovalListener<UUID, User> remListener = new UserMapRemovalListener();
         //users = CacheBuilder.newBuilder().maximumSize(ess.getSettings().getMaxUserCacheCount()).softValues().removalListener(remListener).build(this);
         final CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder();
-        final int maxCount = ess.getSettings().getMaxUserCacheCount();
+        final int maxCount =redSmokes.getSettings().getMaxUserCacheCount();
         try {
             cacheBuilder.maximumSize(maxCount);
         } catch (final NoSuchMethodError nsme) {
