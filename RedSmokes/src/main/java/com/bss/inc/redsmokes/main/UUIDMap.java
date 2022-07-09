@@ -23,12 +23,12 @@ public class UUIDMap {
     private static final ScheduledExecutorService writeScheduler = Executors.newScheduledThreadPool(1);
     private static boolean pendingWrite;
     private static boolean loading = false;
-    private final transient net.ess3.api.IEssentials ess;
+    private final transient com.bss.inc.redsmokes.api.IRedSmokes ess;
     private final File userList;
     private final transient Pattern splitPattern = Pattern.compile(",");
     private final Runnable writeTaskRunnable;
 
-    public UUIDMap(final net.ess3.api.IEssentials ess) {
+    public UUIDMap(final net.ess3.api.IRedSmokes ess) {
         this.ess = ess;
         userList = new File(ess.getDataFolder(), "usermap.csv");
         pendingWrite = false;
@@ -89,7 +89,7 @@ public class UUIDMap {
             }
             loading = false;
         } catch (final IOException ex) {
-            Essentials.getWrappedLogger().log(Level.SEVERE, ex.getMessage(), ex);
+            RedSmokes.getWrappedLogger().log(Level.SEVERE, ex.getMessage(), ex);
         }
     }
 
@@ -146,9 +146,9 @@ public class UUIDMap {
                         Files.move(configFile, new File(endFile.getParentFile(), "usermap.bak.csv"));
                     }
                 } catch (final Exception ex2) {
-                    Essentials.getWrappedLogger().log(Level.SEVERE, ex2.getMessage(), ex2);
+                    RedSmokes.getWrappedLogger().log(Level.SEVERE, ex2.getMessage(), ex2);
                 }
-                Essentials.getWrappedLogger().log(Level.WARNING, ex.getMessage(), ex);
+                RedSmokes.getWrappedLogger().log(Level.WARNING, ex.getMessage(), ex);
             }
         }
     }
