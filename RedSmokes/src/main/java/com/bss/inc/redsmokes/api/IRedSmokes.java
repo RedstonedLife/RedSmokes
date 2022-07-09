@@ -46,5 +46,6 @@ public interface IRedSmokes extends Plugin {
     BukkitTask runTaskLaterAsynchronously(Runnable run, long delay);
     BukkitTask runTaskTimerAsynchronously(Runnable run, long delay, long period);
     int scheduleSyncDelayedTask(Runnable run);
-    
+    int scheduleSyncDelayedTask(Runnable run, long delay);
+    int
 }
