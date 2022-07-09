@@ -19,5 +19,5 @@ public interface ISettings extends IConf {
     BigDecimal getStartingBalance();
     boolean isCommandDisabled(final IrsCommand cmd);
     boolean isCommandDisabled(String label);
-    
+    Set<String> getDis
 }
