@@ -37,8 +37,10 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         }
 
         return BUKKIT_LOGGER;
-    }
-    
+    } catch (final NumberFormatException ex) {
+        handleCrash(ex);
+    } 
+
     @Override
     public void onDisable() {
         super.onDisable();
