@@ -22,7 +22,7 @@ public class CommandSource {
         return null;
     }
 
-    public final com.bss.inc.redsmokes.api.IUser getUser(final IRedSmokes redSmokes) {
+    public final User getUser(final IRedSmokes redSmokes) {
         if(sender instanceof Player) {
             return redSmokes.getUser((Player) sender);
         }
