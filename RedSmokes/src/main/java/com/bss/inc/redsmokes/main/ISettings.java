@@ -49,5 +49,5 @@ public interface ISettings extends IConf {
     Entry<Pattern, Long> getCommandCooldownEntry(String label);
     boolean isCommandCooldownPersistent(String label);
     boolean isNpcsInBalanceRanking();
-    NumberFormat
+    NumberFormat getCurrencyFormat();
 }
