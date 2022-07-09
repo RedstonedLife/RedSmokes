@@ -6,5 +6,5 @@ public interface IText {
     // Contains the raw text lines
     List<String> getLines();
 
-    // Chapters contain the names  that are displayed automatically if the file doesn't contain
+    // Chapters contain the names  that are displayed automatically if the file doesn't contain a 
 }
