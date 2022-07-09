@@ -10,6 +10,7 @@ import java.util.Locale;
  * @deprecated External plugins should prefer to use either the player's client language ({@link Player#getLocale()} or
  *             {@link com.bss.inc.redsmokes.api.II18n } in case of future additions.
  */
+@Deprecated
 public interface II18n {
     /**
      * Gets the current locale setting
