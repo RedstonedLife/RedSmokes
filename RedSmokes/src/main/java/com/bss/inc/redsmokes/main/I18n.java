@@ -2,6 +2,12 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.MessageFormat;
 import java.util.*;
 import java.util.logging.Level;
@@ -114,7 +120,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
     private static class FileResClassLoader extends ClassLoader {
         private final transient File dataFolder;
 
-        FileResClassLoader(final ClassLoader classLoader, final IEssentials ess) {
+        FileResClassLoader(final ClassLoader classLoader, final IRedSmokes ess) {
             super(classLoader);
             this.dataFolder = ess.getDataFolder();
         }
