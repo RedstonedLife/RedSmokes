@@ -1,6 +1,10 @@
 package com.bss.inc.redsmokes.main.textreader;
 
+import java.util.List;
+
 public interface IText {
     // Contains the raw text lines
-    List<String>
+    List<String> getLines();
+
+    // Chapters 
 }
