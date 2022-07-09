@@ -37,5 +37,5 @@ public interface IUser {
     void sendMessage(String message);
     void sendMail(MailSender sender, String message);
     void sendMail(MailSender sender, String message, long expireAt);
-
+    
 }
