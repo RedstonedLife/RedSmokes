@@ -8,14 +8,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
     private static final String MESSAGES = "messages";
     private static final Pattern NODOUBLEMARK = Pattern.compile("''");
     private static final ResourceBundle NULL_BUNDLE = new ResourceBundle() {
-        @Override
-        protected Object handleGetObject(String key) {
-            return null;
-        }
-
-        @Override
-        public Enumeration<String> getKeys() {
-            return null;
-        }
-    }
+        @Override protected Object handleGetObject(final String key) {return null;}
+        @Override public Enumeration<String> getKeys() {return null;}
+    };
 }
