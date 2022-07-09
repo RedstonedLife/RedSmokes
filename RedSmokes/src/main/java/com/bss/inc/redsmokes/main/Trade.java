@@ -16,6 +16,6 @@ public class Trade {
     private final transient IRedSmokes redSmokes;
 
     public Trade(final String command, final IRedSmokes redSmokes) {
-        this(command, null, null, null)
+        this(command, null, null, null, null)
     }
 }
