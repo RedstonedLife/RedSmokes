@@ -84,7 +84,10 @@ public class Backup implements Runnable {
         redSmokes.runTaskAsynchronously(() -> {
             try {
                 final ProcessBuilder childBuilder = new ProcessBuilder(command.split(" "));
-                childBuilder.redirectError()
+                childBuilder.redirectErrorStream(true);
+                childBuilder.directory(redSmokes.getDataFolder().getParentFile().getParentFile());
+                final Process child = childBuilder.start();
+                
             }
         })
     }
