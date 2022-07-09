@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main.perm;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
 import com.bss.inc.redsmokes.main.User;
+import com.bss.inc.redsmokes.main.perm.impl.GenericVaultHandler;
 import com.bss.inc.redsmokes.main.utils.TriState;
 import org.bukkit.entity.Player;
 
