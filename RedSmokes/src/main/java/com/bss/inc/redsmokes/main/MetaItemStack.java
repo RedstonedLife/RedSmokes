@@ -475,7 +475,7 @@ public class MetaItemStack {
         }
     }
 
-    public void addPotionMeta(final CommandSource sender, final boolean allowShortName, final String string, final IEssentials ess) throws Exception {
+    public void addPotionMeta(final CommandSource sender, final boolean allowShortName, final String string, final IRedSmokes redSmokes) throws Exception {
         if (MaterialUtil.isPotion(stack.getType())) {
             final String[] split = splitPattern.split(string, 2);
 
@@ -486,7 +486,7 @@ public class MetaItemStack {
             if (split[0].equalsIgnoreCase("effect") || (allowShortName && split[0].equalsIgnoreCase("e"))) {
                 pEffectType = Potions.getByName(split[1]);
                 if (pEffectType != null && pEffectType.getName() != null) {
-                    if (hasMetaPermission(sender, "potions." + pEffectType.getName().toLowerCase(Locale.ENGLISH), true, false, ess)) {
+                    if (hasMetaPermission(sender, "potions." + pEffectType.getName().toLowerCase(Locale.ENGLISH), true, false, redSmokes)) {
                         validPotionEffect = true;
                     } else {
                         throw new Exception(tl("noPotionEffectPerm", pEffectType.getName().toLowerCase(Locale.ENGLISH)));
