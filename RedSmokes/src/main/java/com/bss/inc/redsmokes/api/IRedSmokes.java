@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.api;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.IRedSmokesModule;
 import com.bss.inc.redsmokes.main.User;
+import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -22,5 +23,5 @@ public interface IRedSmokes extends Plugin {
     User getUser(UUID base);
     User getUser(String base);
     User getUser(Player base);
-    User matchUser(Server server, User sourceUser, )
+    User matchUser(Server server, User sourceUser,)
 }
