@@ -337,7 +337,7 @@ public class MetaItemStack {
         stack.setItemMeta(meta);
     }
 
-    private void addChargeMeta(final CommandSource sender, final boolean allowShortName, final String string, final IEssentials ess) throws Exception {
+    private void addChargeMeta(final CommandSource sender, final boolean allowShortName, final String string, final IRedSmokes ess) throws Exception {
         final String[] split = splitPattern.split(string, 2);
         if (split.length < 2) {
             return;
