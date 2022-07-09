@@ -38,4 +38,5 @@ public interface ISettings extends IConf {
     boolean getRepairEnchanted();
     int getSignUsePerSecond();
     int getMailsPerMinute();
+    int getMaxUserCacheCount();
 }
