@@ -62,4 +62,8 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         }
     }
 
+    public String format(final String string, final Object... objects) {
+        
+    }
+
 }
