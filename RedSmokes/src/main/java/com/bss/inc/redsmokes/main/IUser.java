@@ -50,5 +50,5 @@ public interface IUser {
     List<CommandCooldown> getCooldownsList();
     Date getCommandCooldownExpiry(String label);
     void addCommandCooldown(Pattern pattern, Date expiresAt, boolean save);
-    
+    boolean clearCommandCooldown(Pattern pattern);
 }
