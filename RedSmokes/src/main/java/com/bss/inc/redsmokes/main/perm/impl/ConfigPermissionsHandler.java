@@ -7,15 +7,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class ConfigPermissionsHandler extends SuperpermsHandler {
-    private final transient IRedSmokes ess;
+    private final transient IRedSmokes redSmokes;
 
-    public ConfigPermissionsHandler(final Plugin ess) {
-        this.ess = (IRedSmokes) ess;
-    }
-
-    @Override
-    public boolean canBuild(final Player base, final String group) {
-        return true;
+    public ConfigPermissionsHandler(final Plugin redSmokes) {
+        this.redSmokes = (IRedSmokes) redSmokes;
     }
 
     @Override
