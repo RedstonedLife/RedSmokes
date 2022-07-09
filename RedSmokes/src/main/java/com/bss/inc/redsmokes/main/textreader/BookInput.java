@@ -18,6 +18,8 @@ public class BookInput implements IText {
 
     public BookInput(final String filename, final boolean createFile, final IRedSmokes redSmokes) throws IOException {
         File file = null;
-        
+        if(file == null || !file.exists()) {
+            
+        }
     }
 }
