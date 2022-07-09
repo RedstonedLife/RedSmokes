@@ -6,6 +6,7 @@ import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -48,4 +49,5 @@ public interface ISettings extends IConf {
     Entry<Pattern, Long> getCommandCooldownEntry(String label);
     boolean isCommandCooldownPersistent(String label);
     boolean isNpcsInBalanceRanking();
+    NumberFormat
 }
