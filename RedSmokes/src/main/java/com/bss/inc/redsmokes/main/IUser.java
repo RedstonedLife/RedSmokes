@@ -67,5 +67,5 @@ public interface IUser {
     void setPromptingPayConfirm(boolean prompt);
     boolean isPromptingClearConfirm();
     void setPromptingClearConfirm(boolean prompt);
-    Map<User, BigDecimal> getConfirmingPayment
+    Map<User, BigDecimal> getConfirmingPayments();
 }
