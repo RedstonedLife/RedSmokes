@@ -8,6 +8,7 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public interface ISettings extends IConf {
     File getConfigFile();
@@ -42,4 +43,5 @@ public interface ISettings extends IConf {
     boolean isNotifyNoNewMail();
     BigDecimal getMinimumPayAmount();
     long getCommandCooldownMs(String label);
+    Entry<Pattern>
 }
