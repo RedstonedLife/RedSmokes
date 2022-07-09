@@ -42,6 +42,7 @@ public class Backup implements Runnable {
                 return;
             }
             taskId = redSmokes.scheduleSyncRepeatingTask(this, interval, interval);
+            running = true;
         }
     }
 }
