@@ -4,6 +4,7 @@ import com.bss.inc.redsmokes.api.IRedSmokes;
 
 import java.io.*;
 import java.lang.ref.SoftReference;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +36,9 @@ public class BookInput implements IText {
         }
         if(!file.exists()) {
             lastChange = 0;
+            lines = Collections.emptyList();
+            chapters = Collections.emptyList();
+            
         }
     }
 }
