@@ -51,7 +51,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
             try {
                 return customBundle.getString(string);
             } catch (final MissingResourceException ex) {
-                
+                return localeBundle.getString(string);
             }
         }
     }
