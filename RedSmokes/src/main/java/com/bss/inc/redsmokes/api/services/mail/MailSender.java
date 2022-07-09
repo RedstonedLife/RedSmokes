@@ -3,7 +3,7 @@ package com.bss.inc.redsmokes.api.services.mail;
 import java.util.UUID;
 
 /**
- * An entity which is allowed to send mail to an {@link net.ess3.api.IUser IUser}.
+ * An entity which is allowed to send mail to an {@link com. IUser}.
  *
  * In Essentials, IUser and Console are the entities that implement this interface.
  */
