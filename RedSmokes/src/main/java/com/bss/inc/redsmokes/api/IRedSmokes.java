@@ -52,4 +52,5 @@ public interface IRedSmokes extends Plugin {
     void showError(CommandSource sender, Throwable exception, String commandLabel);
     IItemDB getItemDb();
     UserMap getUserMap();
+    BalanceTop getBalanceTop();
 }
