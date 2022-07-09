@@ -18,4 +18,5 @@ public interface IPermissionsHandler {
     String getPrefix(Player base);
     String getSuffix(Player base);
     void registerContext(String context, Function<User, Iterable<String>> calculator, Supplier<Iterable<String>> suggestions);
+    
 }
