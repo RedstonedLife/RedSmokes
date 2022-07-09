@@ -1,40 +1,5 @@
 package com.bss.inc.redsmokes.api;
 
-import com.bss.inc.redsmokes.api.commands.IrsCommand;
-import com.bss.inc.redsmokes.main.*;
-import com.bss.inc.redsmokes.main.api.IItemDb;
-import com.bss.inc.redsmokes.main.commands.PlayerNotFoundException;
-import com.bss.inc.redsmokes.main.nms.refl.providers.ReflOnlineModeProvider;
-import com.bss.inc.redsmokes.main.provider.SpawnerItemProvider;
-import com.bss.inc.redsmokes.main.provider.SpawnerBlockProvider;
-import com.bss.inc.redsmokes.main.provider.ServerStateProvider;
-import com.bss.inc.redsmokes.main.provider.MaterialTagProvider;
-import com.bss.inc.redsmokes.main.provider.ContainerProvider;
-import com.bss.inc.redsmokes.main.provider.KnownCommandsProvider;
-import com.bss.inc.redsmokes.main.provider.SerializationProvider;
-import com.bss.inc.redsmokes.main.provider.FormattedCommandAliasProvider;
-import com.bss.inc.redsmokes.main.provider.SyncCommandsProvider;
-import com.bss.inc.redsmokes.main.provider.PersistentDataProvider;
-import com.bss.inc.redsmokes.main.provider.ItemUnbreakableProvider;
-import com.bss.inc.redsmokes.main.provider.WorldInfoProvider;
-import com.bss.inc.redsmokes.main.provider.SignDataProvider;
-import com.bss.inc.redsmokes.main.updatecheck.UpdateChecker;
-import org.bukkit.Server;
-import org.bukkit.World;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.PluginCommand;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitScheduler;
-import org.bukkit.scheduler.BukkitTask;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Predicate;
-
 public interface IRedSmokes extends Plugin {
     void reload();
     Map<String, IrsCommand> getCommandMap();
