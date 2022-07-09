@@ -4,6 +4,8 @@ import com.bss.inc.redsmokes.api.IRedSmokes;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
@@ -88,7 +90,9 @@ public class Backup implements Runnable {
                 childBuilder.directory(redSmokes.getDataFolder().getParentFile().getParentFile());
                 final Process child = childBuilder.start();
                 redSmokes.runTaskLaterAsynchronously(() -> {
-                    
+                    try (final BufferedReader reader = new BufferedReader(new InputStreamReader(child.getInputStream()))) {
+                        
+                    }
                 })
             }
         })
