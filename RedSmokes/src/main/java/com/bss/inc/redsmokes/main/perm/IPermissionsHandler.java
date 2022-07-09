@@ -12,5 +12,7 @@ public interface IPermissionsHandler {
     // Does not check for * permissions
     boolean isPermissionSet(Player base, String node);
     TriState isPermissionSetExact(Player base, String node);
-    
+    String getPrefix(Player base);
+    String getSuffix(Player base);
+    void registerContext(String context, Function<User, Iterable<String>>)
 }
