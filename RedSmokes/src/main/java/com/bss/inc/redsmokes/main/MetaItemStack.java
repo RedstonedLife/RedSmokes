@@ -133,7 +133,7 @@ public class MetaItemStack {
         completePotion = true;
     }
 
-    public boolean canSpawn(final IEssentials ess) {
+    public boolean canSpawn(final IRedSmokes ess) {
         try {
             ess.getServer().getUnsafe().modifyItemStack(stack.clone(), "{}");
             return true;
