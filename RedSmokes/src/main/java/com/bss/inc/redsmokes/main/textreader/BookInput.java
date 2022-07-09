@@ -82,5 +82,18 @@ public class BookInput implements IText {
         }
     }
 
-    
+    @Override
+    public List<String> getLines() {
+        return lines;
+    }
+
+    @Override
+    public List<String> getChapters() {
+        return chapters;
+    }
+
+    @Override
+    public Map<String, Integer> getBookmarks() {
+        return bookmarks;
+    }
 }
