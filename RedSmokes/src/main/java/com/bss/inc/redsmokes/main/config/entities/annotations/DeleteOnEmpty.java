@@ -1,4 +1,4 @@
-package com.bss.inc.redsmokes.api.config.annotations;
+package com.bss.inc.redsmokes.main.config.entities.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

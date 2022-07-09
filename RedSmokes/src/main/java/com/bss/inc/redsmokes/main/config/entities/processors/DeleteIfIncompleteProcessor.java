@@ -1,4 +1,4 @@
-package com.bss.inc.redsmokes.api.config.processors;
+package com.bss.inc.redsmokes.main.config.entities.processors;
 
 public class DeleteIfIncompleteProcessor {
 }
