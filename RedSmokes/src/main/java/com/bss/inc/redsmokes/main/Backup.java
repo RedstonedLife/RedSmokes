@@ -66,7 +66,7 @@ public class Backup implements Runnable {
         if (active) {
             return;
         }
-        final String command = ess.getSettings().getBackupCommand();
+        final String command = redSmokes.getSettings().getBackupCommand();
         if (command == null || "".equals(command)) {
             return;
         }
@@ -79,51 +79,51 @@ public class Backup implements Runnable {
             taskLock.complete(new Object());
             return;
         }
-        ess.getLogger().log(Level.INFO, tl("backupStarted"));
+        redSmokes.getLogger().log(Level.INFO, tl("backupStarted"));
         final CommandSender cs = server.getConsoleSender();
         server.dispatchCommand(cs, "save-all");
         server.dispatchCommand(cs, "save-off");
 
-        ess.runTaskAsynchronously(() -> {
+        redSmokes.runTaskAsynchronously(() -> {
             try {
                 final ProcessBuilder childBuilder = new ProcessBuilder(command.split(" "));
                 childBuilder.redirectErrorStream(true);
-                childBuilder.directory(ess.getDataFolder().getParentFile().getParentFile());
+                childBuilder.directory(redSmokes.getDataFolder().getParentFile().getParentFile());
                 final Process child = childBuilder.start();
-                ess.runTaskAsynchronously(() -> {
+                redSmokes.runTaskAsynchronously(() -> {
                     try {
                         try (final BufferedReader reader = new BufferedReader(new InputStreamReader(child.getInputStream()))) {
                             String line;
                             do {
                                 line = reader.readLine();
                                 if (line != null) {
-                                    ess.getLogger().log(Level.INFO, line);
+                                    redSmokes.getLogger().log(Level.INFO, line);
                                 }
                             } while (line != null);
                         }
                     } catch (final IOException ex) {
-                        ess.getLogger().log(Level.SEVERE, null, ex);
+                        redSmokes.getLogger().log(Level.SEVERE, null, ex);
                     }
                 });
                 child.waitFor();
             } catch (final InterruptedException | IOException ex) {
-                ess.getLogger().log(Level.SEVERE, null, ex);
+                redSmokes.getLogger().log(Level.SEVERE, null, ex);
             } finally {
                 class BackupEnableSaveTask implements Runnable {
                     @Override
                     public void run() {
                         server.dispatchCommand(cs, "save-on");
-                        if (!ess.getSettings().isAlwaysRunBackup() && ess.getOnlinePlayers().isEmpty()) {
+                        if (!redSmokes.getSettings().isAlwaysRunBackup() && redSmokes.getOnlinePlayers().isEmpty()) {
                             stopTask();
                         }
                         active = false;
                         taskLock.complete(new Object());
-                        ess.getLogger().log(Level.INFO, tl("backupFinished"));
+                        redSmokes.getLogger().log(Level.INFO, tl("backupFinished"));
                     }
                 }
 
                 if (!pendingShutdown.get()) {
-                    ess.scheduleSyncDelayedTask(new BackupEnableSaveTask());
+                    redSmokes.scheduleSyncDelayedTask(new BackupEnableSaveTask());
                 }
             }
         });
