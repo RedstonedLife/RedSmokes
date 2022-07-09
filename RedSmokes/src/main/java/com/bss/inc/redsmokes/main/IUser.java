@@ -8,6 +8,7 @@ import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -48,5 +49,5 @@ public interface IUser {
     Set<String> getConfigKeys();
     Map<String, Object> getConfigMap();
     Map<String, Object> getConfigMap(String node);
-    List<CommandCooldown> getCool
+    List<CommandCooldown> getCooldownsList();
 }
