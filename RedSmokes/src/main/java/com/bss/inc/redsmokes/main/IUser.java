@@ -46,5 +46,6 @@ public interface IUser {
     int getMailAmount();
     Set<String> getConfigKeys();
     Map<String, Object> getConfigMap();
-    Map<String, Object>
+    Map<String, Object> getConfigMap(String node);
+    
 }
