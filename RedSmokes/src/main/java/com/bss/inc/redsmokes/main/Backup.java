@@ -8,6 +8,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 
+import static com.bss.inc.redsmokes.main.I18n.tl;
+
 public class Backup implements Runnable {
     private transient final Server server;
     private transient final IRedSmokes redSmokes;
@@ -74,6 +76,9 @@ public class Backup implements Runnable {
             taskLock.complete(new Object());
             return;
         }
-        redSmokes.getLogger().log(Level.INFO, tl(""));
+        redSmokes.getLogger().log(Level.INFO, tl("backupStarted"));
+        final CommandSender cs = server.getConsoleSender();
+        server.dispatchCommand(cs, "save-all");
+        server.dispatchCommand(cs, "save-off");
     }
 }
