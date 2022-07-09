@@ -7,10 +7,7 @@ import com.bss.inc.redsmokes.api.services.mail.MailSender;
 import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public interface IUser {
     boolean isAuthorized(String node);
@@ -50,5 +47,5 @@ public interface IUser {
     Map<String, Object> getConfigMap();
     Map<String, Object> getConfigMap(String node);
     List<CommandCooldown> getCooldownsList();
-    
+    Date
 }
