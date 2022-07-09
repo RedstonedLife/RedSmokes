@@ -18,6 +18,7 @@ import com.bss.inc.redsmokes.main.provider.PersistentDataProvider;
 import com.bss.inc.redsmokes.main.provider.ItemUnbreakableProvider;
 import com.bss.inc.redsmokes.main.provider.WorldInfoProvider;
 import com.bss.inc.redsmokes.main.provider.SignDataProvider;
+import com.bss.inc.redsmokes.main.updatecheck.UpdateChecker;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.command.Command;
