@@ -34,5 +34,5 @@ public interface ISettings extends IConf {
     BigDecimal getMinMoney();
     boolean isEcoLogEnabled();
     boolean isEcoLogUpdateEnabled();
-    
+    boolean 
 }
