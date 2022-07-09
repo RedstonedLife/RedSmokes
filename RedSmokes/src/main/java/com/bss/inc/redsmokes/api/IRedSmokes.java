@@ -1,10 +1,7 @@
 package com.bss.inc.redsmokes.api;
 
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
-import com.bss.inc.redsmokes.main.CommandSource;
-import com.bss.inc.redsmokes.main.I18n;
-import com.bss.inc.redsmokes.main.IRedSmokesModule;
-import com.bss.inc.redsmokes.main.User;
+import com.bss.inc.redsmokes.main.*;
 import com.bss.inc.redsmokes.main.commands.PlayerNotFoundException;
 import org.bukkit.Server;
 import org.bukkit.World;
@@ -38,4 +35,6 @@ public interface IRedSmokes extends Plugin {
     int broadcastMessage(IUser sender, String message);
     int broadcastMessage(IUser sender, String message, Predicate<IUser> shouldExclude);
     int broadcastMessage(String permission, String message);
+
+    ISettings
 }
