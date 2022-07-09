@@ -2,9 +2,11 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
+import com.bss.inc.redsmokes.api.services.mail.MailMessage;
 import com.bss.inc.redsmokes.api.services.mail.MailSender;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public interface IUser {
     boolean isAuthorized(String node);
@@ -37,5 +39,6 @@ public interface IUser {
     void sendMessage(String message);
     void sendMail(MailSender sender, String message);
     void sendMail(MailSender sender, String message, long expireAt);
-    
+
+    ArrayList<MailMessage> getMailMessages();
 }
