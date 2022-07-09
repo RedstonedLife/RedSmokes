@@ -42,17 +42,8 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         return input == null || input.length() == 0 ? input : input.toUpperCase(Locale.ENGLISH).charAt(0) + input.toLowerCase(Locale.ENGLISH).substring(1);
     }
 
-    public void onEnable() {
-        instance = this;
-    }
+    public void onEnable() {instance = this;}
+    public void onDisable() {instance = null;}
+    @Override public Locale getCurrentLocale() {return currentLocale;}
 
-    public void onDisable() {
-        instance = null;
-    }
-
-    @Override
-    public Locale getCurrentLocale() {
-        return currentLocale;
-    }
-    
 }
