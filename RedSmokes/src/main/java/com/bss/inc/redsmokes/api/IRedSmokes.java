@@ -53,4 +53,5 @@ public interface IRedSmokes extends Plugin {
     IItemDB getItemDb();
     UserMap getUserMap();
     BalanceTop getBalanceTop();
+    RedSmokesTimer getTimer();
 }
