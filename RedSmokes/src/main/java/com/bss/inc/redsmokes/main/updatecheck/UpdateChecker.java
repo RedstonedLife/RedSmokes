@@ -2,7 +2,13 @@ package com.bss.inc.redsmokes.main.updatecheck;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 public class UpdateChecker {
     private static final String REPO = "RedSmokes/RedSmokes";
@@ -29,6 +35,23 @@ public class UpdateChecker {
         String branch = "INVALID";
         boolean dev = false;
 
-        
+        final InputStream inputStream = UpdateChecker.class.getClassLoader().getResourceAsStream("release");
+        if (inputStream != null) {
+            final List<String> versionStr = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)).lines().collect(Collectors.toList());
+            if (versionStr.size() == 2) {
+                if (versionStr.get(0).matches("\\d+\\.\\d+\\.\\d+-(?:dev|rc|beta|alpha)\\+\\d+-[0-9a-f]{7,40}")) {
+                    identifier = versionStr.get(0).split("-")[2];
+                    dev = true;
+                } else {
+                    identifier = versionStr.get(0);
+                }
+                branch = versionStr.get(1);
+            }
+        }
+
+        this.ess = ess;
+        this.versionIdentifier = identifier;
+        this.versionBranch = branch;
+        this.devBuild = dev;
     }
 }
