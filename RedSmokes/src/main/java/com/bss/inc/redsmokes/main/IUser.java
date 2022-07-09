@@ -34,4 +34,5 @@ public interface IUser {
     String getGroup();
     boolean inGroup(final String group);
     void sendMessage(String message);
+    void 
 }
