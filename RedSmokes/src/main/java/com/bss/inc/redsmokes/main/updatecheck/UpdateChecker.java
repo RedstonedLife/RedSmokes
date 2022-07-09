@@ -49,7 +49,7 @@ public class UpdateChecker {
             }
         }
 
-        this.ess = ess;
+        this.redSmokes = redSmokes;
         this.versionIdentifier = identifier;
         this.versionBranch = branch;
         this.devBuild = dev;
