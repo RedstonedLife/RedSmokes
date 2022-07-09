@@ -32,5 +32,6 @@ public class Backup implements Runnable {
         if (taskId != -1) {
             server.getScheduler().cancelTask(taskId);
         }
+        taskId = -1;
     }
 }
