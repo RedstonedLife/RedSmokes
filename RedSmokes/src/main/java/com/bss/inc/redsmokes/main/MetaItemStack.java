@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
+import com.bss.inc.redsmokes.main.utils.MaterialUtil;
 import com.earth2me.essentials.textreader.BookInput;
 import com.earth2me.essentials.textreader.BookPager;
 import com.earth2me.essentials.textreader.IText;
@@ -609,7 +610,7 @@ public class MetaItemStack {
         return enchantment;
     }
 
-    public void addBannerMeta(final CommandSource sender, final boolean allowShortName, final String string, final IEssentials ess) throws Exception {
+    public void addBannerMeta(final CommandSource sender, final boolean allowShortName, final String string, final IRedSmokes redSmokes) throws Exception {
         if (MaterialUtil.isBanner(stack.getType()) && !stack.getType().toString().equals("SHIELD") && string != null) {
             final String[] split = splitPattern.split(string, 2);
 
