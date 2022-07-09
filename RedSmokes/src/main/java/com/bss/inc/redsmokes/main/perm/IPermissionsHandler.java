@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface IPermissionsHandler {
     String getGroup(Player base);
-    List<String> getGroups()
+    List<String> getGroups(Player base);
+    
 }
