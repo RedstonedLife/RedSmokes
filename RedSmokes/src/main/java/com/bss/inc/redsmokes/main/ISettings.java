@@ -27,5 +27,5 @@ public interface ISettings extends IConf {
     boolean isDebug();
     void setDebug(boolean debug);
     boolean isEcoDisabled();
-    
+
 }
