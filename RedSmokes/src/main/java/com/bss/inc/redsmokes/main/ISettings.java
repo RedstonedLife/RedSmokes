@@ -15,4 +15,5 @@ public interface ISettings extends IConf {
     BigDecimal getCommandCost(String label);
     String getCurrencySymbol();
     boolean isCurrencySymbolSuffixed();
+    
 }
