@@ -1,7 +1,6 @@
 package com.bss.inc.redsmokes.main.textreader;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
-import jdk.internal.util.xml.impl.Input;
 
 import java.io.File;
 import java.io.IOException;
