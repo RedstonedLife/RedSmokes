@@ -1,11 +1,15 @@
 package com.bss.inc.redsmokes.main.updatecheck;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
+import com.google.gson.JsonSyntaxException;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
