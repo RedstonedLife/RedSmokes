@@ -4,6 +4,7 @@ import com.bss.inc.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.craftbukkit.InventoryWorkaround;
 import com.bss.inc.redsmokes.main.craftbukkit.SetExpFix;
+import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import org.bukkit.Location;
 import org.bukkit.entity.Item;
