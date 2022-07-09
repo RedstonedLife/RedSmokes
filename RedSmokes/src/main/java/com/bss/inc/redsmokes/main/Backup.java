@@ -9,5 +9,6 @@ public class Backup implements Runnable {
     private transient final Server server;
     private transient final IRedSmokes redSmokes;
     private final AtomicBoolean pendingShutdown = new AtomicBoolean(false);
-    private transient 
+    private transient boolean running = false;
+    
 }
