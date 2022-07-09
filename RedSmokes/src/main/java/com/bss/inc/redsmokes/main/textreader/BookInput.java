@@ -21,6 +21,8 @@ public class BookInput implements IText {
         if(file == null || !file.exists()) {
             file = new File(redSmokes.getDataFolder(), filename + ".txt");
         }
-        
+        if(!file.exists()) {
+            
+        }
     }
 }
