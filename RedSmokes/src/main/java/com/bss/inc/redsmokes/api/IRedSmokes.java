@@ -13,6 +13,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -55,5 +56,7 @@ public interface IRedSmokes extends Plugin {
     BalanceTop getBalanceTop();
     RedSmokesTimer getTimer();
     MailService getMail();
-    
+
+    Collection<Player> getOnlinePlayers();
+    Iterable<User> getOnlineUsers();
 }
