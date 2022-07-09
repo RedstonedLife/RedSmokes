@@ -43,7 +43,9 @@ public class BookInput implements IText {
         } else {
             lastChange = file.lastModified();
             final boolean readFromfile;
-            synchronized ()
+            synchronized (cache) {
+                
+            }
         }
     }
 }
