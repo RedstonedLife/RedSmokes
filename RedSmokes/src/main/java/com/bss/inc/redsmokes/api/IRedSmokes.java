@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.api;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.*;
 import com.bss.inc.redsmokes.main.commands.PlayerNotFoundException;
+import com.bss.inc.redsmokes.main.provider.SignDataProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.World;
@@ -60,5 +61,6 @@ public interface IRedSmokes extends Plugin {
 
     Collection<Player> getOnlinePlayers();
     Iterable<User> getOnlineUsers();
+    SignDataProvider getSignDataProvider();
     PluginCommand getPluginCommand(String cmd);
 }
