@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main.perm;
 
+import com.bss.inc.redsmokes.main.RedSmokes;
 import com.bss.inc.redsmokes.main.User;
 import org.bukkit.entity.Player;
 
@@ -20,5 +21,5 @@ public interface IPermissionsHandler {
     void registerContext(String context, Function<User, Iterable<String>> calculator, Supplier<Iterable<String>> suggestions);
     void unregisterContexts();
     String getBackendName();
-    boolean tryProvider()
+    boolean tryProvider(RedSmokes redSmokes);
 }
