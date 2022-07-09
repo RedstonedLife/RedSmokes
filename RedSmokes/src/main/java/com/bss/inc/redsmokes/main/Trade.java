@@ -5,4 +5,5 @@ import java.io.FileWriter;
 public class Trade {
     private static FileWriter fw = null;
     private final transient String command;
+    private final transient Trade fallbackTrade;
 }
