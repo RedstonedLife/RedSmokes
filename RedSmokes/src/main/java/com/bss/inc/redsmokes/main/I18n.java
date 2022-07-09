@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import java.util.Enumeration;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -12,5 +13,6 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         @Override public Enumeration<String> getKeys() {return null;}
     };
     private static I18n instance;
-    
+    private final transient Locale defaultLocale = Locale.getDefault();
+    private final transient 
 }
