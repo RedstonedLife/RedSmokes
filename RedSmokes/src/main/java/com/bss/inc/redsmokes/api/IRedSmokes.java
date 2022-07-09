@@ -10,6 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.List;
 import java.util.Map;
@@ -40,4 +41,6 @@ public interface IRedSmokes extends Plugin {
     BukkitScheduler getScheduler();
     Backup getBackup();
     UpdateChecker getUpdateChecker();
+    BukkitTask runTaskAsynchronously(Runnable run);
+    BukkitTask runTaskLaterAsynchronously(Runnable run, long delay);
 }
