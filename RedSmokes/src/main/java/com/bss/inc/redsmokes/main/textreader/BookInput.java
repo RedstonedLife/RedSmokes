@@ -30,6 +30,7 @@ public class BookInput implements IText {
                         length = input.read(buffer);
                     }
                 }
+                
             }
         }
     }
