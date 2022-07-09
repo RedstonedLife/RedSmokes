@@ -19,5 +19,7 @@ public class Trade {
         this(command, null, null, null, null, redSmokes);
     }
 
-    public Trade(final String command, final Trade fallback, final IRedSmokes)
+    public Trade(final String command, final Trade fallback, final IRedSmokes redSmokes) {
+        
+    }
 }
