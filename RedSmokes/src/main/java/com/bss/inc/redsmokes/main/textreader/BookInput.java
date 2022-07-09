@@ -56,6 +56,28 @@ public class BookInput implements IText {
                     readFromfile = false;
                 }
             }
+            if (readFromfile) {
+                final Reader reader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8);
+                final BufferedReader bufferedReader = new BufferedReader(reader);
+                try {
+                    int lineNumber = 0;
+                    while (bufferedReader.ready()) {
+                        final String line = bufferedReader.readLine();
+                        if (line == null) {
+                            break;
+                        }
+                        if (line.length() > 0 && line.charAt(0) == '#') {
+                            bookmarks.put(line.substring(1).toLowerCase(Locale.ENGLISH).replaceAll("&[0-9a-fk]", ""), lineNumber);
+                            chapters.add(line.substring(1).replace('&', '§').replace("§§", "&"));
+                        }
+                        lines.add(line.replace('&', '§').replace("§§", "&"));
+                        lineNumber++;
+                    }
+                } finally {
+                    reader.close();
+                    bufferedReader.close();
+                }
+            }
         }
     }
 }
