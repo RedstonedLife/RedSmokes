@@ -25,5 +25,5 @@ public interface ISettings extends IConf {
     boolean isCommandOverriden(String name);
     boolean isDebug();
     void setDebug(boolean debug);
-    
+    boolean isEcoDisabled();
 }
