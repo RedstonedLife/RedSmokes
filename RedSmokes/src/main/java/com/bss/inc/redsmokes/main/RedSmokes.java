@@ -15,7 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RedSmokes extends JavaPlugin implements IRedSmokes {
+public class RedSmokes extends JavaPlugin implements com.bss.inc.redsmokes.api.IRedSmokes {
 
     private static final Logger BUKKIT_LOGGER = Logger.getLogger("RedSmokes");
     private static Logger LOGGER = null;
