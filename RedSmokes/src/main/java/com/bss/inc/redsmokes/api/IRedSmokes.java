@@ -15,7 +15,7 @@ import com.bss.inc.redsmokes.main.provider.SerializationProvider;
 import com.bss.inc.redsmokes.main.provider.FormattedCommandAliasProvider;
 import com.bss.inc.redsmokes.main.provider.SyncCommandsProvider;
 import com.bss.inc.redsmokes.main.provider.PersistentDataProvider;
-import com.bss.inc.redsmokes.main.provider.ReflOnlineModeProvider;
+import com.bss.inc.redsmokes.main.nms.refl.providers.ReflOnlineModeProvider;
 import com.bss.inc.redsmokes.main.provider.ItemUnbreakableProvider;
 import com.bss.inc.redsmokes.main.provider.WorldInfoProvider;
 import com.bss.inc.redsmokes.main.provider.SignDataProvider;
