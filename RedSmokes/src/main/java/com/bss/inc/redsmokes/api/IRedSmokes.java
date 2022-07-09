@@ -55,4 +55,5 @@ public interface IRedSmokes extends Plugin {
     BalanceTop getBalanceTop();
     RedSmokesTimer getTimer();
     MailService getMail();
+    
 }
