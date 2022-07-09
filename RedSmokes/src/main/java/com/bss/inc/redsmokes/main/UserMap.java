@@ -1,4 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
-public class UserMap extends {
+import com.bss.inc.redsmokes.api.IConf;
+import com.google.common.cache.CacheLoader;
+
+public class UserMap extends CacheLoader<String, User> implements IConf {
 }
