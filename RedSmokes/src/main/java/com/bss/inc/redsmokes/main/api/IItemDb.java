@@ -59,7 +59,7 @@ public interface IItemDb {
         }
         return StringUtil.joinList(", ", nameList);
     }
-
+;
     /**
      * Get a List of all aliases for the given item stack.
      *
