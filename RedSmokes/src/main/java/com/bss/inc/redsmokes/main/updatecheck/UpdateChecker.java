@@ -152,7 +152,7 @@ public class UpdateChecker {
 
         // Connection failed, GitHub's down or we hit a ratelimit, so use the fallback URL
         // If the fallback fails, let the exception or error status bubble up
-        connection = (HttpURLConnection) new URL(fallbackUrl).openConnection();
+        connection = (HttpURLConnection) new URL(githubUrl).openConnection();
         connection.connect();
 
         return connection;
