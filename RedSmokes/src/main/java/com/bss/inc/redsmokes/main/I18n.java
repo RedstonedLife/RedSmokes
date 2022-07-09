@@ -5,6 +5,7 @@ import com.bss.inc.redsmokes.api.IRedSmokes;
 import java.text.MessageFormat;
 import java.util.Enumeration;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -22,5 +23,5 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
     private transient Locale currentLocale = defaultLocale;
     private transient ResourceBundle customBundle;
     private transient ResourceBundle localeBundle;
-    private transient Map<String, MessageFormat>
+    private transient Map<String, MessageFormat> messageFormatMap
 }
