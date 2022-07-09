@@ -20,5 +20,5 @@ public class UpdateChecker {
     private long lastFetchTime = 0;
     private CompletableFuture<RemoteVersion> pendingDevFuture;
     private CompletableFuture<RemoteVersion> pendingReleaseFuture;
-    private String 
+    private String latestRelease = 
 }
