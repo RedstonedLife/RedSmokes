@@ -59,5 +59,6 @@ public class Backup implements Runnable {
         if(active) {
             return;
         }
+        final String command = redSmokes.getSettings().getBackupCommand();
     }
 }
