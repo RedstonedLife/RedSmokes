@@ -39,4 +39,5 @@ public interface IRedSmokes extends Plugin {
     ISettings getSettings();
     BukkitScheduler getScheduler();
     Backup getBackup();
+    UpdateChecker getUpdateChecker();
 }
