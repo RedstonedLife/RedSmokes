@@ -8,6 +8,7 @@ import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public interface IUser {
     boolean isAuthorized(String node);
@@ -48,5 +49,5 @@ public interface IUser {
     Map<String, Object> getConfigMap(String node);
     List<CommandCooldown> getCooldownsList();
     Date getCommandCooldownExpiry(String label);
-    
+    void addCommandCooldown(Pattern pattern, Date expiresAt, boolean save);
 }
