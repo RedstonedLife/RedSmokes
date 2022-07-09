@@ -38,6 +38,8 @@ public class CommandSource {
     }
 
     public void sendMessage(final String message) {
-        
+        if(!message.isEmpty()) {
+            sender.sendMessage(message);
+        }
     }
 }
