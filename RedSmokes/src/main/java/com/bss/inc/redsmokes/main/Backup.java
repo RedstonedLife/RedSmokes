@@ -91,7 +91,13 @@ public class Backup implements Runnable {
                 final Process child = childBuilder.start();
                 redSmokes.runTaskLaterAsynchronously(() -> {
                     try (final BufferedReader reader = new BufferedReader(new InputStreamReader(child.getInputStream()))) {
-                        
+                        String line;
+                        do {
+                            line = reader.readLine();
+                            if(line != null) {
+                                
+                            }
+                        }
                     }
                 })
             }
