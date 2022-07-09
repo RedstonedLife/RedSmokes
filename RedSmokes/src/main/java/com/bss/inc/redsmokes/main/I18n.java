@@ -45,4 +45,8 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
     public void onEnable() {
         instance = this;
     }
+
+    public void onDisable() {
+        instance = null;
+    }
 }
