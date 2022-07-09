@@ -9,6 +9,7 @@ import com.bss.inc.redsmokes.main.provider.SpawnerItemProvider;
 import com.bss.inc.redsmokes.main.provider.SpawnerBlockProvider;
 import com.bss.inc.redsmokes.main.provider.ServerStateProvider;
 import com.bss.inc.redsmokes.main.provider.MaterialTagProvider;
+import com.bss.inc.redsmokes.main.provider.ContainerProvider;
 import com.bss.inc.redsmokes.main.provider.
 import org.bukkit.Server;
 import org.bukkit.World;
