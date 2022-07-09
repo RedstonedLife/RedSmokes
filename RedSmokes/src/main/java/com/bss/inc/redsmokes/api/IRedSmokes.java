@@ -9,6 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.List;
 import java.util.Map;
@@ -36,5 +37,5 @@ public interface IRedSmokes extends Plugin {
     int broadcastMessage(IUser sender, String message, Predicate<IUser> shouldExclude);
     int broadcastMessage(String permission, String message);
     ISettings getSettings();
-    
+    BukkitScheduler getScheduler();
 }
