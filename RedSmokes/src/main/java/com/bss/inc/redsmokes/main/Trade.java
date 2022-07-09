@@ -28,6 +28,6 @@ public class Trade {
     }
 
     public Trade(final ItemStack items, final IRedSmokes redSmokes) {
-        this(null, null, null, items, null)
+        this(null, null, null, items, null, redSmokes);
     }
 }
