@@ -24,4 +24,6 @@ public interface ISettings extends IConf {
     boolean isVerboseCommandUsages();
     boolean isCommandOverriden(String name);
     boolean isDebug();
+    void setDebug(boolean debug);
+    
 }
