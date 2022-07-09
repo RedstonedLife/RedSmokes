@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main.perm;
 
+import com.bss.inc.redsmokes.main.User;
 import org.bukkit.entity.Player;
 
 import java.util.List;
