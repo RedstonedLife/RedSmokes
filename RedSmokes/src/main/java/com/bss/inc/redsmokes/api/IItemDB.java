@@ -10,7 +10,7 @@ import java.util.function.Function;
 /**
  * Provides access to the current item alias registry, and allows registration of custom item resolvers.
  */
-public interface IItemDb extends com.earth2me.essentials.api.IItemDb {
+public interface IItemDb extends com.bss.inc.redsmokes.api.IItemDb {
 
     /**
      * Add an item resolver that is called before looking up the item in the item database.
