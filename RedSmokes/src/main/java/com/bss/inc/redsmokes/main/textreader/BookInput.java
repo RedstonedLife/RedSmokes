@@ -44,6 +44,7 @@ public class BookInput implements IText {
             lastChange = file.lastModified();
             final boolean readFromfile;
             synchronized (cache) {
+                final SoftReference<BookInput> inputRef = cache.get(file.getName());
                 
             }
         }
