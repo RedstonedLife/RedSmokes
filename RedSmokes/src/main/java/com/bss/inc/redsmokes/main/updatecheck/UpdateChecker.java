@@ -106,7 +106,7 @@ public class UpdateChecker {
 
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
                         latestRelease = new Gson().fromJson(reader, JsonObject.class).get("tag_name").getAsString();
-                        pendingReleaseFuture.complete(cachedRelease = fetchDistance(latestRelease, getVersionIdentifier()));
+                        pendingReleaseFuture.complete(cachedRelease = fetchLatestRelease(latestRelease, getVersionIdentifier()));
                     } catch (JsonSyntaxException | NumberFormatException e) {
                         e.printStackTrace();
                         pendingReleaseFuture.complete(new RemoteVersion(BranchStatus.ERROR));
