@@ -17,5 +17,7 @@ public interface ISettings extends IConf {
     boolean isCurrencySymbolSuffixed();
     String getLocale();
     BigDecimal getStartingBalance();
+    boolean isCommandDisabled(final IrsCommand cmd);
+    boolean isCommandDisabled(String label);
     
 }
