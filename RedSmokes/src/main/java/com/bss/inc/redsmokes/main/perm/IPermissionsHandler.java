@@ -9,5 +9,6 @@ public interface IPermissionsHandler {
     List<String> getGroups(Player base);
     boolean inGroup(Player base, String group);
     boolean hasPermission(Player base, String node);
+    // Does not check for * permissions
     
 }
