@@ -1,4 +1,4 @@
 package com.bss.inc.redsmokes.main;
 
-public class Backup {
+public class Backup implements Runnable {
 }
