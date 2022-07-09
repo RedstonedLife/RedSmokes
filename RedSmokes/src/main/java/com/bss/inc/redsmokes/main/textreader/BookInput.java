@@ -46,7 +46,9 @@ public class BookInput implements IText {
             synchronized (cache) {
                 final SoftReference<BookInput> inputRef = cache.get(file.getName());
                 final BookInput input;
-                if(inputRef == null || (input = inputRef.get()) == null)
+                if(inputRef == null || (input = inputRef.get()) == null || input.lastChange < lastChange) {
+                    
+                }
             }
         }
     }
