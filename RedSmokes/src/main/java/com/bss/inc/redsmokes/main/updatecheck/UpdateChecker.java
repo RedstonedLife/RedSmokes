@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
+import static com.bss.inc.redsmokes.main.I18n.tl;
+
 public class UpdateChecker {
     private static final String REPO = "RedSmokes/RedSmokes";
     private static final String BRANCH = "main";
