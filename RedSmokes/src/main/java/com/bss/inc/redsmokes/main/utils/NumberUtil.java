@@ -9,6 +9,8 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import static com.bss.inc.redsmokes.main.I18n.tl;
+
 public final class NumberUtil {
 
     private static final DecimalFormat twoDPlaces = new DecimalFormat("#,###.##");
@@ -37,10 +39,10 @@ public final class NumberUtil {
     }
 
     public static String shortCurrency(final BigDecimal value, final IRedSmokes redSmokes) {
-        if (ess.getSettings().isCurrencySymbolSuffixed()) {
-            return formatAsCurrency(value) + ess.getSettings().getCurrencySymbol();
+        if (redSmokes.getSettings().isCurrencySymbolSuffixed()) {
+            return formatAsCurrency(value) + redSmokes.getSettings().getCurrencySymbol();
         }
-        return ess.getSettings().getCurrencySymbol() + formatAsCurrency(value);
+        return redSmokes.getSettings().getCurrencySymbol() + formatAsCurrency(value);
     }
 
     public static String formatDouble(final double value) {
@@ -63,34 +65,34 @@ public final class NumberUtil {
         return str;
     }
 
-    public static String displayCurrency(final BigDecimal value, final IEssentials ess) {
+    public static String displayCurrency(final BigDecimal value, final IRedSmokes redSmokes) {
         String currency = formatAsPrettyCurrency(value);
         String sign = "";
         if (value.signum() < 0) {
             currency = currency.substring(1);
             sign = "-";
         }
-        if (ess.getSettings().isCurrencySymbolSuffixed()) {
-            return sign + tl("currency", currency, ess.getSettings().getCurrencySymbol());
+        if (redSmokes.getSettings().isCurrencySymbolSuffixed()) {
+            return sign + tl("currency", currency, redSmokes.getSettings().getCurrencySymbol());
         }
-        return sign + tl("currency", ess.getSettings().getCurrencySymbol(), currency);
+        return sign + tl("currency", redSmokes.getSettings().getCurrencySymbol(), currency);
     }
 
-    public static String displayCurrencyExactly(final BigDecimal value, final IEssentials ess) {
+    public static String displayCurrencyExactly(final BigDecimal value, final IRedSmokes redSmokes) {
         String currency = value.toPlainString();
         String sign = "";
         if (value.signum() < 0) {
             currency = currency.substring(1);
             sign = "-";
         }
-        if (ess.getSettings().isCurrencySymbolSuffixed()) {
-            return sign + tl("currency", currency, ess.getSettings().getCurrencySymbol());
+        if (redSmokes.getSettings().isCurrencySymbolSuffixed()) {
+            return sign + tl("currency", currency, redSmokes.getSettings().getCurrencySymbol());
         }
-        return sign + tl("currency", ess.getSettings().getCurrencySymbol(), currency);
+        return sign + tl("currency", redSmokes.getSettings().getCurrencySymbol(), currency);
     }
 
-    public static String sanitizeCurrencyString(final String input, final IEssentials ess) {
-        return input.replace(ess.getSettings().getCurrencySymbol(), "");
+    public static String sanitizeCurrencyString(final String input, final IRedSmokes redSmokes) {
+        return input.replace(redSmokes.getSettings().getCurrencySymbol(), "");
     }
 
     public static boolean isInt(final String sInt) {
