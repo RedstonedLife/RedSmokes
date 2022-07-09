@@ -38,5 +38,5 @@ public interface IRedSmokes extends Plugin {
     int broadcastMessage(String permission, String message);
     ISettings getSettings();
     BukkitScheduler getScheduler();
-    
+    Backup getBackup();
 }
