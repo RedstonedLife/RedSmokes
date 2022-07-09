@@ -56,4 +56,9 @@ public interface ISettings extends IConf {
 
     boolean isUpdateCheckEnabled();
     boolean showZeroBaltop();
+
+    boolean isPlayerCommand(String string);
+
+    boolean useBukkitPermissions();
+    
 }
