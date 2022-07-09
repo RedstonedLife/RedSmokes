@@ -14,4 +14,12 @@ public class Backup implements Runnable {
     private transient int taskId = -1;
     private transient boolean active = false;
     private transient CompletableFuture<Object> taskLock = null;
+
+    public Backup(final IRedSmokes redSmokes) {
+        this.redSmokes = redSmokes;
+        server = redSmokes.getServer();
+        if(!redSmokes.getOnlinePlayers().isEmpty() || redSmokes.getSettings().isAlwaysRunBackup()) {
+            redSmokes.runTaskAsynchronously(this::startTask);
+        }
+    }
 }
