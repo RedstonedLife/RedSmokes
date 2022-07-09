@@ -30,5 +30,7 @@ public interface ISettings extends IConf {
     void setDebug(boolean debug);
     boolean isEcoDisabled();
     List<RedSmokesSign> enabledSigns();
+    BigDecimal getMaxMoney();
+    BigDecimal getMinMoney();
     
 }
