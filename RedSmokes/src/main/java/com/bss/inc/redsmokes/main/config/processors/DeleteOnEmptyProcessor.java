@@ -1,5 +1,12 @@
 package com.bss.inc.redsmokes.main.config.processors;
 
+import org.spongepowered.configurate.ConfigurationNode;
+import org.spongepowered.configurate.objectmapping.meta.Processor;
+import org.spongepowered.configurate.serialize.SerializationException;
+
+import java.util.Collection;
+import java.util.Map;
+
 public class DeleteOnEmptyProcessor implements Processor<Object> {
     @Override
     public void process(final Object value, final ConfigurationNode destination) {
