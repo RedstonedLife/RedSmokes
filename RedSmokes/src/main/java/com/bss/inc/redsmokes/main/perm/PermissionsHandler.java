@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main.perm;
 
+import java.util.logging.Level;
+
 public class PermissionsHandler implements IPermissionsHandler {
     private final transient String defaultGroup = "default";
     private final transient Essentials ess;
@@ -124,7 +126,6 @@ public class PermissionsHandler implements IPermissionsHandler {
                         unregisterContexts();
                     }
                     this.handler = provider;
-                    initContexts();
                     break;
                 }
             } catch (final Throwable ignored) {
@@ -177,20 +178,6 @@ public class PermissionsHandler implements IPermissionsHandler {
         if (elapsed > ess.getSettings().getPermissionsLagWarning()) {
             ess.getLogger().log(Level.WARNING, String.format("Permissions lag notice with (%s). Response took %fms. Summary: %s", getName(), elapsed / 1000000.0, summary));
         }
-    }
-
-    private void initContexts() {
-        registerContext("essentials:afk", user -> Collections.singleton(String.valueOf(user.isAfk())), () -> ImmutableSet.of("true", "false"));
-        registerContext("essentials:muted", user -> Collections.singleton(String.valueOf(user.isMuted())), () -> ImmutableSet.of("true", "false"));
-        registerContext("essentials:vanished", user -> Collections.singleton(String.valueOf(user.isHidden())), () -> ImmutableSet.of("true", "false"));
-        registerContext("essentials:jailed", user -> Collections.singleton(String.valueOf(user.isJailed())), () -> ImmutableSet.of("true", "false"));
-        registerContext("essentials:jail", user -> Optional.ofNullable(user.getJail()).map(Arrays::asList).orElse(Collections.emptyList()), () -> {
-            try {
-                return ess.getJails().getList();
-            } catch (final Exception e) {
-                return Collections.emptyList();
-            }
-        });
     }
 
 }
