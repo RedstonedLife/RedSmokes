@@ -69,7 +69,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
             try {
                 messageFormat = new MessageFormat(format);
             } catch (final IllegalArgumentException e) {
-                ess.getLogger().log(Level.SEVERE, "Invalid Translation key for '" + string + "': " + e.getMessage());
+                redSmokes.getLogger().log(Level.SEVERE, "Invalid Translation key for '" + string + "': " + e.getMessage());
                 format = format.replaceAll("\\{(\\D*?)\\}", "\\[$1\\]");
                 messageFormat = new MessageFormat(format);
             }
