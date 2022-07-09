@@ -1,10 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
-import com.bss.inc.redsmokes.main.utils.FormatUtil;
-import com.bss.inc.redsmokes.main.utils.MaterialUtil;
-import com.bss.inc.redsmokes.main.utils.NumberUtil;
-import com.bss.inc.redsmokes.main.utils.VersionUtil;
+import com.bss.inc.redsmokes.main.utils.*;
 import com.earth2me.essentials.textreader.BookInput;
 import com.earth2me.essentials.textreader.BookPager;
 import com.earth2me.essentials.textreader.IText;
@@ -150,7 +147,7 @@ public class MetaItemStack {
         }
     }
 
-    public void parseStringMeta(final CommandSource sender, final boolean allowUnsafe, final String[] string, final int fromArg, final IEssentials ess) throws Exception {
+    public void parseStringMeta(final CommandSource sender, final boolean allowUnsafe, final String[] string, final int fromArg, final IRedSmokes ess) throws Exception {
         if (string[fromArg].startsWith("{") && hasMetaPermission(sender, "vanilla", false, true, ess)) {
             try {
                 stack = ess.getServer().getUnsafe().modifyItemStack(stack, Joiner.on(' ').join(Arrays.asList(string).subList(fromArg, string.length)));
