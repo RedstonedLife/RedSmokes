@@ -68,6 +68,7 @@ public class Backup implements Runnable {
         taskLock = new CompletableFuture<>();
         if("save-all".equalsIgnoreCase(command)) {
             final CommandSender cs = server.getConsoleSender();
+            
         }
     }
 }
