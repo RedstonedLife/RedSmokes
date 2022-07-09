@@ -54,5 +54,6 @@ public interface ISettings extends IConf {
     int getNotifyPlayerOfMailCooldown();
     boolean allowOldIdSigns();
 
-    
+    boolean isUpdateCheckEnabled();
+    boolean showZeroBaltop();
 }
