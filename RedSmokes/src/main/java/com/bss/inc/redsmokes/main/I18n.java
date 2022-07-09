@@ -108,4 +108,40 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         }
     }
 
+    /**
+     * Attempts to load properties files from the plugin directory before falling back to the jar.
+     */
+    private static class FileResClassLoader extends ClassLoader {
+        private final transient File dataFolder;
+
+        FileResClassLoader(final ClassLoader classLoader, final IEssentials ess) {
+            super(classLoader);
+            this.dataFolder = ess.getDataFolder();
+        }
+
+        @Override
+        public URL getResource(final String string) {
+            final File file = new File(dataFolder, string);
+            if (file.exists()) {
+                try {
+                    return file.toURI().toURL();
+                } catch (final MalformedURLException ignored) {
+                }
+            }
+            return null;
+        }
+
+        @Override
+        public InputStream getResourceAsStream(final String string) {
+            final File file = new File(dataFolder, string);
+            if (file.exists()) {
+                try {
+                    return new FileInputStream(file);
+                } catch (final FileNotFoundException ignored) {
+                }
+            }
+            return null;
+        }
+    }
+
 }
