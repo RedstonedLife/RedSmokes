@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.Level;
 
 public class Backup implements Runnable {
     private transient final Server server;
@@ -68,7 +69,11 @@ public class Backup implements Runnable {
         taskLock = new CompletableFuture<>();
         if("save-all".equalsIgnoreCase(command)) {
             final CommandSender cs = server.getConsoleSender();
-            server.dispatchCommand()
+            server.dispatchCommand(cs, "save-all");
+            active = false;
+            taskLock.complete(new Object());
+            return;
         }
+        redSmokes.getLogger().log(Level.INFO, tl(""));
     }
 }
