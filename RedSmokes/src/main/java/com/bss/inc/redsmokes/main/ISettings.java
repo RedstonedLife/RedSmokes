@@ -14,5 +14,5 @@ public interface ISettings extends IConf {
     BigDecimal getCommandCost(IrsCommand cmd);
     BigDecimal getCommandCost(String label);
     String getCurrencySymbol();
-    
+    boolean isCurrencySymbolSuffixed();
 }
