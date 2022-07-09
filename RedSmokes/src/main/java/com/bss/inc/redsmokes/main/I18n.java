@@ -31,6 +31,8 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
 
     public static String tl(final String string, final Object... objects) {
         if(instance==null){return "";}
-        if(objects.length)
+        if(objects.length==0) {
+            return NODOUBLEMARK.matcher(instance.translate(string)).replaceAll("'");
+        }
     }
 }
