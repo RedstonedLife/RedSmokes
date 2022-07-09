@@ -42,7 +42,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
 
     public UserMap(final IEssentials ess) {
         super();
-        this.ess = redSmokes
+        this.redSmokes= redSmokes
         uuidMap = new UUIDMap(ess);
         //RemovalListener<UUID, User> remListener = new UserMapRemovalListener();
         //users = CacheBuilder.newBuilder().maximumSize(ess.getSettings().getMaxUserCacheCount()).softValues().removalListener(remListener).build(this);
