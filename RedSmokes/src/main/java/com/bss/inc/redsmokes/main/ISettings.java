@@ -6,4 +6,5 @@ import java.io.File;
 
 public interface ISettings extends IConf {
     File getConfigFile();
+    
 }
