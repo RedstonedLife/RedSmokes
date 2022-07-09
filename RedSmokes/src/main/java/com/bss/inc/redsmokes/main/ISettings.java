@@ -21,4 +21,7 @@ public interface ISettings extends IConf {
     boolean isCommandDisabled(final IrsCommand cmd);
     boolean isCommandDisabled(String label);
     Set<String> getDisabledCommands();
+    boolean isVerboseCommandUsages();
+    boolean isCommandOverriden(String name);
+    
 }
