@@ -22,4 +22,15 @@ public class Backup implements Runnable {
             redSmokes.runTaskAsynchronously(this::startTask);
         }
     }
+
+    public void onPlayerJoin() {
+        startTask();
+    }
+
+    public synchronized void stopTask() {
+        running = false;
+        if (taskId != -1) {
+            server.getScheduler().cancelTask(taskId);
+        }
+    }
 }
