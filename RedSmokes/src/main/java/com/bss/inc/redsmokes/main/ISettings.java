@@ -8,5 +8,5 @@ public interface ISettings extends IConf {
     File getConfigFile();
     String getBackupCommand();
     long getBackupInterval();
-    
+    boolean isAlwaysRunBackup();
 }
