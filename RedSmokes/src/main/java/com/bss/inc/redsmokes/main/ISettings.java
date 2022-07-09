@@ -60,5 +60,5 @@ public interface ISettings extends IConf {
     boolean isPlayerCommand(String string);
 
     boolean useBukkitPermissions();
-    
+
 }
