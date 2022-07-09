@@ -263,6 +263,8 @@ public class UpdateChecker {
         private final BranchStatus branchStatus;
         private final int distance;
 
+        private String 
+
         RemoteVersion(BranchStatus branchStatus) {
             this(branchStatus, 0);
         }
