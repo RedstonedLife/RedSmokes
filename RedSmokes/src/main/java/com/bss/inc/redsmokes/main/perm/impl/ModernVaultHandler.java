@@ -14,13 +14,7 @@ public class ModernVaultHandler extends AbstractVaultHandler {
     protected boolean emulateWildcards() {
         return false;
     }
-
-    @Override
-    public boolean canBuild(final Player base, final String group) {
-        Objects.requireNonNull(base, "Can't check build override for nonexistent player!");
-        return super.canBuild(base, group) || chat.getPlayerInfoBoolean(base.getWorld().getName(), base, "build", false);
-    }
-
+    
     @Override
     public boolean tryProvider(RedSmokes ess) {
         return super.canLoad() && supportedPlugins.contains(getEnabledPermsPlugin());
