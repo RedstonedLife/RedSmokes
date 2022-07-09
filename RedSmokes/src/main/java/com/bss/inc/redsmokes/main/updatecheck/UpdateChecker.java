@@ -10,5 +10,7 @@ public class UpdateChecker {
     // 0 = base for comparison, 1 = head for comparison - *not* the same as what this class calls them
     private static final String DISTANCE_URL = "https://api.github.com/repos/RedSmokes/RedSmokes/compare/{0}...{1}";
 
-    private final RedSmokes
+    private final RedSmokes redSmokes;
+    private final String versionIdentifier;
+    private final String versionBranch;
 }
