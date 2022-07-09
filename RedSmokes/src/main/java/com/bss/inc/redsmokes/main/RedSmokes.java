@@ -1,9 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
-import com.bss.inc.redsmokes.api.IRedSmokes;
-import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
