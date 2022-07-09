@@ -41,7 +41,7 @@ public final class UpdateChecker {
     private RemoteVersion cachedDev = null;
     private RemoteVersion cachedRelease = null;
 
-    public UpdateChecker(Essentials ess) {
+    public UpdateChecker(RedSmokes ess) {
         String identifier = "INVALID";
         String branch = "INVALID";
         boolean dev = false;
