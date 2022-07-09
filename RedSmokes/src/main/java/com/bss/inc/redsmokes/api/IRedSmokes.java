@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.api;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.IRedSmokesModule;
 import com.bss.inc.redsmokes.main.User;
+import com.bss.inc.redsmokes.main.commands.PlayerNotFoundException;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
