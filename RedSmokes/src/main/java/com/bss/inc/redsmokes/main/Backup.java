@@ -104,6 +104,8 @@ public class Backup implements Runnable {
                 child.waitFor();
             } catch (final InterruptedException | IOException ex) {
                 redSmokes.getLogger().log(Level.SEVERE, null, ex);
+            } finally {
+                
             }
         })
     }
