@@ -1,4 +1,4 @@
-package com.bss.inc.redsmokes.api;
+package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.*;
