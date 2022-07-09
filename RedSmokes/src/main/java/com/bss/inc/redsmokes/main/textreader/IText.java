@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main.textreader;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IText {
     // Contains the raw text lines
@@ -10,5 +11,5 @@ public interface IText {
     List<String> getChapters();
 
     // Bookmarks contains the string mappings from 'chapters' to line numbers.
-    Map<String, Integer>
+    Map<String, Integer> getBookmarks();
 }
