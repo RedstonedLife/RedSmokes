@@ -398,7 +398,7 @@ public class MetaItemStack {
         }
     }
 
-    public void addFireworkMeta(final CommandSource sender, final boolean allowShortName, final String string, final IEssentials ess) throws Exception {
+    public void addFireworkMeta(final CommandSource sender, final boolean allowShortName, final String string, final IRedSmokes ess) throws Exception {
         if (MaterialUtil.isFirework(stack.getType())) {
             final String[] split = splitPattern.split(string, 2);
             if (split.length < 2) {
