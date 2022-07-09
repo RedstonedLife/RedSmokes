@@ -14,7 +14,7 @@ public class ModernVaultHandler extends AbstractVaultHandler {
     protected boolean emulateWildcards() {
         return false;
     }
-    
+
     @Override
     public boolean tryProvider(RedSmokes ess) {
         return super.canLoad() && supportedPlugins.contains(getEnabledPermsPlugin());
