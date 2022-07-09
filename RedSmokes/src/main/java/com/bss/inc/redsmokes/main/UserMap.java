@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
