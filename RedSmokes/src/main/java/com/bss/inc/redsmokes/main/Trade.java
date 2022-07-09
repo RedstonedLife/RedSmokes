@@ -20,6 +20,6 @@ public class Trade {
     }
 
     public Trade(final String command, final Trade fallback, final IRedSmokes redSmokes) {
-        
+        this(command, fallback, null, null, null, redSmokes)
     }
 }
