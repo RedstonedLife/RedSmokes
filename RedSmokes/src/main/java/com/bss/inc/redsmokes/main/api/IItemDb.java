@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Provides access to the current item alias registry.
  *
- * @deprecated External plugins should use {@link net.ess3.api.IItemDb} instead, which includes access to {@link com.bss.inc.redsmokes.IItemDb.ItemResolver}
+ * @deprecated External plugins should use {@link com.bss.inc.redsmokes.api.IItemDb} instead, which includes access to {@link com.bss.inc.redsmokes.api.IItemDb.ItemResolver}
  *             APIs.
  */
 @Deprecated
