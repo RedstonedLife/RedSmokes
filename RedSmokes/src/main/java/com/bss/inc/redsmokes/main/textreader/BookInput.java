@@ -39,6 +39,7 @@ public class BookInput implements IText {
             lines = Collections.emptyList();
             chapters = Collections.emptyList();
             bookmarks = Collections.emptyMap();
+            throw new FileNotFoundException("Could not create " + filename + ".txt");
         }
     }
 }
