@@ -9,6 +9,7 @@ import java.util.Set;
 
 public interface ISettings extends IConf {
     File getConfigFile();
+    boolean areSignsDisabled();
     String getBackupCommand();
     long getBackupInterval();
     boolean isAlwaysRunBackup();
@@ -26,5 +27,5 @@ public interface ISettings extends IConf {
     boolean isDebug();
     void setDebug(boolean debug);
     boolean isEcoDisabled();
-    
+
 }
