@@ -33,6 +33,8 @@ public class BookInput implements IText {
                 redSmokes.getLogger().info("File " + filename + ".txt does not exist. Creating one for you");
             }
         }
-        if(!)
+        if(!file.exists()) {
+            lastChange = 0;
+        }
     }
 }
