@@ -46,5 +46,5 @@ public interface ISettings extends IConf {
     BigDecimal getMinimumPayAmount();
     long getCommandCooldownMs(String label);
     Entry<Pattern, Long> getCommandCooldownEntry(String label);
-    boolean isCommandCooldownPersistent()
+    boolean isCommandCooldownPersistent(String label);
 }
