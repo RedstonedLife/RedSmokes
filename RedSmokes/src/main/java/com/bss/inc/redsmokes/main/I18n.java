@@ -58,7 +58,7 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
             if(redSmokes == null || redSmokes.getSettings().isDebug()) {
                 redSmokes.getLogger().log(Level.WARNING, String.format("Missing translation key \"%s\" in translation file %s", ex.getKey(), localeBundle.getLocale().toString()), ex);
             }
-            return 
+            return defaultBundle
         }
     }
 
