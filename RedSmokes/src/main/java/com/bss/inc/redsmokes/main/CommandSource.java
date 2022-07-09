@@ -43,5 +43,15 @@ public class CommandSource {
         }
     }
 
-    
+    public boolean isAuthorized(final String permission, final IRedSmokes redSmokes) {
+        return !(sender instanceof Player) || getUser(redSmokes).isAuthorized(permission);
+    }
+
+    public String getSelfSelector() {
+        return sender instanceof Player ? getPlayer().getName() : "*";
+    }
+
+    public String getDisplayName() {
+        return sender instanceof Player ? getPlayer().getDisplayName() : getSender().getName();
+    }
 }
