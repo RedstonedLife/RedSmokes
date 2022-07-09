@@ -1,6 +1,8 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
+import com.bss.inc.redsmokes.main.utils.VersionUtil;
+import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
@@ -49,7 +51,7 @@ public class Trade {
         this.redSmokes = redSmokes;
     }
 
-    public static void log(final String type, final String subtype, final String event, final String sender, final Trade charge, final String receiver, final Trade pay, final Location loc, final BigDecimal endBalance, final IEssentials ess) {
+    public static void log(final String type, final String subtype, final String event, final String sender, final Trade charge, final String receiver, final Trade pay, final Location loc, final BigDecimal endBalance, final IRedSmokes ess) {
         //isEcoLogUpdateEnabled() - This refers to log entries with no location, ie API updates #EasterEgg
         //isEcoLogEnabled() - This refers to log entries with with location, ie /pay /sell and eco signs.
 
