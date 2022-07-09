@@ -24,7 +24,7 @@ public class BookInput implements IText {
         }
         if(!file.exists()) {
             if(createFile) {
-                try (final InputStream)
+                try (final InputStream input = )
             }
         }
     }
