@@ -4,6 +4,7 @@ import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.api.services.mail.MailMessage;
 import com.bss.inc.redsmokes.api.services.mail.MailSender;
+import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -47,5 +48,5 @@ public interface IUser {
     Set<String> getConfigKeys();
     Map<String, Object> getConfigMap();
     Map<String, Object> getConfigMap(String node);
-    
+    List<CommandCooldown> getCool
 }
