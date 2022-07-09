@@ -39,6 +39,6 @@ public class Trade {
         this.command = command;
         this.fallbackTrade = fallback;
         this.money = money;
-        this.item
+        this.itemStack = item;
     }
 }
