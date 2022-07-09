@@ -50,4 +50,5 @@ public interface IUser {
     Map<String, Object> getConfigMap();
     Map<String, Object> getConfigMap(String node);
     List<CommandCooldown> getCooldownsList();
+    
 }
