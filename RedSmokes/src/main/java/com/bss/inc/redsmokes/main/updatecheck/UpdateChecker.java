@@ -14,4 +14,6 @@ public class UpdateChecker {
     private final String versionIdentifier;
     private final String versionBranch;
     private final boolean devBuild;
+
+    private 
 }
