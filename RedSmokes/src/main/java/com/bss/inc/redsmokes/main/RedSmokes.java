@@ -63,7 +63,7 @@ public class RedSmokes extends JavaPlugin implements com.bss.inc.redsmokes.api.I
         pm.registerEvents(new Listener() {
             @EventHandler(priority = EventPriority.LOW)
             public void onPlayerJoin(final PlayerJoinEvent event) {
-                event.getPlayer().sendMessage("Essentials failed to load, read the log file");
+                event.getPlayer().sendMessage("RedSmokes failed to load, read the log file");
             }
         }, this);
         //for(final Player player : getOn)
