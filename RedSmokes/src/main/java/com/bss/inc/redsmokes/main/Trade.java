@@ -40,5 +40,7 @@ public class Trade {
         this.fallbackTrade = fallback;
         this.money = money;
         this.itemStack = item;
+        this.exp = exp;
+        this.redSmokes = redSmokes;
     }
 }
