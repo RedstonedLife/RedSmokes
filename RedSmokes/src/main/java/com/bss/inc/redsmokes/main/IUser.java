@@ -61,5 +61,7 @@ public interface IUser {
     String getName();
     UUID getUUID();
     String getDisplayName();
+    boolean isAcceptingPay();
+    void setAcceptingPay(boolean acceptingPay);
     
 }
