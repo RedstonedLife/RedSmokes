@@ -16,5 +16,5 @@ public interface ISettings extends IConf {
     String getCurrencySymbol();
     boolean isCurrencySymbolSuffixed();
     String getLocale();
-    
+    BigDecimal getStartingBalance();
 }
