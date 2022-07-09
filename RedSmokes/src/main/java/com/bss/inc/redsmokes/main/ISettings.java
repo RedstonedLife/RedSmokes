@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
-public interface ISettings {
+import com.bss.inc.redsmokes.api.IConf;
+
+public interface ISettings extends IConf {
     
 }
