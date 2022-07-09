@@ -1,6 +1,8 @@
 package com.bss.inc.redsmokes.main.updatecheck;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.BufferedReader;
@@ -182,27 +184,8 @@ public class UpdateChecker {
         }
     }
 
-    private RemoteVersion fetchDistance(final String head, final String hash) {
-        try {
-            final HttpURLConnection connection = tryRequestWithFallback(MessageFormat.format(DISTANCE_URL, head, hash), MessageFormat.format(DISTANCE_PROXY_URL, head, hash));
-
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
-                // Locally built?
-                return new RemoteVersion(BranchStatus.UNKNOWN);
-            } else if (connection.getResponseCode() == HttpURLConnection.HTTP_INTERNAL_ERROR || connection.getResponseCode() == HttpURLConnection.HTTP_FORBIDDEN) {
-                // GitHub is down or we hit a local rate limit
-                return new RemoteVersion(BranchStatus.ERROR);
-            }
-
-            return tryProcessDistance(connection);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new RemoteVersion(BranchStatus.ERROR);
-        }
-    }
-
     public String[] getVersionMessages(final boolean sendLatestMessage, final boolean verboseErrors) {
-        if (!ess.getSettings().isUpdateCheckEnabled()) {
+        if (!redSmokes.getSettings().isUpdateCheckEnabled()) {
             return new String[] {tl("versionCheckDisabled")};
         }
 
