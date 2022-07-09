@@ -10,5 +10,7 @@ public class Backup implements Runnable {
     private transient final IRedSmokes redSmokes;
     private final AtomicBoolean pendingShutdown = new AtomicBoolean(false);
     private transient boolean running = false;
+    private transient int taskId = -1;
+    private transient boolean active = false;
     
 }
