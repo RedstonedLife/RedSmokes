@@ -14,4 +14,8 @@ public class Trade {
     private final transient ItemStack itemStack;
     private final transient Integer exp;
     private final transient IRedSmokes redSmokes;
+
+    public Trade(final String command, final IRedSmokes redSmokes) {
+        this(command, null, null, null)
+    }
 }
