@@ -39,7 +39,7 @@ public class LuckPermsHandler extends ModernVaultHandler {
     }
 
     @Override
-    public boolean tryProvider(RedSmokes ess) {
+    public boolean tryProvider(RedSmokes redSmokes) {
         final RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
         if (provider != null) {
             this.luckPerms = provider.getProvider();
