@@ -100,7 +100,7 @@ public class Backup implements Runnable {
                             }
                         } while (line != null);
                     } catch (final IOException ex) {
-                        redSmokes.getLogger().log(Level.SEVERE, null, ex);}}});
+                        redSmokes.getLogger().log(Level.SEVERE, null, ex);}});
 
             }
         })
