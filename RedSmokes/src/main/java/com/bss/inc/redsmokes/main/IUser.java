@@ -5,6 +5,7 @@ import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.api.services.mail.MailMessage;
 import com.bss.inc.redsmokes.api.services.mail.MailSender;
 import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
+import org.bukkit.entity.Player;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -51,4 +52,9 @@ public interface IUser {
     Date getCommandCooldownExpiry(String label);
     void addCommandCooldown(Pattern pattern, Date expiresAt, boolean save);
     boolean clearCommandCooldown(Pattern pattern);
+
+    /*
+     * PlayerExtension
+     */
+    Player getBase();
 }
