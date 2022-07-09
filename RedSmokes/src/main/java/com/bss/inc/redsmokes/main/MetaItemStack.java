@@ -544,7 +544,7 @@ public class MetaItemStack {
         }
     }
 
-    private boolean parseEnchantmentStrings(final CommandSource sender, final boolean allowUnsafe, final String[] split, final IEssentials ess) throws Exception {
+    private boolean parseEnchantmentStrings(final CommandSource sender, final boolean allowUnsafe, final String[] split, final IRedSmokes ess) throws Exception {
         final Enchantment enchantment = Enchantments.getByName(split[0]);
         if (enchantment == null) {
             return false;
