@@ -41,5 +41,5 @@ public interface ISettings extends IConf {
     int getMaxUserCacheCount();
     boolean isNotifyNoNewMail();
     BigDecimal getMinimumPayAmount();
-    
+    long getCommandCooldownMs(String label);
 }
