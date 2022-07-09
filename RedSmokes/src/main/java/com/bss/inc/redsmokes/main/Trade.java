@@ -34,4 +34,8 @@ public class Trade {
     public Trade(final int exp, final IRedSmokes redSmokes) {
         this(null, null, null, null, exp, redSmokes);
     }
+
+    public Trade(final String command, final Trade fallback, final BigDecimal money, final ItemStack item, final Integer exp, final IRedSmokes redSmokes) {
+        
+    }
 }
