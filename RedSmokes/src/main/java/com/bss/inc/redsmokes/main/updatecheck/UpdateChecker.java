@@ -266,7 +266,7 @@ public class UpdateChecker {
         private final String tag_name;
 
         RemoteVersion(BranchStatus branchStatus) {
-            this(branchStatus, "1.0.0.11-dev", 0); // 1.0.0.11-dev
+            this(branchStatus, "1.0.0.11-dev", 0); // 1.0.0.11-dev default 
         }
 
         RemoteVersion(BranchStatus branchStatus, String tag_name, int distance) {
