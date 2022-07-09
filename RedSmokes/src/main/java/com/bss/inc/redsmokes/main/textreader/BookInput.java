@@ -42,6 +42,7 @@ public class BookInput implements IText {
             throw new FileNotFoundException("Could not create " + filename + ".txt");
         } else {
             lastChange = file.lastModified();
+            final boolean readFromfile;
         }
     }
 }
