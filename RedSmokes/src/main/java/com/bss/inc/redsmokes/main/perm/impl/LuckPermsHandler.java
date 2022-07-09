@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 
 public class LuckPermsHandler extends ModernVaultHandler {
     private LuckPerms luckPerms;
-    private RedSmokes ess;
+    private RedSmokes redSmokes;
     private CombinedCalculator calculator;
 
     @Override
@@ -39,13 +39,13 @@ public class LuckPermsHandler extends ModernVaultHandler {
     }
 
     @Override
-    public boolean tryProvider(Essentials ess) {
+    public boolean tryProvider(RedSmokes ess) {
         final RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
         if (provider != null) {
             this.luckPerms = provider.getProvider();
-            this.ess = ess;
+            this.redSmokes = redSmokes;
         }
-        return luckPerms != null && super.tryProvider(ess);
+        return luckPerms != null && super.tryProvider(redSmokes);
     }
 
     private static final class Calculator {
