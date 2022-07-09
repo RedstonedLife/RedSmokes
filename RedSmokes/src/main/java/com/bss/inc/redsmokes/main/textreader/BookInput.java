@@ -4,10 +4,7 @@ import com.bss.inc.redsmokes.api.IRedSmokes;
 
 import java.io.*;
 import java.lang.ref.SoftReference;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BookInput implements IText {
     private final static HashMap<String, SoftReference<BookInput>> cache = new HashMap<>();
@@ -52,6 +49,8 @@ public class BookInput implements IText {
                     bookmarks = new HashMap<>();
                     cache.put(file.getName(), new SoftReference<>(this));
                     readFromfile = true;
+                } else {
+                    
                 }
             }
         }
