@@ -23,5 +23,8 @@ public class UpdateChecker {
     private String latestRelease = null;
     private RemoteVersion cachedDev = null;
     private RemoteVersion cachedRelease = null;
-    
+
+    public UpdateChecker(RedSmokes redSmokes) {
+        
+    }
 }
