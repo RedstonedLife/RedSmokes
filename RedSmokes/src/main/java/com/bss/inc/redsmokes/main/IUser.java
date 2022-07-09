@@ -57,4 +57,9 @@ public interface IUser {
      * PlayerExtension
      */
     Player getBase();
+    CommandSource getSource();
+    String getName();
+    UUID getUUID();
+    String getDisplayName();
+    
 }
