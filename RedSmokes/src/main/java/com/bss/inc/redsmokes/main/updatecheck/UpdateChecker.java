@@ -12,7 +12,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.text.MessageFormat;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -140,7 +139,7 @@ public class UpdateChecker {
         return latestRelease;
     }
 
-    private HttpURLConnection tryRequestWithFallback(final String githubUrl, final String fallbackUrl) throws IOException {
+    private HttpURLConnection tryRequestWithFallback(final String githubUrl) throws IOException {
         HttpURLConnection connection = (HttpURLConnection) new URL(githubUrl).openConnection();
         try {
             connection.connect();
