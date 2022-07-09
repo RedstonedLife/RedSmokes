@@ -30,7 +30,10 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             RedSmokesLogger.updatePluginLogger(this);
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
-        } catch (final )
+        } catch (final Error ex) {
+            handleCrash(ex);
+            throw ex;
+        }
     }
 
     public static Logger getWrappedLogger() {
