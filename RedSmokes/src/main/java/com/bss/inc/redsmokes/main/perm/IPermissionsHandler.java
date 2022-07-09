@@ -4,4 +4,5 @@ import org.bukkit.entity.Player;
 
 public interface IPermissionsHandler {
     String getGroup(Player base);
+    
 }
