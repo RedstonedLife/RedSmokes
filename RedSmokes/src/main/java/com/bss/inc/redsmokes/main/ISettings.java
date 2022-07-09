@@ -35,4 +35,5 @@ public interface ISettings extends IConf {
     boolean isEcoLogEnabled();
     boolean isEcoLogUpdateEnabled();
     boolean allowUnsafeEnchantments();
+    boolean getRepairEnchanted();
 }
