@@ -37,4 +37,5 @@ public interface ISettings extends IConf {
     boolean allowUnsafeEnchantments();
     boolean getRepairEnchanted();
     int getSignUsePerSecond();
+    int getMailsPerMinute();
 }
