@@ -41,7 +41,7 @@ public class Backup implements Runnable {
             if(interval < 1200) {
                 return;
             }
-            taskId = redSmokes.scheduleSyncRepeatingTask(this, interval, interval)
+            taskId = redSmokes.scheduleSyncRepeatingTask(this, interval, interval);
         }
     }
 }
