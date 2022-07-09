@@ -11,4 +11,6 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         @Override protected Object handleGetObject(final String key) {return null;}
         @Override public Enumeration<String> getKeys() {return null;}
     };
+    private static I18n instance;
+    
 }
