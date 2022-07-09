@@ -67,7 +67,7 @@ public interface IItemDb extends com.bss.inc.redsmokes.api.IItemDb {
 
     /**
      * Create a stack from the given name with the maximum stack size for that material.
-     *
+     * <p>
      * Note: it is unlikely that external plugins will need to call this method directly. In most cases, {@link IItemDb#get(String)}
      * and {@link IItemDb#get(String, int)} should be sufficient. However, if you intend to perform an item lookup <i>inside</i>
      * a {@link ItemResolver} implementation, you <b>must</b> call this method with useResolvers as false to prevent recursion.
@@ -78,7 +78,9 @@ public interface IItemDb extends com.bss.inc.redsmokes.api.IItemDb {
      * @return The requested item stack with the maximum stack size
      * @throws Exception if the item stack cannot be created
      */
-    ItemStack get(String name, boolean useResolvers) throws Exception;
+    default ItemStack get(String name, boolean useResolvers) throws Exception {
+        return null;
+    }
 
     /**
      * Converts the given {@link ItemStack} to a string representation that can be saved.
