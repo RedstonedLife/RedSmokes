@@ -32,5 +32,6 @@ public interface ISettings extends IConf {
     List<RedSmokesSign> enabledSigns();
     BigDecimal getMaxMoney();
     BigDecimal getMinMoney();
-    
+    boolean isEcoLogEnabled();
+    boolean isEcoLogUpdateEnabled();
 }
