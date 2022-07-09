@@ -36,4 +36,5 @@ public interface IRedSmokes extends Plugin {
     int broadcastMessage(IUser sender, String message, Predicate<IUser> shouldExclude);
     int broadcastMessage(String permission, String message);
     ISettings getSettings();
+    
 }
