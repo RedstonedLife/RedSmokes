@@ -12,6 +12,7 @@ import com.bss.inc.redsmokes.main.provider.MaterialTagProvider;
 import com.bss.inc.redsmokes.main.provider.ContainerProvider;
 import com.bss.inc.redsmokes.main.provider.KnownCommandsProvider;
 import com.bss.inc.redsmokes.main.provider.SerializationProvider;
+import com.bss.inc.redsmokes.main.provider.FormattedCommandAliasProvider;
 import com.bss.inc.redsmokes.main.provider.
 import org.bukkit.Server;
 import org.bukkit.World;
