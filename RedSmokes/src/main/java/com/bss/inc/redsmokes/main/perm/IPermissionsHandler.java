@@ -7,5 +7,5 @@ import java.util.List;
 public interface IPermissionsHandler {
     String getGroup(Player base);
     List<String> getGroups(Player base);
-    boolean inGroup()
+    boolean inGroup(Player base)
 }
