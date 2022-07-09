@@ -47,4 +47,5 @@ public interface ISettings extends IConf {
     long getCommandCooldownMs(String label);
     Entry<Pattern, Long> getCommandCooldownEntry(String label);
     boolean isCommandCooldownPersistent(String label);
+    boolean isNpcsInBalanceRanking();
 }
