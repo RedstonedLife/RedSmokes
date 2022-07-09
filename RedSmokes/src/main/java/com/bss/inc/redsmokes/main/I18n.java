@@ -28,4 +28,8 @@ public class I18n implements com.bss.inc.redsmokes.api.II18n {
         localeBundle = defaultBundle;
         customBundle = NULL_BUNDLE;
     }
+
+    public static String tl(final String string, final Object... objects) {
+        
+    }
 }
