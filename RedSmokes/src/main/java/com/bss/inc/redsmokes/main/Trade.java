@@ -36,6 +36,7 @@ public class Trade {
     }
 
     public Trade(final String command, final Trade fallback, final BigDecimal money, final ItemStack item, final Integer exp, final IRedSmokes redSmokes) {
-        
+        this.command = command;
+        this.fallbackTrade = fallback;
     }
 }
