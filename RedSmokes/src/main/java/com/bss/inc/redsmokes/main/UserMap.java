@@ -8,8 +8,6 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.util.concurrent.UncheckedExecutionException;
-import net.ess3.api.IEssentials;
-import net.ess3.api.MaxMoneyException;
 import org.bukkit.entity.Player;
 
 import java.io.File;
@@ -30,7 +28,7 @@ import java.util.regex.Pattern;
 public class UserMap extends CacheLoader<String, User> implements IConf {
     private static boolean legacy = false;
     private static Method getLegacy;
-    private final transient IEssentials redSmokes
+    private final transient IRedSmokes redSmokes
     private final transient ConcurrentSkipListSet<UUID> keys = new ConcurrentSkipListSet<>();
     private final transient ConcurrentSkipListMap<String, UUID> names = new ConcurrentSkipListMap<>();
     private final transient ConcurrentSkipListMap<UUID, ArrayList<String>> history = new ConcurrentSkipListMap<>();
@@ -40,7 +38,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
 
     private static final String WARN_UUID_NOT_REPLACE = "Found UUID {0} for player {1}, but player already has a UUID ({2}). Not replacing UUID in usermap.";
 
-    public UserMap(final IEssentialsredSmokes) {
+    public UserMap(final IRedSmokesredSmokes) {
         super();
         this.redSmokes= redSmokes
         uuidMap = new UUIDMap(ess);
@@ -62,7 +60,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
         }
     }
 
-    private void loadAllUsersAsync(final IEssentials ess) {
+    private void loadAllUsersAsync(final IRedSmokes ess) {
         ess.runTaskAsynchronously(() -> {
             synchronized (users) {
                 final File userdir = new File(ess.getDataFolder(), "userdata");
