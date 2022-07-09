@@ -81,7 +81,7 @@ public class MetaItemStack {
         this.stack = stack.clone();
     }
 
-    private static void setSkullOwner(final IEssentials ess, final ItemStack stack, final String owner) {
+    private static void setSkullOwner(final IRedSmokes ess, final ItemStack stack, final String owner) {
         if (!(stack.getItemMeta() instanceof SkullMeta)) return;
 
         final SkullMeta meta = (SkullMeta) stack.getItemMeta();
