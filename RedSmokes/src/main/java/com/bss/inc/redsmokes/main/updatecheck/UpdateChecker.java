@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -179,6 +180,25 @@ public class UpdateChecker {
                 }
             }
         } catch (JsonSyntaxException | NumberFormatException e) {
+            e.printStackTrace();
+            return new RemoteVersion(BranchStatus.ERROR);
+        }
+    }
+
+    private RemoteVersion fetchDistance(final String head, final String hash) {
+        try {
+            final HttpURLConnection connection = tryRequestWithFallback(MessageFormat.format(DISTANCE_URL, head, hash), MessageFormat.format(DISTANCE_PROXY_URL, head, hash));
+
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
+                // Locally built?
+                return new RemoteVersion(BranchStatus.UNKNOWN);
+            } else if (connection.getResponseCode() == HttpURLConnection.HTTP_INTERNAL_ERROR || connection.getResponseCode() == HttpURLConnection.HTTP_FORBIDDEN) {
+                // GitHub is down or we hit a local rate limit
+                return new RemoteVersion(BranchStatus.ERROR);
+            }
+
+            return tryProcessDistance(connection);
+        } catch (IOException e) {
             e.printStackTrace();
             return new RemoteVersion(BranchStatus.ERROR);
         }
