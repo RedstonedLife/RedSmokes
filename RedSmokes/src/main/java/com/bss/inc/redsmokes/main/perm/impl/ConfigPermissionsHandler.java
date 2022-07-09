@@ -22,7 +22,7 @@ public class ConfigPermissionsHandler extends SuperpermsHandler {
     @Override
     public TriState isPermissionSetExact(Player base, String node) {
         final String[] cmds = node.split("\\.", 2);
-        return ess.getSettings().isPlayerCommand(cmds[cmds.length - 1]) ? TriState.TRUE : super.isPermissionSetExact(base, node);
+        return redSmokes.getSettings().isPlayerCommand(cmds[cmds.length - 1]) ? TriState.TRUE : super.isPermissionSetExact(base, node);
     }
 
     @Override
