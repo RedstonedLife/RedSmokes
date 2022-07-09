@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main.perm.impl;
 
+import com.bss.inc.redsmokes.main.RedSmokes;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.context.ContextCalculator;
 import net.luckperms.api.context.ContextConsumer;
@@ -16,7 +17,7 @@ import java.util.function.Supplier;
 
 public class LuckPermsHandler extends ModernVaultHandler {
     private LuckPerms luckPerms;
-    private Essentials ess;
+    private RedSmokes ess;
     private CombinedCalculator calculator;
 
     @Override
