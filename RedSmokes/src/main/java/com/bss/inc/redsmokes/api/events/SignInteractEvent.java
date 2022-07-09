@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.api.events;
 
+import com.bss.inc.redsmokes.api.IUser;
 import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import org.bukkit.event.HandlerList;
 
