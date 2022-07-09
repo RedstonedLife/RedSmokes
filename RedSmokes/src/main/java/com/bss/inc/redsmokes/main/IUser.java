@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
+import com.bss.inc.redsmokes.api.services.mail.MailSender;
 
 import java.math.BigDecimal;
 
