@@ -7,6 +7,7 @@ import com.bss.inc.redsmokes.api.services.mail.MailSender;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Set;
 
 public interface IUser {
     boolean isAuthorized(String node);
@@ -42,4 +43,6 @@ public interface IUser {
     ArrayList<MailMessage> getMailMessages();
     void setMailList(ArrayList<MailMessage> messages);
     int getMailAmount();
+    Set<String> getConfigKeys();
+    
 }
