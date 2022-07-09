@@ -4,5 +4,5 @@ import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
 public class BookInput implements IText {
-    private final static HashMap<String, SoftReference<BookInput>>
+    private final static HashMap<String, SoftReference<BookInput>> cache = new HashMap<>();
 }
