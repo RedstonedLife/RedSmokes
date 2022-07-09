@@ -43,4 +43,6 @@ public class Trade {
         this.exp = exp;
         this.redSmokes = redSmokes;
     }
+
+    
 }
