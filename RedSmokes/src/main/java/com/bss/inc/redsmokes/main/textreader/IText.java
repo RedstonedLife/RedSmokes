@@ -10,4 +10,5 @@ public interface IText {
     List<String> getChapters();
 
     // Bookmarks contains the string mappings from 'chapters' to line numbers.
+    Map<String, Integer>
 }
