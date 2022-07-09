@@ -1,8 +1,11 @@
 package com.bss.inc.redsmokes.main.perm;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
+import com.bss.inc.redsmokes.main.User;
 
 import java.util.Arrays;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 
 public class PermissionsHandler implements IPermissionsHandler {
