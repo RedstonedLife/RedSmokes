@@ -66,5 +66,5 @@ public interface IUser {
     boolean isPromptingPayConfirm();
     void setPromptingPayConfirm(boolean prompt);
     boolean isPromptingClearConfirm();
-    void
+    void setPromptingClearConfirm()
 }
