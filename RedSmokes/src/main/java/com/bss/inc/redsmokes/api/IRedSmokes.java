@@ -51,4 +51,5 @@ public interface IRedSmokes extends Plugin {
     PermissionHandler getPermissionsHandler();
     void showError(CommandSource sender, Throwable exception, String commandLabel);
     IItemDB getItemDb();
+    UserMap getUserMap();
 }
