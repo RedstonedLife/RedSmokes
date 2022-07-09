@@ -25,6 +25,10 @@ public class UpdateChecker {
     private RemoteVersion cachedRelease = null;
 
     public UpdateChecker(RedSmokes redSmokes) {
+        String identifier = "INVALID";
+        String branch = "INVALID";
+        boolean dev = false;
+
         
     }
 }
