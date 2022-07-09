@@ -73,7 +73,7 @@ public class UpdateChecker {
                 return pendingDevFuture;
             }
             pendingDevFuture = new CompletableFuture<>();
-            ess.runTaskAsynchronously(() -> {
+            redSmokes.runTaskAsynchronously(() -> {
                 pendingDevFuture.complete(cachedDev = fetchDistance(BRANCH, getVersionIdentifier()));
                 pendingDevFuture = null;
                 lastFetchTime = System.currentTimeMillis();
