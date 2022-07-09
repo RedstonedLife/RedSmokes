@@ -24,6 +24,6 @@ public class Trade {
     }
 
     public Trade(final BigDecimal money, final IRedSmokes redSmokes) {
-        this(null, null)
+        this(null, null, money, null, null)
     }
 }
