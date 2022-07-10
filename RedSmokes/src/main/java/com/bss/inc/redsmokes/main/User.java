@@ -16,5 +16,6 @@ public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     // User Properties
     private transient boolean vanished;
     private boolean hidden = false;
+
     
 }
