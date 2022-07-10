@@ -44,7 +44,9 @@ public class RedSmokesTimer implements Runnable {
                     break;
                 }
             }
-            
+            try {
+                final User
+            }
         }
     }
 
