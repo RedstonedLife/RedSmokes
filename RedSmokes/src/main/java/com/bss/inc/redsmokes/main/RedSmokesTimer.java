@@ -13,6 +13,6 @@ public class RedSmokesTimer implements Runnable {
     private final long maxTime = 10 * 1000000;
     @SuppressWarnings("FieldCanBeLocal")
     private final long tickInterval = 50;
-    
+    private transient long lastPoll = System.nanoTime();
 
 }
