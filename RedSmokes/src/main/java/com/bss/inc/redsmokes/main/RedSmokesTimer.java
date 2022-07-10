@@ -54,7 +54,9 @@ public class RedSmokesTimer implements Runnable {
 
         count = 0;
         final Iterator<UUID> iterator = onlineUsers.iterator();
-        
+        while (iterator.hasNext()) {
+            
+        }
     }
 
 }
