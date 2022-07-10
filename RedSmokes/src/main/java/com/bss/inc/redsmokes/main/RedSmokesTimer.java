@@ -72,6 +72,7 @@ public class RedSmokesTimer implements Runnable {
     public double getAverageTPS() {
         double avg = 0;
         for(final Double f : history) {if (f != null) {avg += f;}}
+        return avg / history.size()
     }
 
 }
