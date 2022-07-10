@@ -68,4 +68,14 @@ public interface IUser {
     boolean isPromptingClearConfirm();
     void setPromptingClearConfirm(boolean prompt);
     Map<User, BigDecimal> getConfirmingPayments();
+    /**
+     * 'Hidden' Represents when a player is hidden from others. This status includes when the player is hidden via other
+     * supported plugins. Use isVanished() if you want to check if a user is vanished by Essentials.
+     *
+     * @return If the user is hidden or not
+     * @see IUser#isVanished()
+     */
+    boolean isHidden();
+    void setHidden(boolean vanish);
+
 }
