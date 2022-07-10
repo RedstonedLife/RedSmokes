@@ -37,7 +37,8 @@ public class RedSmokesTimer implements Runnable {
         onlineUsers.clear();
         for(final Player player : redSmokes.getOnlinePlayers()) {
             count++;
-            if(skip1 > 0) {
+            if(skip1 > 0) {skip1--;continue;}
+            
         }
     }
 
