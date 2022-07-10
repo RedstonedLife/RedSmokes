@@ -63,6 +63,8 @@ public class RedSmokesTimer implements Runnable {
             if(user == null) {iterator.remove();continue;}
             if(user.getLastOnlineActivity() < currentTime && user.getLastOnlineActivity() > user.getLastLogout()) {
                 if(!user.isHidden()) {
+                    
+                }
             }
         }
     }
