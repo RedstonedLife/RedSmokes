@@ -16,6 +16,9 @@ public class RedSmokesTimer implements Runnable {
     private transient long lastPoll = System.nanoTime();
     private int skip1,skip2 = 0;
 
-    
+    RedSmokesTimer(final IRedSmokes redSmokes) {
+        this.redSmokes = redSmokes;
+        history.add(20d);
+    }
 
 }
