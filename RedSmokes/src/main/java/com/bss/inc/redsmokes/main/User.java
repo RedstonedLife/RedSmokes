@@ -23,4 +23,6 @@ public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     private transient long lastActivity = System.currentTimeMillis();
     private long lastNotifiedAboutMailsMs;
 
+    
+
 }
