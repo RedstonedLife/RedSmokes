@@ -17,5 +17,6 @@ public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     private transient boolean vanished;
     private boolean hidden = false;
 
-    
+    // Misc
+    private transient long lastOnlineActivity, lastThrottledAction,
 }
