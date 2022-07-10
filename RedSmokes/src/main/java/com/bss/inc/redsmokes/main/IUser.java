@@ -12,6 +12,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public interface IUser {
+    boolean isHidden();
     boolean isAuthorized(String node);
     boolean isAuthorized(IrsCommand cmd);
     boolean isAuthorized(IrsCommand cmd, String permissionPrefix);
