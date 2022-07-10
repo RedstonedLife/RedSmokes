@@ -78,7 +78,7 @@ public interface IUser {
     boolean isHidden();
     void setHidden(boolean vanish);
     /**
-     * 'Vanished' Represents when a player is hidden from others by Essentials. This status does NOT include when the
+     * 'Vanished' Represents when a player is hidden from others by RedSmokes. This status does NOT include when the
      * player is hidden via other plugins. Use isHidden() if you want to check if a user is vanished by any supported
      * plugin.
      *
