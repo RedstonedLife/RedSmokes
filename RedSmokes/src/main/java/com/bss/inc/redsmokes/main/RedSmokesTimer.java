@@ -23,6 +23,8 @@ public class RedSmokesTimer implements Runnable {
 
     @Override
     public void run() {
+        final long startTime = System.nanoTime();
+        final long currentTime = System.currentTimeMillis();
         
     }
 
