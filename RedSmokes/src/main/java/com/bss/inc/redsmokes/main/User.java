@@ -29,7 +29,7 @@ public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     private transient long lastVanishTime = System.currentTimeMillis();
 
     public User(final Player base, final IRedSmokes redSmokes) {
-        
+        super()
     }
 
 }
