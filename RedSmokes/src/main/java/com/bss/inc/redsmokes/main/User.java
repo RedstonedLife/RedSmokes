@@ -13,5 +13,5 @@ public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     // User command confirmation strings
     private final Map<User, BigDecimal> confirmingPayments = new WeakHashMap<>();
 
-    //
+    // User Properties
 }
