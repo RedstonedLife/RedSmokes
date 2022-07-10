@@ -57,8 +57,7 @@ public class RedSmokesTimer implements Runnable {
         while (iterator.hasNext()) {
             count++;
             if(skip2 > 0) {skip2--;continue;}
-            if(count % 10 == 0) {
-                if(System.nanoTime() - startTime > maxTime) {
+            if(count % 10 == 0) {if(System.nanoTime() - startTime > maxTime) {skip2 = count - 1;break;}}
             }
         }
     }
