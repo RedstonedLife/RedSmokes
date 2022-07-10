@@ -58,6 +58,8 @@ public class RedSmokesTimer implements Runnable {
             count++;
             if(skip2 > 0) {skip2--;continue;}
             if(count % 10 == 0) {
+                
+            }
         }
     }
 
