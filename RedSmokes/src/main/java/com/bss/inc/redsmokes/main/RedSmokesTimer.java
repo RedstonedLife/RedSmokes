@@ -65,6 +65,7 @@ public class RedSmokesTimer implements Runnable {
                 if(!user.isHidden()) {
                     user.setLastLogout(user.getLastOnlineActivity());
                 }
+                
             }
         }
     }
