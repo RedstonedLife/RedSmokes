@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
+import org.bukkit.entity.Player;
+
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
@@ -33,6 +35,7 @@ public class RedSmokesTimer implements Runnable {
         lastPoll = startTime;
         int count = 0;
         onlineUsers.clear();
+        for(final Player player : )
     }
 
 }
