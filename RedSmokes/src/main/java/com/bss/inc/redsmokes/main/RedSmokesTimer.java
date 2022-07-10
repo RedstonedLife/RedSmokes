@@ -38,7 +38,9 @@ public class RedSmokesTimer implements Runnable {
         for(final Player player : redSmokes.getOnlinePlayers()) {
             count++;
             if(skip1 > 0) {skip1--;continue;}
-            
+            if(count % 10 == 0) {
+                if(System.nanoTime())
+            }
         }
     }
 
