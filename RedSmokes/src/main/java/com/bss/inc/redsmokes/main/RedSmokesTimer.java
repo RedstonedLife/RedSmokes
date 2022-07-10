@@ -29,6 +29,7 @@ public class RedSmokesTimer implements Runnable {
         if(timeSpent == 0) {timeSpent = 1;}
         if(history.size() > 10) {history.remove();}
         final double tps = tickInterval * 1000000.0 / timeSpent;
+        if(tps <= 21) {history.add(tps);}
     }
 
 }
