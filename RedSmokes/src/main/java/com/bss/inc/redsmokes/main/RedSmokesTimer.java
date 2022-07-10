@@ -12,6 +12,7 @@ public class RedSmokesTimer implements Runnable {
     @SuppressWarnings("FieldCanBeLocal")
     private final long maxTime = 10 * 1000000;
     @SuppressWarnings("FieldCanBeLocal")
-    private final 
+    private final long tickInterval = 50;
+    
 
 }
