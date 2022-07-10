@@ -10,5 +10,5 @@ public class RedSmokesTimer implements Runnable {
     private final transient Set<UUID> onlineUsers = new HashSet<>();
     private final LinkedList<Double> history = new LinkedList<>();
     @SuppressWarnings("FieldCanBeLocal")
-    
+    private final long maxTime = 10 * 
 }
