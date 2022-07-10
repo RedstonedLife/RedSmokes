@@ -61,7 +61,9 @@ public class RedSmokesTimer implements Runnable {
             final User user = redSmokes.getUser(iterator.next());
             // Not sure why this would happen, but it does
             if(user == null) {iterator.remove();continue;}
-            
+            if(user.getLastOnlineActivity() < currentTime && user.getLastOnlineActivity() > user.getLastLogout()) {
+                
+            }
         }
     }
 
