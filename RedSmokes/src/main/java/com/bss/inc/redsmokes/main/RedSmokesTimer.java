@@ -1,6 +1,10 @@
 package com.bss.inc.redsmokes.main;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 public class RedSmokesTimer implements Runnable {
     private final transient IRedSmokes redSmokes;
-    private final transient 
+    private final transient Set<UUID> onlineUsers = new HashSet<>();
 }
