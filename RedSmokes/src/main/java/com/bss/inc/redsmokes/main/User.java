@@ -30,6 +30,7 @@ public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
 
     public User(final Player base, final IRedSmokes redSmokes) {
         super(base, redSmokes);
+        if(this.getBase())
     }
 
 }
