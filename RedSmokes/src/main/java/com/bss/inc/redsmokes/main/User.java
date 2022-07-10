@@ -14,5 +14,5 @@ public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     private final Map<User, BigDecimal> confirmingPayments = new WeakHashMap<>();
 
     // User Properties
-    private 
+    private transient boolean vanished;
 }
