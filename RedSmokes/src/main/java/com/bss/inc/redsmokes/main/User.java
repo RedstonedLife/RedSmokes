@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.google.common.collect.Lists;
 import org.bukkit.Statistic;
+import org.bukkit.entity.Player;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -26,5 +27,9 @@ public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     private long lastNotifiedAboutMailsMs;
     private transient final List<String> signCopy = Lists.newArrayList("","","","");
     private transient long lastVanishTime = System.currentTimeMillis();
+
+    public User(final Player base, final IRedSmokes redSmokes) {
+        
+    }
 
 }
