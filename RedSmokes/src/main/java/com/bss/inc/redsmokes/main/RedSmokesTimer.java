@@ -32,7 +32,7 @@ public class RedSmokesTimer implements Runnable {
         if(tps <= 21) {history.add(tps);}
         lastPoll = startTime;
         int count = 0;
-        
+        onlineUsers.clear();
     }
 
 }
