@@ -60,7 +60,8 @@ public class RedSmokesTimer implements Runnable {
             if(count % 10 == 0) {if(System.nanoTime() - startTime > maxTime) {skip2 = count - 1;break;}}
             final User user = redSmokes.getUser(iterator.next());
             // Not sure why this would happen, but it does
-            if(user == null) {iterator.remove();continue;
+            if(user == null) {iterator.remove();continue;}
+            
         }
     }
 
