@@ -66,6 +66,7 @@ public class RedSmokesTimer implements Runnable {
                     user.setLastLogout(user.getLastOnlineActivity());
                 }
                 iterator.remove();
+                continue;
             }
         }
     }
