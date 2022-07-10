@@ -45,7 +45,8 @@ public class RedSmokesTimer implements Runnable {
                 }
             }
             try {
-                final User user = 
+                final User user = redSmokes.getUser(player);
+                
             }
         }
     }
