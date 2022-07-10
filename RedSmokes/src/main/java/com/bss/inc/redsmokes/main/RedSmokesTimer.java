@@ -11,4 +11,7 @@ public class RedSmokesTimer implements Runnable {
     private final LinkedList<Double> history = new LinkedList<>();
     @SuppressWarnings("FieldCanBeLocal")
     private final long maxTime = 10 * 1000000;
+    @SuppressWarnings("FieldCanBeLocal")
+    private final 
+
 }
