@@ -14,5 +14,6 @@ public class RedSmokesTimer implements Runnable {
     @SuppressWarnings("FieldCanBeLocal")
     private final long tickInterval = 50;
     private transient long lastPoll = System.nanoTime();
+    private int skip1
 
 }
