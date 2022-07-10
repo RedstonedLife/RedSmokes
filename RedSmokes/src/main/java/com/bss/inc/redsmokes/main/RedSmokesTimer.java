@@ -25,7 +25,12 @@ public class RedSmokesTimer implements Runnable {
     public void run() {
         final long startTime = System.nanoTime();
         final long currentTime = System.currentTimeMillis();
-        
+        long timeSpent = (startTime - lastPoll) / 1000;
+        if(timeSpent == 0) {
+            timeSpent = 1;
+        }
+        if(history.size() > 10) {history.remove();}
+
     }
 
 }
