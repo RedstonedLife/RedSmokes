@@ -20,4 +20,6 @@ public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     // Misc
     private transient long lastOnlineActivity;
     private transient long lastThrottledAction;
+    
+
 }
