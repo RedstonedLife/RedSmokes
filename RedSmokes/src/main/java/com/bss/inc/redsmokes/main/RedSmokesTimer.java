@@ -1,4 +1,5 @@
 package com.bss.inc.redsmokes.main;
 
-public class RedSmokesTimer im{
+public class RedSmokesTimer implements Runnable {
+    
 }
