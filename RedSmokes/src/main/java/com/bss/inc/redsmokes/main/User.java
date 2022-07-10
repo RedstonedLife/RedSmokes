@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-public class User implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
+public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     private static final Statistic PLAY_ONE_TICK = EnumUtil.getStatistic("PLAY_ONE_MINUTE", "PLAY_ONE_TICK");
 
     // User command confirmation strings
