@@ -2,10 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import org.bukkit.entity.Player;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 
 public class RedSmokesTimer implements Runnable {
@@ -56,6 +53,7 @@ public class RedSmokesTimer implements Runnable {
         }
 
         count = 0;
+        final Iterator<UUID> iterator = onlineUsers.iterator();
         
     }
 
