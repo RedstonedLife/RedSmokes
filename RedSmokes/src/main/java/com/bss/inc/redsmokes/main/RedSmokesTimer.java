@@ -21,4 +21,9 @@ public class RedSmokesTimer implements Runnable {
         history.add(20d);
     }
 
+    @Override
+    public void run() {
+        
+    }
+
 }
