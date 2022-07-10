@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.UUID;
+import java.util.logging.Level;
 
 public class RedSmokesTimer implements Runnable {
     private final transient IRedSmokes redSmokes;
@@ -49,8 +50,13 @@ public class RedSmokesTimer implements Runnable {
                 onlineUsers.add(user.getBase().getUniqueId());
                 user.setLastOnlineActivity(currentTime);
                 user.checkActivity();
+            } catch (final Exception e) {
+                redSmokes.getLogger().log(Level.WARNING, "RedSmokesTimer Error: ", e);
             }
         }
+
+        count = 0;
+        
     }
 
 }
