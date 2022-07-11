@@ -10,14 +10,17 @@ import com.bss.inc.redsmokes.main.config.entities.LazyLocation;
 import com.bss.inc.redsmokes.main.config.holders.UserConfigHolder;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
+import com.google.common.base.Charsets;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.spongepowered.configurate.serialize.SerializationException;
 
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
@@ -52,10 +55,10 @@ public abstract class UserData extends PlayerExtension implements IConf {
         config.blockingSave();
         config.getFile().delete();
         if (config.getUsername() != null) {
-            ess.getUserMap().removeUser(config.getUsername());
+            redsmokes.getUserMap().removeUser(config.getUsername());
             if (isNPC()) {
                 final String uuid = UUID.nameUUIDFromBytes(("NPC:" + StringUtil.safeString(config.getUsername())).getBytes(Charsets.UTF_8)).toString();
-                ess.getUserMap().removeUserUUID(uuid);
+                redsmokes.getUserMap().removeUserUUID(uuid);
             }
         }
     }
@@ -70,14 +73,14 @@ public abstract class UserData extends PlayerExtension implements IConf {
         try {
             holder = config.getRootNode().get(UserConfigHolder.class);
         } catch (SerializationException e) {
-            ess.getLogger().log(Level.SEVERE, "Error while reading user config: " + config.getFile().getName(), e);
+            redsmokes.getLogger().log(Level.SEVERE, "Error while reading user config: " + config.getFile().getName(), e);
             throw new RuntimeException(e);
         }
         config.setSaveHook(() -> {
             try {
                 config.getRootNode().set(UserConfigHolder.class, holder);
             } catch (SerializationException e) {
-                ess.getLogger().log(Level.SEVERE, "Error while saving user config: " + config.getFile().getName(), e);
+                redsmokes.getLogger().log(Level.SEVERE, "Error while saving user config: " + config.getFile().getName(), e);
                 throw new RuntimeException(e);
             }
         });
@@ -85,9 +88,9 @@ public abstract class UserData extends PlayerExtension implements IConf {
     }
 
     private BigDecimal _getMoney() {
-        BigDecimal result = ess.getSettings().getStartingBalance();
-        final BigDecimal maxMoney = ess.getSettings().getMaxMoney();
-        final BigDecimal minMoney = ess.getSettings().getMinMoney();
+        BigDecimal result = redsmokes.getSettings().getStartingBalance();
+        final BigDecimal maxMoney = redsmokes.getSettings().getMaxMoney();
+        final BigDecimal minMoney = redsmokes.getSettings().getMinMoney();
 
         // NPC banks are not actual player banks, as such they do not have player starting balance.
         if (isNPC()) {
