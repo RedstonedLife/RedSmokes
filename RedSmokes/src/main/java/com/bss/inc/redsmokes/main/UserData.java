@@ -6,6 +6,7 @@ import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
 import com.bss.inc.redsmokes.main.config.holders.UserConfigHolder;
 import org.bukkit.entity.Player;
 
+import java.io.File;
 import java.math.BigDecimal;
 
 public abstract class UserData extends PlayerExtension implements IConf {
@@ -17,6 +18,6 @@ public abstract class UserData extends PlayerExtension implements IConf {
     protected UserData(final Player base, final com.bss.inc.redsmokes.api.IRedSmokes redsmokes) {
         super(base);
         this.redsmokes = redsmokes;
-        
+        final File folder = new File(redsmokes.getDataFolder(), "userdata");
     }
 }
