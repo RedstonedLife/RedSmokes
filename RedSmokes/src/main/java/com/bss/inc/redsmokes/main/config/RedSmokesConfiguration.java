@@ -431,7 +431,7 @@ public class RedSmokesConfiguration {
         try {
             delaySave().get();
         } catch (final InterruptedException | ExecutionException e) {
-            Essentials.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
+            RedSmokes.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
