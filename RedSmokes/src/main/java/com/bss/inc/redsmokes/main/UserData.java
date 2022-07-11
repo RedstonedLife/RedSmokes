@@ -40,6 +40,9 @@ public abstract class UserData extends PlayerExtension implements IConf {
         config.getFile().delete();
         if(config.getUsername() != null) {
             redsmokes.getUserMap().removeUser(config.getUsername());
+            if(isNPC()) {
+                
+            }
         }
     }
 }
