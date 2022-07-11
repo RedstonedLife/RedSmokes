@@ -26,5 +26,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
             redsmokes.getLogger().warning("Falling back to old username system for " + base.getName());
             filename = base.getName();
         }
+
+        
     }
 }
