@@ -1,2 +1,4 @@
-package com.bss.inc.redsmokes.main.items;public class FlatItemDb {
+package com.bss.inc.redsmokes.main.items;
+
+public class FlatItemDb {
 }
