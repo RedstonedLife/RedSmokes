@@ -23,7 +23,8 @@ public abstract class UserData extends PlayerExtension implements IConf {
         String filename;
         try {filename = base.getUniqueId().toString();}
         catch (final Throwable ex) {
-            
+            redsmokes.getLogger().warning("Falling back to old username system for " + base.getName());
+            filename = base.getName();
         }
     }
 }
