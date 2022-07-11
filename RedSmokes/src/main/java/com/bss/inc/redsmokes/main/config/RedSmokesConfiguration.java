@@ -330,13 +330,13 @@ public class RedSmokesConfiguration {
 
     public synchronized void load() {
         if (pendingWrites.get() != 0) {
-            Essentials.getWrappedLogger().log(Level.INFO, "Parsing config file {0} has been aborted due to {1} current pending write(s).", new Object[]{configFile, pendingWrites.get()});
+            RedSmokes.getWrappedLogger().log(Level.INFO, "Parsing config file {0} has been aborted due to {1} current pending write(s).", new Object[]{configFile, pendingWrites.get()});
             return;
         }
 
         if (configFile.getParentFile() != null && !configFile.getParentFile().exists()) {
             if (!configFile.getParentFile().mkdirs()) {
-                Essentials.getWrappedLogger().log(Level.SEVERE, tl("failedToCreateConfig", configFile.toString()));
+                RedSmokes.getWrappedLogger().log(Level.SEVERE, tl("failedToCreateConfig", configFile.toString()));
                 return;
             }
         }
