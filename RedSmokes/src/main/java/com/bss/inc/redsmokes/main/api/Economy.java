@@ -79,7 +79,6 @@ public class Economy {
             /*
                 Attempt lookup using UUID - this prevents balance resets when accessing economy
                 via Vault during player join.
-                See: https://github.com/EssentialsX/Essentials/issues/2400
             */
             final Player player = redSmokes.getServer().getPlayerExact(name);
             if (player != null) {
