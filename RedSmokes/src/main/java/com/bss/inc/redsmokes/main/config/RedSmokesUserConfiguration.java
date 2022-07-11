@@ -14,7 +14,7 @@ public class RedSmokesUserConfiguration extends RedSmokesConfiguration {
     private String username;
     private final UUID uuid;
 
-    public EssentialsUserConfiguration(final String username, final UUID uuid, final File configFile) {
+    public RedSmokesUserConfiguration(final String username, final UUID uuid, final File configFile) {
         super(configFile);
         this.username = username;
         this.uuid = uuid;
