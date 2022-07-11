@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main.economy.vault;
 
+import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.RedSmokes;
 import com.bss.inc.redsmokes.main.api.UserDoesNotExistException;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
@@ -176,7 +177,7 @@ public class VaultEconomyProvider implements Economy {
         }
 
         try {
-            com.earth2me.essentials.api.Economy.subtract(playerName, amount);
+            com.bss.inc.redsmokes.api.Economy.subtract(playerName, amount);
             return new EconomyResponse(amount, getBalance(playerName), EconomyResponse.ResponseType.SUCCESS, null);
         } catch (UserDoesNotExistException e) {
             return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "User does not exist!");
