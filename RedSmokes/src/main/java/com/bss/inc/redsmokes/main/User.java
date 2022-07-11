@@ -77,12 +77,12 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         }
 
         try {
-            return ess.getPermissionsHandler().hasPermission(base, node);
+            return redsmokes.getPermissionsHandler().hasPermission(base, node);
         } catch (final Exception ex) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.SEVERE, "Permission System Error: " + ess.getPermissionsHandler().getName() + " returned: " + ex.getMessage(), ex);
+            if (redsmokes.getSettings().isDebug()) {
+                redsmokes.getLogger().log(Level.SEVERE, "Permission System Error: " + redsmokes.getPermissionsHandler().getName() + " returned: " + ex.getMessage(), ex);
             } else {
-                ess.getLogger().log(Level.SEVERE, "Permission System Error: " + ess.getPermissionsHandler().getName() + " returned: " + ex.getMessage());
+                redsmokes.getLogger().log(Level.SEVERE, "Permission System Error: " + redsmokes.getPermissionsHandler().getName() + " returned: " + ex.getMessage());
             }
 
             return false;
