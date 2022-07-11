@@ -69,16 +69,16 @@ public class RedSmokesConfiguration {
         this(configFile, null);
     }
 
-    public EssentialsConfiguration(final File configFile, final String templateName) {
+    public RedSmokesConfiguration(final File configFile, final String templateName) {
         this(configFile, templateName, (String) null);
     }
 
-    public EssentialsConfiguration(final File configFile, final String templateName, final Class<?> resourceClass) {
+    public RedSmokesConfiguration(final File configFile, final String templateName, final Class<?> resourceClass) {
         this(configFile, templateName, (String) null);
         this.resourceClass = resourceClass;
     }
 
-    public EssentialsConfiguration(final File configFile, final String templateName, final String header) {
+    public RedSmokesConfiguration(final File configFile, final String templateName, final String header) {
         this.configFile = configFile;
         this.loader = YamlConfigurationLoader.builder()
                 .defaultOptions(opts -> opts
