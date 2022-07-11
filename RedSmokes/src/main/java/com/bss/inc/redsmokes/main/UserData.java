@@ -672,7 +672,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
     }
 
     public boolean isPromptingClearConfirm() {
-        return holder.confirmClear() != null ? holder.confirmClear() : ess.getSettings().isConfirmCommandEnabledByDefault("clearinventory");
+        return holder.confirmClear() != null ? holder.confirmClear() : redsmokes.getSettings().isConfirmCommandEnabledByDefault("clearinventory");
     }
 
     public void setPromptingClearConfirm(final boolean prompt) {
@@ -680,14 +680,6 @@ public abstract class UserData extends PlayerExtension implements IConf {
         save();
     }
 
-    public boolean isLastMessageReplyRecipient() {
-        return holder.lastMessageReplyRecipient() != null ? holder.lastMessageReplyRecipient() : ess.getSettings().isLastMessageReplyRecipient();
-    }
-
-    public void setLastMessageReplyRecipient(final boolean enabled) {
-        holder.lastMessageReplyRecipient(enabled);
-        save();
-    }
 
     public boolean isBaltopExcludeCache() {
         return holder.baltopExempt();
@@ -695,18 +687,6 @@ public abstract class UserData extends PlayerExtension implements IConf {
 
     public void setBaltopExemptCache(boolean baltopExempt) {
         holder.baltopExempt(baltopExempt);
-        config.save();
-    }
-
-    public boolean isShouting() {
-        if (holder.shouting() == null) {
-            holder.shouting(ess.getSettings().isShoutDefault());
-        }
-        return holder.shouting();
-    }
-
-    public void setShouting(boolean shouting) {
-        holder.shouting(shouting);
         config.save();
     }
 
