@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
+import java.util.logging.Level;
 
 public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     private static final Statistic PLAY_ONE_TICK = EnumUtil.getStatistic("PLAY_ONE_MINUTE", "PLAY_ONE_TICK");
@@ -47,8 +48,8 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     @Override
     public boolean isAuthorized(final String node) {
         final boolean result = isAuthorizedCheck(node);
-        if (ess.getSettings().isDebug()) {
-            ess.getLogger().log(Level.INFO, "checking if " + base.getName() + " has " + node + " - " + result);
+        if (redsmokes.getSettings().isDebug()) {
+            redsmokes.getLogger().log(Level.INFO, "checking if " + base.getName() + " has " + node + " - " + result);
         }
         return result;
     }
