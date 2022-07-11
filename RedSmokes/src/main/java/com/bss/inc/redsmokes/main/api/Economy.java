@@ -356,7 +356,7 @@ public class Economy {
     public static void substract(final String name, final BigDecimal amount) throws UserDoesNotExistException, NoLoanPermittedException, ArithmeticException, MaxMoneyException {
         final BigDecimal result = getMoneyExact(name).subtract(amount, MATH_CONTEXT);
         setMoney(name, result);
-        Trade.log("API", "Subtract", "API", name, new Trade(amount, ess), null, null, null, result, ess);
+        Trade.log("API", "Subtract", "API", name, new Trade(amount, redSmokes), null, null, null, result, redSmokes);
     }
 
     /**
