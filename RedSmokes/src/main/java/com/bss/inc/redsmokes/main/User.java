@@ -39,4 +39,6 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     void update(final Player base) {setBase(base);}
     public IRedSmokes getRedSmokes() {return redsmokes;}
     @Override public boolean isAuthorized(final IrsCommand cmd) {return isAuthorized(cmd);}
+    
+
 }
