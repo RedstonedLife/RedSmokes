@@ -663,23 +663,13 @@ public abstract class UserData extends PlayerExtension implements IConf {
     }
 
     public boolean isPromptingPayConfirm() {
-        return holder.confirmPay() != null ? holder.confirmPay() : ess.getSettings().isConfirmCommandEnabledByDefault("pay");
+        return holder.confirmPay() != null ? holder.confirmPay() : redsmokes.getSettings().isConfirmCommandEnabledByDefault("pay");
     }
 
     public void setPromptingPayConfirm(final boolean prompt) {
         holder.confirmPay(prompt);
         save();
     }
-
-    public boolean isPromptingClearConfirm() {
-        return holder.confirmClear() != null ? holder.confirmClear() : redsmokes.getSettings().isConfirmCommandEnabledByDefault("clearinventory");
-    }
-
-    public void setPromptingClearConfirm(final boolean prompt) {
-        holder.confirmClear(prompt);
-        save();
-    }
-
 
     public boolean isBaltopExcludeCache() {
         return holder.baltopExempt();
