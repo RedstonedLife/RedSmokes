@@ -376,12 +376,10 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         updateThrottle();
         return false;
     }
-
     public boolean isSignThrottled() {
         final long minTime = lastThrottledAction + (1000 / ess.getSettings().getSignUsePerSecond());
         return System.currentTimeMillis() < minTime;
     }
-
     public void updateThrottle() {
         lastThrottledAction = System.currentTimeMillis();
     }
