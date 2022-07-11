@@ -140,17 +140,17 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
         if (uuid != null) {
             keys.add(uuid);
             if (name != null && name.length() > 0) {
-                final String keyName = ess.getSettings().isSafeUsermap() ? StringUtil.safeString(name) : name;
+                final String keyName = redSmokes.getSettings().isSafeUsermap() ? StringUtil.safeString(name) : name;
                 if (!names.containsKey(keyName)) {
                     names.put(keyName, uuid);
                     uuidMap.writeUUIDMap();
                 } else if (!isUUIDMatch(uuid, keyName)) {
                     if (replace) {
-                        ess.getLogger().info("Found new UUID for " + name + ". Replacing " + names.get(keyName).toString() + " with " + uuid.toString());
+                        redSmokes.getLogger().info("Found new UUID for " + name + ". Replacing " + names.get(keyName).toString() + " with " + uuid.toString());
                         names.put(keyName, uuid);
                         uuidMap.writeUUIDMap();
                     } else {
-                        ess.getLogger().log(Level.INFO, MessageFormat.format(WARN_UUID_NOT_REPLACE, uuid.toString(), name, names.get(keyName).toString()), new RuntimeException());
+                        redSmokes.getLogger().log(Level.INFO, MessageFormat.format(WARN_UUID_NOT_REPLACE, uuid.toString(), name, names.get(keyName).toString()), new RuntimeException());
                     }
                 }
             }
