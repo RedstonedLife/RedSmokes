@@ -533,7 +533,7 @@ public class Economy {
         }
         final BigDecimal result = getMoneyExact(user).multiply(amount, MATH_CONTEXT);
         setMoney(user, result);
-        Trade.log("API", "Multiply", "API", user.getName(), new Trade(amount, ess), null, null, null, result, ess);
+        Trade.log("API", "Multiply", "API", user.getName(), new Trade(amount, redSmokes), null, null, null, result, redSmokes);
     }
 
     /**
