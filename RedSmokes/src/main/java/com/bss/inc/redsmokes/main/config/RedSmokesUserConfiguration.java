@@ -69,7 +69,7 @@ public class EssentialsUserConfiguration extends RedSmokesConfiguration {
             //noinspection UnstableApiUsage
             Files.move(getAltFile(), new File(configFile.getParentFile(), uuid + ".yml"));
         } catch (final IOException ex) {
-            Essentials.getWrappedLogger().log(Level.WARNING, "Failed to migrate user: " + username, ex);
+            RedSmokes.getWrappedLogger().log(Level.WARNING, "Failed to migrate user: " + username, ex);
         }
     }
 }
