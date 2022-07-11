@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public class BalanceTopImpl implements BalanceTop {
     private final IRedSmokes redSmokes;
-    private LinkedHashMap<UUID, BalanceTop.Entry>
+    private LinkedHashMap<UUID, BalanceTop.Entry> topCache = new LinkedHashMap<>();
 }
