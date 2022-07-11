@@ -65,7 +65,7 @@ public class RedSmokesConfiguration {
     private CommentedConfigurationNode configurationNode;
     private Runnable saveHook;
 
-    public EssentialsConfiguration(final File configFile) {
+    public RedSmokesConfiguration(final File configFile) {
         this(configFile, null);
     }
 
