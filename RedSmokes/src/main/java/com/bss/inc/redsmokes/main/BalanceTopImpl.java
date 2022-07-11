@@ -4,5 +4,5 @@ import com.bss.inc.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.api.services.BalanceTop;
 
 public class BalanceTopImpl implements BalanceTop {
-    private final IRedSmokes
+    private final IRedSmokes redSmokes;
 }
