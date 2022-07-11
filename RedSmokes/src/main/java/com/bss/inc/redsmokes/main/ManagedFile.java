@@ -22,18 +22,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 
-import static com.earth2me.essentials.I18n.tl;
+import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public class ManagedFile {
     private static final int BUFFERSIZE = 1024 * 8;
     private final transient File file;
 
-    public ManagedFile(final String filename, final IRedSmokes ess) {
-        file = new File(ess.getDataFolder(), filename);
+    public ManagedFile(final String filename, final IRedSmokes redSmokes) {
+        file = new File(redSmokes.getDataFolder(), filename);
 
         if (file.exists()) {
             try {
-                if (checkForVersion(file, ess.getDescription().getVersion()) && !file.delete()) {
+                if (checkForVersion(file, redSmokes.getDescription().getVersion()) && !file.delete()) {
                     throw new IOException("Could not delete file " + file.toString());
                 }
             } catch (final IOException ex) {
