@@ -11,4 +11,5 @@ public class BalanceTopImpl implements BalanceTop {
     private final IRedSmokes redSmokes;
     private LinkedHashMap<UUID, BalanceTop.Entry> topCache = new LinkedHashMap<>();
     private BigDecimal balanceTopTotal = BigDecimal.ZERO;
+    private long cacheAge = 0;
 }
