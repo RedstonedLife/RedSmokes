@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.OfflinePlayer;
+import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
 import com.google.common.cache.Cache;
@@ -215,7 +216,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
             // this code makes me sad
             user.startTransaction();
             try {
-                user.setMoney(ess.getSettings().getStartingBalance());
+                user.setMoney(redSmokes.getSettings().getStartingBalance());
             } catch (MaxMoneyException e) {
                 // Shouldn't happen as it would be an illegal configuration state
                 throw new RuntimeException(e);
