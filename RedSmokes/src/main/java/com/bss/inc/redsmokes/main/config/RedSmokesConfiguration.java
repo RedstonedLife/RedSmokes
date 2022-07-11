@@ -8,6 +8,7 @@ import com.bss.inc.redsmokes.main.config.entities.LazyLocation;
 import com.bss.inc.redsmokes.main.config.processors.DeleteIfIncompleteProcessor;
 import com.bss.inc.redsmokes.main.config.processors.DeleteOnEmptyProcessor;
 import com.bss.inc.redsmokes.main.config.serializers.BigDecimalTypeSerializer;
+import com.bss.inc.redsmokes.main.config.serializers.CommandCooldownSerializer;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.spongepowered.configurate.CommentedConfigurationNode;
