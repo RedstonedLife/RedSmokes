@@ -221,26 +221,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         }
         cleanup();
     }
-
-    @Override
-    public Boolean canSpawnItem(final Material material) {
-        if (redsmokes.getSettings().permissionBasedItemSpawn()) {
-            final String name = material.toString().toLowerCase(Locale.ENGLISH).replace("_", "");
-
-            if (isAuthorized("redsmokes.itemspawn.item-all") || isAuthorized("redsmokes.itemspawn.item-" + name))
-                return true;
-
-            if (VersionUtil.PRE_FLATTENING) {
-                final int id = material.getId();
-                if (isAuthorized("redsmokes.itemspawn.item-" + id)) return true;
-            }
-
-            return false;
-        }
-
-        return isAuthorized("redsmokes.itemspawn.exempt") || !redsmokes.getSettings().itemSpawnBlacklist().contains(material);
-    }
-
+    
     @Override
     public void setLastLocation() {
         setLastLocation(this.getLocation());
