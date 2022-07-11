@@ -71,7 +71,7 @@ public interface IRedSmokes extends Plugin {
     UserMap getUserMap();
     BalanceTop getBalanceTop();
     RedSmokesTimer getTimer();
-    MailService getMail();
+    //MailService getMail();
     /**
      * Get a list of players who are vanished.
      *
