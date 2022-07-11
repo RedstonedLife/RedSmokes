@@ -28,6 +28,6 @@ public abstract class UserData extends PlayerExtension implements IConf {
         }
 
         config = new RedSmokesUserConfiguration(base.getName(), base.getUniqueId(), new File(folder, filename + ".yml"));
-        
+        reloadConfig();
     }
 }
