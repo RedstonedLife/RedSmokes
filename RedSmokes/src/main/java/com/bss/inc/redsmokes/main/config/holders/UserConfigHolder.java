@@ -102,6 +102,16 @@ public class UserConfigHolder {
         this.logoutlocation = LazyLocation.fromLocation(value);
     }
 
+    private @NonNull String ipAddress = "";
+
+    public String ipAddress() {
+        return this.ipAddress;
+    }
+
+    public void ipAddress(final String value) {
+        this.ipAddress = value;
+    }
+
     private boolean npc = false;
 
     public boolean npc() {
