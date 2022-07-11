@@ -15,6 +15,8 @@ import com.google.common.collect.Lists;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.potion.PotionEffectType;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -358,17 +360,16 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
                 p.showPlayer(getBase());
             }
             setHidden(false);
-            ess.getVanishedPlayersNew().remove(getName());
-            this.getBase().setMetadata("vanished", new FixedMetadataValue(ess, false));
+            redsmokes.getVanishedPlayersNew().remove(getName());
+            this.getBase().setMetadata("vanished", new FixedMetadataValue(redsmokes, false));
             if (isAuthorized("essentials.vanish.effect")) {
                 this.getBase().removePotionEffect(PotionEffectType.INVISIBILITY);
             }
-            if (ess.getSettings().sleepIgnoresVanishedPlayers() && !isAuthorized("essentials.sleepingignored")) {
+            if (redsmokes.getSettings().sleepIgnoresVanishedPlayers() && !isAuthorized("redsmokes.sleepingignored")) {
                 getBase().setSleepingIgnored(false);
             }
         }
     }
-
     public boolean checkSignThrottle() {
         if (isSignThrottled()) {
             return true;
