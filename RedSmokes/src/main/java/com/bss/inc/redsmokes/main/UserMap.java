@@ -294,26 +294,26 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
     //  }
 
     private File getUserFileFromID(final UUID uuid) {
-        final File userFolder = new File(ess.getDataFolder(), "userdata");
+        final File userFolder = new File(redSmokes.getDataFolder(), "userdata");
         return new File(userFolder, uuid.toString() + ".yml");
     }
 
     public File getUserFileFromString(final String name) {
-        final File userFolder = new File(ess.getDataFolder(), "userdata");
+        final File userFolder = new File(redSmokes.getDataFolder(), "userdata");
         return new File(userFolder, StringUtil.sanitizeFileName(name) + ".yml");
     }
 
     @SuppressWarnings("deprecation")
     public User getUserFromBukkit(String name) {
         name = StringUtil.safeString(name);
-        if (ess.getSettings().isDebug()) {
-            ess.getLogger().warning("Using potentially blocking Bukkit UUID lookup for: " + name);
+        if (redSmokes.getSettings().isDebug()) {
+            redSmokes.getLogger().warning("Using potentially blocking Bukkit UUID lookup for: " + name);
         }
         // Don't attempt to look up entirely invalid usernames
         if (name == null || !validUserPattern.matcher(name).matches()) {
             return null;
         }
-        final org.bukkit.OfflinePlayer offlinePlayer = ess.getServer().getOfflinePlayer(name);
+        final org.bukkit.OfflinePlayer offlinePlayer = redSmokes.getServer().getOfflinePlayer(name);
         if (offlinePlayer == null) {
             return null;
         }
