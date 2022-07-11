@@ -76,7 +76,7 @@ public interface IRedSmokes extends Plugin {
      * Get a list of players who are vanished.
      *
      * @return A list of players who are vanished
-     * @deprecated Use {@link com.bss.inc.redsmokes.api.IEssentials#getVanishedPlayersNew()} where possible.
+     * @deprecated Use {@link com.bss.inc.redsmokes.api.IRedSmokes#getVanishedPlayersNew()} where possible.
      */
     @Deprecated
     List<String> getVanishedPlayers();
