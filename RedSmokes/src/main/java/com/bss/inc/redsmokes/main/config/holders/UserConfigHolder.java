@@ -102,6 +102,15 @@ public class UserConfigHolder {
         this.logoutlocation = LazyLocation.fromLocation(value);
     }
 
+    private boolean npc = false;
+
+    public boolean npc() {
+        return this.npc;
+    }
+
+    public void npc(final boolean value) {
+        this.npc = value;
+    }
 
     private @MonotonicNonNull String lastAccountName;
 
