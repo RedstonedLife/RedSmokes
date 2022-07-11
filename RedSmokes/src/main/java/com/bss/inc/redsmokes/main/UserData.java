@@ -27,6 +27,6 @@ public abstract class UserData extends PlayerExtension implements IConf {
             filename = base.getName();
         }
 
-        
+        config = 
     }
 }
