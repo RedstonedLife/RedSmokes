@@ -4,12 +4,15 @@ import com.bss.inc.redsmokes.OfflinePlayer;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.bss.inc.redsmokes.main.utils.TriState;
+import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.google.common.collect.Lists;
+import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.logging.Level;
@@ -224,18 +227,18 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         if (ess.getSettings().permissionBasedItemSpawn()) {
             final String name = material.toString().toLowerCase(Locale.ENGLISH).replace("_", "");
 
-            if (isAuthorized("essentials.itemspawn.item-all") || isAuthorized("essentials.itemspawn.item-" + name))
+            if (isAuthorized("redsmokes.itemspawn.item-all") || isAuthorized("redsmokes.itemspawn.item-" + name))
                 return true;
 
             if (VersionUtil.PRE_FLATTENING) {
                 final int id = material.getId();
-                if (isAuthorized("essentials.itemspawn.item-" + id)) return true;
+                if (isAuthorized("redsmokes.itemspawn.item-" + id)) return true;
             }
 
             return false;
         }
 
-        return isAuthorized("essentials.itemspawn.exempt") || !ess.getSettings().itemSpawnBlacklist().contains(material);
+        return isAuthorized("redsmokes.itemspawn.exempt") || !ess.getSettings().itemSpawnBlacklist().contains(material);
     }
 
     @Override
