@@ -19,7 +19,7 @@ import java.util.logging.Level;
  * Provides access to the RedSmokes economy for plugins that use the Vault API.
  * <p>
  * Developer note: for accessing RedSmokes/Vault economy functions from RedSmokes code, see
- * {@link com.bss.inc.}.
+ * {@link com.bss.inc.redsmokes.main.User}.
  */
 public class VaultEconomyProvider implements Economy {
     private static final String WARN_NPC_RECREATE_1 = "Account creation was requested for NPC user {0}, but an account file with UUID {1} already exists.";
