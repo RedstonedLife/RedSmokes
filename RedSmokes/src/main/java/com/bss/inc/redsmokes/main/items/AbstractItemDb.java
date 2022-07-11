@@ -1,8 +1,8 @@
 package com.bss.inc.redsmokes.main.items;
 
 import com.bss.inc.redsmokes.api.IConf;
+import com.bss.inc.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.api.PluginKey;
-import com.bss.inc.redsmokes.api.apis.IItemDb;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
@@ -41,12 +41,12 @@ import java.util.function.Function;
 
 public abstract class AbstractItemDb implements IConf, com.bss.inc.redsmokes.api.IItemDb {
 
-    protected final IEssentials ess;
+    protected final IRedSmokes redSmokes;
     private final Map<PluginKey, ItemResolver> resolverMap = new HashMap<>();
     protected boolean ready = false;
 
-    AbstractItemDb(final IEssentials ess) {
-        this.ess = ess;
+    AbstractItemDb(final IRedSmokes redSmokes) {
+        this.redSmokes = redSmokes;
     }
 
     @Override
@@ -103,8 +103,8 @@ public abstract class AbstractItemDb implements IConf, com.bss.inc.redsmokes.api
 
     ItemStack tryResolverDeserialize(final String id) {
         for (final PluginKey key : resolverMap.keySet()) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().info(String.format("Trying to deserialize item '%s' with resolver '%s'...", id, key));
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().info(String.format("Trying to deserialize item '%s' with resolver '%s'...", id, key));
             }
 
             final Function<String, ItemStack> resolver = resolverMap.get(key);
@@ -120,8 +120,8 @@ public abstract class AbstractItemDb implements IConf, com.bss.inc.redsmokes.api
 
     String tryResolverSerialize(final ItemStack stack) {
         for (final PluginKey key : resolverMap.keySet()) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().info(String.format("Trying to serialize '%s' with resolver '%s'...", stack.toString(), key));
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().info(String.format("Trying to serialize '%s' with resolver '%s'...", stack.toString(), key));
             }
 
             final ItemResolver resolver = resolverMap.get(key);
