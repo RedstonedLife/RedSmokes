@@ -5,6 +5,7 @@ import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.api.events.TransactionEvent;
 import com.bss.inc.redsmokes.api.events.UserBalanceUpdateEvent;
+import com.bss.inc.redsmokes.main.economy.EconomyLayer;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.TriState;
