@@ -15,6 +15,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
     private BigDecimal money;
 
     protected UserData(final Player base, final com.bss.inc.redsmokes.api.IRedSmokes redsmokes) {
-
+        super(base);
+        
     }
 }
