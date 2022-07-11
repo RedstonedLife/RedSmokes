@@ -63,4 +63,6 @@ public interface ISettings extends IConf {
 
     boolean useBukkitPermissions();
 
+    boolean isConfirmCommandEnabledByDefault(String commandName);
+
 }
