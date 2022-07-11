@@ -13,5 +13,5 @@ public class BalanceTopImpl implements BalanceTop {
     private LinkedHashMap<UUID, BalanceTop.Entry> topCache = new LinkedHashMap<>();
     private BigDecimal balanceTopTotal = BigDecimal.ZERO;
     private long cacheAge = 0;
-    private CompletableFuture<Void>
+    private CompletableFuture<Void> cacheLock;
 }
