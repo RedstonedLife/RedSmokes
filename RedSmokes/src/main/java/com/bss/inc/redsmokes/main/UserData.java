@@ -19,5 +19,6 @@ public abstract class UserData extends PlayerExtension implements IConf {
         super(base);
         this.redsmokes = redsmokes;
         final File folder = new File(redsmokes.getDataFolder(), "userdata");
+        if(!folder.exists())
     }
 }
