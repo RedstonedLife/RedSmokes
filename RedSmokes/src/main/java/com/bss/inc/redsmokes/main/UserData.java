@@ -7,6 +7,7 @@ import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
 import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
 import com.bss.inc.redsmokes.main.config.entities.LazyLocation;
 import com.bss.inc.redsmokes.main.config.holders.UserConfigHolder;
+import com.bss.inc.redsmokes.main.utils.StringUtil;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,6 +17,8 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.regex.Pattern;
+
+import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public abstract class UserData extends PlayerExtension implements IConf {
     protected final transient IRedSmokes redsmokes;
