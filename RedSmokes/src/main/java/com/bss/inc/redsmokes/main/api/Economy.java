@@ -547,11 +547,11 @@ public class Economy {
      */
     @Deprecated
     public static void resetBalance(final String name) throws UserDoesNotExistException, NoLoanPermittedException, MaxMoneyException {
-        if (ess == null) {
+        if (redSmokes == null) {
             throw new RuntimeException(WARN_CALL_BEFORE_LOAD);
         }
-        setMoney(name, ess.getSettings().getStartingBalance());
-        Trade.log("API", "Reset", "API", name, new Trade(BigDecimal.ZERO, ess), null, null, null, ess.getSettings().getStartingBalance(), ess);
+        setMoney(name, redSmokes.getSettings().getStartingBalance());
+        Trade.log("API", "Reset", "API", name, new Trade(BigDecimal.ZERO, redSmokes), null, null, null, redSmokes.getSettings().getStartingBalance(), redSmokes);
     }
 
     /**
