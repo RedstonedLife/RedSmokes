@@ -198,7 +198,7 @@ public class VaultEconomyProvider implements Economy {
         }
 
         try {
-            com.earth2me.essentials.api.Economy.subtract(player.getUniqueId(), BigDecimal.valueOf(amount));
+            com.bss.inc.redsmokes.api.Economy.subtract(player.getUniqueId(), BigDecimal.valueOf(amount));
             return new EconomyResponse(amount, getBalance(player), EconomyResponse.ResponseType.SUCCESS, null);
         } catch (UserDoesNotExistException e) {
             return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "User does not exist!");
@@ -230,7 +230,7 @@ public class VaultEconomyProvider implements Economy {
         }
 
         try {
-            com.earth2me.essentials.api.Economy.add(playerName, amount);
+            com.bss.inc.redsmokes.api.Economy.add(playerName, amount);
             return new EconomyResponse(amount, getBalance(playerName), EconomyResponse.ResponseType.SUCCESS, null);
         } catch (UserDoesNotExistException e) {
             return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "User does not exist!");
@@ -251,7 +251,7 @@ public class VaultEconomyProvider implements Economy {
         }
 
         try {
-            com.earth2me.essentials.api.Economy.add(player.getUniqueId(), BigDecimal.valueOf(amount));
+            com.bss.inc.redsmokes.api.Economy.add(player.getUniqueId(), BigDecimal.valueOf(amount));
             return new EconomyResponse(amount, getBalance(player), EconomyResponse.ResponseType.SUCCESS, null);
         } catch (UserDoesNotExistException e) {
             return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "User does not exist!");
