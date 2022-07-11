@@ -8,7 +8,9 @@ import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
 import com.bss.inc.redsmokes.main.config.entities.LazyLocation;
 import com.bss.inc.redsmokes.main.config.holders.UserConfigHolder;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -222,32 +224,6 @@ public abstract class UserData extends PlayerExtension implements IConf {
         if (wasUpdated) {
             config.save();
         }
-    }
-
-    public void clearAllPowertools() {
-        holder.powertools().clear();
-        config.save();
-    }
-
-    public List<String> getPowertool(final ItemStack stack) {
-        return getPowertool(stack.getType());
-    }
-
-    public List<String> getPowertool(final Material material) {
-        return holder.powertools().get(material.name().toLowerCase(Locale.ENGLISH));
-    }
-
-    public void setPowertool(final ItemStack stack, final List<String> commandList) {
-        if (commandList == null || commandList.isEmpty()) {
-            holder.powertools().remove(stack.getType().name().toLowerCase(Locale.ENGLISH));
-        } else {
-            holder.powertools().put(stack.getType().name().toLowerCase(Locale.ENGLISH), commandList);
-        }
-        config.save();
-    }
-
-    public boolean hasPowerTools() {
-        return !holder.powertools().isEmpty();
     }
 
     public Location getLastLocation() {
