@@ -34,4 +34,8 @@ public abstract class UserData extends PlayerExtension implements IConf {
             config.setUsername(getLastAccountName());
         }
     }
+
+    public final void reset() {
+        
+    }
 }
