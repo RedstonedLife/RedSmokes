@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.api;
 
+import com.bss.inc.redsmokes.main.items.CustomItemResolver;
 import com.bss.inc.redsmokes.main.provider.PotionMetaProvider;
 import com.bss.inc.redsmokes.main.provider.SpawnEggProvider;
 
