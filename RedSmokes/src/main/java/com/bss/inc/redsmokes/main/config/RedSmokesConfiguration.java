@@ -350,10 +350,10 @@ public class RedSmokesConfiguration {
                 convertAltFile();
             } else if (templateName != null) {
                 try (final InputStream is = resourceClass.getResourceAsStream(templateName)) {
-                    Essentials.getWrappedLogger().log(Level.INFO, tl("creatingConfigFromTemplate", configFile.toString()));
+                    RedSmokes.getWrappedLogger().log(Level.INFO, tl("creatingConfigFromTemplate", configFile.toString()));
                     Files.copy(is, configFile.toPath());
                 } catch (IOException e) {
-                    Essentials.getWrappedLogger().log(Level.SEVERE, tl("failedToWriteConfig", configFile.toString()), e);
+                    RedSmokes.getWrappedLogger().log(Level.SEVERE, tl("failedToWriteConfig", configFile.toString()), e);
                 }
             }
         }
@@ -363,12 +363,12 @@ public class RedSmokesConfiguration {
         } catch (final ParsingException e) {
             final File broken = new File(configFile.getAbsolutePath() + ".broken." + System.currentTimeMillis());
             if (configFile.renameTo(broken)) {
-                Essentials.getWrappedLogger().log(Level.SEVERE, "The file " + configFile.toString() + " is broken, it has been renamed to " + broken.toString(), e.getCause());
+                RedSmokes.getWrappedLogger().log(Level.SEVERE, "The file " + configFile.toString() + " is broken, it has been renamed to " + broken.toString(), e.getCause());
                 return;
             }
-            Essentials.getWrappedLogger().log(Level.SEVERE, "The file " + configFile.toString() + " is broken. A backup file has failed to be created", e.getCause());
+            RedSmokes.getWrappedLogger().log(Level.SEVERE, "The file " + configFile.toString() + " is broken. A backup file has failed to be created", e.getCause());
         } catch (final ConfigurateException e) {
-            Essentials.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
+            RedSmokes.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
         } finally {
             // Something is wrong! We need a node! I hope the backup worked!
             if (configurationNode == null) {
