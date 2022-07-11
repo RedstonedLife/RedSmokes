@@ -31,7 +31,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
     private UserConfigHolder holder;
     private BigDecimal money;
 
-    protected UserData(final Player base, final com.bss.inc.redsmokes.api.IRedSmokes redsmokes) {
+    protected UserData(final Player base, final IRedSmokes redsmokes) {
         super(base);
         this.redsmokes = redsmokes;
         final File folder = new File(redsmokes.getDataFolder(), "userdata");
