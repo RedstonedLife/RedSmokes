@@ -217,14 +217,14 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
 
     private void _dispose() {
         if (!base.isOnline()) {
-            this.base = new OfflinePlayer(getConfigUUID(), ess.getServer());
+            this.base = new OfflinePlayer(getConfigUUID(), redsmokes.getServer());
         }
         cleanup();
     }
 
     @Override
     public Boolean canSpawnItem(final Material material) {
-        if (ess.getSettings().permissionBasedItemSpawn()) {
+        if (redsmokes.getSettings().permissionBasedItemSpawn()) {
             final String name = material.toString().toLowerCase(Locale.ENGLISH).replace("_", "");
 
             if (isAuthorized("redsmokes.itemspawn.item-all") || isAuthorized("redsmokes.itemspawn.item-" + name))
@@ -238,7 +238,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
             return false;
         }
 
-        return isAuthorized("redsmokes.itemspawn.exempt") || !ess.getSettings().itemSpawnBlacklist().contains(material);
+        return isAuthorized("redsmokes.itemspawn.exempt") || !redsmokes.getSettings().itemSpawnBlacklist().contains(material);
     }
 
     @Override
