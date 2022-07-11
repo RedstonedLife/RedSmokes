@@ -124,5 +124,127 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
             return TriState.UNSET;
         }
     }
+    @Override
+    public void giveMoney(final BigDecimal value) throws MaxMoneyException {
+        giveMoney(value, null);
+    }
 
+    @Override
+    public void giveMoney(final BigDecimal value, final CommandSource initiator) throws MaxMoneyException {
+        giveMoney(value, initiator, UserBalanceUpdateEvent.Cause.UNKNOWN);
+    }
+
+    public void giveMoney(final BigDecimal value, final CommandSource initiator, final UserBalanceUpdateEvent.Cause cause) throws MaxMoneyException {
+        if (value.signum() == 0) {
+            return;
+        }
+        setMoney(getMoney().add(value), cause);
+        sendMessage(tl("addedToAccount", NumberUtil.displayCurrency(value, ess)));
+        if (initiator != null) {
+            initiator.sendMessage(tl("addedToOthersAccount", NumberUtil.displayCurrency(value, ess), this.getDisplayName(), NumberUtil.displayCurrency(getMoney(), ess)));
+        }
+    }
+
+    @Override
+    public void payUser(final User reciever, final BigDecimal value) throws Exception {
+        payUser(reciever, value, UserBalanceUpdateEvent.Cause.UNKNOWN);
+    }
+
+    public void payUser(final User reciever, final BigDecimal value, final UserBalanceUpdateEvent.Cause cause) throws Exception {
+        if (value.compareTo(BigDecimal.ZERO) < 1) {
+            throw new Exception(tl("payMustBePositive"));
+        }
+
+        if (canAfford(value)) {
+            setMoney(getMoney().subtract(value), cause);
+            reciever.setMoney(reciever.getMoney().add(value), cause);
+            sendMessage(tl("moneySentTo", NumberUtil.displayCurrency(value, ess), reciever.getDisplayName()));
+            reciever.sendMessage(tl("moneyRecievedFrom", NumberUtil.displayCurrency(value, ess), getDisplayName()));
+            final TransactionEvent transactionEvent = new TransactionEvent(this.getSource(), reciever, value);
+            ess.getServer().getPluginManager().callEvent(transactionEvent);
+        } else {
+            throw new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(value, ess)));
+        }
+    }
+
+    @Override
+    public void takeMoney(final BigDecimal value) {
+        takeMoney(value, null);
+    }
+
+    @Override
+    public void takeMoney(final BigDecimal value, final CommandSource initiator) {
+        takeMoney(value, initiator, UserBalanceUpdateEvent.Cause.UNKNOWN);
+    }
+
+    public void takeMoney(final BigDecimal value, final CommandSource initiator, final UserBalanceUpdateEvent.Cause cause) {
+        if (value.signum() == 0) {
+            return;
+        }
+        try {
+            setMoney(getMoney().subtract(value), cause);
+        } catch (final MaxMoneyException ex) {
+            ess.getLogger().log(Level.WARNING, "Invalid call to takeMoney, total balance can't be more than the max-money limit.", ex);
+        }
+        sendMessage(tl("takenFromAccount", NumberUtil.displayCurrency(value, ess)));
+        if (initiator != null) {
+            initiator.sendMessage(tl("takenFromOthersAccount", NumberUtil.displayCurrency(value, ess), this.getDisplayName(), NumberUtil.displayCurrency(getMoney(), ess)));
+        }
+    }
+
+    @Override
+    public boolean canAfford(final BigDecimal cost) {
+        return canAfford(cost, true);
+    }
+
+    public boolean canAfford(final BigDecimal cost, final boolean permcheck) {
+        if (cost.signum() <= 0) {
+            return true;
+        }
+        final BigDecimal remainingBalance = getMoney().subtract(cost);
+        if (!permcheck || isAuthorized("essentials.eco.loan")) {
+            return remainingBalance.compareTo(ess.getSettings().getMinMoney()) >= 0;
+        }
+        return remainingBalance.signum() >= 0;
+    }
+
+    public void dispose() {
+        ess.runTaskAsynchronously(this::_dispose);
+    }
+
+    private void _dispose() {
+        if (!base.isOnline()) {
+            this.base = new OfflinePlayer(getConfigUUID(), ess.getServer());
+        }
+        cleanup();
+    }
+
+    @Override
+    public Boolean canSpawnItem(final Material material) {
+        if (ess.getSettings().permissionBasedItemSpawn()) {
+            final String name = material.toString().toLowerCase(Locale.ENGLISH).replace("_", "");
+
+            if (isAuthorized("essentials.itemspawn.item-all") || isAuthorized("essentials.itemspawn.item-" + name))
+                return true;
+
+            if (VersionUtil.PRE_FLATTENING) {
+                final int id = material.getId();
+                if (isAuthorized("essentials.itemspawn.item-" + id)) return true;
+            }
+
+            return false;
+        }
+
+        return isAuthorized("essentials.itemspawn.exempt") || !ess.getSettings().itemSpawnBlacklist().contains(material);
+    }
+
+    @Override
+    public void setLastLocation() {
+        setLastLocation(this.getLocation());
+    }
+
+    @Override
+    public void setLogoutLocation() {
+        setLogoutLocation(this.getLocation());
+    }
 }
