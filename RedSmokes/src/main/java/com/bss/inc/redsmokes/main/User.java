@@ -227,4 +227,74 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         }
         cleanup();
     }
+
+    public long getLastOnlineActivity() {
+        return lastOnlineActivity;
+    }
+
+    public void setLastOnlineActivity(final long timestamp) {
+        lastOnlineActivity = timestamp;
+    }
+
+    @Override
+    public BigDecimal getMoney() {
+        final long start = System.nanoTime();
+        final BigDecimal value = _getMoney();
+        final long elapsed = System.nanoTime() - start;
+        if (elapsed > ess.getSettings().getEconomyLagWarning()) {
+            ess.getLogger().log(Level.INFO, "Lag Notice - Slow Economy Response - Request took over {0}ms!", elapsed / 1000000.0);
+        }
+        return value;
+    }
+
+    @Override
+    public void setMoney(final BigDecimal value) throws MaxMoneyException {
+        setMoney(value, UserBalanceUpdateEvent.Cause.UNKNOWN);
+    }
+
+    private BigDecimal _getMoney() {
+        if (ess.getSettings().isEcoDisabled()) {
+            if (ess.getSettings().isDebug()) {
+                ess.getLogger().info("Internal economy functions disabled, aborting balance check.");
+            }
+            return BigDecimal.ZERO;
+        }
+        final EconomyLayer layer = EconomyLayers.getSelectedLayer();
+        if (layer != null && (layer.hasAccount(getBase()) || layer.createPlayerAccount(getBase()))) {
+            return layer.getBalance(getBase());
+        }
+        return super.getMoney();
+    }
+
+    public void setMoney(final BigDecimal value, final UserBalanceUpdateEvent.Cause cause) throws MaxMoneyException {
+        if (ess.getSettings().isEcoDisabled()) {
+            if (ess.getSettings().isDebug()) {
+                ess.getLogger().info("Internal economy functions disabled, aborting balance change.");
+            }
+            return;
+        }
+        final BigDecimal oldBalance = _getMoney();
+
+        final UserBalanceUpdateEvent updateEvent = new UserBalanceUpdateEvent(this.getBase(), oldBalance, value, cause);
+        ess.getServer().getPluginManager().callEvent(updateEvent);
+        final BigDecimal newBalance = updateEvent.getNewBalance();
+
+        final EconomyLayer layer = EconomyLayers.getSelectedLayer();
+        if (layer != null && (layer.hasAccount(getBase()) || layer.createPlayerAccount(getBase()))) {
+            layer.set(getBase(), newBalance);
+        }
+        super.setMoney(newBalance, true);
+        Trade.log("Update", "Set", "API", getName(), new Trade(newBalance, ess), null, null, null, newBalance, ess);
+    }
+
+    public void updateMoneyCache(final BigDecimal value) {
+        if (ess.getSettings().isEcoDisabled() || !EconomyLayers.isLayerSelected() || super.getMoney().equals(value)) {
+            return;
+        }
+        try {
+            super.setMoney(value, false);
+        } catch (final MaxMoneyException ex) {
+            // We don't want to throw any errors here, just updating a cache
+        }
+    }
 }
