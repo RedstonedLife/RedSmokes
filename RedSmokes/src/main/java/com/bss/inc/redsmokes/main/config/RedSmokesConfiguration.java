@@ -32,9 +32,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 
-import static com.earth2me.essentials.I18n.tl;
 
-public class EssentialsConfiguration {
+public class RedSmokesConfiguration {
     private static final ExecutorService EXECUTOR_SERVICE = Executors.newSingleThreadExecutor();
     private static final ObjectMapper.Factory MAPPER_FACTORY = ObjectMapper.factoryBuilder()
             .addProcessor(DeleteOnEmpty.class, (data, value) -> new DeleteOnEmptyProcessor())
