@@ -58,7 +58,7 @@ public class RedSmokesConfiguration {
 
     private final AtomicInteger pendingWrites = new AtomicInteger(0);
     private final AtomicBoolean transaction = new AtomicBoolean(false);
-    private Class<?> resourceClass = EssentialsConfiguration.class;
+    private Class<?> resourceClass = RedSmokesConfiguration.class;
     protected final File configFile;
     private final YamlConfigurationLoader loader;
     private final String templateName;
