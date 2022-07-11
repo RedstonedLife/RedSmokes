@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main.economy.vault;
 import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.RedSmokes;
 import com.bss.inc.redsmokes.main.api.UserDoesNotExistException;
+import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
@@ -290,7 +291,7 @@ public class VaultEconomyProvider implements Economy {
         // String based UUIDs are version 3 and are used for NPC and OfflinePlayers
         // Citizens uses v2 UUIDs, yeah I don't know either!
         if (player.getUniqueId().version() == 3 || player.getUniqueId().version() == 2) {
-            final File folder = new File(ess.getDataFolder(), "userdata");
+            final File folder = new File(redSmokes.getDataFolder(), "userdata");
             if (!folder.exists()) {
                 if (!folder.mkdirs()) {
                     throw new RuntimeException("Error while creating userdata directory!");
@@ -298,10 +299,10 @@ public class VaultEconomyProvider implements Economy {
             }
             final File npcFile = new File(folder, player.getUniqueId() + ".yml");
             if (npcFile.exists()) {
-                ess.getLogger().log(Level.SEVERE, MessageFormat.format(WARN_NPC_RECREATE_1, player.getName(), player.getUniqueId().toString()), new RuntimeException());
-                ess.getLogger().log(Level.SEVERE, WARN_NPC_RECREATE_2);
+                redSmokes.getLogger().log(Level.SEVERE, MessageFormat.format(WARN_NPC_RECREATE_1, player.getName(), player.getUniqueId().toString()), new RuntimeException());
+                redSmokes.getLogger().log(Level.SEVERE, WARN_NPC_RECREATE_2);
             }
-            final EssentialsUserConfiguration npcConfig = new EssentialsUserConfiguration(player.getName(), player.getUniqueId(), npcFile);
+            final RedSmokesUserConfiguration npcConfig = new EssentialsUserConfiguration(player.getName(), player.getUniqueId(), npcFile);
             npcConfig.load();
             npcConfig.setProperty("npc", true);
             npcConfig.setProperty("last-account-name", player.getName());
