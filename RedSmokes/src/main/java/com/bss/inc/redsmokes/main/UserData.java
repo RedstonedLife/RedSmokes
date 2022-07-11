@@ -39,7 +39,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
         config.blockingSave();
         config.getFile().delete();
         if(config.getUsername() != null) {
-            
+            redsmokes.getUserMap()
         }
     }
 }
