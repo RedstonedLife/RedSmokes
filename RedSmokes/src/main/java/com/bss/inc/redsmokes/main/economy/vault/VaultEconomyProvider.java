@@ -109,10 +109,10 @@ public class VaultEconomyProvider implements Economy {
     @Override
     public double getBalance(OfflinePlayer player) {
         try {
-            return getDoubleValue(com.earth2me.essentials.api.Economy.getMoneyExact(player.getUniqueId()));
+            return getDoubleValue(com.bss.inc.redsmokes.api.Economy.getMoneyExact(player.getUniqueId()));
         } catch (UserDoesNotExistException e) {
             createPlayerAccount(player);
-            return getDoubleValue(ess.getSettings().getStartingBalance());
+            return getDoubleValue(redSmokes.getSettings().getStartingBalance());
         }
     }
 
