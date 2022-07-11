@@ -567,36 +567,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
     public void setLastAccountName(final String lastAccountName) {
         holder.lastAccountName(lastAccountName);
         config.save();
-        ess.getUserMap().trackUUID(getConfigUUID(), lastAccountName, true);
-    }
-
-    public boolean arePowerToolsEnabled() {
-        return holder.powerToolsEnabled();
-    }
-
-    public void setPowerToolsEnabled(final boolean set) {
-        holder.powerToolsEnabled(set);
-        config.save();
-    }
-
-    public boolean togglePowerToolsEnabled() {
-        final boolean ret = !arePowerToolsEnabled();
-        setPowerToolsEnabled(ret);
-        return ret;
-    }
-
-    public long getKitTimestamp(String name) {
-        name = name.replace('.', '_').replace('/', '_').toLowerCase(Locale.ENGLISH);
-        if (holder.timestamps().kits() != null && holder.timestamps().kits().containsKey(name)) {
-            return holder.timestamps().kits().get(name);
-        }
-        return 0L;
-    }
-
-    public void setKitTimestamp(String name, final long time) {
-        name = name.replace('.', '_').replace('/', '_').toLowerCase(Locale.ENGLISH);
-        holder.timestamps().kits().put(name, time);
-        config.save();
+        redsmokes.getUserMap().trackUUID(getConfigUUID(), lastAccountName, true);
     }
 
     public List<CommandCooldown> getCooldownsList() {
