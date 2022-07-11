@@ -22,7 +22,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
         if(!folder.exists()) {folder.mkdirs();}
         String filename;
         try {
-            
+            filename = base.getUniqueId().toString();
         }
     }
 }
