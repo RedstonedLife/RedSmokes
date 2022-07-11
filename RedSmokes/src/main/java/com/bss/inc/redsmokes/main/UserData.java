@@ -21,8 +21,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
         final File folder = new File(redsmokes.getDataFolder(), "userdata");
         if(!folder.exists()) {folder.mkdirs();}
         String filename;
-        try {
-            filename = base.getUniqueId().toString();
-        }
+        try {filename = base.getUniqueId().toString();}
+        catch()
     }
 }
