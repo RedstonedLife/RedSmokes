@@ -1,4 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
-public class BalanceTopImpl {
+import com.bss.inc.redsmokes.api.services.BalanceTop;
+
+public class BalanceTopImpl implements BalanceTop {
 }
