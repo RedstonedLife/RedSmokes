@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.OfflinePlayer;
 import com.bss.inc.redsmokes.api.MaxMoneyException;
+import com.bss.inc.redsmokes.main.api.UserDoesNotExistException;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
 import com.google.common.cache.Cache;
