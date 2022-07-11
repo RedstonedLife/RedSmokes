@@ -10,10 +10,7 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public abstract class UserData extends PlayerExtension implements IConf {
