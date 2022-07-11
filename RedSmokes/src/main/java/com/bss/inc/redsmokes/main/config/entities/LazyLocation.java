@@ -1,2 +1,4 @@
-package com.bss.inc.redsmokes.main.config.entities;public class LazyLocation {
+package com.bss.inc.redsmokes.main.config.entities;
+
+public class LazyLocation {
 }
