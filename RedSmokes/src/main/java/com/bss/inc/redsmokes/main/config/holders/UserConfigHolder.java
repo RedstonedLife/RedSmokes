@@ -171,6 +171,26 @@ public class UserConfigHolder {
             return this.commandCooldowns;
         }
 
+        private long logout = 0L;
+
+        public long logout() {
+            return this.logout;
+        }
+
+        public void logout(final long value) {
+            this.logout = value;
+        }
+
+        private long login = 0L;
+
+        public long login() {
+            return this.login;
+        }
+
+        public void login(final long value) {
+            this.login = value;
+        }
+
         public void commandCooldowns(final List<CommandCooldown> value) {
             this.commandCooldowns = value;
         }
