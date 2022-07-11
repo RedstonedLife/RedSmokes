@@ -295,7 +295,7 @@ public class RedSmokesConfiguration {
             try {
                 node.set(null);
             } catch (SerializationException e) {
-                Essentials.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
+                RedSmokes.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
             }
         }
     }
@@ -304,7 +304,7 @@ public class RedSmokesConfiguration {
         try {
             toSplitRoot(path, configurationNode).set(value);
         } catch (SerializationException e) {
-            Essentials.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
+            RedSmokes.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
