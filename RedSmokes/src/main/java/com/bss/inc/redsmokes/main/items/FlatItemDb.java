@@ -99,7 +99,7 @@ public class FlatItemDb extends AbstractItemDb {
             if (valid) {
                 allAliases.add(key);
             } else {
-                ess.getLogger().warning(String.format("Failed to add item: \"%s\": %s", key, element.toString()));
+                redSmokes.getLogger().warning(String.format("Failed to add item: \"%s\": %s", key, element.toString()));
             }
         }
     }
@@ -150,8 +150,8 @@ public class FlatItemDb extends AbstractItemDb {
         // setItemMeta to prevent a race condition
         final EntityType entity = data.getEntity();
         if (entity != null && material.toString().contains("SPAWNER")) {
-            ess.getSpawnerItemProvider().setEntityType(stack, entity);
-            ess.getPersistentDataProvider().set(stack, "convert", "true");
+            redSmokes.getSpawnerItemProvider().setEntityType(stack, entity);
+            redSmokes.getPersistentDataProvider().set(stack, "convert", "true");
         }
 
         return stack;
@@ -209,7 +209,7 @@ public class FlatItemDb extends AbstractItemDb {
             final PotionData potion = ((PotionMeta) item.getItemMeta()).getBasePotionData();
             return new ItemData(type, potion);
         } else if (type.toString().contains("SPAWNER")) {
-            final EntityType entity = ess.getSpawnerItemProvider().getEntityType(item);
+            final EntityType entity = redSmokes.getSpawnerItemProvider().getEntityType(item);
             return new ItemData(type, entity);
         } else {
             return new ItemData(type);
