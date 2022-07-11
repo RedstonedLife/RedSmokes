@@ -146,9 +146,9 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
             return;
         }
         setMoney(getMoney().add(value), cause);
-        sendMessage(tl("addedToAccount", NumberUtil.displayCurrency(value, ess)));
+        sendMessage(tl("addedToAccount", NumberUtil.displayCurrency(value, redsmokes)));
         if (initiator != null) {
-            initiator.sendMessage(tl("addedToOthersAccount", NumberUtil.displayCurrency(value, ess), this.getDisplayName(), NumberUtil.displayCurrency(getMoney(), ess)));
+            initiator.sendMessage(tl("addedToOthersAccount", NumberUtil.displayCurrency(value, redsmokes), this.getDisplayName(), NumberUtil.displayCurrency(getMoney(), redsmokes)));
         }
     }
 
@@ -165,12 +165,12 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         if (canAfford(value)) {
             setMoney(getMoney().subtract(value), cause);
             reciever.setMoney(reciever.getMoney().add(value), cause);
-            sendMessage(tl("moneySentTo", NumberUtil.displayCurrency(value, ess), reciever.getDisplayName()));
-            reciever.sendMessage(tl("moneyRecievedFrom", NumberUtil.displayCurrency(value, ess), getDisplayName()));
+            sendMessage(tl("moneySentTo", NumberUtil.displayCurrency(value, redsmokes), reciever.getDisplayName()));
+            reciever.sendMessage(tl("moneyRecievedFrom", NumberUtil.displayCurrency(value, redsmokes), getDisplayName()));
             final TransactionEvent transactionEvent = new TransactionEvent(this.getSource(), reciever, value);
-            ess.getServer().getPluginManager().callEvent(transactionEvent);
+            redsmokes.getServer().getPluginManager().callEvent(transactionEvent);
         } else {
-            throw new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(value, ess)));
+            throw new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(value, redsmokes)));
         }
     }
 
