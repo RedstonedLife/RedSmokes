@@ -265,7 +265,7 @@ public class Economy {
         try {
             add(name, BigDecimal.valueOf(amount));
         } catch (final ArithmeticException e) {
-            ess.getLogger().log(Level.WARNING, "Failed to add " + amount + " to balance of " + name + ": " + e.getMessage(), e);
+            redSmokes.getLogger().log(Level.WARNING, "Failed to add " + amount + " to balance of " + name + ": " + e.getMessage(), e);
         }
     }
 
@@ -319,7 +319,7 @@ public class Economy {
         }
         final BigDecimal result = getMoneyExact(user).add(amount, MATH_CONTEXT);
         setMoney(user, result);
-        Trade.log("API", "Add", "API", user.getName(), new Trade(amount, ess), null, null, null, result, ess);
+        Trade.log("API", "Add", "API", user.getName(), new Trade(amount, redSmokes), null, null, null, result, redSmokes);
     }
 
     /**
@@ -337,7 +337,7 @@ public class Economy {
         try {
             substract(name, BigDecimal.valueOf(amount));
         } catch (final ArithmeticException e) {
-            ess.getLogger().log(Level.WARNING, "Failed to subtract " + amount + " of balance of " + name + ": " + e.getMessage(), e);
+            redSmokes.getLogger().log(Level.WARNING, "Failed to subtract " + amount + " of balance of " + name + ": " + e.getMessage(), e);
         }
     }
 
@@ -389,7 +389,7 @@ public class Economy {
         }
         final BigDecimal result = getMoneyExact(user).subtract(amount, MATH_CONTEXT);
         setMoney(user, result);
-        Trade.log("API", "Subtract", "API", user.getName(), new Trade(amount, ess), null, null, null, result, ess);
+        Trade.log("API", "Subtract", "API", user.getName(), new Trade(amount, redSmokes), null, null, null, result, redSmokes);
     }
 
     /**
@@ -461,7 +461,7 @@ public class Economy {
         }
         final BigDecimal result = getMoneyExact(user).divide(amount, MATH_CONTEXT);
         setMoney(user, result);
-        Trade.log("API", "Divide", "API", user.getName(), new Trade(amount, ess), null, null, null, result, ess);
+        Trade.log("API", "Divide", "API", user.getName(), new Trade(amount, redSmokes), null, null, null, result, redSmokes);
     }
 
     /**
@@ -479,7 +479,7 @@ public class Economy {
         try {
             multiply(name, BigDecimal.valueOf(amount));
         } catch (final ArithmeticException e) {
-            ess.getLogger().log(Level.WARNING, "Failed to multiply balance of " + name + " by " + amount + ": " + e.getMessage(), e);
+            redSmokes.getLogger().log(Level.WARNING, "Failed to multiply balance of " + name + " by " + amount + ": " + e.getMessage(), e);
         }
     }
 
