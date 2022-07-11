@@ -193,7 +193,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
             if (redSmokes.getSettings().isDebug()) {
                 redSmokes.getLogger().info("Loading online OfflinePlayer into user map...");
             }
-            final User user = new User((Player) player, ess);
+            final User user = new User((Player) player, redSmokes);
             trackUUID(player.getUniqueId(), player.getName(), true);
             return user;
         }
