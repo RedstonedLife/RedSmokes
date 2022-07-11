@@ -2,11 +2,13 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IConf;
 import com.bss.inc.redsmokes.api.IRedSmokes;
+import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
 import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
 import com.bss.inc.redsmokes.main.config.entities.LazyLocation;
 import com.bss.inc.redsmokes.main.config.holders.UserConfigHolder;
+import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -111,8 +113,8 @@ public abstract class UserData extends PlayerExtension implements IConf {
     }
 
     public void setMoney(final BigDecimal value, final boolean throwError) throws MaxMoneyException {
-        final BigDecimal maxMoney = ess.getSettings().getMaxMoney();
-        final BigDecimal minMoney = ess.getSettings().getMinMoney();
+        final BigDecimal maxMoney = redsmokes.getSettings().getMaxMoney();
+        final BigDecimal minMoney = redsmokes.getSettings().getMinMoney();
         if (value.compareTo(maxMoney) > 0) {
             if (throwError) {
                 throw new MaxMoneyException();
