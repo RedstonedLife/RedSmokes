@@ -185,7 +185,7 @@ public class Economy {
         try {
             setMoney(name, BigDecimal.valueOf(balance));
         } catch (final ArithmeticException e) {
-            ess.getLogger().log(Level.WARNING, "Failed to set balance of " + name + " to " + balance + ": " + e.getMessage(), e);
+            redSmokes.getLogger().log(Level.WARNING, "Failed to set balance of " + name + " to " + balance + ": " + e.getMessage(), e);
         }
     }
 
