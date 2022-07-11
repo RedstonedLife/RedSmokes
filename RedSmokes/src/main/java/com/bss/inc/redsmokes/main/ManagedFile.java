@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.api.IRedSmokes;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -26,7 +28,7 @@ public class ManagedFile {
     private static final int BUFFERSIZE = 1024 * 8;
     private final transient File file;
 
-    public ManagedFile(final String filename, final IEssentials ess) {
+    public ManagedFile(final String filename, final IRedSmokes ess) {
         file = new File(ess.getDataFolder(), filename);
 
         if (file.exists()) {
@@ -35,7 +37,7 @@ public class ManagedFile {
                     throw new IOException("Could not delete file " + file.toString());
                 }
             } catch (final IOException ex) {
-                Essentials.getWrappedLogger().log(Level.SEVERE, ex.getMessage(), ex);
+                RedSmokes.getWrappedLogger().log(Level.SEVERE, ex.getMessage(), ex);
             }
         }
 
@@ -43,7 +45,7 @@ public class ManagedFile {
             try {
                 copyResourceAscii("/" + filename, file);
             } catch (final IOException ex) {
-                Essentials.getWrappedLogger().log(Level.SEVERE, tl("itemsCsvNotLoaded", filename), ex);
+                RedSmokes.getWrappedLogger().log(Level.SEVERE, tl("itemsCsvNotLoaded", filename), ex);
             }
         }
     }
