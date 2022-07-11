@@ -304,12 +304,10 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     public boolean isHiddenFrom(Player player) {
         return !player.canSee(getBase());
     }
-
     @Override
     public boolean isHidden() {
         return hidden;
     }
-
     @Override
     public void setHidden(final boolean hidden) {
         this.hidden = hidden;
@@ -317,9 +315,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
             setLastLogout(getLastOnlineActivity());
         }
     }
-
     public boolean isHidden(final Player player) {
         return hidden || !player.canSee(getBase());
     }
-
 }
