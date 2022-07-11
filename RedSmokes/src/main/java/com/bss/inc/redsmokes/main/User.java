@@ -205,14 +205,14 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
             return true;
         }
         final BigDecimal remainingBalance = getMoney().subtract(cost);
-        if (!permcheck || isAuthorized("essentials.eco.loan")) {
-            return remainingBalance.compareTo(ess.getSettings().getMinMoney()) >= 0;
+        if (!permcheck || isAuthorized("redsmokes.eco.loan")) {
+            return remainingBalance.compareTo(redsmokes.getSettings().getMinMoney()) >= 0;
         }
         return remainingBalance.signum() >= 0;
     }
 
     public void dispose() {
-        ess.runTaskAsynchronously(this::_dispose);
+        redsmokes.runTaskAsynchronously(this::_dispose);
     }
 
     private void _dispose() {
@@ -220,15 +220,5 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
             this.base = new OfflinePlayer(getConfigUUID(), redsmokes.getServer());
         }
         cleanup();
-    }
-    
-    @Override
-    public void setLastLocation() {
-        setLastLocation(this.getLocation());
-    }
-
-    @Override
-    public void setLogoutLocation() {
-        setLogoutLocation(this.getLocation());
     }
 }
