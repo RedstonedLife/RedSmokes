@@ -10,6 +10,7 @@ import com.bss.inc.redsmokes.main.config.processors.DeleteOnEmptyProcessor;
 import com.bss.inc.redsmokes.main.config.serializers.BigDecimalTypeSerializer;
 import com.bss.inc.redsmokes.main.config.serializers.CommandCooldownSerializer;
 import com.bss.inc.redsmokes.main.config.serializers.LocationTypeSerializer;
+import com.bss.inc.redsmokes.main.config.serializers.MaterialTypeSerializer;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.spongepowered.configurate.CommentedConfigurationNode;
