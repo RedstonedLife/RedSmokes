@@ -41,7 +41,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
     public UserMap(final IRedSmokes redSmokes) {
         super();
         this.redSmokes=redSmokes;
-        uuidMap = new UUIDMap(ess);
+        uuidMap = new UUIDMap(redSmokes);
         //RemovalListener<UUID, User> remListener = new UserMapRemovalListener();
         //users = CacheBuilder.newBuilder().maximumSize(ess.getSettings().getMaxUserCacheCount()).softValues().removalListener(remListener).build(this);
         final CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder();
@@ -92,8 +92,8 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
     public User getUser(final String name) {
         final String sanitizedName = StringUtil.safeString(name);
         try {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().warning("Looking up username " + name + " (" + sanitizedName + ") ...");
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().warning("Looking up username " + name + " (" + sanitizedName + ") ...");
             }
 
             if (names.containsKey(sanitizedName)) {
@@ -101,21 +101,21 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
                 return getUser(uuid);
             }
 
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().warning(name + "(" + sanitizedName + ") has no known usermap entry");
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().warning(name + "(" + sanitizedName + ") has no known usermap entry");
             }
 
             final File userFile = getUserFileFromString(sanitizedName);
             if (userFile.exists()) {
-                ess.getLogger().info("Importing user " + name + " to usermap.");
-                final User user = new User(new OfflinePlayer(sanitizedName, ess.getServer()), ess);
+                redSmokes.getLogger().info("Importing user " + name + " to usermap.");
+                final User user = new User(new OfflinePlayer(sanitizedName, redSmokes.getServer()), redSmokes);
                 trackUUID(user.getBase().getUniqueId(), user.getName(), true);
                 return user;
             }
             return null;
         } catch (final UncheckedExecutionException ex) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.WARNING, ex, () -> String.format("Exception while getting user for %s (%s)", name, sanitizedName));
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().log(Level.WARNING, ex, () -> String.format("Exception while getting user for %s (%s)", name, sanitizedName));
             }
             return null;
         }
@@ -129,8 +129,8 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
                 return legacyCacheGet(uuid);
             }
         } catch (final ExecutionException | UncheckedExecutionException ex) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.WARNING, ex, () -> "Exception while getting user for " + uuid);
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().log(Level.WARNING, ex, () -> "Exception while getting user for " + uuid);
             }
             return null;
         }
