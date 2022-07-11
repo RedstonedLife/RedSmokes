@@ -519,37 +519,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
         holder.timestamps().logout(time);
         config.save();
     }
-
-    public String getLastLoginAddress() {
-        return holder.ipAddress();
-    }
-
-    public boolean isAfk() {
-        return holder.afk();
-    }
-
-    public void _setAfk(final boolean set) {
-        holder.afk(set);
-        config.save();
-    }
-
-    public String getGeoLocation() {
-        return holder.geolocation();
-    }
-
-    public void setGeoLocation(final String geolocation) {
-        holder.geolocation(geolocation);
-        config.save();
-    }
-
-    public boolean isSocialSpyEnabled() {
-        return holder.socialSpy();
-    }
-
-    public void setSocialSpyEnabled(final boolean status) {
-        holder.socialSpy(status);
-        config.save();
-    }
+    
 
     public boolean isNPC() {
         return holder.npc();
