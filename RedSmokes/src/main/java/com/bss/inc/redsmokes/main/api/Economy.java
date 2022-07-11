@@ -2,7 +2,9 @@ package com.bss.inc.redsmokes.main.api;
 
 
 import com.bss.inc.redsmokes.api.MaxMoneyException;
+import com.bss.inc.redsmokes.api.events.UserBalanceUpdateEvent;
 import com.bss.inc.redsmokes.main.IRedSmokes;
+import com.bss.inc.redsmokes.main.Trade;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
@@ -237,14 +239,14 @@ public class Economy {
         if (user == null) {
             throw new IllegalArgumentException("Economy user cannot be null");
         }
-        if (balance.compareTo(ess.getSettings().getMinMoney()) < 0) {
+        if (balance.compareTo(redSmokes.getSettings().getMinMoney()) < 0) {
             throw new NoLoanPermittedException();
         }
         if (balance.signum() < 0 && !user.isAuthorized("essentials.eco.loan")) {
             throw new NoLoanPermittedException();
         }
         user.setMoney(balance, UserBalanceUpdateEvent.Cause.API);
-        Trade.log("API", "Set", "API", user.getName(), new Trade(balance, ess), null, null, null, balance, ess);
+        Trade.log("API", "Set", "API", user.getName(), new Trade(balance, redSmokes), null, null, null, balance, redSmokes);
     }
 
     /**
