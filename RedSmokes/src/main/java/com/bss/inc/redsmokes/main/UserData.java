@@ -5,7 +5,9 @@ import com.bss.inc.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
 import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
+import com.bss.inc.redsmokes.main.config.entities.LazyLocation;
 import com.bss.inc.redsmokes.main.config.holders.UserConfigHolder;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.io.File;
