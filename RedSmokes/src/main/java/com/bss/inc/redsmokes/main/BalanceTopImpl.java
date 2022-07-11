@@ -7,5 +7,5 @@ import java.util.LinkedHashMap;
 
 public class BalanceTopImpl implements BalanceTop {
     private final IRedSmokes redSmokes;
-    private LinkedHashMap
+    private LinkedHashMap<UUID, BalanceTop.Entry>
 }
