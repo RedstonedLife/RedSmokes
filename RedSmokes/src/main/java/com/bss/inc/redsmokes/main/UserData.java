@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 public abstract class UserData extends PlayerExtension implements IConf {
     protected final transient IRedSmokes redsmokes;
