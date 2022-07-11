@@ -241,8 +241,8 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         final long start = System.nanoTime();
         final BigDecimal value = _getMoney();
         final long elapsed = System.nanoTime() - start;
-        if (elapsed > ess.getSettings().getEconomyLagWarning()) {
-            ess.getLogger().log(Level.INFO, "Lag Notice - Slow Economy Response - Request took over {0}ms!", elapsed / 1000000.0);
+        if (elapsed > redsmokes.getSettings().getEconomyLagWarning()) {
+            redsmokes.getLogger().log(Level.INFO, "Lag Notice - Slow Economy Response - Request took over {0}ms!", elapsed / 1000000.0);
         }
         return value;
     }
@@ -253,9 +253,9 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     }
 
     private BigDecimal _getMoney() {
-        if (ess.getSettings().isEcoDisabled()) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().info("Internal economy functions disabled, aborting balance check.");
+        if (redsmokes.getSettings().isEcoDisabled()) {
+            if (redsmokes.getSettings().isDebug()) {
+                redsmokes.getLogger().info("Internal economy functions disabled, aborting balance check.");
             }
             return BigDecimal.ZERO;
         }
@@ -267,9 +267,9 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     }
 
     public void setMoney(final BigDecimal value, final UserBalanceUpdateEvent.Cause cause) throws MaxMoneyException {
-        if (ess.getSettings().isEcoDisabled()) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().info("Internal economy functions disabled, aborting balance change.");
+        if (redsmokes.getSettings().isEcoDisabled()) {
+            if (redsmokes.getSettings().isDebug()) {
+                redsmokes.getLogger().info("Internal economy functions disabled, aborting balance change.");
             }
             return;
         }
@@ -284,7 +284,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
             layer.set(getBase(), newBalance);
         }
         super.setMoney(newBalance, true);
-        Trade.log("Update", "Set", "API", getName(), new Trade(newBalance, ess), null, null, null, newBalance, ess);
+        Trade.log("Update", "Set", "API", getName(), new Trade(newBalance, redsmokes), null, null, null, newBalance, redsmokes);
     }
 
     public void updateMoneyCache(final BigDecimal value) {
