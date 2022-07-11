@@ -110,7 +110,7 @@ public class ManagedFile {
                                 if (correct.equals(test)) {
                                     return true;
                                 } else {
-                                    Essentials.getWrappedLogger().warning("File " + file.toString() + " has been modified by user and file version differs, please update the file manually.");
+                                    RedSmokes.getWrappedLogger().warning("File " + file.toString() + " has been modified by user and file version differs, please update the file manually.");
                                 }
                             }
                         }
@@ -144,7 +144,7 @@ public class ManagedFile {
                 return lines;
             }
         } catch (final IOException ex) {
-            Essentials.getWrappedLogger().log(Level.SEVERE, ex.getMessage(), ex);
+            RedSmokes.getWrappedLogger().log(Level.SEVERE, ex.getMessage(), ex);
             return Collections.emptyList();
         }
     }
