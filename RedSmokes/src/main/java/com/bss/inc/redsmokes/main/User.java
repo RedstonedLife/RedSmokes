@@ -36,5 +36,5 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     }
 
     void update(final Player base) {setBase(base);}
-
+    
 }
