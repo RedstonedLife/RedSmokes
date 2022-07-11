@@ -164,9 +164,9 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
     @Override
     public User load(final String stringUUID) throws Exception {
         final UUID uuid = UUID.fromString(stringUUID);
-        Player player = ess.getServer().getPlayer(uuid);
+        Player player = redSmokes.getServer().getPlayer(uuid);
         if (player != null) {
-            final User user = new User(player, ess);
+            final User user = new User(player, redSmokes);
             trackUUID(uuid, user.getName(), true);
             return user;
         }
@@ -174,8 +174,8 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
         final File userFile = getUserFileFromID(uuid);
 
         if (userFile.exists()) {
-            player = new OfflinePlayer(uuid, ess.getServer());
-            final User user = new User(player, ess);
+            player = new OfflinePlayer(uuid, redSmokes.getServer());
+            final User user = new User(player, redSmokes);
             ((OfflinePlayer) player).setName(user.getLastAccountName());
             trackUUID(uuid, user.getName(), false);
             return user;
@@ -190,8 +190,8 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
         }
 
         if (player instanceof Player) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().info("Loading online OfflinePlayer into user map...");
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().info("Loading online OfflinePlayer into user map...");
             }
             final User user = new User((Player) player, ess);
             trackUUID(player.getUniqueId(), player.getName(), true);
@@ -199,17 +199,17 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
         }
 
         final File userFile = getUserFileFromID(player.getUniqueId());
-        if (ess.getSettings().isDebug()) {
-            ess.getLogger().info("Loading OfflinePlayer into user map. Has data: " + userFile.exists() + " for " + player);
+        if (redSmokes.getSettings().isDebug()) {
+            redSmokes.getLogger().info("Loading OfflinePlayer into user map. Has data: " + userFile.exists() + " for " + player);
         }
 
         final OfflinePlayer essPlayer = new OfflinePlayer(player.getUniqueId(), ess.getServer());
-        final User user = new User(essPlayer, ess);
+        final User user = new User(essPlayer, redSmokes);
         if (userFile.exists()) {
             essPlayer.setName(user.getLastAccountName());
         } else {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().info("OfflinePlayer usermap load saving user data for " + player);
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().info("OfflinePlayer usermap load saving user data for " + player);
             }
 
             // this code makes me sad
