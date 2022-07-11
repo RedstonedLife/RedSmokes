@@ -299,11 +299,6 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
             // We don't want to throw any errors here, just updating a cache
         }
     }
-
-    @Override
-    public boolean isHiddenFrom(Player player) {
-        return !player.canSee(getBase());
-    }
     @Override
     public boolean isHidden() {
         return hidden;
