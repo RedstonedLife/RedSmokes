@@ -276,7 +276,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         final BigDecimal oldBalance = _getMoney();
 
         final UserBalanceUpdateEvent updateEvent = new UserBalanceUpdateEvent(this.getBase(), oldBalance, value, cause);
-        ess.getServer().getPluginManager().callEvent(updateEvent);
+        redsmokes.getServer().getPluginManager().callEvent(updateEvent);
         final BigDecimal newBalance = updateEvent.getNewBalance();
 
         final EconomyLayer layer = EconomyLayers.getSelectedLayer();
@@ -288,7 +288,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     }
 
     public void updateMoneyCache(final BigDecimal value) {
-        if (ess.getSettings().isEcoDisabled() || !EconomyLayers.isLayerSelected() || super.getMoney().equals(value)) {
+        if (redsmokes.getSettings().isEcoDisabled() || !EconomyLayers.isLayerSelected() || super.getMoney().equals(value)) {
             return;
         }
         try {
