@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main.items;
 
+import com.bss.inc.redsmokes.api.apis.IItemDb;
+import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
@@ -121,7 +123,7 @@ public abstract class AbstractItemDb implements IConf, net.ess3.api.IItemDb {
                 ess.getLogger().info(String.format("Trying to serialize '%s' with resolver '%s'...", stack.toString(), key));
             }
 
-            final ItemResolver resolver = resolverMap.get(key);
+            final IItemDb.ItemResolver resolver = resolverMap.get(key);
             final String serialized = resolver.serialize(stack);
 
             if (serialized != null) {
@@ -134,7 +136,7 @@ public abstract class AbstractItemDb implements IConf, net.ess3.api.IItemDb {
 
     Collection<String> getResolverNames() {
         final List<String> result = new ArrayList<>();
-        for (final ItemResolver resolver : resolverMap.values()) {
+        for (final IItemDb.ItemResolver resolver : resolverMap.values()) {
             final Collection<String> resolverNames = resolver.getNames();
             if (resolverNames != null) {
                 result.addAll(resolverNames);
