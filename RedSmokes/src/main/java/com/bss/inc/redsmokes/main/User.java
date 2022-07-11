@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.OfflinePlayer;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
+import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.TriState;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.google.common.collect.Lists;
@@ -191,7 +192,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         }
         sendMessage(tl("takenFromAccount", NumberUtil.displayCurrency(value, ess)));
         if (initiator != null) {
-            initiator.sendMessage(tl("takenFromOthersAccount", NumberUtil.displayCurrency(value, ess), this.getDisplayName(), NumberUtil.displayCurrency(getMoney(), ess)));
+            initiator.sendMessage(tl("takenFromOthersAccount", NumberUtil.displayCurrency(value, redsmokes), this.getDisplayName(), NumberUtil.displayCurrency(getMoney(), redsmokes)));
         }
     }
 
