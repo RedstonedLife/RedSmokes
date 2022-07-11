@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main.economy;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
+import com.bss.inc.redsmokes.main.economy.layers.VaultLayer;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
