@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main.economy.vault;
 
+import com.bss.inc.redsmokes.main.RedSmokes;
+import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.google.common.base.Charsets;
 import net.ess3.api.MaxMoneyException;
 import net.milkbowl.vault.economy.Economy;
@@ -25,20 +27,20 @@ public class VaultEconomyProvider implements Economy {
     private static final String WARN_NPC_RECREATE_1 = "Account creation was requested for NPC user {0}, but an account file with UUID {1} already exists.";
     private static final String WARN_NPC_RECREATE_2 = "Essentials will create a new account as requested by the other plugin, but this is almost certainly a bug and should be reported.";
 
-    private final Essentials ess;
+    private final RedSmokes redSmokes;
 
-    public VaultEconomyProvider(Essentials essentials) {
-        this.ess = essentials;
+    public VaultEconomyProvider(RedSmokes redSmokes) {
+        this.redSmokes = redSmokes;
     }
 
     @Override
     public boolean isEnabled() {
-        return ess.isEnabled();
+        return redSmokes.isEnabled();
     }
 
     @Override
     public String getName() {
-        return "EssentialsX Economy";
+        return "RedSmokes Economy";
     }
 
     @Override
@@ -53,7 +55,7 @@ public class VaultEconomyProvider implements Economy {
 
     @Override
     public String format(double amount) {
-        return NumberUtil.displayCurrency(BigDecimal.valueOf(amount), ess);
+        return NumberUtil.displayCurrency(BigDecimal.valueOf(amount), redSmokes);
     }
 
     @Override
@@ -63,7 +65,7 @@ public class VaultEconomyProvider implements Economy {
 
     @Override
     public String currencyNameSingular() {
-        return ess.getSettings().getCurrencySymbol();
+        return redSmokes.getSettings().getCurrencySymbol();
     }
 
     @SuppressWarnings("deprecation")
