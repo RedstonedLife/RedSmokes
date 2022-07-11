@@ -7,6 +7,7 @@ import com.bss.inc.redsmokes.main.IRedSmokes;
 import com.bss.inc.redsmokes.main.Trade;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
+import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
 import org.bukkit.entity.Player;
@@ -661,7 +662,7 @@ public class Economy {
         try {
             return hasMore(name, BigDecimal.valueOf(amount));
         } catch (final ArithmeticException e) {
-            ess.getLogger().log(Level.WARNING, "Failed to compare balance of " + name + " with " + amount + ": " + e.getMessage(), e);
+            redSmokes.getLogger().log(Level.WARNING, "Failed to compare balance of " + name + " with " + amount + ": " + e.getMessage(), e);
             return false;
         }
     }
@@ -830,7 +831,7 @@ public class Economy {
         try {
             return format(BigDecimal.valueOf(amount));
         } catch (final NumberFormatException e) {
-            ess.getLogger().log(Level.WARNING, "Failed to display " + amount + ": " + e.getMessage(), e);
+            redSmokes.getLogger().log(Level.WARNING, "Failed to display " + amount + ": " + e.getMessage(), e);
             return "NaN";
         }
     }
@@ -842,10 +843,10 @@ public class Economy {
      * @return Formatted money
      */
     public static String format(final BigDecimal amount) {
-        if (ess == null) {
+        if (redSmokes == null) {
             throw new RuntimeException(WARN_CALL_BEFORE_LOAD);
         }
-        return NumberUtil.displayCurrency(amount, ess);
+        return NumberUtil.displayCurrency(amount, redSmokes);
     }
 
     /**
@@ -897,7 +898,7 @@ public class Economy {
             createNPCFile(name);
             return true;
         }
-        ess.getLogger().log(Level.WARNING, MessageFormat.format(WARN_EXISTING_NPC_CREATE, name, user.getConfigUUID()), new RuntimeException());
+        redSmokes.getLogger().log(Level.WARNING, MessageFormat.format(WARN_EXISTING_NPC_CREATE, name, user.getConfigUUID()), new RuntimeException());
         return false;
     }
 
