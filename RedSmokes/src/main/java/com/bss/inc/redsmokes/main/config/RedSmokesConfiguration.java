@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main.config;
 
 import com.bss.inc.redsmokes.api.InvalidWorldException;
 import com.bss.inc.redsmokes.api.services.mail.MailMessage;
+import com.bss.inc.redsmokes.main.RedSmokes;
 import com.bss.inc.redsmokes.main.config.annotations.DeleteIfIncomplete;
 import com.bss.inc.redsmokes.main.config.annotations.DeleteOnEmpty;
 import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
@@ -126,7 +127,7 @@ public class RedSmokesConfiguration {
             try {
                 result.put(entry.getKey().toLowerCase(Locale.ENGLISH), jailNode.get(LazyLocation.class));
             } catch (SerializationException e) {
-                Essentials.getWrappedLogger().log(Level.WARNING, "Error serializing key " + entry.getKey(), e);
+                RedSmokes.getWrappedLogger().log(Level.WARNING, "Error serializing key " + entry.getKey(), e);
             }
         }
         return result;
@@ -140,7 +141,7 @@ public class RedSmokesConfiguration {
         try {
             toSplitRoot(path, configurationNode).set(type, list);
         } catch (SerializationException e) {
-            Essentials.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
+            RedSmokes.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
