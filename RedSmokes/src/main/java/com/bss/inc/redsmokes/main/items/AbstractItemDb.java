@@ -39,7 +39,7 @@ import java.util.Set;
 import java.util.function.Function;
 
 
-public abstract class AbstractItemDb implements IConf, net.ess3.api.IItemDb {
+public abstract class AbstractItemDb implements IConf, com.bss.inc.redsmokes.api.IItemDb {
 
     protected final IEssentials ess;
     private final Map<PluginKey, ItemResolver> resolverMap = new HashMap<>();
