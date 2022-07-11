@@ -578,14 +578,14 @@ public class Economy {
      * @throws MaxMoneyException        If this transaction has but the user over the maximum amount of money
      */
     public static void resetBalance(final User user) throws NoLoanPermittedException, MaxMoneyException {
-        if (ess == null) {
+        if (redSmokes == null) {
             throw new RuntimeException(WARN_CALL_BEFORE_LOAD);
         }
         if (user == null) {
             throw new IllegalArgumentException("Economy user cannot be null");
         }
-        setMoney(user, ess.getSettings().getStartingBalance());
-        Trade.log("API", "Reset", "API", user.getName(), new Trade(BigDecimal.ZERO, ess), null, null, null, ess.getSettings().getStartingBalance(), ess);
+        setMoney(user, redSmokes.getSettings().getStartingBalance());
+        Trade.log("API", "Reset", "API", user.getName(), new Trade(BigDecimal.ZERO, redSmokes), null, null, null, redSmokes.getSettings().getStartingBalance(), redSmokes);
     }
 
     /**
