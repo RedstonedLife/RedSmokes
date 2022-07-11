@@ -72,7 +72,14 @@ public interface IRedSmokes extends Plugin {
     BalanceTop getBalanceTop();
     RedSmokesTimer getTimer();
     MailService getMail();
-
+    /**
+     * Get a list of players who are vanished.
+     *
+     * @return A list of players who are vanished
+     * @deprecated Use {@link com.bss.inc.redsmokes.api.IEssentials#getVanishedPlayersNew()} where possible.
+     */
+    @Deprecated
+    List<String> getVanishedPlayers();
     Collection<Player> getOnlinePlayers();
     Iterable<User> getOnlineUsers();
     SpawnerItemProvider getSpawnerItemProvider();
