@@ -241,7 +241,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
 
     public void removeUser(final String name) {
         if (names == null) {
-            ess.getLogger().warning("Name collection is null, cannot remove user.");
+            redSmokes.getLogger().warning("Name collection is null, cannot remove user.");
             return;
         }
         final UUID uuid = names.get(name);
