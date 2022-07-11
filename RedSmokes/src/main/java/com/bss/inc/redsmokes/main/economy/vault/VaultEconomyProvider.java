@@ -302,22 +302,22 @@ public class VaultEconomyProvider implements Economy {
                 redSmokes.getLogger().log(Level.SEVERE, MessageFormat.format(WARN_NPC_RECREATE_1, player.getName(), player.getUniqueId().toString()), new RuntimeException());
                 redSmokes.getLogger().log(Level.SEVERE, WARN_NPC_RECREATE_2);
             }
-            final RedSmokesUserConfiguration npcConfig = new EssentialsUserConfiguration(player.getName(), player.getUniqueId(), npcFile);
+            final RedSmokesUserConfiguration npcConfig = new RedSmokesUserConfiguration(player.getName(), player.getUniqueId(), npcFile);
             npcConfig.load();
             npcConfig.setProperty("npc", true);
             npcConfig.setProperty("last-account-name", player.getName());
-            npcConfig.setProperty("money", ess.getSettings().getStartingBalance());
+            npcConfig.setProperty("money", redSmokes.getSettings().getStartingBalance());
             npcConfig.blockingSave();
-            ess.getUserMap().trackUUID(player.getUniqueId(), player.getName(), false);
+            redSmokes.getUserMap().trackUUID(player.getUniqueId(), player.getName(), false);
             return true;
         }
 
         // Loading a v4 UUID that we somehow didn't track, mark it as a normal player and hope for the best, vault sucks :/
         try {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().info("Vault requested a player account creation for a v4 UUID: " + player);
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().info("Vault requested a player account creation for a v4 UUID: " + player);
             }
-            ess.getUserMap().load(player);
+            redSmokes.getUserMap().load(player);
             return true;
         } catch (UserDoesNotExistException e) {
             e.printStackTrace();
