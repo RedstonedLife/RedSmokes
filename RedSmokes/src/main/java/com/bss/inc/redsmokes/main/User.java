@@ -57,8 +57,8 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     @Override
     public boolean isPermissionSet(final String node) {
         final boolean result = isPermSetCheck(node);
-        if (ess.getSettings().isDebug()) {
-            ess.getLogger().log(Level.INFO, "checking if " + base.getName() + " has " + node + " (set-explicit) - " + result);
+        if (redsmokes.getSettings().isDebug()) {
+            redsmokes.getLogger().log(Level.INFO, "checking if " + base.getName() + " has " + node + " (set-explicit) - " + result);
         }
         return result;
     }
