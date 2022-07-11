@@ -17,5 +17,6 @@ public abstract class UserData extends PlayerExtension implements IConf {
     protected UserData(final Player base, final com.bss.inc.redsmokes.api.IRedSmokes redsmokes) {
         super(base);
         this.redsmokes = redsmokes;
+        
     }
 }
