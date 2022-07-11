@@ -36,6 +36,10 @@ public abstract class UserData extends PlayerExtension implements IConf {
     }
 
     public final void reset() {
-        
+        config.blockingSave();
+        config.getFile().delete();
+        if(config.getUsername() != null) {
+            
+        }
     }
 }
