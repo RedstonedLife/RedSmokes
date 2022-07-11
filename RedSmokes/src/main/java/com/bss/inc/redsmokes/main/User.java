@@ -329,4 +329,61 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         }
         return result;
     }
+    @Override
+    public boolean isVanished() {
+        return vanished;
+    }
+
+    @Override
+    public void setVanished(final boolean set) {
+        vanished = set;
+        if (set) {
+            for (final User user : ess.getOnlineUsers()) {
+                if (!user.isAuthorized("essentials.vanish.see")) {
+                    user.getBase().hidePlayer(getBase());
+                }
+            }
+            setHidden(true);
+            lastVanishTime = System.currentTimeMillis();
+            ess.getVanishedPlayersNew().add(getName());
+            this.getBase().setMetadata("vanished", new FixedMetadataValue(ess, true));
+            if (isAuthorized("essentials.vanish.effect")) {
+                this.getBase().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1, false));
+            }
+            if (ess.getSettings().sleepIgnoresVanishedPlayers()) {
+                getBase().setSleepingIgnored(true);
+            }
+        } else {
+            for (final Player p : ess.getOnlinePlayers()) {
+                p.showPlayer(getBase());
+            }
+            setHidden(false);
+            ess.getVanishedPlayersNew().remove(getName());
+            this.getBase().setMetadata("vanished", new FixedMetadataValue(ess, false));
+            if (isAuthorized("essentials.vanish.effect")) {
+                this.getBase().removePotionEffect(PotionEffectType.INVISIBILITY);
+            }
+            if (ess.getSettings().sleepIgnoresVanishedPlayers() && !isAuthorized("essentials.sleepingignored")) {
+                getBase().setSleepingIgnored(false);
+            }
+        }
+    }
+
+    public boolean checkSignThrottle() {
+        if (isSignThrottled()) {
+            return true;
+        }
+        updateThrottle();
+        return false;
+    }
+
+    public boolean isSignThrottled() {
+        final long minTime = lastThrottledAction + (1000 / ess.getSettings().getSignUsePerSecond());
+        return System.currentTimeMillis() < minTime;
+    }
+
+    public void updateThrottle() {
+        lastThrottledAction = System.currentTimeMillis();
+    }
+
 }
