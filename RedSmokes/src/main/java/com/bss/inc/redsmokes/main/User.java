@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.google.common.collect.Lists;
 import org.bukkit.Statistic;
@@ -37,6 +38,5 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
 
     void update(final Player base) {setBase(base);}
     public IRedSmokes getRedSmokes() {return redsmokes;}
-    @Override
-    
+    @Override public boolean isAuthorized(final IrsCommand cmd) {return isAuthorized(cmd);}
 }
