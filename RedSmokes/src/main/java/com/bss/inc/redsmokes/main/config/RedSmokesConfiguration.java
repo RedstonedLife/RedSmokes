@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main.config;
 
+import com.bss.inc.redsmokes.api.services.mail.MailMessage;
 import com.bss.inc.redsmokes.main.config.annotations.DeleteIfIncomplete;
 import com.bss.inc.redsmokes.main.config.annotations.DeleteOnEmpty;
 import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
