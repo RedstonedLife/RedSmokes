@@ -232,7 +232,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
     @Override
     public void reloadConfig() {
         getUUIDMap().forceWriteUUIDMap();
-        loadAllUsersAsync(ess);
+        loadAllUsersAsync(redSmokes);
     }
 
     public void invalidateAll() {
