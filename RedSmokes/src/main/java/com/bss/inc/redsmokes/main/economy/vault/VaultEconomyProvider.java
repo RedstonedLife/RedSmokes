@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main.economy.vault;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
+import com.bss.inc.redsmokes.main.api.UserDoesNotExistException;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
@@ -98,10 +99,10 @@ public class VaultEconomyProvider implements Economy {
     @Override
     public double getBalance(String playerName) {
         try {
-            return getDoubleValue(com.earth2me.essentials.api.Economy.getMoneyExact(playerName));
+            return getDoubleValue(com.bss.inc.redsmokes.api.Economy.getMoneyExact(playerName));
         } catch (UserDoesNotExistException e) {
             createPlayerAccount(playerName);
-            return getDoubleValue(ess.getSettings().getStartingBalance());
+            return getDoubleValue(redSmokes.getSettings().getStartingBalance());
         }
     }
 
