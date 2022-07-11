@@ -38,6 +38,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
+import static com.bss.inc.redsmokes.main.I18n.tl;
+
 
 public abstract class AbstractItemDb implements IConf, com.bss.inc.redsmokes.api.IItemDb {
 
