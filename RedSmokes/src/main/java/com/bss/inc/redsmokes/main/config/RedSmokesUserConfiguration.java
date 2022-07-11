@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.util.UUID;
 import java.util.logging.Level;
 
-public class EssentialsUserConfiguration extends RedSmokesConfiguration {
+public class RedSmokesUserConfiguration extends RedSmokesConfiguration {
     private String username;
     private final UUID uuid;
 
