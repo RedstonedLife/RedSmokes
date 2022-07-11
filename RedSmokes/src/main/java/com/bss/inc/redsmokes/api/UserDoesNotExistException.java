@@ -1,4 +1,14 @@
 package com.bss.inc.redsmokes.api;
 
-public class UserDoesNotExistException {
+
+import static com.bss.inc.redsmokes.main.I18n.tl;
+
+/**
+ * @deprecated This is unused - see {@link com.bss.inc.}.
+ */
+@Deprecated
+public class UserDoesNotExistException extends Exception {
+    public UserDoesNotExistException(final String name) {
+        super(tl("userDoesNotExist", name));
+    }
 }
