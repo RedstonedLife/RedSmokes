@@ -149,7 +149,7 @@ public class VaultEconomyProvider implements Economy {
     @Override
     public boolean has(OfflinePlayer player, double amount) {
         try {
-            return com.earth2me.essentials.api.Economy.hasEnough(player.getUniqueId(), BigDecimal.valueOf(amount));
+            return com.bss.inc.redsmokes.api.Economy.hasEnough(player.getUniqueId(), BigDecimal.valueOf(amount));
         } catch (UserDoesNotExistException e) {
             return false;
         }
