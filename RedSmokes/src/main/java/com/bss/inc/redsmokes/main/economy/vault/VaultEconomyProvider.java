@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main.economy.vault;
 
 import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.RedSmokes;
+import com.bss.inc.redsmokes.main.api.NoLoanPermittedException;
 import com.bss.inc.redsmokes.main.api.UserDoesNotExistException;
 import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
