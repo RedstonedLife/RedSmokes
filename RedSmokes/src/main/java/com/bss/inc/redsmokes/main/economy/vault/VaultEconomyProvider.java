@@ -75,16 +75,16 @@ public class VaultEconomyProvider implements Economy {
     @SuppressWarnings("deprecation")
     @Override
     public boolean hasAccount(String playerName) {
-        if (com.bss.inc.redsmokes.api.Economy.playerExists(playerName)) {
+        if (com.bss.inc.redsmokes.main.api.Economy.playerExists(playerName)) {
             return true;
         }
         // We may not have the player name in the usermap, let's double check an NPC account with this name doesn't exist.
-        return com.bss.inc.redsmokes.api.Economy.playerExists(UUID.nameUUIDFromBytes(("NPC:" + StringUtil.safeString(playerName)).getBytes(Charsets.UTF_8)));
+        return com.bss.inc.redsmokes.main.api.Economy.playerExists(UUID.nameUUIDFromBytes(("NPC:" + StringUtil.safeString(playerName)).getBytes(Charsets.UTF_8)));
     }
 
     @Override
     public boolean hasAccount(OfflinePlayer player) {
-        return com.bss.inc.redsmokes.api.Economy.playerExists(player.getUniqueId());
+        return com.bss.inc.redsmokes.main.api.Economy.playerExists(player.getUniqueId());
     }
 
     @Override
@@ -101,7 +101,7 @@ public class VaultEconomyProvider implements Economy {
     @Override
     public double getBalance(String playerName) {
         try {
-            return getDoubleValue(com.bss.inc.redsmokes.api.Economy.getMoneyExact(playerName));
+            return getDoubleValue(com.bss.inc.redsmokes.main.api.Economy.getMoneyExact(playerName));
         } catch (UserDoesNotExistException e) {
             createPlayerAccount(playerName);
             return getDoubleValue(redSmokes.getSettings().getStartingBalance());
@@ -111,7 +111,7 @@ public class VaultEconomyProvider implements Economy {
     @Override
     public double getBalance(OfflinePlayer player) {
         try {
-            return getDoubleValue(com.bss.inc.redsmokes.api.Economy.getMoneyExact(player.getUniqueId()));
+            return getDoubleValue(com.bss.inc.redsmokes.main.api.Economy.getMoneyExact(player.getUniqueId()));
         } catch (UserDoesNotExistException e) {
             createPlayerAccount(player);
             return getDoubleValue(redSmokes.getSettings().getStartingBalance());
@@ -142,7 +142,7 @@ public class VaultEconomyProvider implements Economy {
     @Override
     public boolean has(String playerName, double amount) {
         try {
-            return com.bss.inc.redsmokes.api.Economy.hasEnough(playerName, amount);
+            return com.bss.inc.redsmokes.main.api.Economy.hasEnough(playerName, amount);
         } catch (UserDoesNotExistException e) {
             return false;
         }
@@ -151,7 +151,7 @@ public class VaultEconomyProvider implements Economy {
     @Override
     public boolean has(OfflinePlayer player, double amount) {
         try {
-            return com.bss.inc.redsmokes.api.Economy.hasEnough(player.getUniqueId(), BigDecimal.valueOf(amount));
+            return com.bss.inc.redsmokes.main.api.Economy.hasEnough(player.getUniqueId(), BigDecimal.valueOf(amount));
         } catch (UserDoesNotExistException e) {
             return false;
         }
@@ -178,7 +178,7 @@ public class VaultEconomyProvider implements Economy {
         }
 
         try {
-            com.bss.inc.redsmokes.api.Economy.subtract(playerName, amount);
+            com.bss.inc.redsmokes.main.api.Economy.subtract(playerName, amount);
             return new EconomyResponse(amount, getBalance(playerName), EconomyResponse.ResponseType.SUCCESS, null);
         } catch (UserDoesNotExistException e) {
             return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "User does not exist!");
@@ -199,7 +199,7 @@ public class VaultEconomyProvider implements Economy {
         }
 
         try {
-            com.bss.inc.redsmokes.api.Economy.subtract(player.getUniqueId(), BigDecimal.valueOf(amount));
+            com.bss.inc.redsmokes.main.api.Economy.subtract(player.getUniqueId(), BigDecimal.valueOf(amount));
             return new EconomyResponse(amount, getBalance(player), EconomyResponse.ResponseType.SUCCESS, null);
         } catch (UserDoesNotExistException e) {
             return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "User does not exist!");
@@ -231,7 +231,7 @@ public class VaultEconomyProvider implements Economy {
         }
 
         try {
-            com.bss.inc.redsmokes.api.Economy.add(playerName, amount);
+            com.bss.inc.redsmokes.main.api.Economy.add(playerName, amount);
             return new EconomyResponse(amount, getBalance(playerName), EconomyResponse.ResponseType.SUCCESS, null);
         } catch (UserDoesNotExistException e) {
             return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "User does not exist!");
@@ -252,7 +252,7 @@ public class VaultEconomyProvider implements Economy {
         }
 
         try {
-            com.bss.inc.redsmokes.api.Economy.add(player.getUniqueId(), BigDecimal.valueOf(amount));
+            com.bss.inc.redsmokes.main.api.Economy.add(player.getUniqueId(), BigDecimal.valueOf(amount));
             return new EconomyResponse(amount, getBalance(player), EconomyResponse.ResponseType.SUCCESS, null);
         } catch (UserDoesNotExistException e) {
             return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "User does not exist!");
@@ -279,7 +279,7 @@ public class VaultEconomyProvider implements Economy {
             return false;
         }
         // Assume we're creating an NPC here? If not, it's a lost cause anyway!
-        return com.bss.inc.redsmokes.api.Economy.createNPC(playerName);
+        return com.bss.inc.redsmokes.main.api.Economy.createNPC(playerName);
     }
 
     @Override
