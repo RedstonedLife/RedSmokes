@@ -278,7 +278,7 @@ public class VaultEconomyProvider implements Economy {
             return false;
         }
         // Assume we're creating an NPC here? If not, it's a lost cause anyway!
-        return com.earth2me.essentials.api.Economy.createNPC(playerName);
+        return com.bss.inc.redsmokes.api.Economy.createNPC(playerName);
     }
 
     @Override
