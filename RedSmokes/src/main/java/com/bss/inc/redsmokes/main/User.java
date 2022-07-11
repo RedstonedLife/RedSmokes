@@ -16,6 +16,7 @@ import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.math.BigDecimal;
@@ -340,23 +341,23 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     public void setVanished(final boolean set) {
         vanished = set;
         if (set) {
-            for (final User user : ess.getOnlineUsers()) {
-                if (!user.isAuthorized("essentials.vanish.see")) {
+            for (final User user : redsmokes.getOnlineUsers()) {
+                if (!user.isAuthorized("redsmokes.vanish.see")) {
                     user.getBase().hidePlayer(getBase());
                 }
             }
             setHidden(true);
             lastVanishTime = System.currentTimeMillis();
-            ess.getVanishedPlayersNew().add(getName());
-            this.getBase().setMetadata("vanished", new FixedMetadataValue(ess, true));
+            redsmokes.getVanishedPlayersNew().add(getName());
+            this.getBase().setMetadata("vanished", new FixedMetadataValue(redsmokes, true));
             if (isAuthorized("essentials.vanish.effect")) {
                 this.getBase().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1, false));
             }
-            if (ess.getSettings().sleepIgnoresVanishedPlayers()) {
+            if (redsmokes.getSettings().sleepIgnoresVanishedPlayers()) {
                 getBase().setSleepingIgnored(true);
             }
         } else {
-            for (final Player p : ess.getOnlinePlayers()) {
+            for (final Player p : redsmokes.getOnlinePlayers()) {
                 p.showPlayer(getBase());
             }
             setHidden(false);
