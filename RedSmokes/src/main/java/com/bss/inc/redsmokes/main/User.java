@@ -321,7 +321,6 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         }
         return result;
     }
-
     @Override
     public boolean inGroup(final String group) {
         final boolean result = redsmokes.getPermissionsHandler().inGroup(base, group);
