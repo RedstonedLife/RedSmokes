@@ -157,7 +157,7 @@ public class RedSmokesConfiguration {
             }
             return list;
         } catch (SerializationException e) {
-            Essentials.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
+            RedSmokes.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
             return new ArrayList<>();
         }
     }
