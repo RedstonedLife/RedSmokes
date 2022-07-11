@@ -34,8 +34,8 @@ public class LegacyItemDb extends AbstractItemDb {
     private final transient Pattern csvSplitPattern = Pattern.compile("(\"([^\"]*)\"|[^,]*)(,|$)");
 
     public LegacyItemDb(final IRedSmokes redSmokes) {
-        super(ess);
-        file = new ManagedFile("items.csv", ess);
+        super(redSmokes);
+        file = new ManagedFile("items.csv", redSmokes);
     }
 
     @Override
@@ -117,7 +117,7 @@ public class LegacyItemDb extends AbstractItemDb {
             nameList.sort(LengthCompare.INSTANCE);
         }
 
-        ess.getLogger().info(String.format("Loaded %s items from items.csv.", listNames().size()));
+        redSmokes.getLogger().info(String.format("Loaded %s items from items.csv.", listNames().size()));
 
         ready = true;
     }
@@ -182,14 +182,14 @@ public class LegacyItemDb extends AbstractItemDb {
             if (nbt.startsWith("*")) {
                 nbt = nbtData.get(nbt.substring(1));
             }
-            retval = ess.getServer().getUnsafe().modifyItemStack(retval, nbt);
+            retval = redSmokes.getServer().getUnsafe().modifyItemStack(retval, nbt);
         }
         final Material MOB_SPAWNER = EnumUtil.getMaterial("SPAWNER", "MOB_SPAWNER");
         if (mat == MOB_SPAWNER) {
             if (metaData == 0) metaData = EntityType.PIG.getTypeId();
             try {
-                retval = ess.getSpawnerItemProvider().setEntityType(retval, EntityType.fromId(metaData));
-                ess.getPersistentDataProvider().set(retval, "convert", "true");
+                retval = redSmokes.getSpawnerItemProvider().setEntityType(retval, EntityType.fromId(metaData));
+                redSmokes.getPersistentDataProvider().set(retval, "convert", "true");
             } catch (final IllegalArgumentException e) {
                 throw new Exception("Can't spawn entity ID " + metaData + " from mob spawners.");
             }
@@ -200,10 +200,10 @@ public class LegacyItemDb extends AbstractItemDb {
             } catch (final IllegalArgumentException e) {
                 throw new Exception("Can't spawn entity ID " + metaData + " from spawn eggs.");
             }
-            retval = ess.getSpawnEggProvider().createEggItem(type);
+            retval = redSmokes.getSpawnEggProvider().createEggItem(type);
         } else if (mat.name().endsWith("POTION")
                 && VersionUtil.getServerBukkitVersion().isLowerThan(VersionUtil.v1_11_R01)) { // Only apply this to pre-1.11 as items.csv might only work in 1.11
-            retval = ess.getPotionMetaProvider().createPotionItem(mat, metaData);
+            retval = redSmokes.getPotionMetaProvider().createPotionItem(mat, metaData);
         } else {
             retval.setDurability(metaData);
         }
