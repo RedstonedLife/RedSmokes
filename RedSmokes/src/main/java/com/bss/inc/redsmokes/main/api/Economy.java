@@ -408,7 +408,7 @@ public class Economy {
         try {
             divide(name, BigDecimal.valueOf(amount));
         } catch (final ArithmeticException e) {
-            ess.getLogger().log(Level.WARNING, "Failed to divide balance of " + name + " by " + amount + ": " + e.getMessage(), e);
+            redSmokes.getLogger().log(Level.WARNING, "Failed to divide balance of " + name + " by " + amount + ": " + e.getMessage(), e);
         }
     }
 
