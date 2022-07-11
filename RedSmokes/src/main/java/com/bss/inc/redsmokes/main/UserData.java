@@ -519,7 +519,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
         holder.timestamps().logout(time);
         config.save();
     }
-    
+
 
     public boolean isNPC() {
         return holder.npc();
