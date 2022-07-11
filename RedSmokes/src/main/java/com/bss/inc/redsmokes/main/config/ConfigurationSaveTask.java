@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main.config;
 
+import com.bss.inc.redsmokes.main.RedSmokes;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
@@ -30,7 +31,7 @@ public class ConfigurationSaveTask implements Runnable {
             try {
                 loader.save(node);
             } catch (ConfigurateException e) {
-                Essentials.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
+                RedSmokes.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
             } finally {
                 pendingWrites.decrementAndGet();
             }
