@@ -600,7 +600,7 @@ public class Economy {
         try {
             return hasEnough(name, BigDecimal.valueOf(amount));
         } catch (final ArithmeticException e) {
-            ess.getLogger().log(Level.WARNING, "Failed to compare balance of " + name + " with " + amount + ": " + e.getMessage(), e);
+            redSmokes.getLogger().log(Level.WARNING, "Failed to compare balance of " + name + " with " + amount + ": " + e.getMessage(), e);
             return false;
         }
     }
