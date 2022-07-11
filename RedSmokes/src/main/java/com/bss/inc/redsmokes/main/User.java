@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.OfflinePlayer;
+import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
@@ -17,6 +18,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.logging.Level;
+
+import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
     private static final Statistic PLAY_ONE_TICK = EnumUtil.getStatistic("PLAY_ONE_MINUTE", "PLAY_ONE_TICK");
@@ -188,9 +191,9 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         try {
             setMoney(getMoney().subtract(value), cause);
         } catch (final MaxMoneyException ex) {
-            ess.getLogger().log(Level.WARNING, "Invalid call to takeMoney, total balance can't be more than the max-money limit.", ex);
+            redsmokes.getLogger().log(Level.WARNING, "Invalid call to takeMoney, total balance can't be more than the max-money limit.", ex);
         }
-        sendMessage(tl("takenFromAccount", NumberUtil.displayCurrency(value, ess)));
+        sendMessage(tl("takenFromAccount", NumberUtil.displayCurrency(value, redsmokes)));
         if (initiator != null) {
             initiator.sendMessage(tl("takenFromOthersAccount", NumberUtil.displayCurrency(value, redsmokes), this.getDisplayName(), NumberUtil.displayCurrency(getMoney(), redsmokes)));
         }
