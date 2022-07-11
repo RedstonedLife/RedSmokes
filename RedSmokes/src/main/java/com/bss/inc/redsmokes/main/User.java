@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.OfflinePlayer;
 import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
+import com.bss.inc.redsmokes.api.events.UserBalanceUpdateEvent;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import com.bss.inc.redsmokes.main.utils.TriState;
