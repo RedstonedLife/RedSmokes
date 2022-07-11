@@ -2,6 +2,8 @@ package com.bss.inc.redsmokes.main.config;
 
 import com.bss.inc.redsmokes.main.config.annotations.DeleteIfIncomplete;
 import com.bss.inc.redsmokes.main.config.annotations.DeleteOnEmpty;
+import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
+import com.bss.inc.redsmokes.main.config.entities.LazyLocation;
 import com.bss.inc.redsmokes.main.config.processors.DeleteIfIncompleteProcessor;
 import com.bss.inc.redsmokes.main.config.processors.DeleteOnEmptyProcessor;
 import org.bukkit.Location;
