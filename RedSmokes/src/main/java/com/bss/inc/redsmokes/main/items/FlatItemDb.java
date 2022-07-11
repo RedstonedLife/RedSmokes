@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main.items;
 
+import com.bss.inc.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
 import com.google.gson.Gson;
@@ -41,18 +42,18 @@ public class FlatItemDb extends AbstractItemDb {
 
     private transient ManagedFile file = null;
 
-    public FlatItemDb(final IEssentials ess) {
-        super(ess);
+    public FlatItemDb(final IRedSmokes redSmokes) {
+        super(redSmokes);
     }
 
     @Override
     public void reloadConfig() {
         if (file == null) {
-            file = new ManagedFile("items.json", ess);
+            file = new ManagedFile("items.json", redSmokes);
         }
 
         this.rebuild();
-        ess.getLogger().info(String.format("Loaded %s items from items.json.", listNames().size()));
+        redSmokes.getLogger().info(String.format("Loaded %s items from items.json.", listNames().size()));
     }
 
     private void rebuild() {
