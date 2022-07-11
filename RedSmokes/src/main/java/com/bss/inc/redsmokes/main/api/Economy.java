@@ -2,6 +2,9 @@ package com.bss.inc.redsmokes.main.api;
 
 
 import com.bss.inc.redsmokes.main.IRedSmokes;
+import com.bss.inc.redsmokes.main.User;
+import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
+import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
 import org.bukkit.entity.Player;
 
@@ -36,7 +39,7 @@ public class Economy {
     }
 
     private static void createNPCFile(String name) {
-        final File folder = new File(ess.getDataFolder(), "userdata");
+        final File folder = new File(redSmokes.getDataFolder(), "userdata");
         name = StringUtil.safeString(name);
         if (!folder.exists()) {
             if (!folder.mkdirs()) {
@@ -46,43 +49,43 @@ public class Economy {
         final UUID npcUUID = UUID.nameUUIDFromBytes(("NPC:" + name).getBytes(Charsets.UTF_8));
         final File npcFile = new File(folder, npcUUID + ".yml");
         if (npcFile.exists()) {
-            ess.getLogger().log(Level.SEVERE, MessageFormat.format(WARN_NPC_RECREATE_1, name, npcUUID.toString()), new RuntimeException());
-            ess.getLogger().log(Level.SEVERE, WARN_NPC_RECREATE_2);
+            redSmokes.getLogger().log(Level.SEVERE, MessageFormat.format(WARN_NPC_RECREATE_1, name, npcUUID.toString()), new RuntimeException());
+            redSmokes.getLogger().log(Level.SEVERE, WARN_NPC_RECREATE_2);
         }
-        final EssentialsUserConfiguration npcConfig = new EssentialsUserConfiguration(name, npcUUID, npcFile);
+        final RedSmokesUserConfiguration npcConfig = new RedSmokesUserConfiguration(name, npcUUID, npcFile);
         npcConfig.load();
         npcConfig.setProperty("npc", true);
         npcConfig.setProperty("last-account-name", name);
-        npcConfig.setProperty("money", ess.getSettings().getStartingBalance());
+        npcConfig.setProperty("money", redSmokes.getSettings().getStartingBalance());
         npcConfig.blockingSave();
-        ess.getUserMap().trackUUID(npcUUID, name, false);
+        redSmokes.getUserMap().trackUUID(npcUUID, name, false);
     }
 
     private static void deleteNPC(final String name) {
-        final User user = ess.getUser(name);
+        final User user = redSmokes.getUser(name);
         user.reset();
     }
 
     private static User getUserByName(final String name) {
-        if (ess == null) {
+        if (redSmokes == null) {
             throw new RuntimeException(WARN_CALL_BEFORE_LOAD);
         }
         if (name == null) {
             throw new IllegalArgumentException("Economy username cannot be null");
         }
 
-        User user = ess.getUser(name);
+        User user = redSmokes.getUser(name);
         if (user == null) {
             /*
                 Attempt lookup using UUID - this prevents balance resets when accessing economy
                 via Vault during player join.
                 See: https://github.com/EssentialsX/Essentials/issues/2400
             */
-            final Player player = ess.getServer().getPlayerExact(name);
+            final Player player = redSmokes.getServer().getPlayerExact(name);
             if (player != null) {
-                user = ess.getUser(player.getUniqueId());
+                user = redSmokes.getUser(player.getUniqueId());
                 if (user != null) {
-                    ess.getLogger().log(Level.INFO, MessageFormat.format(WARN_PLAYER_UUID_NO_NAME, name, player.getUniqueId().toString()), new RuntimeException());
+                    redSmokes.getLogger().log(Level.INFO, MessageFormat.format(WARN_PLAYER_UUID_NO_NAME, name, player.getUniqueId().toString()), new RuntimeException());
                 }
             }
         }
