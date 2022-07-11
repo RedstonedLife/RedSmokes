@@ -81,7 +81,7 @@ public class VaultEconomyProvider implements Economy {
 
     @Override
     public boolean hasAccount(OfflinePlayer player) {
-        return com.earth2me.essentials.api.Economy.playerExists(player.getUniqueId());
+        return com.bss.inc.redsmokes.api.Economy.playerExists(player.getUniqueId());
     }
 
     @Override
