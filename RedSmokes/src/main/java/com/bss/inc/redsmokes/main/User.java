@@ -313,4 +313,21 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     public boolean isHidden(final Player player) {
         return hidden || !player.canSee(getBase());
     }
+    @Override
+    public String getGroup() {
+        final String result = redsmokes.getPermissionsHandler().getGroup(base);
+        if (redsmokes.getSettings().isDebug()) {
+            redsmokes.getLogger().log(Level.INFO, "looking up groupname of " + base.getName() + " - " + result);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean inGroup(final String group) {
+        final boolean result = redsmokes.getPermissionsHandler().inGroup(base, group);
+        if (redsmokes.getSettings().isDebug()) {
+            redsmokes.getLogger().log(Level.INFO, "checking if " + base.getName() + " is in group " + group + " - " + result);
+        }
+        return result;
+    }
 }
