@@ -28,7 +28,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     private transient final List<String> signCopy = Lists.newArrayList("","","","");
     private transient long lastVanishTime = System.currentTimeMillis();
 
-    public User(final Player base, final IRedSmokes redSmokes) {
+    public User(final Player base, final com.bss.inc.redsmokes.api.IRedSmokes redSmokes) {
         super(base, redSmokes);
         if(this.getBase().isOnline()) {
             lastOnlineActivity = System.currentTimeMillis();
