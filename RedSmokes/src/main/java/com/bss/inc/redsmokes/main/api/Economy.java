@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main.api;
 
 
+import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.IRedSmokes;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
@@ -97,13 +98,13 @@ public class Economy {
     }
 
     private static User getUserByUUID(final UUID uuid) {
-        if (ess == null) {
+        if (redSmokes == null) {
             throw new RuntimeException(WARN_CALL_BEFORE_LOAD);
         }
         if (uuid == null) {
             throw new IllegalArgumentException("Economy uuid cannot be null");
         }
-        return ess.getUser(uuid);
+        return redSmokes.getUser(uuid);
     }
 
     /**
