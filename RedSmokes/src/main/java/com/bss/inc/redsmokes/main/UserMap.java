@@ -203,10 +203,10 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
             redSmokes.getLogger().info("Loading OfflinePlayer into user map. Has data: " + userFile.exists() + " for " + player);
         }
 
-        final OfflinePlayer essPlayer = new OfflinePlayer(player.getUniqueId(), ess.getServer());
-        final User user = new User(essPlayer, redSmokes);
+        final OfflinePlayer redPlayer = new OfflinePlayer(player.getUniqueId(), redSmokes.getServer());
+        final User user = new User(redPlayer, redSmokes);
         if (userFile.exists()) {
-            essPlayer.setName(user.getLastAccountName());
+            redPlayer.setName(user.getLastAccountName());
         } else {
             if (redSmokes.getSettings().isDebug()) {
                 redSmokes.getLogger().info("OfflinePlayer usermap load saving user data for " + player);
