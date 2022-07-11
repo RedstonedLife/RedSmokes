@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main.economy.vault;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
+import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
 import net.ess3.api.MaxMoneyException;
 import net.milkbowl.vault.economy.Economy;
@@ -71,11 +72,11 @@ public class VaultEconomyProvider implements Economy {
     @SuppressWarnings("deprecation")
     @Override
     public boolean hasAccount(String playerName) {
-        if (com.earth2me.essentials.api.Economy.playerExists(playerName)) {
+        if (com.bss.inc.redsmokes.api.Economy.playerExists(playerName)) {
             return true;
         }
         // We may not have the player name in the usermap, let's double check an NPC account with this name doesn't exist.
-        return com.earth2me.essentials.api.Economy.playerExists(UUID.nameUUIDFromBytes(("NPC:" + StringUtil.safeString(playerName)).getBytes(Charsets.UTF_8)));
+        return com.bss.inc.redsmokes.api.Economy.playerExists(UUID.nameUUIDFromBytes(("NPC:" + StringUtil.safeString(playerName)).getBytes(Charsets.UTF_8)));
     }
 
     @Override
