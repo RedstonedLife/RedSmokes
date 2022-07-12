@@ -291,9 +291,7 @@ public class Settings implements net.redsmokes.api.ISettings {
         defaultEnabledConfirmCommands = _getDefaultEnabledConfirmCommands();
         allowOldIdSigns = _allowOldIdSigns();
         isSafeUsermap = _isSafeUsermap();
-        logCommandBlockCommands = _logCommandBlockCommands();
         currencySymbol = _getCurrencySymbol();
-        worldAliases = _getWorldAliases();
 
         reloadCount.incrementAndGet();
     }
