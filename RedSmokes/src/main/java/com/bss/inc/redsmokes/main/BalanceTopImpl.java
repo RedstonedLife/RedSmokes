@@ -29,7 +29,10 @@ public class BalanceTopImpl implements BalanceTop {
         for(UUID u : redSmokes.getUserMap().getAllUniqueUsers()) {
             final User user = redSmokes.getUserMap().getUser(u);
             if(user != null) {
-                if(!)
+                if(!redSmokes.getSettings().isNpcsInBalanceRanking() && user.isNPC()) {
+                    // Don't list NPCs in output
+                    continue;
+                }
             }
         }
     }
