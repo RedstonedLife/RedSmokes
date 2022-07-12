@@ -346,7 +346,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     public void sendMessage(String message) {
 
     }
-    
+
     @Override
     public CommandSource getSource() {
         return null;
@@ -379,9 +379,8 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
 
     @Override
     public Map<User, BigDecimal> getConfirmingPayments() {
-        return null;
+        return confirmingPayments;
     }
-
     @Override
     public boolean isVanished() {
         return vanished;
