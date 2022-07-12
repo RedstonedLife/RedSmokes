@@ -40,7 +40,7 @@ public class BalanceTopImpl implements BalanceTop {
                     newTotal = newTotal.add(userMoney);
                     final String name;
                     if(user.getBase() instanceof OfflinePlayer) {
-                        
+                        name = user.getLastAccountName();
                     }
                 }
             }
