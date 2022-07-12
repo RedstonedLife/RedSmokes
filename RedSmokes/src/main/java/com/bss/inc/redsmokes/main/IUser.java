@@ -66,8 +66,6 @@ public interface IUser {
     void setAcceptingPay(boolean acceptingPay);
     boolean isPromptingPayConfirm();
     void setPromptingPayConfirm(boolean prompt);
-    boolean isPromptingClearConfirm();
-    void setPromptingClearConfirm(boolean prompt);
     Map<User, BigDecimal> getConfirmingPayments();
     /**
      * 'Hidden' Represents when a player is hidden from others. This status includes when the player is hidden via other
