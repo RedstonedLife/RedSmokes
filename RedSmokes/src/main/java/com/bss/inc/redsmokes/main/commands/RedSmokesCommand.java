@@ -2,8 +2,15 @@ package com.bss.inc.redsmokes.main.commands;
 
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.CommandSource;
+import com.google.common.collect.Lists;
+import org.bukkit.Server;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.Plugin;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
@@ -291,16 +298,16 @@ public class RedSmokesCommand implements IrsCommand {
         }
 
         final int numArgs = args.length - index - 1;
-        if (ess.getSettings().isDebug()) {
-            ess.getLogger().info(numArgs + " " + index + " " + Arrays.toString(args));
+        if (redSmokes.getSettings().isDebug()) {
+            redSmokes.getLogger().info(numArgs + " " + index + " " + Arrays.toString(args));
         }
         String[] effectiveArgs = new String[numArgs];
         System.arraycopy(args, index, effectiveArgs, 0, numArgs);
         if (effectiveArgs.length == 0) {
             effectiveArgs = new String[] {""};
         }
-        if (ess.getSettings().isDebug()) {
-            ess.getLogger().info(command + " -- " + Arrays.toString(effectiveArgs));
+        if (redSmokes.getSettings().isDebug()) {
+            redSmokes.getLogger().info(command + " -- " + Arrays.toString(effectiveArgs));
         }
 
         return command.tabComplete(sender.getSender(), label, effectiveArgs);
