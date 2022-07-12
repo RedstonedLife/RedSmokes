@@ -56,6 +56,9 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     public boolean isAuthorized(final IrsCommand cmd, final String permissionPrefix) {
         return isAuthorized(permissionPrefix + (cmd.getName().equals("r") ? "msg" : cmd.getName()));
     }
+    public boolean canInteractVanished() {
+        return isAuthorized("essentials.vanish.interact");
+    }
     @Override
     public boolean isAuthorized(final String node) {
         final boolean result = isAuthorizedCheck(node);
