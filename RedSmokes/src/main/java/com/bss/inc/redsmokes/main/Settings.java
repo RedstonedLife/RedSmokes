@@ -5,6 +5,7 @@ import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import net.redsmokes.api.IItemDb;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
 import org.bukkit.event.EventPriority;
 import org.bukkit.inventory.ItemStack;
 import org.spongepowered.configurate.CommentedConfigurationNode;
@@ -674,17 +675,17 @@ public class Settings implements net.redsmokes.api.ISettings {
                     if (isDebug()) {
                         ess.getLogger().log(Level.INFO, "Attempting removal of " + effectiveAlias);
                     }
-                    final Command removed = ess.getKnownCommandsProvider().getKnownCommands().remove(effectiveAlias);
+                    final Command removed = redSmokes.getKnownCommandsProvider().getKnownCommands().remove(effectiveAlias);
                     if (removed != null) {
                         if (isDebug()) {
-                            ess.getLogger().log(Level.INFO, "Adding command " + effectiveAlias + " to disabled map!");
+                            redSmokes.getLogger().log(Level.INFO, "Adding command " + effectiveAlias + " to disabled map!");
                         }
                         disabledBukkitCommands.put(effectiveAlias, removed);
                     }
 
                     // This is 2 because Settings are reloaded twice in the startup lifecycle
                     if (reloadCount.get() < 2) {
-                        ess.scheduleSyncDelayedTask(() -> _addAlternativeCommand(effectiveAlias, toDisable));
+                        redSmokes.scheduleSyncDelayedTask(() -> _addAlternativeCommand(effectiveAlias, toDisable));
                     } else {
                         _addAlternativeCommand(effectiveAlias, toDisable);
                     }
@@ -694,30 +695,20 @@ public class Settings implements net.redsmokes.api.ISettings {
 
             if (mapModified) {
                 if (isDebug()) {
-                    ess.getLogger().log(Level.INFO, "Syncing commands");
+                    redSmokes.getLogger().log(Level.INFO, "Syncing commands");
                 }
                 if (reloadCount.get() < 2) {
-                    ess.scheduleSyncDelayedTask(() -> ess.getSyncCommandsProvider().syncCommands());
+                    redSmokes.scheduleSyncDelayedTask(() -> redSmokes.getSyncCommandsProvider().syncCommands());
                 } else {
-                    ess.getSyncCommandsProvider().syncCommands();
+                    redSmokes.getSyncCommandsProvider().syncCommands();
                 }
             }
         }
 
         nicknamePrefix = _getNicknamePrefix();
         operatorColor = _getOperatorColor();
-        changePlayerListName = _changePlayerListName();
         configDebug = _isDebug();
-        prefixsuffixconfigured = _isPrefixSuffixConfigured();
-        addprefixsuffix = _addPrefixSuffix();
-        disablePrefix = _disablePrefix();
-        disableSuffix = _disableSuffix();
-        chatRadius = _getChatRadius();
-        chatShout = _getChatShout();
-        chatQuestion = _getChatQuestion();
         commandCosts = _getCommandCosts();
-        socialSpyCommands = _getSocialSpyCommands();
-        warnOnBuildDisallow = _warnOnBuildDisallow();
         mailsPerMinute = _getMailsPerMinute();
         maxMoney = _getMaxMoney();
         minMoney = _getMinMoney();
