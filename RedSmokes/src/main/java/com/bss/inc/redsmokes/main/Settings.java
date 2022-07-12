@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
+import org.bukkit.event.EventPriority;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 
 import java.math.BigDecimal;
@@ -1236,56 +1237,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
         return EventPriority.NORMAL;
     }
-
-    @Override
-    public EventPriority getRespawnPriority() {
-        final String priority = config.getString("respawn-listener-priority", "normal").toLowerCase(Locale.ENGLISH);
-        return getPriority(priority);
-    }
-
-    @Override
-    public EventPriority getSpawnJoinPriority() {
-        final String priority = config.getString("spawn-join-listener-priority", "normal").toLowerCase(Locale.ENGLISH);
-        return getPriority(priority);
-    }
-
-    @Override
-    public long getTpaAcceptCancellation() {
-        return config.getLong("tpa-accept-cancellation", 120);
-    }
-
-    @Override
-    public int getTpaMaxRequests() {
-        return config.getInt("tpa-max-requests", 5);
-    }
-
-    private long _getTeleportInvulnerability() {
-        return config.getLong("teleport-invulnerability", 0) * 1000;
-    }
-
-    @Override
-    public long getTeleportInvulnerability() {
-        return teleportInvulnerabilityTime;
-    }
-
-    private boolean _isTeleportInvulnerability() {
-        return config.getLong("teleport-invulnerability", 0) > 0;
-    }
-
-    @Override
-    public boolean isTeleportInvulnerability() {
-        return teleportInvulnerability;
-    }
-
-    private long _getLoginAttackDelay() {
-        return config.getLong("login-attack-delay", 0) * 1000;
-    }
-
-    @Override
-    public long getLoginAttackDelay() {
-        return loginAttackDelay;
-    }
-
     private int _getSignUsePerSecond() {
         final int perSec = config.getInt("sign-use-per-second", 4);
         return perSec > 0 ? perSec : 1;
