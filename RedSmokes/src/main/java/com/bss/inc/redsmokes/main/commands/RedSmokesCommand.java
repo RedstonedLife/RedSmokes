@@ -113,7 +113,7 @@ public class RedSmokesCommand implements IrsCommand {
     // Get online players - only show vanished if source has permission
     protected User getPlayer(final Server server, final CommandSource sender, final String searchTerm) throws PlayerNotFoundException, NotEnoughArgumentsException {
         if (sender.isPlayer()) {
-            final User user = ess.getUser(sender.getPlayer());
+            final User user = redSmokes.getUser(sender.getPlayer());
             return getPlayer(server, user, searchTerm, user.canInteractVanished(), false);
         }
         return getPlayer(server, searchTerm, true, false);
