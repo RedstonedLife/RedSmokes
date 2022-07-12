@@ -7,6 +7,7 @@ import com.bss.inc.redsmokes.main.IRedSmokesModule;
 import com.bss.inc.redsmokes.main.Trade;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.bukkit.ChatColor;
@@ -21,6 +22,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
@@ -37,10 +39,10 @@ public class RedSmokesCommand implements IrsCommand {
 
     private final transient String name;
     private final transient Map<String, String> usageStrings = new LinkedHashMap<>();
-    protected transient IEssentials ess;
-    protected transient IEssentialsModule module;
+    protected transient IRedSmokes redSmokes;
+    protected transient IRedSmokesModule module;
 
-    protected EssentialsCommand(final String name) {
+    protected RedSmokesCommand(final String name) {
         this.name = name;
         int i = 1;
         try {
