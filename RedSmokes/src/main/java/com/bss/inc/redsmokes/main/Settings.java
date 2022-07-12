@@ -34,24 +34,10 @@ public class Settings implements net.redsmokes.api.ISettings {
     private final transient EssentialsConfiguration config;
     private final transient IEssentials ess;
     private final transient AtomicInteger reloadCount = new AtomicInteger(0);
-    private final Map<String, String> chatFormats = Collections.synchronizedMap(new HashMap<>());
-    private int chatRadius = 0;
-    // #easteregg
-    private char chatShout = '!';
-    // #easteregg
-    private char chatQuestion = '?';
-    private boolean teleportSafety;
-    private boolean forceDisableTeleportSafety;
     private Set<String> disabledCommands = new HashSet<>();
-    private List<String> overriddenCommands = Collections.emptyList();
     private List<String> playerCommands = Collections.emptyList();
     private final transient Map<String, Command> disabledBukkitCommands = new HashMap<>();
     private Map<String, BigDecimal> commandCosts;
-    private Set<String> socialSpyCommands = new HashSet<>();
-    private Set<String> muteCommands = new HashSet<>();
-    private String nicknamePrefix = "~";
-    private String operatorColor = null;
-    private List<Material> itemSpawnBl = new ArrayList<>();
     private List<RedSmokesSign> enabledSigns = new ArrayList<>();
     private boolean signsEnabled = false;
     private boolean debug = false;
