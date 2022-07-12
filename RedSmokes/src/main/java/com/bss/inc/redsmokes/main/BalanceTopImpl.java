@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.api.services.BalanceTop;
+import org.bukkit.plugin.ServicePriority;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
@@ -17,5 +18,6 @@ public class BalanceTopImpl implements BalanceTop {
 
     public BalanceTopImpl(IRedSmokes redSmokes) {
         this.redSmokes = redSmokes;
+        redSmokes.getServer().getServicesManager().register(BalanceTop.class, this, redSmokes, ServicePriority.Normal);
     }
 }
