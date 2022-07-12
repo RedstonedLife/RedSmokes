@@ -1,6 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
-import com.bss.inc.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.IRedSmokes;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 

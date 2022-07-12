@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.google.common.io.Files;
+import net.redsmokes.api.IRedSmokes;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -23,12 +24,12 @@ public class UUIDMap {
     private static final ScheduledExecutorService writeScheduler = Executors.newScheduledThreadPool(1);
     private static boolean pendingWrite;
     private static boolean loading = false;
-    private final transient com.bss.inc.redsmokes.api.IRedSmokes ess;
+    private final transient IRedSmokes ess;
     private final File userList;
     private final transient Pattern splitPattern = Pattern.compile(",");
     private final Runnable writeTaskRunnable;
 
-    public UUIDMap(final com.bss.inc.redsmokes.api.IRedSmokes ess) {
+    public UUIDMap(final IRedSmokes ess) {
         this.ess = ess;
         userList = new File(ess.getDataFolder(), "usermap.csv");
         pendingWrite = false;

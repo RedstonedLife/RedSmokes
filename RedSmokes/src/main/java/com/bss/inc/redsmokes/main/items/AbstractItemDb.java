@@ -1,12 +1,13 @@
 package com.bss.inc.redsmokes.main.items;
 
-import com.bss.inc.redsmokes.api.IConf;
-import com.bss.inc.redsmokes.api.IRedSmokes;
-import com.bss.inc.redsmokes.api.PluginKey;
+import net.redsmokes.api.IConf;
+import net.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.PluginKey;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
+import net.redsmokes.api.IItemDb;
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.FireworkEffect;
@@ -41,7 +42,7 @@ import java.util.function.Function;
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
 
-public abstract class AbstractItemDb implements IConf, com.bss.inc.redsmokes.api.IItemDb {
+public abstract class AbstractItemDb implements IConf, IItemDb {
 
     protected final IRedSmokes redSmokes;
     private final Map<PluginKey, ItemResolver> resolverMap = new HashMap<>();

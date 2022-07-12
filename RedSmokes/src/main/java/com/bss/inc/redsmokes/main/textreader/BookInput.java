@@ -1,6 +1,6 @@
 package com.bss.inc.redsmokes.main.textreader;
 
-import com.bss.inc.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.IRedSmokes;
 
 import java.io.*;
 import java.lang.ref.SoftReference;
