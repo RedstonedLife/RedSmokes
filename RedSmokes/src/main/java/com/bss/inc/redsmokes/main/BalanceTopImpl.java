@@ -37,6 +37,7 @@ public class BalanceTopImpl implements BalanceTop {
                     final BigDecimal userMoney = user.getMoney();
                     user.updateMoneyCache(userMoney);
                     newTotal = newTotal.add(userMoney);
+                    final String name;
                 }
             }
         }
