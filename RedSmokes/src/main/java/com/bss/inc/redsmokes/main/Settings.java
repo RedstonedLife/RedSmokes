@@ -657,13 +657,13 @@ public class Settings implements net.redsmokes.api.ISettings {
         playerCommands = _getPlayerCommands();
 
         // This will be late loaded
-        if (ess.getKnownCommandsProvider() != null) {
+        if (redSmokes.getKnownCommandsProvider() != null) {
             boolean mapModified = false;
             if (!disabledBukkitCommands.isEmpty()) {
                 if (isDebug()) {
-                    ess.getLogger().log(Level.INFO, "Re-adding " + disabledBukkitCommands.size() + " disabled commands!");
+                    redSmokes.getLogger().log(Level.INFO, "Re-adding " + disabledBukkitCommands.size() + " disabled commands!");
                 }
-                ess.getKnownCommandsProvider().getKnownCommands().putAll(disabledBukkitCommands);
+                redSmokes.getKnownCommandsProvider().getKnownCommands().putAll(disabledBukkitCommands);
                 disabledBukkitCommands.clear();
                 mapModified = true;
             }
