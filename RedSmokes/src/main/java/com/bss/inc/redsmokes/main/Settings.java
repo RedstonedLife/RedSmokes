@@ -817,15 +817,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
         return newSigns;
     }
-
-    private boolean _warnOnBuildDisallow() {
-        return config.getBoolean("protect.disable.warn-on-build-disallow", false);
-    }
-
-    @Override
-    public boolean warnOnBuildDisallow() {
-        return warnOnBuildDisallow;
-    }
     private boolean _isDebug() {
         return config.getBoolean("debug", false);
     }
