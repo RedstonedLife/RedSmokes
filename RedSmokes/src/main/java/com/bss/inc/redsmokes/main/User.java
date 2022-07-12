@@ -354,12 +354,12 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
 
     @Override
     public String getName() {
-        return null;
+        return this.getBase().getName();
     }
 
     @Override
     public UUID getUUID() {
-        return null;
+        return this.getBase().getUniqueId();
     }
 
     @Override
