@@ -59,6 +59,7 @@ public interface ISettings extends IConf {
     boolean showZeroBaltop();
     boolean isPlayerCommand(String string);
     boolean useBukkitPermissions();
+    boolean changeTabCompleteName();
     boolean isConfirmCommandEnabledByDefault(String commandName);
     boolean sleepIgnoresVanishedPlayers();
 
