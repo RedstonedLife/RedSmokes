@@ -340,8 +340,10 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     }
 
     @Override
-    public void sendMessage(String message) {
-
+    public void sendMessage(final String message) {
+        if (!message.isEmpty()) {
+            base.sendMessage(message);
+        }
     }
 
     @Override
