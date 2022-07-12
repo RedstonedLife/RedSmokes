@@ -1331,103 +1331,10 @@ public class Settings implements net.redsmokes.api.ISettings {
         // Default to 25ms
         return (long) (config.getDouble("permissions-lag-warning", 25.0) * 1000000);
     }
-
     @Override
     public long getPermissionsLagWarning() {
         return permissionsLagWarning;
     }
-
-    @Override
-    public long getMaxMute() {
-        return config.getLong("max-mute-time", -1);
-    }
-
-    @Override
-    public long getMaxTempban() {
-        return config.getLong("max-tempban-time", -1);
-    }
-
-    @Override
-    public int getMaxNickLength() {
-        return config.getInt("max-nick-length", 30);
-    }
-
-    @Override
-    public boolean ignoreColorsInMaxLength() {
-        return config.getBoolean("ignore-colors-in-max-nick-length", false);
-    }
-
-    @Override
-    public boolean hideDisplayNameInVanish() {
-        return config.getBoolean("hide-displayname-in-vanish", false);
-    }
-
-    public boolean _allowSilentJoinQuit() {
-        return config.getBoolean("allow-silent-join-quit", false);
-    }
-
-    @Override
-    public boolean allowSilentJoinQuit() {
-        return allowSilentJoin;
-    }
-
-    public String _getCustomJoinMessage() {
-        return FormatUtil.replaceFormat(config.getString("custom-join-message", "none"));
-    }
-
-    @Override
-    public String getCustomJoinMessage() {
-        return customJoinMessage;
-    }
-
-    @Override
-    public boolean isCustomJoinMessage() {
-        return isCustomJoinMessage;
-    }
-
-    public String _getCustomQuitMessage() {
-        return FormatUtil.replaceFormat(config.getString("custom-quit-message", "none"));
-    }
-
-    @Override
-    public String getCustomQuitMessage() {
-        return customQuitMessage;
-    }
-
-    @Override
-    public boolean isCustomQuitMessage() {
-        return isCustomQuitMessage;
-    }
-
-    public String _getCustomNewUsernameMessage() {
-        return FormatUtil.replaceFormat(config.getString("custom-new-username-message", "none"));
-    }
-
-    @Override
-    public String getCustomNewUsernameMessage() {
-        return customNewUsernameMessage;
-    }
-
-    @Override
-    public boolean isCustomNewUsernameMessage() {
-        return isCustomNewUsernameMessage;
-    }
-
-    @Override
-    public boolean isCustomServerFullMessage() {
-        return config.getBoolean("use-custom-server-full-message", true);
-    }
-
-    @Override
-    public int getJoinQuitMessagePlayerCount() {
-        return config.getInt("hide-join-quit-messages-above", -1);
-    }
-
-    @Override
-    public boolean hasJoinQuitMessagePlayerCount() {
-        return getJoinQuitMessagePlayerCount() >= 0;
-    }
-
     @Override
     public boolean isNotifyNoNewMail() {
         return config.getBoolean("notify-no-new-mail", true);
