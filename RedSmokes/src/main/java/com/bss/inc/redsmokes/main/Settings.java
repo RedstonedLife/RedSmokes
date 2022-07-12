@@ -1,6 +1,8 @@
 package com.bss.inc.redsmokes.main;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
@@ -1653,7 +1655,7 @@ public class Settings implements net.redsmokes.api.ISettings {
             try {
                 newSigns.add(Signs.valueOf(signName).getSign());
             } catch (final Exception ex) {
-                ess.getLogger().log(Level.SEVERE, tl("unknownItemInList", signName, "unprotected-sign-names"));
+                redSmokes.getLogger().log(Level.SEVERE, tl("unknownItemInList", signName, "unprotected-sign-names"));
             }
         }
         return newSigns;
