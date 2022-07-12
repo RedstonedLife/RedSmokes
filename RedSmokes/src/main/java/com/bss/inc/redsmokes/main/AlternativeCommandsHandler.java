@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import net.redsmokes.api.IRedSmokes;
 import org.bukkit.command.Command;
 import org.bukkit.command.PluginIdentifiableCommand;
 import org.bukkit.plugin.Plugin;
@@ -17,9 +18,9 @@ public class AlternativeCommandsHandler {
     private final transient Map<String, String> disabledList = new HashMap<>();
     private final transient IEssentials ess;
 
-    public AlternativeCommandsHandler(final IEssentials ess) {
+    public AlternativeCommandsHandler(final IRedSmokes ess) {
         this.ess = ess;
-        for (final Plugin plugin : ess.getServer().getPluginManager().getPlugins()) {
+        for (final Plugin plugin : redSmokes.getServer().getPluginManager().getPlugins()) {
             if (plugin.isEnabled()) {
                 addPlugin(plugin);
             }
