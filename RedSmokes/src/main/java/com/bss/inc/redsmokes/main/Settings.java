@@ -13,6 +13,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
@@ -1544,7 +1545,7 @@ public class Settings implements net.redsmokes.api.ISettings {
                 try {
                     pattern = Pattern.compile(cmdEntry.substring(1));
                 } catch (final PatternSyntaxException e) {
-                    ess.getLogger().warning("Command cooldown error: " + e.getMessage());
+                    redSmokes.getLogger().warning("Command cooldown error: " + e.getMessage());
                 }
             } else {
                 // Escape above Regex
@@ -1566,12 +1567,12 @@ public class Settings implements net.redsmokes.api.ISettings {
                 }
             }
             if (!(value instanceof Number)) {
-                ess.getLogger().warning("Command cooldown error: '" + value + "' is not a valid cooldown");
+                redSmokes.getLogger().warning("Command cooldown error: '" + value + "' is not a valid cooldown");
                 continue;
             }
             final double cooldown = ((Number) value).doubleValue();
             if (cooldown < 1) {
-                ess.getLogger().warning("Command cooldown with very short " + cooldown + " cooldown.");
+                redSmokes.getLogger().warning("Command cooldown with very short " + cooldown + " cooldown.");
             }
 
             result.put(pattern, (long) cooldown * 1000); // convert to milliseconds
