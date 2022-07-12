@@ -866,80 +866,20 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
         return value;
     }
-
     @Override
     public String getCurrencySymbol() {
         return currencySymbol;
     }
-
     @Override
     public boolean isCurrencySymbolSuffixed() {
         return config.getBoolean("currency-symbol-suffix", false);
     }
-
-    // #easteregg
-    @Override
-    @Deprecated
-    public boolean isTradeInStacks(final int id) {
-        return config.getBoolean("trade-in-stacks-" + id, false);
-    }
-
-    // #easteregg
-    @Override
-    public boolean isTradeInStacks(final Material type) {
-        return config.getBoolean("trade-in-stacks." + type.toString().toLowerCase().replace("_", ""), false);
-    }
-
     public boolean _isEcoDisabled() {
         return config.getBoolean("disable-eco", false);
     }
-
     @Override
     public boolean isEcoDisabled() {
         return economyDisabled;
-    }
-
-    @Override
-    public boolean getProtectPreventSpawn(final String creatureName) {
-        return config.getBoolean("protect.prevent.spawn." + creatureName, false);
-    }
-
-    @Override
-    public List<Material> getProtectList(final String configName) {
-        final List<Material> list = new ArrayList<>();
-        for (String itemName : config.getString(configName, "").split(",")) {
-            itemName = itemName.trim();
-            if (itemName.isEmpty()) {
-                continue;
-            }
-
-            Material mat = EnumUtil.getMaterial(itemName.toUpperCase());
-
-            if (mat == null) {
-                try {
-                    final ItemStack itemStack = ess.getItemDb().get(itemName);
-                    mat = itemStack.getType();
-                } catch (final Exception ignored) {
-                }
-            }
-
-            if (mat == null) {
-                ess.getLogger().log(Level.SEVERE, tl("unknownItemInList", itemName, configName));
-            } else {
-                list.add(mat);
-            }
-        }
-        return list;
-    }
-
-    @Override
-    public String getProtectString(final String configName) {
-        return config.getString(configName, null);
-    }
-
-    @Override
-    public boolean getProtectBoolean(final String configName, final boolean def) {
-        return config.getBoolean(configName, def);
     }
     private BigDecimal _getMaxMoney() {
         return config.getBigDecimal("max-money", DEFAULT_MAX_MONEY);
