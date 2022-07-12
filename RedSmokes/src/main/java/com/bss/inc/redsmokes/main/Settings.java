@@ -840,22 +840,10 @@ public class Settings implements net.redsmokes.api.ISettings {
     public void setDebug(final boolean debug) {
         this.debug = debug;
     }
-
-    @Override
-    public boolean warnOnSmite() {
-        return config.getBoolean("warn-on-smite", true);
-    }
-
-    @Override
-    public boolean permissionBasedItemSpawn() {
-        return config.getBoolean("permission-based-item-spawn", false);
-    }
-
     @Override
     public String getLocale() {
         return config.getString("locale", "");
     }
-
     private String currencySymbol = "$";
 
     // A valid currency symbol value must be one non-integer character.
