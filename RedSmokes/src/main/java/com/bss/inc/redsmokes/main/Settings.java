@@ -1106,73 +1106,10 @@ public class Settings implements net.redsmokes.api.ISettings {
     private boolean _sleepIgnoresAfkPlayers() {
         return config.getBoolean("sleep-ignores-afk-players", true);
     }
-
     @Override
     public boolean sleepIgnoresVanishedPlayers() {
         return config.getBoolean("sleep-ignores-vanished-player", true);
     }
-
-    public String _getAfkListName() {
-        return FormatUtil.replaceFormat(config.getString("afk-list-name", "none"));
-    }
-
-    @Override
-    public boolean isAfkListName() {
-        return isAfkListName;
-    }
-
-    @Override
-    public String getAfkListName() {
-        return afkListName;
-    }
-
-    @Override
-    public boolean broadcastAfkMessage() {
-        return broadcastAfkMessage;
-    }
-
-    private boolean _broadcastAfkMessage() {
-        return config.getBoolean("broadcast-afk-message", true);
-    }
-
-    @Override
-    public boolean areDeathMessagesEnabled() {
-        return config.getBoolean("death-messages", true);
-    }
-
-    public KeepInvPolicy _getVanishingItemsPolicy() {
-        final String value = config.getString("vanishing-items-policy", "keep").toLowerCase(Locale.ENGLISH);
-        try {
-            return KeepInvPolicy.valueOf(value.toUpperCase(Locale.ENGLISH));
-        } catch (final IllegalArgumentException e) {
-            return KeepInvPolicy.KEEP;
-        }
-    }
-
-    @Override
-    public KeepInvPolicy getVanishingItemsPolicy() {
-        return vanishingItemPolicy;
-    }
-
-    public KeepInvPolicy _getBindingItemsPolicy() {
-        final String value = config.getString("binding-items-policy", "keep").toLowerCase(Locale.ENGLISH);
-        try {
-            return KeepInvPolicy.valueOf(value.toUpperCase(Locale.ENGLISH));
-        } catch (final IllegalArgumentException e) {
-            return KeepInvPolicy.KEEP;
-        }
-    }
-
-    @Override
-    public KeepInvPolicy getBindingItemsPolicy() {
-        return bindingItemPolicy;
-    }
-
-    @Override
-    public Set<String> getNoGodWorlds() {
-        return noGodWorlds;
-    }
-
     @Override
     public boolean getRepairEnchanted() {
         return config.getBoolean("repair-enchanted", true);
