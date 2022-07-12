@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -1644,8 +1646,8 @@ public class Settings implements net.redsmokes.api.ISettings {
         return this.unprotectedSigns;
     }
 
-    private List<EssentialsSign> _getUnprotectedSign() {
-        final List<EssentialsSign> newSigns = new ArrayList<>();
+    private List<RedSmokesSign> _getUnprotectedSign() {
+        final List<RedSmokesSign> newSigns = new ArrayList<>();
 
         for (String signName : config.getList("unprotected-sign-names", String.class)) {
             signName = signName.trim().toUpperCase(Locale.ENGLISH);
