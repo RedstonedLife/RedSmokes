@@ -1,6 +1,9 @@
 package com.bss.inc.redsmokes.main.commands;
 
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
+import org.bukkit.command.CommandSender;
+
+import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public class RedSmokesCommand implements IrsCommand {
     /**
@@ -302,7 +305,7 @@ public class RedSmokesCommand implements IrsCommand {
     @Override
     public void showError(final CommandSender sender, final Throwable throwable, final String commandLabel) {
         sender.sendMessage(tl("errorWithMessage", throwable.getMessage()));
-        if (ess.getSettings().isDebug()) {
+        if (r.getSettings().isDebug()) {
             ess.getLogger().log(Level.INFO, tl("errorCallingCommand", commandLabel), throwable);
             throwable.printStackTrace();
         }
