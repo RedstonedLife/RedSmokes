@@ -1,16 +1,15 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
+import org.spongepowered.configurate.CommentedConfigurationNode;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -1506,27 +1505,6 @@ public class Settings implements net.redsmokes.api.ISettings {
             return def;
         }
     }
-
-    @Override
-    public List<String> getSpawnOnJoinGroups() {
-        return this.spawnOnJoinGroups;
-    }
-
-    @Override
-    public boolean isUserInSpawnOnJoinGroup(@SuppressWarnings("deprecation") final IUser user) {
-        for (final String group : this.spawnOnJoinGroups) {
-            if (group.equals("*") || user.inGroup(group)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean isTeleportToCenterLocation() {
-        return config.getBoolean("teleport-to-center", true);
-    }
-
     private Map<Pattern, Long> _getCommandCooldowns() {
         final CommentedConfigurationNode section = config.getSection("command-cooldowns");
         if (section == null) {
