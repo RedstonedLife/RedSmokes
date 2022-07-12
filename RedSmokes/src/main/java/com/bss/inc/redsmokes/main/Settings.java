@@ -335,27 +335,10 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
         return false;
     }
-
-    private List<String> _getOverriddenCommands() {
-        return config.getList("overridden-commands", String.class);
-    }
-
-    @Override
-    public boolean isCommandOverridden(final String name) {
-        for (final String c : overriddenCommands) {
-            if (!c.equalsIgnoreCase(name)) {
-                continue;
-            }
-            return true;
-        }
-        return config.getBoolean("override-" + name.toLowerCase(Locale.ENGLISH), false);
-    }
-
     @Override
     public BigDecimal getCommandCost(final IrsCommand cmd) {
         return getCommandCost(cmd.getName());
     }
-
     private Map<String, BigDecimal> _getCommandCosts() {
         final Map<String, CommentedConfigurationNode> section = ConfigurateUtil.getMap(config.getSection("command-costs"));
         if (!section.isEmpty()) {
