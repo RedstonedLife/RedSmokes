@@ -30,7 +30,7 @@ public interface ISettings extends IConf {
     boolean isCommandDisabled(String label);
     Set<String> getDisabledCommands();
     boolean isVerboseCommandUsages();
-    boolean isCommandOverriden(String name);
+    boolean isCommandOverridden(String name);
     boolean isDebug();
     void setDebug(boolean debug);
     boolean isEcoDisabled();
