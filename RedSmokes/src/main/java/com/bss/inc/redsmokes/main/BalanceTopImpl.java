@@ -6,6 +6,7 @@ import org.bukkit.plugin.ServicePriority;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -22,6 +23,6 @@ public class BalanceTopImpl implements BalanceTop {
     }
 
     private void calculateBalanceTopMap() {
-        
+        final List<Entry> entries = new LinkedList<>();
     }
 }
