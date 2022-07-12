@@ -260,7 +260,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     @Override
     public boolean isBaltopExempt() {
         if (getBase().isOnline()) {
-            final boolean exempt = isAuthorized("essentials.balancetop.exclude");
+            final boolean exempt = isAuthorized("redsmokes.balancetop.exclude");
             setBaltopExemptCache(exempt);
             return exempt;
         }
