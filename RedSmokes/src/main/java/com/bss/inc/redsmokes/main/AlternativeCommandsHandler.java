@@ -18,7 +18,7 @@ public class AlternativeCommandsHandler {
     private final transient Map<String, String> disabledList = new HashMap<>();
     private final transient IRedSmokes redSmokes;
 
-    public AlternativeCommandsHandler(final IRedSmokes ess) {
+    public AlternativeCommandsHandler(final IRedSmokes redSmokes) {
         this.redSmokes = redSmokes;
         for (final Plugin plugin : redSmokes.getServer().getPluginManager().getPlugins()) {
             if (plugin.isEnabled()) {
