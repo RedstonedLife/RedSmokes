@@ -636,14 +636,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         enabledSigns = _getEnabledSigns();
         teleportSafety = _isTeleportSafetyEnabled();
         forceDisableTeleportSafety = _isForceDisableTeleportSafety();
-        teleportInvulnerabilityTime = _getTeleportInvulnerability();
-        teleportInvulnerability = _isTeleportInvulnerability();
-        disableItemPickupWhileAfk = _getDisableItemPickupWhileAfk();
-        registerBackInListener = _registerBackInListener();
-        cancelAfkOnInteract = _cancelAfkOnInteract();
-        cancelAfkOnMove = _cancelAfkOnMove();
-        getFreezeAfkPlayers = _getFreezeAfkPlayers();
-        sleepIgnoresAfkPlayers = _sleepIgnoresAfkPlayers();
         signUsePerSecond = _getSignUsePerSecond();
         chatFormats.clear();
         disabledCommands = _getDisabledCommands();
