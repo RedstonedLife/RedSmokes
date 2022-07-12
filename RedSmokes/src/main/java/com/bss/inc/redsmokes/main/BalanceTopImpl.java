@@ -34,7 +34,7 @@ public class BalanceTopImpl implements BalanceTop {
                     continue;
                 }
                 if(!user.isBaltopExempt()) {
-                    final BigDecimal userMon
+                    final BigDecimal userMoney = user.getMoney();
                 }
             }
         }
