@@ -27,7 +27,7 @@ public class BalanceTopImpl implements BalanceTop {
         final List<Entry> entries = new LinkedList<>();
         BigDecimal newTotal = BigDecimal.ZERO;
         for(UUID u : redSmokes.getUserMap().getAllUniqueUsers()) {
-            if(user !)
+            final User user = 
         }
     }
 }
