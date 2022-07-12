@@ -644,11 +644,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         cancelAfkOnMove = _cancelAfkOnMove();
         getFreezeAfkPlayers = _getFreezeAfkPlayers();
         sleepIgnoresAfkPlayers = _sleepIgnoresAfkPlayers();
-        afkListName = _getAfkListName();
-        isAfkListName = afkListName != null && !afkListName.equalsIgnoreCase("none");
-        broadcastAfkMessage = _broadcastAfkMessage();
-        itemSpawnBl = _getItemSpawnBlacklist();
-        loginAttackDelay = _getLoginAttackDelay();
         signUsePerSecond = _getSignUsePerSecond();
         chatFormats.clear();
         disabledCommands = _getDisabledCommands();
