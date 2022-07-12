@@ -1432,12 +1432,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     public boolean isNotifyNoNewMail() {
         return config.getBoolean("notify-no-new-mail", true);
     }
-
-    @Override
-    public boolean isDropItemsIfFull() {
-        return config.getBoolean("drop-items-if-full", false);
-    }
-
     // #easteregg
     @Override
     public int getMaxUserCacheCount() {
