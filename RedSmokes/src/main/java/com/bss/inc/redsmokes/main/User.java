@@ -439,4 +439,29 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     public int compareTo(User o) {
         return 0;
     }
+
+    @Override
+    public int hashCode() {
+        return this.getName().hashCode();
+    }
+
+    @Override
+    public CommandSource getSource() {
+        return new CommandSource(getBase());
+    }
+
+    @Override
+    public String getName() {
+        return this.getBase().getName();
+    }
+
+    @Override
+    public UUID getUUID() {
+        return this.getBase().getUniqueId();
+    }
+
+    @Override
+    public boolean isReachable() {
+        return getBase().isOnline();
+    }
 }
