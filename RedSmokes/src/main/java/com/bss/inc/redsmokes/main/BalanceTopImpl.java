@@ -46,6 +46,5 @@ public class BalanceTopImpl implements BalanceTop {
                 }
             }
         }
-        
     }
 }
