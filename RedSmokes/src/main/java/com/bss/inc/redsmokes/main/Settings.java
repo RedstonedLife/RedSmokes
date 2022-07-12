@@ -1,10 +1,12 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
+import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;
 import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import net.redsmokes.api.IItemDb;
+import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -12,12 +14,14 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.inventory.ItemStack;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -103,22 +107,12 @@ public class Settings implements net.redsmokes.api.ISettings {
     private NumberFormat currencyFormat;
     private List<EssentialsSign> unprotectedSigns = Collections.emptyList();
     private List<String> defaultEnabledConfirmCommands;
-    private TeleportWhenFreePolicy teleportWhenFreePolicy;
-    private boolean isCompassTowardsHomePerm;
-    private boolean isAllowWorldInBroadcastworld;
-    private String itemDbType; // #EasterEgg - admins can manually switch items provider if they want
     private boolean allowOldIdSigns;
-    private boolean isWaterSafe;
     private boolean isSafeUsermap;
-    private boolean logCommandBlockCommands;
-    private Set<Predicate<String>> nickBlacklist;
-    private double maxProjectileSpeed;
-    private boolean removeEffectsOnHeal;
-    private Map<String, String> worldAliases;
 
-    public Settings(final IEssentials ess) {
-        this.ess = ess;
-        config = new EssentialsConfiguration(new File(ess.getDataFolder(), "config.yml"), "/config.yml");
+    public Settings(final IRedSmokes ess) {
+        this.redSmokes = redSmokes;
+        config = new RedSmokesConfiguration(new File(redSmokes.getDataFolder(), "config.yml"), "/config.yml");
         reloadConfig();
     }
 
@@ -126,146 +120,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     public File getConfigFile() {
         return config.getFile();
     }
-
-    @Override
-    public boolean getRespawnAtHome() {
-        return config.getBoolean("respawn-at-home", false);
-    }
-
-    @Override
-    public boolean isRespawnAtAnchor() {
-        return config.getBoolean("respawn-at-anchor", false);
-    }
-
-    @Override
-    public boolean getUpdateBedAtDaytime() {
-        return config.getBoolean("update-bed-at-daytime", true);
-    }
-
-    @Override
-    public Set<String> getMultipleHomes() {
-        final CommentedConfigurationNode section = config.getSection("sethome-multiple");
-        return section == null ? null : ConfigurateUtil.getKeys(section);
-    }
-
-    @Override
-    public int getHomeLimit(final User user) {
-        int limit = 1;
-        if (user.isAuthorized("essentials.sethome.multiple")) {
-            limit = getHomeLimit("default");
-        }
-
-        final Set<String> homeList = getMultipleHomes();
-        if (homeList != null) {
-            for (final String set : homeList) {
-                if (user.isAuthorized("essentials.sethome.multiple." + set) && (limit < getHomeLimit(set))) {
-                    limit = getHomeLimit(set);
-                }
-            }
-        }
-        return limit;
-    }
-
-    @Override
-    public int getHomeLimit(final String set) {
-        return config.getInt("sethome-multiple." + set, config.getInt("sethome-multiple.default", 3));
-    }
-
-    private int _getChatRadius() {
-        return config.getInt("chat.radius", config.getInt("chat-radius", 0));
-    }
-
-    @Override
-    public int getChatRadius() {
-        return chatRadius;
-    }
-
-    @Override
-    public int getNearRadius() {
-        return config.getInt("near-radius", 200);
-    }
-
-    private char _getChatShout() {
-        return config.getString("chat.shout", "!").charAt(0);
-    }
-
-    @Override
-    public char getChatShout() {
-        return chatShout;
-    }
-
-    private char _getChatQuestion() {
-        return config.getString("chat.question", "?").charAt(0);
-    }
-
-    @Override
-    public char getChatQuestion() {
-        return chatQuestion;
-    }
-
-    @Override
-    public boolean isShoutDefault() {
-        return config.getBoolean("chat.shout-default", false);
-    }
-
-    @Override
-    public boolean isPersistShout() {
-        return config.getBoolean("chat.persist-shout", false);
-    }
-
-    @Override
-    public boolean isChatQuestionEnabled() {
-        return config.getBoolean("chat.question-enabled", true);
-    }
-
-    public boolean _isTeleportSafetyEnabled() {
-        return config.getBoolean("teleport-safety", true);
-    }
-
-    @Override
-    public boolean isTeleportSafetyEnabled() {
-        return teleportSafety;
-    }
-
-    private boolean _isForceDisableTeleportSafety() {
-        return config.getBoolean("force-disable-teleport-safety", false);
-    }
-
-    @Override
-    public boolean isForceDisableTeleportSafety() {
-        return forceDisableTeleportSafety;
-    }
-
-    @Override
-    public boolean isAlwaysTeleportSafety() {
-        return config.getBoolean("force-safe-teleport-location", false);
-    }
-
-    @Override
-    public boolean isTeleportPassengerDismount() {
-        return config.getBoolean("teleport-passenger-dismount", true);
-    }
-
-    @Override
-    public boolean isForcePassengerTeleport() {
-        return config.getBoolean("force-passenger-teleportation", false);
-    }
-
-    @Override
-    public double getTeleportDelay() {
-        return config.getDouble("teleport-delay", 0);
-    }
-
-    @Override
-    public int getOversizedStackSize() {
-        return config.getInt("oversized-stacksize", 64);
-    }
-
-    @Override
-    public int getDefaultStackSize() {
-        return config.getInt("default-stack-size", -1);
-    }
-
     @Override
     public BigDecimal getStartingBalance() {
         return config.getBigDecimal("starting-balance", BigDecimal.ZERO);
