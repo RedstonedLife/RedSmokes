@@ -363,7 +363,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
 
     @Override
     public String getDisplayName() {
-        return null;
+        return super.getBase().getDisplayName() == null || (isHidden()) ? super.getBase().getName() : super.getBase().getDisplayName();
     }
 
     @Override
