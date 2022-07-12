@@ -46,6 +46,15 @@ public class BalanceTopImpl implements BalanceTop {
                 }
             }
         }
-        
+        final LinkedHashMap<UUID, Entry> sortedMap = new LinkedHashMap<>();
+        entries.sort((entry1, entry2) -> entry2.getBalance().compareTo(entry1.getBalance()));
+        for (Entry entry : entries) {
+            sortedMap.put(entry.getUuid(), entry);
+        }
+        topCache = sortedMap;
+        balanceTopTotal = newTotal;
+        cacheAge = System.currentTimeMillis();
+        cacheLock.complete(null);
+        cacheLock = null;
     }
 }
