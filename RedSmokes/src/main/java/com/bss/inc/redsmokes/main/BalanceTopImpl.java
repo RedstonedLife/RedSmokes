@@ -42,6 +42,7 @@ public class BalanceTopImpl implements BalanceTop {
                     if(user.getBase() instanceof OfflinePlayer){name = user.getLastAccountName();}
                     else if(user.isHidden()){name=user.getName();}
                     else{name=user.getDisplayName();}
+                    
                 }
             }
         }
