@@ -1295,38 +1295,21 @@ public class Settings implements net.redsmokes.api.ISettings {
     public int getSignUsePerSecond() {
         return signUsePerSecond;
     }
-
-    @Override
-    public double getMaxFlySpeed() {
-        final double maxSpeed = config.getDouble("max-fly-speed", 0.8);
-        return maxSpeed > 1.0 ? 1.0 : Math.abs(maxSpeed);
-    }
-
-    @Override
-    public double getMaxWalkSpeed() {
-        final double maxSpeed = config.getDouble("max-walk-speed", 0.8);
-        return maxSpeed > 1.0 ? 1.0 : Math.abs(maxSpeed);
-    }
-
     private int _getMailsPerMinute() {
         return config.getInt("mails-per-minute", 1000);
     }
-
     @Override
     public int getMailsPerMinute() {
         return mailsPerMinute;
     }
-
     private long _getEconomyLagWarning() {
         // Default to 25ms
         return (long) (config.getDouble("economy-lag-warning", 25.0) * 1000000);
     }
-
     @Override
     public long getEconomyLagWarning() {
         return economyLagWarning;
     }
-
     private long _getPermissionsLagWarning() {
         // Default to 25ms
         return (long) (config.getDouble("permissions-lag-warning", 25.0) * 1000000);
