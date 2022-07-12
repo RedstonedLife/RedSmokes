@@ -221,7 +221,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         config.load();
         enabledSigns = _getEnabledSigns();
         signUsePerSecond = _getSignUsePerSecond();
-        chatFormats.clear();
         disabledCommands = _getDisabledCommands();
         overriddenCommands = _getOverriddenCommands();
         playerCommands = _getPlayerCommands();
@@ -275,8 +274,6 @@ public class Settings implements net.redsmokes.api.ISettings {
             }
         }
 
-        nicknamePrefix = _getNicknamePrefix();
-        operatorColor = _getOperatorColor();
         configDebug = _isDebug();
         commandCosts = _getCommandCosts();
         mailsPerMinute = _getMailsPerMinute();
@@ -287,7 +284,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         economyLog = _isEcoLogEnabled();
         economyLogUpdate = _isEcoLogUpdateEnabled();
         economyDisabled = _isEcoDisabled();
-        muteCommands = _getMuteCommands();
         commandCooldowns = _getCommandCooldowns();
         npcsInBalanceRanking = _isNpcsInBalanceRanking();
         currencyFormat = _getCurrencyFormat();
