@@ -1695,27 +1695,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     public int getNotifyPlayerOfMailCooldown() {
         return config.getInt("notify-player-of-mail-cooldown", 0);
     }
-
-    @Override
-    public int getMotdDelay() {
-        return config.getInt("delay-motd", 0);
-    }
-
-    @Override
-    public boolean isDirectHatAllowed() {
-        return config.getBoolean("allow-direct-hat", true);
-    }
-
-    @Override
-    public boolean isWorldChangeFlyResetEnabled() {
-        return config.getBoolean("world-change-fly-reset", true);
-    }
-
-    @Override
-    public boolean isWorldChangeSpeedResetEnabled() {
-        return config.getBoolean("world-change-speed-reset", true);
-    }
-
     private List<String> _getDefaultEnabledConfirmCommands() {
         final List<String> commands = config.getList("default-enabled-confirm-commands", String.class);
         for (int i = 0; i < commands.size(); i++) {
@@ -1723,7 +1702,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
         return commands;
     }
-
     @Override
     public List<String> getDefaultEnabledConfirmCommands() {
         return defaultEnabledConfirmCommands;
@@ -1735,7 +1713,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     private boolean _allowOldIdSigns() {
         return config.getBoolean("allow-old-id-signs", false);
     }
-
     @Override
     public boolean allowOldIdSigns() {
         return allowOldIdSigns;
