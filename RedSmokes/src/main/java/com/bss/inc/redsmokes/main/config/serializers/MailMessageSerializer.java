@@ -1,6 +1,6 @@
 package com.bss.inc.redsmokes.main.config.serializers;
 
-import com.bss.inc.redsmokes.api.services.mail.MailMessage;
+import net.redsmokes.api.services.mail.MailMessage;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.serialize.SerializationException;

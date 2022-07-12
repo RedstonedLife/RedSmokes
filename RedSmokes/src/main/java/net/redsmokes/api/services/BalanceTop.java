@@ -1,4 +1,4 @@
-package com.bss.inc.redsmokes.api.services;
+package net.redsmokes.api.services;
 
 import java.math.BigDecimal;
 import java.util.Map;

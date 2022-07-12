@@ -1,4 +1,4 @@
-package com.bss.inc.redsmokes.api.services.mail;
+package net.redsmokes.api.services.mail;
 
 import net.redsmokes.api.IUser;
 

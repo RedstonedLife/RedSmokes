@@ -1,7 +1,7 @@
 package com.bss.inc.redsmokes.main.config;
 
 import net.redsmokes.api.InvalidWorldException;
-import com.bss.inc.redsmokes.api.services.mail.MailMessage;
+import net.redsmokes.api.services.mail.MailMessage;
 import com.bss.inc.redsmokes.main.RedSmokes;
 import com.bss.inc.redsmokes.main.config.annotations.DeleteIfIncomplete;
 import com.bss.inc.redsmokes.main.config.annotations.DeleteOnEmpty;
