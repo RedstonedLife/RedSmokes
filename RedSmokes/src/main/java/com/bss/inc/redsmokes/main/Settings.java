@@ -21,6 +21,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
@@ -31,8 +32,8 @@ import static com.bss.inc.redsmokes.main.I18n.tl;
 public class Settings implements net.redsmokes.api.ISettings {
     private static final BigDecimal DEFAULT_MAX_MONEY = new BigDecimal("10000000000000");
     private static final BigDecimal DEFAULT_MIN_MONEY = new BigDecimal("-10000000000000");
-    private final transient EssentialsConfiguration config;
-    private final transient IEssentials ess;
+    private final transient RedSmokesConfiguration config;
+    private final transient IRedSmokes redSmokes;
     private final transient AtomicInteger reloadCount = new AtomicInteger(0);
     private Set<String> disabledCommands = new HashSet<>();
     private List<String> playerCommands = Collections.emptyList();
