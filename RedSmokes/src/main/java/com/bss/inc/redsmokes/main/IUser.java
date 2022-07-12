@@ -1,9 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
-import com.bss.inc.redsmokes.api.MaxMoneyException;
-import com.bss.inc.redsmokes.api.commands.IrsCommand;
-import com.bss.inc.redsmokes.api.services.mail.MailMessage;
-import com.bss.inc.redsmokes.api.services.mail.MailSender;
+import net.redsmokes.api.MaxMoneyException;
+import net.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
 import org.bukkit.entity.Player;
 

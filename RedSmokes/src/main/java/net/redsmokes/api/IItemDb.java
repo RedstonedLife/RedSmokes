@@ -1,4 +1,4 @@
-package com.bss.inc.redsmokes.api;
+package net.redsmokes.api;
 
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;

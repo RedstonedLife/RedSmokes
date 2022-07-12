@@ -1,4 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
-public class Settings implements com.bss.inc.redsmokes.api.ISettings {
+import net.redsmokes.api.ISettings;
+
+public class Settings implements ISettings {
 }

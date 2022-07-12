@@ -1,6 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
-import com.bss.inc.redsmokes.api.commands.IrsCommand;
+import net.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.api.services.BalanceTop;
 import com.bss.inc.redsmokes.main.api.IItemDb;
 import com.bss.inc.redsmokes.main.commands.PlayerNotFoundException;
@@ -77,7 +77,7 @@ public interface IRedSmokes extends Plugin {
      * Get a list of players who are vanished.
      *
      * @return A list of players who are vanished
-     * @deprecated Use {@link com.bss.inc.redsmokes.api.IRedSmokes#getVanishedPlayersNew()} where possible.
+     * @deprecated Use {@link net.redsmokes.api.IRedSmokes#getVanishedPlayersNew()} where possible.
      */
     @Deprecated
     List<String> getVanishedPlayers();

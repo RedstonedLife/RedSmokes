@@ -1,7 +1,7 @@
 package com.bss.inc.redsmokes.main.items;
 
-import com.bss.inc.redsmokes.api.IConf;
-import com.bss.inc.redsmokes.api.IItemDb;
+import net.redsmokes.api.IConf;
+import net.redsmokes.api.IItemDb;
 import com.bss.inc.redsmokes.main.RedSmokes;
 import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;

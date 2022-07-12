@@ -1,6 +1,6 @@
 package com.bss.inc.redsmokes.main.items;
 
-import com.bss.inc.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.main.ManagedFile;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;

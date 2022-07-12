@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
-import com.bss.inc.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.II18n;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -12,7 +13,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
 
-public class I18n implements com.bss.inc.redsmokes.api.II18n {
+public class I18n implements II18n {
     private static final String MESSAGES = "messages";
     private static final Pattern NODOUBLEMARK = Pattern.compile("''");
     private static final ResourceBundle NULL_BUNDLE = new ResourceBundle() {

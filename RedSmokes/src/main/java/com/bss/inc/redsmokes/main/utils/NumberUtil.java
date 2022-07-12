@@ -1,6 +1,6 @@
 package com.bss.inc.redsmokes.main.utils;
 
-import com.bss.inc.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.IRedSmokes;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

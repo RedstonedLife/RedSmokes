@@ -1,6 +1,6 @@
-package com.bss.inc.redsmokes.api.events;
+package net.redsmokes.api.events;
 
-import com.bss.inc.redsmokes.api.IUser;
+import net.redsmokes.api.IUser;
 import com.bss.inc.redsmokes.main.CommandSource;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;

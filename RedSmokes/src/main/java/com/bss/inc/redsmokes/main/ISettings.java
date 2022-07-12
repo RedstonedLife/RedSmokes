@@ -1,14 +1,13 @@
 package com.bss.inc.redsmokes.main;
 
-import com.bss.inc.redsmokes.api.IConf;
-import com.bss.inc.redsmokes.api.commands.IrsCommand;
+import net.redsmokes.api.IConf;
+import net.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 
 import java.io.File;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Pattern;

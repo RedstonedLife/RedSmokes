@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import net.redsmokes.api.IRedSmokes;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RedSmokes extends JavaPlugin implements com.bss.inc.redsmokes.api.IRedSmokes {
+public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
     private static final Logger BUKKIT_LOGGER = Logger.getLogger("RedSmokes");
     private static Logger LOGGER = null;

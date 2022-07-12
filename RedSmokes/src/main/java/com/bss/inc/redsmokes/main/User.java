@@ -1,17 +1,15 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.OfflinePlayer;
-import com.bss.inc.redsmokes.api.MaxMoneyException;
-import com.bss.inc.redsmokes.api.commands.IrsCommand;
-import com.bss.inc.redsmokes.api.events.TransactionEvent;
-import com.bss.inc.redsmokes.api.events.UserBalanceUpdateEvent;
-import com.bss.inc.redsmokes.api.services.mail.MailMessage;
-import com.bss.inc.redsmokes.api.services.mail.MailSender;
+import net.redsmokes.api.MaxMoneyException;
+import net.redsmokes.api.IUser;
+import net.redsmokes.api.commands.IrsCommand;
+import net.redsmokes.api.events.TransactionEvent;
+import net.redsmokes.api.events.UserBalanceUpdateEvent;
 import com.bss.inc.redsmokes.main.economy.EconomyLayer;
 import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.utils.*;
 import com.google.common.collect.Lists;
-import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -24,7 +22,7 @@ import java.util.logging.Level;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
-public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, Comparable<User> {
+public class User extends UserData implements IUser, Comparable<User> {
     private static final Statistic PLAY_ONE_TICK = EnumUtil.getStatistic("PLAY_ONE_MINUTE", "PLAY_ONE_TICK");
 
     // User command confirmation strings
@@ -42,7 +40,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     private transient final List<String> signCopy = Lists.newArrayList("","","","");
     private transient long lastVanishTime = System.currentTimeMillis();
 
-    public User(final Player base, final com.bss.inc.redsmokes.api.IRedSmokes redSmokes) {
+    public User(final Player base, final net.redsmokes.api.IRedSmokes redSmokes) {
         super(base, redSmokes);
         if(this.getBase().isOnline()) {
             lastOnlineActivity = System.currentTimeMillis();
