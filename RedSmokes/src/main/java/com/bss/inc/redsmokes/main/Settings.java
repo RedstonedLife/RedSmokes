@@ -1182,40 +1182,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     public boolean allowUnsafeEnchantments() {
         return config.getBoolean("unsafe-enchantments", false);
     }
-
-    @Override
-    public boolean isWorldTeleportPermissions() {
-        return config.getBoolean("world-teleport-permissions", false);
-    }
-
-    @Override
-    public boolean isWorldHomePermissions() {
-        return config.getBoolean("world-home-permissions", false);
-    }
-
-    @Override
-    public boolean registerBackInListener() {
-        return registerBackInListener;
-    }
-
-    @Override
-    public int getMaxTreeCommandRange() {
-        return config.getInt("tree-command-range-limit", 300);
-    }
-
-    private boolean _registerBackInListener() {
-        return config.getBoolean("register-back-in-listener", false);
-    }
-
-    @Override
-    public boolean getDisableItemPickupWhileAfk() {
-        return disableItemPickupWhileAfk;
-    }
-
-    private boolean _getDisableItemPickupWhileAfk() {
-        return config.getBoolean("disable-item-pickup-while-afk", false);
-    }
-
     private EventPriority getPriority(final String priority) {
         if ("none".equals(priority)) {
             return null;
