@@ -33,7 +33,7 @@ public class BalanceTopImpl implements BalanceTop {
                     // Don't list NPCs in output
                     continue;
                 }
-
+                if
             }
         }
     }
