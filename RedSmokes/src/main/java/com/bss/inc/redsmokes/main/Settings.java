@@ -5,6 +5,7 @@ import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import net.redsmokes.api.IItemDb;
+import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.event.EventPriority;
@@ -351,7 +352,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     }
 
     @Override
-    public BigDecimal getCommandCost(final IEssentialsCommand cmd) {
+    public BigDecimal getCommandCost(final IrsCommand cmd) {
         return getCommandCost(cmd.getName());
     }
 
