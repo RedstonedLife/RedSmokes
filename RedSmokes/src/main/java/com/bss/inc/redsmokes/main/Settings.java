@@ -65,7 +65,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     private boolean allowOldIdSigns;
     private boolean isSafeUsermap;
 
-    public Settings(final IRedSmokes ess) {
+    public Settings(final IRedSmokes redSmokes) {
         this.redSmokes = redSmokes;
         config = new RedSmokesConfiguration(new File(redSmokes.getDataFolder(), "config.yml"), "/config.yml");
         reloadConfig();
