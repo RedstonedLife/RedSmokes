@@ -826,16 +826,13 @@ public class Settings implements net.redsmokes.api.ISettings {
     public boolean warnOnBuildDisallow() {
         return warnOnBuildDisallow;
     }
-
     private boolean _isDebug() {
         return config.getBoolean("debug", false);
     }
-
     @Override
     public boolean isDebug() {
         return debug || configDebug;
     }
-
     @Override
     public void setDebug(final boolean debug) {
         this.debug = debug;
