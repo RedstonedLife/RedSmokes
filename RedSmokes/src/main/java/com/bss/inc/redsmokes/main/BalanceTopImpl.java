@@ -15,5 +15,7 @@ public class BalanceTopImpl implements BalanceTop {
     private long cacheAge = 0;
     private CompletableFuture<Void> cacheLock;
 
-    public BalanceTopImpl(IRedSmokes redSmokes)
+    public BalanceTopImpl(IRedSmokes redSmokes) {
+        this.redSmokes = redSmokes;
+    }
 }
