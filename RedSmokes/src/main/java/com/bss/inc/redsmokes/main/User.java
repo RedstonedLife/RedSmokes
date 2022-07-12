@@ -257,6 +257,16 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         setMoney(value, UserBalanceUpdateEvent.Cause.UNKNOWN);
     }
 
+    @Override
+    public boolean isBaltopExempt() {
+        if (getBase().isOnline()) {
+            final boolean exempt = isAuthorized("essentials.balancetop.exclude");
+            setBaltopExemptCache(exempt);
+            return exempt;
+        }
+        return isBaltopExcludeCache();
+    }
+
     private BigDecimal _getMoney() {
         if (redsmokes.getSettings().isEcoDisabled()) {
             if (redsmokes.getSettings().isDebug()) {
