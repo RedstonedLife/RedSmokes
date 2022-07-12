@@ -6,10 +6,7 @@ import com.bss.inc.redsmokes.api.services.BalanceTop;
 import org.bukkit.plugin.ServicePriority;
 
 import java.math.BigDecimal;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 public class BalanceTopImpl implements BalanceTop {
@@ -56,5 +53,34 @@ public class BalanceTopImpl implements BalanceTop {
         cacheAge = System.currentTimeMillis();
         cacheLock.complete(null);
         cacheLock = null;
+    }
+
+    @Override
+    public CompletableFuture<Void> calculateBalanceTopMapAsync() {
+        if (cacheLock != null) {
+            return cacheLock;
+        }
+        cacheLock = new CompletableFuture<>();
+        redSmokes.runTaskAsynchronously(this::calculateBalanceTopMap);
+        return cacheLock;
+    }
+
+    @Override
+    public Map<UUID, Entry> getBalanceTopCache() {
+        return Collections.unmodifiableMap(topCache);
+    }
+
+    @Override
+    public long getCacheAge() {
+        return cacheAge;
+    }
+
+    @Override
+    public BigDecimal getBalanceTopTotal() {
+        return balanceTopTotal;
+    }
+
+    public boolean isCacheLocked() {
+        return cacheLock != null;
     }
 }
