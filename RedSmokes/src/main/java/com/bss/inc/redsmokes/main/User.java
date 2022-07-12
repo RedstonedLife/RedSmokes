@@ -348,16 +348,6 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     }
 
     @Override
-    public void sendMail(MailSender sender, String message) {
-        sendMail(sender, message, 0);
-    }
-
-    @Override
-    public void sendMail(MailSender sender, String message, long expireAt) {
-        redsmokes.getMail().sendMail(this, sender, message, expireAt);
-    }
-
-    @Override
     public ArrayList<MailMessage> getMailMessages() {
         return null;
     }
