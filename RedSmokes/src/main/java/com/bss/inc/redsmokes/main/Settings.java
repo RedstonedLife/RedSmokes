@@ -36,6 +36,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     private final transient IRedSmokes redSmokes;
     private final transient AtomicInteger reloadCount = new AtomicInteger(0);
     private Set<String> disabledCommands = new HashSet<>();
+    private List<String> overriddenCommands = Collections.emptyList();
     private List<String> playerCommands = Collections.emptyList();
     private final transient Map<String, Command> disabledBukkitCommands = new HashMap<>();
     private Map<String, BigDecimal> commandCosts;
