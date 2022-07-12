@@ -149,7 +149,7 @@ public class RedSmokesCommand implements IrsCommand {
     }
 
     private User getPlayer(final Server server, final User sourceUser, final String searchTerm, final boolean getHidden, final boolean getOffline) throws PlayerNotFoundException {
-        return ess.matchUser(server, sourceUser, searchTerm, getHidden, getOffline);
+        return redSmokes.matchUser(server, sourceUser, searchTerm, getHidden, getOffline);
     }
 
     @Override
