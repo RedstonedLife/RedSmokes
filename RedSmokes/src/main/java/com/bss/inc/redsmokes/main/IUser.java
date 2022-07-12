@@ -36,6 +36,7 @@ public interface IUser {
      * @return amount of money
      */
     BigDecimal getMoney();
+    boolean isBaltopExempt();
     void setMoney(final BigDecimal value) throws MaxMoneyException;
     String getGroup();
     boolean inGroup(final String group);
