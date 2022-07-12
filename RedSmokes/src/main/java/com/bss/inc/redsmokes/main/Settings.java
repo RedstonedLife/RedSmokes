@@ -789,14 +789,14 @@ public class Settings implements net.redsmokes.api.ISettings {
     }
 
     @Override
-    public List<EssentialsSign> enabledSigns() {
+    public List<RedSmokesSign> enabledSigns() {
         return enabledSigns;
     }
 
-    private List<EssentialsSign> _getEnabledSigns() {
+    private List<RedSmokesSign> _getEnabledSigns() {
         this.signsEnabled = false; // Ensure boolean resets on reload.
 
-        final List<EssentialsSign> newSigns = new ArrayList<>();
+        final List<RedSmokesSign> newSigns = new ArrayList<>();
 
         for (String signName : config.getList("enabledSigns", String.class)) {
             signName = signName.trim().toUpperCase(Locale.ENGLISH);
@@ -810,7 +810,7 @@ public class Settings implements net.redsmokes.api.ISettings {
             try {
                 newSigns.add(Signs.valueOf(signName).getSign());
             } catch (final Exception ex) {
-                ess.getLogger().log(Level.SEVERE, tl("unknownItemInList", signName, "enabledSigns"));
+                redSmokes.getLogger().log(Level.SEVERE, tl("unknownItemInList", signName, "enabledSigns"));
                 continue;
             }
             signsEnabled = true;
