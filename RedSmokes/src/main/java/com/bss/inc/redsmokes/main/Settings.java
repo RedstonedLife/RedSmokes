@@ -740,55 +740,13 @@ public class Settings implements net.redsmokes.api.ISettings {
         currencyFormat = _getCurrencyFormat();
         unprotectedSigns = _getUnprotectedSign();
         defaultEnabledConfirmCommands = _getDefaultEnabledConfirmCommands();
-        teleportWhenFreePolicy = _getTeleportWhenFreePolicy();
-        isCompassTowardsHomePerm = _isCompassTowardsHomePerm();
-        isAllowWorldInBroadcastworld = _isAllowWorldInBroadcastworld();
-        itemDbType = _getItemDbType();
         allowOldIdSigns = _allowOldIdSigns();
-        isWaterSafe = _isWaterSafe();
         isSafeUsermap = _isSafeUsermap();
         logCommandBlockCommands = _logCommandBlockCommands();
-        nickBlacklist = _getNickBlacklist();
-        maxProjectileSpeed = _getMaxProjectileSpeed();
-        removeEffectsOnHeal = _isRemovingEffectsOnHeal();
-        vanishingItemPolicy = _getVanishingItemsPolicy();
-        bindingItemPolicy = _getBindingItemsPolicy();
         currencySymbol = _getCurrencySymbol();
         worldAliases = _getWorldAliases();
 
         reloadCount.incrementAndGet();
-    }
-
-    void _lateLoadItemSpawnBlacklist() {
-        itemSpawnBl = _getItemSpawnBlacklist();
-    }
-
-    @Override
-    public List<Material> itemSpawnBlacklist() {
-        return itemSpawnBl;
-    }
-
-    private List<Material> _getItemSpawnBlacklist() {
-        final List<Material> epItemSpwn = new ArrayList<>();
-        //noinspection deprecation
-        final IItemDb itemDb = redSmokes.getItemDb();
-        if (itemDb == null || !itemDb.isReady()) {
-            redSmokes.getLogger().log(Level.FINE, "Skipping item spawn blacklist read; item DB not yet loaded.");
-            return epItemSpwn;
-        }
-        for (String itemName : config.getString("item-spawn-blacklist", "").split(",")) {
-            itemName = itemName.trim();
-            if (itemName.isEmpty()) {
-                continue;
-            }
-            try {
-                final ItemStack iStack = itemDb.get(itemName);
-                epItemSpwn.add(iStack.getType());
-            } catch (final Exception ex) {
-                redSmokes.getLogger().log(Level.SEVERE, tl("unknownItemInList", itemName, "item-spawn-blacklist"), ex);
-            }
-        }
-        return epItemSpwn;
     }
 
     @Override
