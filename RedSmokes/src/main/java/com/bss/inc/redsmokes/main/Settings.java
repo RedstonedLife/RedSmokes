@@ -632,10 +632,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     @Override
     public void reloadConfig() {
         config.load();
-        noGodWorlds = new HashSet<>(config.getList("no-god-in-worlds", String.class));
         enabledSigns = _getEnabledSigns();
-        teleportSafety = _isTeleportSafetyEnabled();
-        forceDisableTeleportSafety = _isForceDisableTeleportSafety();
         signUsePerSecond = _getSignUsePerSecond();
         chatFormats.clear();
         disabledCommands = _getDisabledCommands();
