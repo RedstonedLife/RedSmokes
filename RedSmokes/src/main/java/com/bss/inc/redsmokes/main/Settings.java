@@ -500,73 +500,21 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
         return null;
     }
-
-    @Override
-    public int getSpawnMobLimit() {
-        return config.getInt("spawnmob-limit", 10);
-    }
-
-    @Override
-    public boolean showNonEssCommandsInHelp() {
-        return config.getBoolean("non-ess-in-help", true);
-    }
-
-    @Override
-    public boolean hidePermissionlessHelp() {
-        return config.getBoolean("hide-permissionless-help", true);
-    }
-
-    @Override
-    public int getProtectCreeperMaxHeight() {
-        return config.getInt("protect.creeper.max-height", -1);
-    }
-
     @Override
     public boolean areSignsDisabled() {
         return !signsEnabled;
     }
-
     @Override
     public long getBackupInterval() {
         return config.getInt("backup.interval", 1440); // 1440 = 24 * 60
     }
-
     @Override
     public String getBackupCommand() {
         return config.getString("backup.command", null);
     }
-
     @Override
     public boolean isAlwaysRunBackup() {
         return config.getBoolean("backup.always-run", false);
-    }
-
-    @Override
-    public String getChatFormat(final String group) {
-        String mFormat = chatFormats.get(group);
-        if (mFormat == null) {
-            mFormat = config.getString("chat.group-formats." + (group == null ? "Default" : group), config.getString("chat.format", "&7[{GROUP}]&r {DISPLAYNAME}&7:&r {MESSAGE}"));
-            mFormat = FormatUtil.replaceFormat(mFormat);
-            mFormat = mFormat.replace("{DISPLAYNAME}", "%1$s");
-            mFormat = mFormat.replace("{MESSAGE}", "%2$s");
-            mFormat = mFormat.replace("{GROUP}", "{0}");
-            mFormat = mFormat.replace("{WORLD}", "{1}");
-            mFormat = mFormat.replace("{WORLDNAME}", "{1}");
-            mFormat = mFormat.replace("{SHORTWORLDNAME}", "{2}");
-            mFormat = mFormat.replace("{TEAMPREFIX}", "{3}");
-            mFormat = mFormat.replace("{TEAMSUFFIX}", "{4}");
-            mFormat = mFormat.replace("{TEAMNAME}", "{5}");
-            mFormat = mFormat.replace("{PREFIX}", "{6}");
-            mFormat = mFormat.replace("{SUFFIX}", "{7}");
-            mFormat = mFormat.replace("{USERNAME}", "{8}");
-            mFormat = mFormat.replace("{NICKNAME}", "{9}");
-            mFormat = "§r".concat(mFormat);
-            chatFormats.put(group, mFormat);
-        }
-        if (isDebug()) {
-            redSmokes.getLogger().info(String.format("Found format '%s' for group '%s'", mFormat, group));
-        }
-        return mFormat;
     }
     @Override
     public void reloadConfig() {
