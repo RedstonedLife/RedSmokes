@@ -2,6 +2,9 @@ package com.bss.inc.redsmokes.main.commands;
 
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.CommandSource;
+import com.bss.inc.redsmokes.main.Trade;
+import com.bss.inc.redsmokes.main.User;
+import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.bukkit.Server;
@@ -9,6 +12,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginIdentifiableCommand;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.util.StringUtil;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -150,7 +154,7 @@ public class RedSmokesCommand implements IrsCommand {
 
     @Override
     public final void run(final Server server, final User user, final String commandLabel, final Command cmd, final String[] args) throws Exception {
-        final Trade charge = new Trade(this.getName(), ess);
+        final Trade charge = new Trade(this.getName(), redSmokes);
         charge.isAffordableFor(user);
         run(server, user, commandLabel, args);
         charge.charge(user);
@@ -207,7 +211,7 @@ public class RedSmokesCommand implements IrsCommand {
     }
 
     boolean canInteractWith(final CommandSource interactor, final User interactee) {
-        return ess.canInteractWith(interactor, interactee);
+        return redSmokes.canInteractWith(interactor, interactee);
     }
 
     /**
@@ -216,9 +220,9 @@ public class RedSmokesCommand implements IrsCommand {
      */
     protected List<String> getPlayers(final Server server, final CommandSource interactor) {
         final List<String> players = Lists.newArrayList();
-        for (final User user : ess.getOnlineUsers()) {
+        for (final User user : redSmokes.getOnlineUsers()) {
             if (canInteractWith(interactor, user)) {
-                players.add(ess.getSettings().changeTabCompleteName() ? FormatUtil.stripFormat(user.getDisplayName()) : user.getName());
+                players.add(redSmokes.getSettings().changeTabCompleteName() ? FormatUtil.stripFormat(user.getDisplayName()) : user.getName());
             }
         }
         return players;
@@ -230,9 +234,9 @@ public class RedSmokesCommand implements IrsCommand {
      */
     protected List<String> getPlayers(final Server server, final User interactor) {
         final List<String> players = Lists.newArrayList();
-        for (final User user : ess.getOnlineUsers()) {
+        for (final User user : redSmokes.getOnlineUsers()) {
             if (canInteractWith(interactor, user)) {
-                players.add(ess.getSettings().changeTabCompleteName() ? FormatUtil.stripFormat(user.getDisplayName()) : user.getName());
+                players.add(redSmokes.getSettings().changeTabCompleteName() ? FormatUtil.stripFormat(user.getDisplayName()) : user.getName());
             }
         }
         return players;
