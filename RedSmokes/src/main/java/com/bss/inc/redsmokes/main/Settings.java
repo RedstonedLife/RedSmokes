@@ -363,7 +363,7 @@ public class Settings implements net.redsmokes.api.ISettings {
                 final String command = entry.getKey();
                 final CommentedConfigurationNode node = entry.getValue();
                 if (command.charAt(0) == '/') {
-                    ess.getLogger().warning("Invalid command cost. '" + command + "' should not start with '/'.");
+                    redSmokes.getLogger().warning("Invalid command cost. '" + command + "' should not start with '/'.");
                 }
                 try {
                     if (ConfigurateUtil.isDouble(node)) {
@@ -376,10 +376,10 @@ public class Settings implements net.redsmokes.api.ISettings {
                         final double cost = Double.parseDouble(costString.trim().replace("$", "").replace(getCurrencySymbol(), "").replaceAll("\\W", ""));
                         newMap.put(command.toLowerCase(Locale.ENGLISH), BigDecimal.valueOf(cost));
                     } else {
-                        ess.getLogger().warning("Invalid command cost for: " + command);
+                        redSmokes.getLogger().warning("Invalid command cost for: " + command);
                     }
                 } catch (final Exception ex) {
-                    ess.getLogger().warning("Invalid command cost for: " + command);
+                    redSmokes.getLogger().warning("Invalid command cost for: " + command);
                 }
             }
             return newMap;
