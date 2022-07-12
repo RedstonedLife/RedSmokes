@@ -726,13 +726,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         economyLog = _isEcoLogEnabled();
         economyLogUpdate = _isEcoLogUpdateEnabled();
         economyDisabled = _isEcoDisabled();
-        allowSilentJoin = _allowSilentJoinQuit();
-        customJoinMessage = _getCustomJoinMessage();
-        isCustomJoinMessage = !customJoinMessage.equals("none");
-        customQuitMessage = _getCustomQuitMessage();
-        isCustomQuitMessage = !customQuitMessage.equals("none");
-        customNewUsernameMessage = _getCustomNewUsernameMessage();
-        isCustomNewUsernameMessage = !customNewUsernameMessage.equals("none");
         muteCommands = _getMuteCommands();
         commandCooldowns = _getCommandCooldowns();
         npcsInBalanceRanking = _isNpcsInBalanceRanking();
