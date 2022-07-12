@@ -1,10 +1,10 @@
 package com.bss.inc.redsmokes.main.signs;
 
-import com.bss.inc.redsmokes.api.IRedSmokes;
-import com.bss.inc.redsmokes.api.MaxMoneyException;
-import com.bss.inc.redsmokes.api.events.SignBreakEvent;
-import com.bss.inc.redsmokes.api.events.SignCreateEvent;
-import com.bss.inc.redsmokes.api.events.SignInteractEvent;
+import net.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.MaxMoneyException;
+import net.redsmokes.api.events.SignBreakEvent;
+import net.redsmokes.api.events.SignCreateEvent;
+import net.redsmokes.api.events.SignInteractEvent;
 import com.bss.inc.redsmokes.main.*;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
@@ -56,7 +56,7 @@ public class RedSmokesSign {
     }
 
     /**
-     * @deprecated use {@link #isValidSign(com.bss.inc.redsmokes.api.IRedSmokes, ISign)} if possible
+     * @deprecated use {@link #isValidSign(IRedSmokes, ISign)} if possible
      * @param sign
      * @return boolean True if valid, false if invalid
      */

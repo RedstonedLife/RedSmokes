@@ -1,6 +1,6 @@
 package com.bss.inc.redsmokes.main.commands;
 
-import com.bss.inc.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.main.CommandSource;
 import com.bss.inc.redsmokes.main.IRedSmokesModule;
 import com.bss.inc.redsmokes.main.User;

@@ -1,7 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.OfflinePlayer;
-import com.bss.inc.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.api.services.BalanceTop;
 import org.bukkit.plugin.ServicePriority;
 

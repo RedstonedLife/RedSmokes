@@ -1,6 +1,6 @@
 package com.bss.inc.redsmokes.main.utils;
 
-import com.bss.inc.redsmokes.api.IUser;
+import net.redsmokes.api.IUser;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 

@@ -1,3 +1,3 @@
-package com.bss.inc.redsmokes.api;
+package net.redsmokes.api;
 
-public interface ISettings extends com.bss.inc.redsmokes.api.ISettings {}
+public interface ISettings extends ISettings {}

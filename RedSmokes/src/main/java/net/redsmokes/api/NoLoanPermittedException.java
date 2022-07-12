@@ -1,4 +1,4 @@
-package com.bss.inc.redsmokes.api;
+package net.redsmokes.api;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
 

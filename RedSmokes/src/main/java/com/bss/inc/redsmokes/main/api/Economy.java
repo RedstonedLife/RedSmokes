@@ -1,9 +1,9 @@
 package com.bss.inc.redsmokes.main.api;
 
 
-import com.bss.inc.redsmokes.api.MaxMoneyException;
-import com.bss.inc.redsmokes.api.events.UserBalanceUpdateEvent;
-import com.bss.inc.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.MaxMoneyException;
+import net.redsmokes.api.events.UserBalanceUpdateEvent;
+import net.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.main.Trade;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;

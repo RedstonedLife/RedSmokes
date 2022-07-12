@@ -1,4 +1,4 @@
-package com.bss.inc.redsmokes.api.events;
+package net.redsmokes.api.events;
 
 import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;

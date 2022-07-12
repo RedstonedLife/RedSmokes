@@ -1,9 +1,11 @@
 package com.bss.inc.redsmokes.api.services.mail;
 
+import net.redsmokes.api.IUser;
+
 import java.util.UUID;
 
 /**
- * An entity which is allowed to send mail to an {@link com.bss.inc.redsmokes.api.IUser IUser}.
+ * An entity which is allowed to send mail to an {@link IUser IUser}.
  *
  * In RedSmokes, IUser and Console are the entities that implement this interface.
  */
