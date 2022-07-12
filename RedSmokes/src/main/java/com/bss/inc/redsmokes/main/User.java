@@ -346,22 +346,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     public void sendMessage(String message) {
 
     }
-
-    @Override
-    public ArrayList<MailMessage> getMailMessages() {
-        return null;
-    }
-
-    @Override
-    public void setMailList(ArrayList<MailMessage> messages) {
-
-    }
-
-    @Override
-    public int getMailAmount() {
-        return 0;
-    }
-
+    
     @Override
     public CommandSource getSource() {
         return null;
