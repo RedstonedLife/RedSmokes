@@ -5,6 +5,8 @@ import com.bss.inc.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.api.events.TransactionEvent;
 import com.bss.inc.redsmokes.api.events.UserBalanceUpdateEvent;
+import com.bss.inc.redsmokes.api.services.mail.MailMessage;
+import com.bss.inc.redsmokes.api.services.mail.MailSender;
 import com.bss.inc.redsmokes.main.economy.EconomyLayer;
 import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
@@ -20,10 +22,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.*;
 import java.util.logging.Level;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
@@ -342,6 +341,72 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         }
         return result;
     }
+
+    @Override
+    public void sendMessage(String message) {
+        
+    }
+
+    @Override
+    public void sendMail(MailSender sender, String message) {
+
+    }
+
+    @Override
+    public void sendMail(MailSender sender, String message, long expireAt) {
+
+    }
+
+    @Override
+    public ArrayList<MailMessage> getMailMessages() {
+        return null;
+    }
+
+    @Override
+    public void setMailList(ArrayList<MailMessage> messages) {
+
+    }
+
+    @Override
+    public int getMailAmount() {
+        return 0;
+    }
+
+    @Override
+    public CommandSource getSource() {
+        return null;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public UUID getUUID() {
+        return null;
+    }
+
+    @Override
+    public String getDisplayName() {
+        return null;
+    }
+
+    @Override
+    public boolean isPromptingClearConfirm() {
+        return false;
+    }
+
+    @Override
+    public void setPromptingClearConfirm(boolean prompt) {
+
+    }
+
+    @Override
+    public Map<User, BigDecimal> getConfirmingPayments() {
+        return null;
+    }
+
     @Override
     public boolean isVanished() {
         return vanished;
@@ -396,4 +461,8 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
         lastThrottledAction = System.currentTimeMillis();
     }
 
+    @Override
+    public int compareTo(User o) {
+        return 0;
+    }
 }
