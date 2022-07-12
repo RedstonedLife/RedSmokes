@@ -105,7 +105,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     private Map<Pattern, Long> commandCooldowns;
     private boolean npcsInBalanceRanking = false;
     private NumberFormat currencyFormat;
-    private List<EssentialsSign> unprotectedSigns = Collections.emptyList();
+    private List<RedSmokesSign> unprotectedSigns = Collections.emptyList();
     private List<String> defaultEnabledConfirmCommands;
     private boolean allowOldIdSigns;
     private boolean isSafeUsermap;
