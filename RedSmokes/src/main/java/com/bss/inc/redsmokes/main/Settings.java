@@ -5,6 +5,7 @@ import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -1457,53 +1458,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     @Override
     public BigDecimal getMinimumPayAmount() {
         return new BigDecimal(config.getString("minimum-pay-amount", "0.001"));
-    }
-
-    @Override
-    public boolean isPayExcludesIgnoreList() {
-        return config.getBoolean("pay-excludes-ignore-list", false);
-    }
-
-    @Override
-    public long getLastMessageReplyRecipientTimeout() {
-        return config.getLong("last-message-reply-recipient-timeout", 180);
-    }
-
-    @Override
-    public boolean isMilkBucketEasterEggEnabled() {
-        return config.getBoolean("milk-bucket-easter-egg", true);
-    }
-
-    @Override
-    public boolean isSendFlyEnableOnJoin() {
-        return config.getBoolean("send-fly-enable-on-join", true);
-    }
-
-    @Override
-    public boolean isWorldTimePermissions() {
-        return config.getBoolean("world-time-permissions", false);
-    }
-
-    @Override
-    public boolean isSpawnOnJoin() {
-        return !this.spawnOnJoinGroups.isEmpty();
-    }
-
-    public List<String> _getSpawnOnJoinGroups() {
-        final List<String> def = Collections.emptyList();
-        if (config.hasProperty("spawn-on-join")) {
-            if (config.isList("spawn-on-join")) {
-                return new ArrayList<>(config.getList("spawn-on-join", String.class));
-            } else if (config.isBoolean("spawn-on-join")) { // List of [*] to make all groups go to spawn on join.
-                // This also maintains backwards compatibility with initial impl of single boolean value.
-                return config.getBoolean("spawn-on-join", true) ? Collections.singletonList("*") : def;
-            }
-            // Take whatever the value is, convert to string and add it to a list as a single value.
-            final String val = config.get("spawn-on-join").toString();
-            return !val.isEmpty() ? Collections.singletonList(val) : def;
-        } else {
-            return def;
-        }
     }
     private Map<Pattern, Long> _getCommandCooldowns() {
         final CommentedConfigurationNode section = config.getSection("command-cooldowns");
