@@ -39,9 +39,9 @@ public class BalanceTopImpl implements BalanceTop {
                     user.updateMoneyCache(userMoney);
                     newTotal = newTotal.add(userMoney);
                     final String name;
-                    if(user.getBase() instanceof OfflinePlayer) {
-                        name = user.getLastAccountName();
-                    }else if(user.isHidden()){name=user.getName();}else{name=user.getDisplayName();}
+                    if(user.getBase() instanceof OfflinePlayer){name = user.getLastAccountName();}
+                    else if(user.isHidden()){name=user.getName();}
+                    else{name=user.getDisplayName();}
                 }
             }
         }
