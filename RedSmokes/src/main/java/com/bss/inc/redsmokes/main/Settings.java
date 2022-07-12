@@ -292,9 +292,9 @@ public class Settings implements net.redsmokes.api.ISettings {
     }
 
     private void _addAlternativeCommand(final String label, final Command current) {
-        Command cmd = ess.getAlternativeCommandsHandler().getAlternative(label);
+        Command cmd = redSmokes.getAlternativeCommandsHandler().getAlternative(label);
         if (cmd == null) {
-            for (final Map.Entry<String, Command> entry : ess.getKnownCommandsProvider().getKnownCommands().entrySet()) {
+            for (final Map.Entry<String, Command> entry : redSmokes.getKnownCommandsProvider().getKnownCommands().entrySet()) {
                 final String[] split = entry.getKey().split(":");
                 if (entry.getValue() != current && split[split.length - 1].equals(label)) {
                     cmd = entry.getValue();
@@ -304,7 +304,7 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
 
         if (cmd != null) {
-            ess.getKnownCommandsProvider().getKnownCommands().put(label, cmd);
+            redSmokes.getKnownCommandsProvider().getKnownCommands().put(label, cmd);
         }
     }
 
@@ -320,11 +320,9 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
         return disCommands;
     }
-
     private List<String> _getPlayerCommands() {
         return config.getList("player-commands", String.class);
     }
-
     @Override
     public boolean isPlayerCommand(final String label) {
         for (final String c : playerCommands) {
