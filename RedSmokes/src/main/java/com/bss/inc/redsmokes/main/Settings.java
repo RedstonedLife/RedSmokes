@@ -192,6 +192,10 @@ public class Settings implements net.redsmokes.api.ISettings {
         return null;
     }
 
+    public boolean _isEcoLogUpdateEnabled() {
+        return config.getBoolean("economy-log-update-enabled", false);
+    }
+
     @Override
     public BigDecimal getCommandCost(String name) {
         name = name.replace('.', '_').replace('/', '_');
