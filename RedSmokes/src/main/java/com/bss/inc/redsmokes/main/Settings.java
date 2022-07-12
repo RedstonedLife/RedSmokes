@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
+import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import net.redsmokes.api.IItemDb;
 import org.bukkit.Material;
@@ -563,72 +564,10 @@ public class Settings implements net.redsmokes.api.ISettings {
             chatFormats.put(group, mFormat);
         }
         if (isDebug()) {
-            ess.getLogger().info(String.format("Found format '%s' for group '%s'", mFormat, group));
+            redSmokes.getLogger().info(String.format("Found format '%s' for group '%s'", mFormat, group));
         }
         return mFormat;
     }
-
-    @Override
-    public String getWorldAlias(String world) {
-        return worldAliases.getOrDefault(world.toLowerCase(), world);
-    }
-
-    private Map<String, String> _getWorldAliases() {
-        final Map<String, String> map = new HashMap<>();
-        final CommentedConfigurationNode section = config.getSection("chat.world-aliases");
-        if (section == null) {
-            return map;
-        }
-
-        for (Map.Entry<String, CommentedConfigurationNode> entry : ConfigurateUtil.getMap(section).entrySet()) {
-            map.put(entry.getKey().toLowerCase(), FormatUtil.replaceFormat(entry.getValue().getString()));
-        }
-        return map;
-    }
-
-    @Override
-    public boolean getAnnounceNewPlayers() {
-        return !config.getString("newbies.announce-format", "-").isEmpty();
-    }
-
-    @Override
-    public IText getAnnounceNewPlayerFormat() {
-        return new SimpleTextInput(FormatUtil.replaceFormat(config.getString("newbies.announce-format", "&dWelcome {DISPLAYNAME} to the server!")));
-    }
-
-    @Override
-    public String getNewPlayerKit() {
-        return config.getString("newbies.kit", "");
-    }
-
-    @Override
-    public String getNewbieSpawn() {
-        return config.getString("newbies.spawnpoint", "default");
-    }
-
-    @Override
-    public boolean getPerWarpPermission() {
-        return config.getBoolean("per-warp-permission", false);
-    }
-
-    @Override
-    public Map<String, Object> getListGroupConfig() {
-        final CommentedConfigurationNode node = config.getSection("list");
-        if (node != null && node.isMap()) {
-            final Map<String, Object> values = ConfigurateUtil.getRawMap(node);
-            if (!values.isEmpty()) {
-                return values;
-            }
-        }
-        final Map<String, Object> defaultMap = new HashMap<>();
-        if (config.getBoolean("sort-list-by-groups", false)) {
-            defaultMap.put("ListByGroup", "ListByGroup");
-        } else {
-            defaultMap.put("Players", "*");
-        }
-        return defaultMap;
-    }
-
     @Override
     public void reloadConfig() {
         config.load();
