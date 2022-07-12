@@ -16,10 +16,10 @@ import java.util.logging.Level;
 public class AlternativeCommandsHandler {
     private final transient Map<String, List<Command>> altcommands = new HashMap<>();
     private final transient Map<String, String> disabledList = new HashMap<>();
-    private final transient IEssentials ess;
+    private final transient IRedSmokes redSmokes;
 
     public AlternativeCommandsHandler(final IRedSmokes ess) {
-        this.ess = ess;
+        this.redSmokes = redSmokes;
         for (final Plugin plugin : redSmokes.getServer().getPluginManager().getPlugins()) {
             if (plugin.isEnabled()) {
                 addPlugin(plugin);
