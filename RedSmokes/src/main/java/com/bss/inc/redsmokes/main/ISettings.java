@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 public interface ISettings extends IConf {
     File getConfigFile();
     boolean isSafeUsermap();
+    List<String> getDefaultEnabledConfirmCommands();
     boolean areSignsDisabled();
     String getBackupCommand();
     long getBackupInterval();
