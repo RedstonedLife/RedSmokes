@@ -21,5 +21,7 @@ public class BalanceTopImpl implements BalanceTop {
         redSmokes.getServer().getServicesManager().register(BalanceTop.class, this, redSmokes, ServicePriority.Normal);
     }
 
-    
+    private void calculateBalanceTopMap() {
+        
+    }
 }
