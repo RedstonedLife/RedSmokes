@@ -100,7 +100,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     }
 
     @Override
-    public boolean isCommandOverriden(String name) {
+    public boolean isCommandOverridden(String name) {
         return false;
     }
 
