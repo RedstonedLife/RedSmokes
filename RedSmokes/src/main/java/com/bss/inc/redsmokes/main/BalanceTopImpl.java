@@ -36,7 +36,7 @@ public class BalanceTopImpl implements BalanceTop {
                 if(!user.isBaltopExempt()) {
                     final BigDecimal userMoney = user.getMoney();
                     user.updateMoneyCache(userMoney);
-                    
+                    newTotal = newTotal.add(userMoney);
                 }
             }
         }
