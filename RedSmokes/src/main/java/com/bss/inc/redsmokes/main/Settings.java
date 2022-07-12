@@ -1446,16 +1446,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     }
 
     @Override
-    public boolean isLastMessageReplyRecipient() {
-        return config.getBoolean("last-message-reply-recipient", false);
-    }
-
-    @Override
-    public boolean isReplyToVanished() {
-        return config.getBoolean("last-message-reply-vanished", true);
-    }
-
-    @Override
     public BigDecimal getMinimumPayAmount() {
         return new BigDecimal(config.getString("minimum-pay-amount", "0.001"));
     }
