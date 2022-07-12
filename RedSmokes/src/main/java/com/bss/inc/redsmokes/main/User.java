@@ -365,17 +365,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     public String getDisplayName() {
         return super.getBase().getDisplayName() == null || (isHidden()) ? super.getBase().getName() : super.getBase().getDisplayName();
     }
-
-    @Override
-    public boolean isPromptingClearConfirm() {
-        return false;
-    }
-
-    @Override
-    public void setPromptingClearConfirm(boolean prompt) {
-
-    }
-
+    
     @Override
     public Map<User, BigDecimal> getConfirmingPayments() {
         return confirmingPayments;
