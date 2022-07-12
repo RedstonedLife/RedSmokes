@@ -1,6 +1,9 @@
 package com.bss.inc.redsmokes.main;
 
 import java.util.List;
+import java.util.logging.Level;
+
+import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public class Settings implements net.redsmokes.api.ISettings {
     private static final BigDecimal DEFAULT_MAX_MONEY = new BigDecimal("10000000000000");
@@ -1655,42 +1658,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
         return newSigns;
     }
-
-    @Override
-    public boolean isKitAutoEquip() {
-        return config.getBoolean("kit-auto-equip", false);
-    }
-
-    @Override
-    public boolean isPastebinCreateKit() {
-        return config.getBoolean("pastebin-createkit", false);
-    }
-
-    @Override
-    public boolean isUseBetterKits() {
-        return config.getBoolean("use-nbt-serialization-in-createkit", false);
-    }
-
-    @Override
-    public boolean isAllowBulkBuySell() {
-        return config.getBoolean("allow-bulk-buy-sell", false);
-    }
-
-    @Override
-    public boolean isAllowSellNamedItems() {
-        return config.getBoolean("allow-selling-named-items", false);
-    }
-
-    @Override
-    public boolean isAddingPrefixInPlayerlist() {
-        return config.getBoolean("add-prefix-in-playerlist", false);
-    }
-
-    @Override
-    public boolean isAddingSuffixInPlayerlist() {
-        return config.getBoolean("add-suffix-in-playerlist", false);
-    }
-
     @Override
     public int getNotifyPlayerOfMailCooldown() {
         return config.getInt("notify-player-of-mail-cooldown", 0);
