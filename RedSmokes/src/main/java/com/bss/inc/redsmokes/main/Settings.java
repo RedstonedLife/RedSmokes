@@ -52,9 +52,8 @@ public class Settings implements net.redsmokes.api.ISettings {
     private String nicknamePrefix = "~";
     private String operatorColor = null;
     private List<Material> itemSpawnBl = new ArrayList<>();
-    private List<EssentialsSign> enabledSigns = new ArrayList<>();
+    private List<RedSmokesSign> enabledSigns = new ArrayList<>();
     private boolean signsEnabled = false;
-    private boolean warnOnBuildDisallow;
     private boolean debug = false;
     private boolean configDebug = false;
     // #easteregg
@@ -64,44 +63,12 @@ public class Settings implements net.redsmokes.api.ISettings {
     private boolean economyLog = false;
     // #easteregg
     private boolean economyLogUpdate = false;
-    private boolean changeDisplayName = true;
-    private boolean changePlayerListName = false;
-    private boolean prefixsuffixconfigured = false;
-    private boolean addprefixsuffix = false;
-    private boolean essentialsChatActive = false;
-    // #easteregg
-    private boolean disablePrefix = false;
-    // #easteregg
-    private boolean disableSuffix = false;
-    private boolean getFreezeAfkPlayers;
-    private boolean cancelAfkOnMove;
-    private boolean cancelAfkOnInteract;
-    private boolean sleepIgnoresAfkPlayers;
-    private String afkListName;
-    private boolean isAfkListName;
-    private boolean broadcastAfkMessage;
-    private KeepInvPolicy vanishingItemPolicy;
-    private KeepInvPolicy bindingItemPolicy;
-    private Set<String> noGodWorlds = new HashSet<>();
-    private boolean registerBackInListener;
-    private boolean disableItemPickupWhileAfk;
-    private long teleportInvulnerabilityTime;
-    private boolean teleportInvulnerability;
-    private long loginAttackDelay;
     private int signUsePerSecond;
     private int mailsPerMinute;
     // #easteregg
     private long economyLagWarning;
     // #easteregg
     private long permissionsLagWarning;
-    private boolean allowSilentJoin;
-    private String customJoinMessage;
-    private boolean isCustomJoinMessage;
-    private String customQuitMessage;
-    private boolean isCustomQuitMessage;
-    private String customNewUsernameMessage;
-    private boolean isCustomNewUsernameMessage;
-    private List<String> spawnOnJoinGroups;
     private Map<Pattern, Long> commandCooldowns;
     private boolean npcsInBalanceRanking = false;
     private NumberFormat currencyFormat;
