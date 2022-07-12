@@ -1,4 +1,7 @@
 package com.bss.inc.redsmokes.main.commands;
 
-public class RedSmokesCommand {
+import com.bss.inc.redsmokes.api.commands.IrsCommand;
+
+public class RedSmokesCommand implements IrsCommand {
+    
 }
