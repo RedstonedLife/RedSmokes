@@ -349,7 +349,7 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
 
     @Override
     public CommandSource getSource() {
-        return null;
+        return new CommandSource(getBase());
     }
 
     @Override
