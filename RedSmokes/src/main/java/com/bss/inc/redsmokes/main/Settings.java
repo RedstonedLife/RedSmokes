@@ -670,10 +670,10 @@ public class Settings implements net.redsmokes.api.ISettings {
 
             for (final String command : disabledCommands) {
                 final String effectiveAlias = command.toLowerCase(Locale.ENGLISH);
-                final Command toDisable = ess.getPluginCommand(effectiveAlias);
+                final Command toDisable = redSmokes.getPluginCommand(effectiveAlias);
                 if (toDisable != null) {
                     if (isDebug()) {
-                        ess.getLogger().log(Level.INFO, "Attempting removal of " + effectiveAlias);
+                        redSmokes.getLogger().log(Level.INFO, "Attempting removal of " + effectiveAlias);
                     }
                     final Command removed = redSmokes.getKnownCommandsProvider().getKnownCommands().remove(effectiveAlias);
                     if (removed != null) {
