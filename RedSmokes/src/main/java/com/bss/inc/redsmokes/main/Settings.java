@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
+import java.util.List;
+
 public class Settings implements net.redsmokes.api.ISettings {
     private static final BigDecimal DEFAULT_MAX_MONEY = new BigDecimal("10000000000000");
     private static final BigDecimal DEFAULT_MIN_MONEY = new BigDecimal("-10000000000000");
@@ -1726,65 +1728,9 @@ public class Settings implements net.redsmokes.api.ISettings {
     public List<String> getDefaultEnabledConfirmCommands() {
         return defaultEnabledConfirmCommands;
     }
-
     @Override
     public boolean isConfirmCommandEnabledByDefault(final String commandName) {
         return getDefaultEnabledConfirmCommands().contains(commandName.toLowerCase());
-    }
-
-    private TeleportWhenFreePolicy _getTeleportWhenFreePolicy() {
-        if (config.hasProperty("teleport-back-when-freed-from-jail")) {
-            return config.getBoolean("teleport-back-when-freed-from-jail", true) ? TeleportWhenFreePolicy.BACK : TeleportWhenFreePolicy.OFF;
-        }
-
-        if (config.hasProperty("teleport-when-freed")) {
-            // snakeyaml more like cursedyaml
-            final String value = config.getString("teleport-when-freed", "back").replace("false", "off");
-            try {
-                return TeleportWhenFreePolicy.valueOf(value.toUpperCase(Locale.ROOT));
-            } catch (IllegalArgumentException e) {
-                throw new RuntimeException("Invalid value \"" + value + "\" for config option \"teleport-when-freed\"!", e);
-            }
-        }
-
-        return TeleportWhenFreePolicy.BACK;
-    }
-
-    @Override
-    public TeleportWhenFreePolicy getTeleportWhenFreePolicy() {
-        return teleportWhenFreePolicy;
-    }
-
-    @Override
-    public boolean isJailOnlineTime() {
-        return config.getBoolean("jail-online-time", false);
-    }
-
-    private boolean _isCompassTowardsHomePerm() {
-        return config.getBoolean("compass-towards-home-perm", false);
-    }
-
-    @Override
-    public boolean isCompassTowardsHomePerm() {
-        return isCompassTowardsHomePerm;
-    }
-
-    private boolean _isAllowWorldInBroadcastworld() {
-        return config.getBoolean("allow-world-in-broadcastworld", false);
-    }
-
-    @Override
-    public boolean isAllowWorldInBroadcastworld() {
-        return isAllowWorldInBroadcastworld;
-    }
-
-    private String _getItemDbType() {
-        return config.getString("item-db-type", "auto");
-    }
-
-    @Override
-    public String getItemDbType() {
-        return itemDbType;
     }
     private boolean _allowOldIdSigns() {
         return config.getBoolean("allow-old-id-signs", false);
