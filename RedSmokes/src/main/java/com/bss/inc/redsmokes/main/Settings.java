@@ -1786,7 +1786,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     public String getItemDbType() {
         return itemDbType;
     }
-
     private boolean _allowOldIdSigns() {
         return config.getBoolean("allow-old-id-signs", false);
     }
@@ -1795,37 +1794,20 @@ public class Settings implements net.redsmokes.api.ISettings {
     public boolean allowOldIdSigns() {
         return allowOldIdSigns;
     }
-
-    private boolean _isWaterSafe() {
-        final boolean _isWaterSafe = config.getBoolean("is-water-safe", false);
-        LocationUtil.setIsWaterSafe(_isWaterSafe);
-
-        return _isWaterSafe;
-    }
-
-    @Override
-    public boolean isWaterSafe() {
-        return isWaterSafe;
-    }
-
     private boolean _isSafeUsermap() {
         return config.getBoolean("safe-usermap-names", true);
     }
-
     @Override
     public boolean isSafeUsermap() {
         return isSafeUsermap;
     }
-
     private boolean _logCommandBlockCommands() {
         return config.getBoolean("log-command-block-commands", true);
     }
-
     @Override
     public boolean isUpdateCheckEnabled() {
         return config.getBoolean("update-check", true);
     }
-
     @Override
     public boolean showZeroBaltop() {
         return config.getBoolean("show-zero-baltop", true);
