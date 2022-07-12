@@ -104,7 +104,7 @@ public class RedSmokesCommand implements IrsCommand {
 
     protected User getPlayer(final Server server, final CommandSource sender, final String[] args, final int pos, final boolean getOffline) throws PlayerNotFoundException, NotEnoughArgumentsException {
         if (sender.isPlayer()) {
-            final User user = ess.getUser(sender.getPlayer());
+            final User user = redSmokes.getUser(sender.getPlayer());
             return getPlayer(server, user, args, pos, getOffline);
         }
         return getPlayer(server, args, pos, true, getOffline);
