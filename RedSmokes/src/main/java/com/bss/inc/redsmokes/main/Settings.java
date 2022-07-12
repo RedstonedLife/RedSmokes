@@ -651,7 +651,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         loginAttackDelay = _getLoginAttackDelay();
         signUsePerSecond = _getSignUsePerSecond();
         chatFormats.clear();
-        changeDisplayName = _changeDisplayName();
         disabledCommands = _getDisabledCommands();
         overriddenCommands = _getOverriddenCommands();
         playerCommands = _getPlayerCommands();
