@@ -272,7 +272,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     }
 
     @Override
-    public boolean isCommandDisabled(final IEssentialsCommand cmd) {
+    public boolean isCommandDisabled(final IrsCommand cmd) {
         return isCommandDisabled(cmd.getName());
     }
 
