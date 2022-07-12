@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.OfflinePlayer;
 import com.bss.inc.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.api.services.BalanceTop;
 import org.bukkit.plugin.ServicePriority;
@@ -38,6 +39,9 @@ public class BalanceTopImpl implements BalanceTop {
                     user.updateMoneyCache(userMoney);
                     newTotal = newTotal.add(userMoney);
                     final String name;
+                    if(user.getBase() instanceof OfflinePlayer) {
+                        
+                    }
                 }
             }
         }
