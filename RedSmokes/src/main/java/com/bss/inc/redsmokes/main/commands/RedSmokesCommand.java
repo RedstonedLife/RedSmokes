@@ -10,10 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginIdentifiableCommand;
 import org.bukkit.plugin.Plugin;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
@@ -246,7 +243,7 @@ public class RedSmokesCommand implements IrsCommand {
      * Due to the number of items, this may not return the entire list.
      */
     protected List<String> getItems() {
-        return new ArrayList<>(ess.getItemDb().listNames());
+        return new ArrayList<>(redSmokes.getItemDb().listNames());
     }
 
     /**
