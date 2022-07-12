@@ -99,9 +99,19 @@ public class Settings implements net.redsmokes.api.ISettings {
         return config.getBoolean("verbose-command-usages", true);
     }
 
+    private List<String> _getOverriddenCommands() {
+        return config.getList("overridden-commands", String.class);
+    }
+
     @Override
-    public boolean isCommandOverridden(String name) {
-        return false;
+    public boolean isCommandOverridden(final String name) {
+        for (final String c : overriddenCommands) {
+            if (!c.equalsIgnoreCase(name)) {
+                continue;
+            }
+            return true;
+        }
+        return config.getBoolean("override-" + name.toLowerCase(Locale.ENGLISH), false);
     }
 
     private void _addAlternativeCommand(final String label, final Command current) {
