@@ -20,4 +20,6 @@ public class BalanceTopImpl implements BalanceTop {
         this.redSmokes = redSmokes;
         redSmokes.getServer().getServicesManager().register(BalanceTop.class, this, redSmokes, ServicePriority.Normal);
     }
+
+    
 }
