@@ -734,7 +734,6 @@ public class Settings implements net.redsmokes.api.ISettings {
         customNewUsernameMessage = _getCustomNewUsernameMessage();
         isCustomNewUsernameMessage = !customNewUsernameMessage.equals("none");
         muteCommands = _getMuteCommands();
-        spawnOnJoinGroups = _getSpawnOnJoinGroups();
         commandCooldowns = _getCommandCooldowns();
         npcsInBalanceRanking = _isNpcsInBalanceRanking();
         currencyFormat = _getCurrencyFormat();
