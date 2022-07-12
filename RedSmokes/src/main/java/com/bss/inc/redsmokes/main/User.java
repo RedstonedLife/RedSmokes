@@ -444,9 +444,4 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     public int hashCode() {
         return this.getName().hashCode();
     }
-
-    @Override
-    public boolean isReachable() {
-        return getBase().isOnline();
-    }
 }
