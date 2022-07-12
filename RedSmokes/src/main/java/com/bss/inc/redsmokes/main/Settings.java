@@ -1822,68 +1822,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     }
 
     @Override
-    public boolean logCommandBlockCommands() {
-        return logCommandBlockCommands;
-    }
-
-    private Set<Predicate<String>> _getNickBlacklist() {
-        final Set<Predicate<String>> blacklist = new HashSet<>();
-
-        config.getList("nick-blacklist", String.class).forEach(entry -> {
-            try {
-                blacklist.add(Pattern.compile(entry).asPredicate());
-            } catch (final PatternSyntaxException e) {
-                ess.getLogger().warning("Invalid nickname blacklist regex: " + entry);
-            }
-        });
-
-        return blacklist;
-    }
-
-    @Override
-    public Set<Predicate<String>> getNickBlacklist() {
-        return nickBlacklist;
-    }
-
-    private double _getMaxProjectileSpeed() {
-        return config.getDouble("max-projectile-speed", 8);
-    }
-
-    @Override
-    public double getMaxProjectileSpeed() {
-        return maxProjectileSpeed;
-    }
-
-    private boolean _isRemovingEffectsOnHeal() {
-        return config.getBoolean("remove-effects-on-heal", true);
-    }
-
-    @Override
-    public boolean isRemovingEffectsOnHeal() {
-        return removeEffectsOnHeal;
-    }
-
-    @Override
-    public boolean isSpawnIfNoHome() {
-        return config.getBoolean("spawn-if-no-home", true);
-    }
-
-    @Override
-    public boolean isConfirmHomeOverwrite() {
-        return config.getBoolean("confirm-home-overwrite", false);
-    }
-
-    @Override
-    public boolean infoAfterDeath() {
-        return config.getBoolean("send-info-after-death", false);
-    }
-
-    @Override
-    public boolean isRespawnAtBed() {
-        return config.getBoolean("respawn-at-home-bed", true);
-    }
-
-    @Override
     public boolean isUpdateCheckEnabled() {
         return config.getBoolean("update-check", true);
     }
