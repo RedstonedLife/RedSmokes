@@ -14,4 +14,6 @@ public class BalanceTopImpl implements BalanceTop {
     private BigDecimal balanceTopTotal = BigDecimal.ZERO;
     private long cacheAge = 0;
     private CompletableFuture<Void> cacheLock;
+
+    public 
 }
