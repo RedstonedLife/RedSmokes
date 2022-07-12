@@ -9,10 +9,7 @@ import com.bss.inc.redsmokes.api.services.mail.MailMessage;
 import com.bss.inc.redsmokes.api.services.mail.MailSender;
 import com.bss.inc.redsmokes.main.economy.EconomyLayer;
 import com.bss.inc.redsmokes.main.economy.EconomyLayers;
-import com.bss.inc.redsmokes.main.utils.EnumUtil;
-import com.bss.inc.redsmokes.main.utils.NumberUtil;
-import com.bss.inc.redsmokes.main.utils.TriState;
-import com.bss.inc.redsmokes.main.utils.VersionUtil;
+import com.bss.inc.redsmokes.main.utils.*;
 import com.google.common.collect.Lists;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
@@ -436,12 +433,16 @@ public class User extends UserData implements com.bss.inc.redsmokes.api.IUser, C
     }
 
     @Override
-    public int compareTo(User o) {
-        return 0;
+    public int compareTo(final User other) {
+        return FormatUtil.stripFormat(getDisplayName()).compareToIgnoreCase(FormatUtil.stripFormat(other.getDisplayName()));
     }
 
     @Override
-    public int hashCode() {
-        return this.getName().hashCode();
+    public boolean equals(final Object object) {
+        if (!(object instanceof User)) {
+            return false;
+        }
+        return this.getName().equalsIgnoreCase(((User) object).getName());
+
     }
 }
