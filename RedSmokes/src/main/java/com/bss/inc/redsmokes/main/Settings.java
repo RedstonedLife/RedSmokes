@@ -99,6 +99,11 @@ public class Settings implements net.redsmokes.api.ISettings {
         return config.getBoolean("verbose-command-usages", true);
     }
 
+    @Override
+    public boolean isCommandOverriden(String name) {
+        return false;
+    }
+
     private void _addAlternativeCommand(final String label, final Command current) {
         Command cmd = redSmokes.getAlternativeCommandsHandler().getAlternative(label);
         if (cmd == null) {
