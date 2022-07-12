@@ -41,11 +41,6 @@ public interface IUser {
     String getGroup();
     boolean inGroup(final String group);
     void sendMessage(String message);
-    void sendMail(MailSender sender, String message);
-    void sendMail(MailSender sender, String message, long expireAt);
-    ArrayList<MailMessage> getMailMessages();
-    void setMailList(ArrayList<MailMessage> messages);
-    int getMailAmount();
     Set<String> getConfigKeys();
     Map<String, Object> getConfigMap();
     Map<String, Object> getConfigMap(String node);
