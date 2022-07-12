@@ -941,16 +941,13 @@ public class Settings implements net.redsmokes.api.ISettings {
     public boolean getProtectBoolean(final String configName, final boolean def) {
         return config.getBoolean(configName, def);
     }
-
     private BigDecimal _getMaxMoney() {
         return config.getBigDecimal("max-money", DEFAULT_MAX_MONEY);
     }
-
     @Override
     public BigDecimal getMaxMoney() {
         return maxMoney;
     }
-
     private BigDecimal _getMinMoney() {
         BigDecimal min = config.getBigDecimal("min-money", DEFAULT_MIN_MONEY);
         if (min.signum() > 0) {
@@ -958,58 +955,21 @@ public class Settings implements net.redsmokes.api.ISettings {
         }
         return min;
     }
-
     @Override
     public BigDecimal getMinMoney() {
         return minMoney;
     }
-
     @Override
     public boolean isEcoLogEnabled() {
         return economyLog;
     }
-
     public boolean _isEcoLogEnabled() {
         return config.getBoolean("economy-log-enabled", false);
     }
-
     @Override
     public boolean isEcoLogUpdateEnabled() {
         return economyLogUpdate;
     }
-
-    @Override
-    public boolean realNamesOnList() {
-        return config.getBoolean("real-names-on-list", false);
-    }
-
-    public boolean _isEcoLogUpdateEnabled() {
-        return config.getBoolean("economy-log-update-enabled", false);
-    }
-
-    @Override
-    public boolean removeGodOnDisconnect() {
-        return config.getBoolean("remove-god-on-disconnect", false);
-    }
-
-    private boolean _changeDisplayName() {
-        return config.getBoolean("change-displayname", true);
-    }
-
-    @Override
-    public boolean changeDisplayName() {
-        return changeDisplayName;
-    }
-
-    private boolean _changePlayerListName() {
-        return config.getBoolean("change-playerlist", false);
-    }
-
-    @Override
-    public boolean changePlayerListName() {
-        return changePlayerListName;
-    }
-
     @Override
     public boolean changeTabCompleteName() {
         return config.getBoolean("change-tab-complete-name", false);
