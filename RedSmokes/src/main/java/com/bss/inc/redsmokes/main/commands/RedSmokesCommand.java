@@ -1,7 +1,9 @@
 package com.bss.inc.redsmokes.main.commands;
 
+import com.bss.inc.redsmokes.api.IRedSmokes;
 import com.bss.inc.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.CommandSource;
+import com.bss.inc.redsmokes.main.IRedSmokesModule;
 import com.bss.inc.redsmokes.main.Trade;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
@@ -79,16 +81,16 @@ public class RedSmokesCommand implements IrsCommand {
     }
 
     private boolean canInteractWith(final User interactor, final User interactee) {
-        return ess.canInteractWith(interactor, interactee);
+        return redSmokes.canInteractWith(interactor, interactee);
     }
 
     @Override
-    public void setEssentials(final IEssentials ess) {
-        this.ess = ess;
+    public void setEssentials(final IRedSmokes redSmokes) {
+        this.redSmokes = redSmokes;
     }
 
     @Override
-    public void setEssentialsModule(final IEssentialsModule module) {
+    public void setEssentialsModule(final IRedSmokesModule module) {
         this.module = module;
     }
 
