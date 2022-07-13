@@ -179,7 +179,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
             /**
              * Mail Service Implementation (Will be re-worked based on the EssentialsX mail service but with an added
-             * touch, 
+             * touch, instead of being "username" reliant, It will be e-mail address reliant that will be attached to
+             * your Minecraft UUID
              */
 
         } catch (final NumberFormatException ex) {
