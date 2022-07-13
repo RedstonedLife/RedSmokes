@@ -208,6 +208,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * Item #4 - Reply To Mail
              * Item #5 - View Content (Book & Quil GUI)
              * Item #6 - Delete Mail
+             *
+             *
+             * Note
              */
 
         } catch (final NumberFormatException ex) {
