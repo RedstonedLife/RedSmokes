@@ -62,7 +62,7 @@ public class Commandredsmokes extends RedSmokesCommand {
                 runVersion(server, sender, commandLabel, args);
                 break;
             case "reload":
-                
+                runReload(server, sender, commandLabel, args);
         }
     }
 
