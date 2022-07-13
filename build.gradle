@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.bss.inc"
-version = "1.0.0.11-SNAPSHOT"
+version = "1.0.1.27-SNAPSHOT"
 
 project.ext {
     GIT_COMMIT = !indraGit.isPresent() ? "unknown" : indraGit.commit().abbreviate(7).name()
