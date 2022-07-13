@@ -128,6 +128,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             }
             LOGGER = RedSmokesLogger.getLoggerProvider(this);
             RedSmokesLogger.updatePluginLogger(this);
+
+            
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
         } catch (final Error ex) {
