@@ -181,7 +181,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * Mail Service Implementation (Will be re-worked based on the EssentialsX mail service but with an added
              * touch, instead of being "username" reliant, It will be e-mail address reliant that will be attached to
              * your Minecraft UUID, Upon joining if you would like to receive emails you can register an email address
-             * in-game it will be GUI based, in-console it will look like so /register-mail <provider> <
+             * in-game it will be GUI based, in-console it will look like so /register-mail <provider> <username>
              */
 
         } catch (final NumberFormatException ex) {
