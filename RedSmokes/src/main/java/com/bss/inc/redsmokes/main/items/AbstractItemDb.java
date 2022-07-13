@@ -56,7 +56,7 @@ public abstract class AbstractItemDb implements IConf, IItemDb {
     public void registerResolver(final Plugin plugin, final String name, final ItemResolver resolver) throws Exception {
         final PluginKey key = PluginKey.fromKey(plugin, name);
         if (resolverMap.containsKey(key)) {
-            throw new Exception("Tried to add a duplicate resolver with name " + key.toString());
+            throw new Exception("Tried to add a duplicate resolver with name " + key);
         }
 
         resolverMap.put(key, resolver);
@@ -66,7 +66,7 @@ public abstract class AbstractItemDb implements IConf, IItemDb {
     public void unregisterResolver(final Plugin plugin, final String name) throws Exception {
         final PluginKey key = PluginKey.fromKey(plugin, name);
         if (!resolverMap.containsKey(key)) {
-            throw new Exception("Tried to remove nonexistent resolver with name " + key.toString());
+            throw new Exception("Tried to remove nonexistent resolver with name " + key);
         }
 
         resolverMap.remove(key);
