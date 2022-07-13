@@ -1,6 +1,9 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.api.Economy;
+import com.bss.inc.redsmokes.main.commands.NoChargeException;
+import com.bss.inc.redsmokes.main.commands.NotEnoughArgumentsException;
+import com.bss.inc.redsmokes.main.commands.QuietAbortException;
 import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.economy.vault.VaultEconomyProvider;
 import com.bss.inc.redsmokes.main.items.AbstractItemDb;
@@ -602,6 +605,137 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public boolean onCommand(final CommandSender sender, final Command command, final String commandLabel, final String[] args) {
         metrics.markCommand(command.getName(), true);
         return onCommandRedSmokes(sender, command, commandLabel, args, RedSmokes.class.getClassLoader(), "com.bss.inc.redsmokes.main.commands.Command", "redsmokes.", null);
+    }
+
+    @Override
+    public boolean onCommandEssentials(final CommandSender cSender, final Command command, final String commandLabel, final String[] args, final ClassLoader classLoader, final String commandPath, final String permissionPrefix, final IEssentialsModule module) {
+        // Allow plugins to override the command via onCommand
+        if (!getSettings().isCommandOverridden(command.getName()) && (!commandLabel.startsWith("e") || commandLabel.equalsIgnoreCase(command.getName()))) {
+            if (getSettings().isDebug()) {
+                LOGGER.log(Level.INFO, "Searching for alternative to: " + commandLabel);
+            }
+            final Command pc = alternativeCommandsHandler.getAlternative(commandLabel);
+            if (pc != null) {
+                alternativeCommandsHandler.executed(commandLabel, pc);
+                try {
+                    pc.execute(cSender, commandLabel, args);
+                } catch (final Exception ex) {
+                    LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
+                    cSender.sendMessage(tl("internalError"));
+                }
+                return true;
+            }
+        }
+
+        try {
+
+            User user = null;
+            Block bSenderBlock = null;
+            if (cSender instanceof Player) {
+                user = getUser((Player) cSender);
+            } else if (cSender instanceof BlockCommandSender) {
+                final BlockCommandSender bsender = (BlockCommandSender) cSender;
+                bSenderBlock = bsender.getBlock();
+            }
+
+            if (bSenderBlock != null) {
+                if (getSettings().logCommandBlockCommands()) {
+                    LOGGER.log(Level.INFO, "CommandBlock at " + bSenderBlock.getX() + "," + bSenderBlock.getY() + "," + bSenderBlock.getZ() + " issued server command: /" + commandLabel + " " + EssentialsCommand.getFinalArg(args, 0));
+                }
+            } else if (user == null) {
+                LOGGER.log(Level.INFO, cSender.getName()+ " issued server command: /" + commandLabel + " " + EssentialsCommand.getFinalArg(args, 0));
+            }
+
+            final CommandSource sender = new CommandSource(cSender);
+
+            // New mail notification
+            if (user != null && !getSettings().isCommandDisabled("mail") && !command.getName().equals("mail") && user.isAuthorized("essentials.mail")) {
+                user.notifyOfMail();
+            }
+
+            //Print version even if admin command is not available #easteregg
+            if (commandLabel.equalsIgnoreCase("essversion")) {
+                sender.sendMessage("This server is running Essentials " + getDescription().getVersion());
+                return true;
+            }
+
+            // Check for disabled commands
+            if (getSettings().isCommandDisabled(commandLabel)) {
+                if (getKnownCommandsProvider().getKnownCommands().containsKey(commandLabel)) {
+                    final Command newCmd = getKnownCommandsProvider().getKnownCommands().get(commandLabel);
+                    if (!(newCmd instanceof PluginIdentifiableCommand) || !isEssentialsPlugin(((PluginIdentifiableCommand) newCmd).getPlugin())) {
+                        return newCmd.execute(cSender, commandLabel, args);
+                    }
+                }
+                sender.sendMessage(tl("commandDisabled", commandLabel));
+                return true;
+            }
+
+            final IEssentialsCommand cmd;
+            try {
+                cmd = loadCommand(commandPath, command.getName(), module, classLoader);
+            } catch (final Exception ex) {
+                sender.sendMessage(tl("commandNotLoaded", commandLabel));
+                LOGGER.log(Level.SEVERE, tl("commandNotLoaded", commandLabel), ex);
+                return true;
+            }
+
+            // Check authorization
+            if (user != null && !user.isAuthorized(cmd, permissionPrefix)) {
+                LOGGER.log(Level.INFO, tl("deniedAccessCommand", user.getName()));
+                user.sendMessage(tl("noAccessCommand"));
+                return true;
+            }
+
+            if (user != null && user.isJailed() && !user.isAuthorized(cmd, "essentials.jail.allow.")) {
+                if (user.getJailTimeout() > 0) {
+                    user.sendMessage(tl("playerJailedFor", user.getName(), user.getFormattedJailTime()));
+                } else {
+                    user.sendMessage(tl("jailMessage"));
+                }
+                return true;
+            }
+
+            // Run the command
+            try {
+                if (user == null) {
+                    cmd.run(getServer(), sender, commandLabel, command, args);
+                } else {
+                    cmd.run(getServer(), user, commandLabel, command, args);
+                }
+                return true;
+            } catch (final NoChargeException | QuietAbortException ex) {
+                return true;
+            } catch (final NotEnoughArgumentsException ex) {
+                if (getSettings().isVerboseCommandUsages() && !cmd.getUsageStrings().isEmpty()) {
+                    sender.sendMessage(tl("commandHelpLine1", commandLabel));
+                    sender.sendMessage(tl("commandHelpLine2", command.getDescription()));
+                    sender.sendMessage(tl("commandHelpLine3"));
+                    for (Map.Entry<String, String> usage : cmd.getUsageStrings().entrySet()) {
+                        sender.sendMessage(tl("commandHelpLineUsage", usage.getKey().replace("<command>", commandLabel), usage.getValue()));
+                    }
+                } else {
+                    sender.sendMessage(command.getDescription());
+                    sender.sendMessage(command.getUsage().replace("<command>", commandLabel));
+                }
+                if (!ex.getMessage().isEmpty()) {
+                    sender.sendMessage(ex.getMessage());
+                }
+                if (ex.getCause() != null && settings.isDebug()) {
+                    ex.getCause().printStackTrace();
+                }
+                return true;
+            } catch (final Exception ex) {
+                showError(sender, ex, commandLabel);
+                if (settings.isDebug()) {
+                    ex.printStackTrace();
+                }
+                return true;
+            }
+        } catch (final Throwable ex) {
+            LOGGER.log(Level.SEVERE, tl("commandFailed", commandLabel), ex);
+            return true;
+        }
     }
 
 
