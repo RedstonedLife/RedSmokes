@@ -117,7 +117,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             // Vault registers their RedSmokes provider at low priority, so we have to use normal priority here
             Class.forName("net.milkbowl.vault.economy.Economy");
             getServer().getServicesManager().register(net.milkbowl.vault.economy.Economy.class, new VaultEconomyProvider(this), this, ServicePriority.Normal);
-        } catch (final ClassNotFoundException ignored) {}
+        } catch (final ClassNotFoundException ignored) {} // Safer than fetching for the plugin as bukkit may not have marked it as enabled at this point in time
     }
 
     @Override
