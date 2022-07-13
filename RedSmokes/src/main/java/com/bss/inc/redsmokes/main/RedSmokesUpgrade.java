@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Maps;
 import com.google.common.io.Files;
@@ -51,13 +52,13 @@ public class RedSmokesUpgrade {
     private static final Pattern PATTERN_CONFIG_UUID = Pattern.compile(PATTERN_CONFIG_UUID_REGEX);
     private static final String PATTERN_CONFIG_NAME_REGEX = "(?mi)^lastAccountName:\\s*[\"\']?(\\w+)[\"\']?\\s*$";
     private static final Pattern PATTERN_CONFIG_NAME = Pattern.compile(PATTERN_CONFIG_NAME_REGEX);
-    private final transient IEssentials ess;
-    private final transient EssentialsConfiguration doneFile;
+    private final transient IRedSmokes redSmokes;
+    private final transient RedSmokesConfiguration doneFile;
 
-    RedSmokesUpgrade(final IRedSmokes essentials) {
-        ess = essentials;
-        if (!ess.getDataFolder().exists()) {
-            ess.getDataFolder().mkdirs();
+    RedSmokesUpgrade(final IRedSmokes ) {
+        redSmokes = redSmokes;
+        if (!redSmokes.getDataFolder().exists()) {
+            redSmokes.getDataFolder().mkdirs();
         }
         doneFile = new EssentialsConfiguration(new File(ess.getDataFolder(), "upgrades-done.yml"));
         doneFile.load();
