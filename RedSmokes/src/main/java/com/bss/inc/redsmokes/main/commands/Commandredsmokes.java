@@ -47,6 +47,5 @@ public class Commandredsmokes extends RedSmokesCommand {
         if(args.length == 0) {showUsage(sender);}
 
     }
-    
 
 }
