@@ -30,7 +30,6 @@ import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.ISettings;
 import net.redsmokes.api.commands.IrsCommand;
 import net.redsmokes.api.services.BalanceTop;
-import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.block.Block;
 import org.bukkit.command.*;
@@ -43,7 +42,6 @@ import org.bukkit.plugin.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.bukkit.scheduler.BukkitTask;
-import sun.util.resources.cldr.ext.CurrencyNames_pa_Arab;
 
 import java.io.File;
 import java.io.IOException;
