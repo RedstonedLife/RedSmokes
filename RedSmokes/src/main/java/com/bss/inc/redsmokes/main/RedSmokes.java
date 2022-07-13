@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.main.items.AbstractItemDb;
 import com.bss.inc.redsmokes.main.items.CustomItemResolver;
 import com.bss.inc.redsmokes.main.metrics.MetricsWrapper;
+import com.bss.inc.redsmokes.main.nms.refl.providers.ReflOnlineModeProvider;
 import com.bss.inc.redsmokes.main.perm.PermissionsHandler;
 import com.bss.inc.redsmokes.main.provider.*;
 import net.redsmokes.api.IConf;
@@ -51,7 +52,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient MaterialTagProvider materialTagProvider;
     private transient SyncCommandsProvider syncCommandsProvider;
     private transient PersistentDataProvider persistentDataProvider;
-    private transient 
+    private transient ReflOnlineModeProvider
 
     @Override
     public void onEnable() {
