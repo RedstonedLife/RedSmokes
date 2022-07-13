@@ -16,4 +16,4 @@ commands:
 permissions:
   redsmokes.*:
     default: op
-    
+    description: Give players with op everything by default
