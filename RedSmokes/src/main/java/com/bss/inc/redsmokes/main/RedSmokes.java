@@ -215,7 +215,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * for example, example.com. And users/admins can register a mail under it, so if an admin wants to send an email (I will add a discord-interpreter)
              * so users could register an email from the discord, like so /register-email <br>USERNAME</br> <br>PASSWORD</br> (In dms for safety)
              * and send mails to actual mail services like gmail, hotmail, protonmail just to name a few. If I could actually implement this
-             * I would offer hosting for the SMTP side o
+             * I would offer hosting for the SMTP side on my servers
              */
 
         } catch (final NumberFormatException ex) {
