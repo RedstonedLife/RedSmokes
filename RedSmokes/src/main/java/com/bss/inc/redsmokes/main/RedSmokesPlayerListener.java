@@ -319,37 +319,7 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
 
                 // Check for new username. If they don't want the message, let's just say it's false.
                 final boolean newUsername = redSmokes.getSettings().isCustomNewUsernameMessage() && lastAccountName != null && !lastAccountName.equals(user.getBase().getName());
-                
-
-                final String effectiveMessage;
-                if (ess.getSettings().allowSilentJoinQuit() && (user.isAuthorized("essentials.silentjoin") || user.isAuthorized("essentials.silentjoin.vanish"))) {
-                    if (user.isAuthorized("essentials.silentjoin.vanish")) {
-                        user.setVanished(true);
-                    }
-                    effectiveMessage = null;
-                } else if (message == null || hideJoinQuitMessages()) {
-                    effectiveMessage = null;
-                } else if (ess.getSettings().isCustomJoinMessage()) {
-                    final String msg = (newUsername ? ess.getSettings().getCustomNewUsernameMessage() : ess.getSettings().getCustomJoinMessage())
-                            .replace("{PLAYER}", player.getDisplayName()).replace("{USERNAME}", player.getName())
-                            .replace("{UNIQUE}", NumberFormat.getInstance().format(ess.getUserMap().getUniqueUsers()))
-                            .replace("{ONLINE}", NumberFormat.getInstance().format(ess.getOnlinePlayers().size()))
-                            .replace("{UPTIME}", DateUtil.formatDateDiff(ManagementFactory.getRuntimeMXBean().getStartTime()))
-                            .replace("{PREFIX}", FormatUtil.replaceFormat(ess.getPermissionsHandler().getPrefix(player)))
-                            .replace("{SUFFIX}", FormatUtil.replaceFormat(ess.getPermissionsHandler().getSuffix(player)))
-                            .replace("{OLDUSERNAME}", lastAccountName == null ? "" : lastAccountName);
-                    if (!msg.isEmpty()) {
-                        ess.getServer().broadcastMessage(msg);
-                    }
-                    effectiveMessage = msg.isEmpty() ? null : msg;
-                } else if (ess.getSettings().allowSilentJoinQuit()) {
-                    ess.getServer().broadcastMessage(message);
-                    effectiveMessage = message;
-                } else {
-                    effectiveMessage = message;
-                }
-
-                ess.runTaskAsynchronously(() -> ess.getServer().getPluginManager().callEvent(new AsyncUserDataLoadEvent(user, effectiveMessage)));
+                redSmokes.runTaskAsynchronously(() -> redSmokes.getServer().getPluginManager().callEvent(new AsyncUserDataLoadEvent(user, effectiveMessage)));
 
                 if (ess.getSettings().getMotdDelay() >= 0) {
                     final int motdDelay = ess.getSettings().getMotdDelay() / 50;
