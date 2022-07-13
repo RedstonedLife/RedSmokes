@@ -3,6 +3,7 @@ package net.redsmokes.api;
 import com.bss.inc.redsmokes.main.items.CustomItemResolver;
 import com.bss.inc.redsmokes.main.provider.PotionMetaProvider;
 import com.bss.inc.redsmokes.main.provider.SpawnEggProvider;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.Collection;
 
@@ -13,6 +14,8 @@ public interface IRedSmokes extends com.bss.inc.redsmokes.main.IRedSmokes {
      * @return A list of players who are vanished
      */
     Collection<String> getVanishedPlayersNew();
+
+    BukkitTask runTaskLaterAsynchronously(Runnable run, long delay);
 
     /**
      * Get the spawn egg provider for the current platform.
