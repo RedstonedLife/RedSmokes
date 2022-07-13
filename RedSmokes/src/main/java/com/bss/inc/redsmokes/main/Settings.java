@@ -10,6 +10,7 @@ import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.event.EventPriority;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 
 import java.io.File;
@@ -72,7 +73,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     private boolean allowOldIdSigns;
     private boolean isSafeUsermap;
 
-    public Settings(final IRedSmokes redSmokes) {
+    public Settings(final @NotNull IRedSmokes redSmokes) {
         this.redSmokes = redSmokes;
         config = new RedSmokesConfiguration(new File(redSmokes.getDataFolder(), "config.yml"), "/config.yml");
         reloadConfig();
