@@ -79,7 +79,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     }
 
     public RedSmokes(final Server server) {
-        super(new JavaPluginLoader(server), new PluginDescriptionFile("RedSmokes", "", ""))
+        super(new JavaPluginLoader(server), new PluginDescriptionFile("RedSmokes", "", "com.bss.inc.redsmokes.main.RedSmokes"), null, null);
     }
 
     @Override
