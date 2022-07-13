@@ -259,7 +259,7 @@ public class RedSmokesUpgrade {
      * Up until 2.19.0 and 2.18.0 respectively, our Vault integration and entire Economy system was entirely based off
      * username strings, and thanks to Vault being a flawed standard, for some reason exposes account create to third
      * party plugins rather than letting the implementation handle it. That doesn't seem like a huge problem at the
-     * surface, but there was one small problem: whoever made the Vault integration for Essentials suffered a stroke in
+     * surface, but there was one small problem: whoever made the Vault integration for RedSmokes suffered a stroke in
      * the process of creating it. The implementation for the createAccount method, regardless of whether it was an
      * actual player or an NPC account (which the Vault spec NEVER accounted for but plugins just have to guess when
      * to support them), it would always create an NPC account. This caused any plugin integrating with Vault, creating
