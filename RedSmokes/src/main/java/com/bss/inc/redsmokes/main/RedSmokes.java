@@ -139,7 +139,21 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             Console.setInstance(this);
 
             switch (VersionUtil.getServerSupportStatus()) {
-                case NMS_CLEANROOM -> {}
+                case NMS_CLEANROOM:
+                    getLogger().severe(tl("serverUnsupportedCleanroom"));
+                    break;
+                case DANGEROUS_FORK:
+                    getLogger().severe(tl("serverUnsupportedDangerous"));
+                    break;
+                case UNSTABLE:
+                    getLogger().severe(tl("serverUnsupportedMods"));
+                    break;
+                case OUTDATED:
+                    getLogger().severe(tl("serverUnsupported"));
+                    break;
+                case LIMITED:
+                    getLogger().info(tl("serverUnsupportedLimitedApi"));
+                    break;
             }
 
         } catch (final NumberFormatException ex) {
