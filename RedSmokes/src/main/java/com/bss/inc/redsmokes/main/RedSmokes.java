@@ -45,7 +45,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient ServerStateProvider serverStateProvider;
     private transient ContainerProvider containerProvider;
     private transient SerializationProvider serializationProvider;
-    
+    private transient KnownCommandsProvider knownCommandsProvider;
+    private transient FormattedCommandAliasProvider formattedCommandAliasProvider;
+    private transient 
 
     @Override
     public void onEnable() {
