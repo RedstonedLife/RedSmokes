@@ -18,6 +18,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -25,6 +26,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,7 +87,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     @Override
     public ISettings getSettings() {return settings;}
 
-    public void setupForTesting(final)
+    public void setupForTesting(final Server server) throws IOException, InvalidDescriptionException {
+        
+    }
 
     @Override
     public void onEnable() {
