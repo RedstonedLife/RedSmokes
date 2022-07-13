@@ -167,7 +167,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 }
             }
 
-            final RedSmokesUpgrade
+            final RedSmokesUpgrade upgrade = new RedSmokesUpgrade(this);
+            
 
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
