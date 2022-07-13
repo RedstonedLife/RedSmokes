@@ -4,15 +4,12 @@ import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;
 import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import com.bss.inc.redsmokes.main.signs.Signs;
-import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
-import net.redsmokes.api.IItemDb;
 import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.event.EventPriority;
-import org.bukkit.inventory.ItemStack;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 
 import java.io.File;
@@ -23,7 +20,6 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -682,7 +678,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     private boolean _logCommandBlockCommands() {
         return config.getBoolean("log-command-block-commands", true);
     }
-
     @Override
     public boolean logCommandBlockCommands() {
         return logCommandBlockCommands;
