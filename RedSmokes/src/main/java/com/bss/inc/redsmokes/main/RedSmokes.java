@@ -184,7 +184,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * in-game it will be GUI based, in-console it will look like so /register-mail (provider) (username)
              * example: /register-mail mc-mail.com tal.baskin, the following email address will be attached to your
              * UUID and look in-game like so <br>tal.baskin@mc-mail.com</br>, Users can create email providers, and charge
-             * per mail the limit is 0.01 c$ up to 0.15 c$
+             * per mail the limit is 0.01 c$ up to 0.15 c$ per mail, each person can create a different provider with its own limits
+             * of course it will cost the register the provider, and every feature will cost money, the following pricing scheme (by default) is this
+             * Create Provider 
              */
 
         } catch (final NumberFormatException ex) {
