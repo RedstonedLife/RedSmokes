@@ -48,4 +48,8 @@ public class Commandredsmokes extends RedSmokesCommand {
 
     }
 
+    private void showUsage(final CommandSource sender) throws Exception {
+        throw new NotEnoughArgumentsException();
+    }
+
 }
