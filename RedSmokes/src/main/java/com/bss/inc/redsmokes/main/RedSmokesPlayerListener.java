@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.provider.CommandSendListenerProvider;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
+import io.papermc.lib.PaperLib;
 import org.bukkit.BanEntry;
 import org.bukkit.BanList;
 import org.bukkit.GameMode;
@@ -466,13 +467,13 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
             }
         }
 
-        ess.scheduleSyncDelayedTask(new DelayJoinTask());
+        redSmokes.scheduleSyncDelayedTask(new DelayJoinTask());
     }
 
     // Makes the compass item ingame always point to the first essentials home.  #EasterEgg
     // EssentialsX: This can now optionally require a permission to enable, if set in the config.
     private void updateCompass(final User user) {
-        if (ess.getSettings().isCompassTowardsHomePerm() && !user.isAuthorized("essentials.home.compass")) return;
+        if (redSmokes.getSettings().isCompassTowardsHomePerm() && !user.isAuthorized("essentials.home.compass")) return;
 
         final Location loc = user.getHome(user.getLocation());
         if (loc == null) {
@@ -488,34 +489,17 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
 
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerLoginBanned(final PlayerLoginEvent event) {
-        if (event.getResult() == Result.KICK_BANNED) {
-            BanEntry banEntry = ess.getServer().getBanList(BanList.Type.NAME).getBanEntry(event.getPlayer().getName());
-            if (banEntry != null) {
-                final Date banExpiry = banEntry.getExpiration();
-                if (banExpiry != null) {
-                    final String expiry = DateUtil.formatDateDiff(banExpiry.getTime());
-                    event.setKickMessage(tl("tempbanJoin", expiry, banEntry.getReason()));
-                } else {
-                    event.setKickMessage(tl("banJoin", banEntry.getReason()));
-                }
-            } else {
-                banEntry = ess.getServer().getBanList(BanList.Type.IP).getBanEntry(event.getAddress().getHostAddress());
-                if (banEntry != null) {
-                    event.setKickMessage(tl("banIpJoin", banEntry.getReason()));
-                }
-            }
-        }
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerLogin(final PlayerLoginEvent event) {
         if (event.getResult() == Result.KICK_FULL) {
-            final User kfuser = ess.getUser(event.getPlayer());
-            if (kfuser.isAuthorized("essentials.joinfullserver")) {
+            final User kfuser = redSmokes.getUser(event.getPlayer());
+            if (kfuser.isAuthorized("redsmokes.joinfullserver")) {
                 event.allow();
                 return;
             }
-            if (ess.getSettings().isCustomServerFullMessage()) {
+            if (redSmokes.getSettings().isCustomServerFullMessage()) {
                 event.disallow(Result.KICK_FULL, tl("serverFull"));
             }
         }
@@ -523,22 +507,11 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onPlayerTeleport(final PlayerTeleportEvent event) {
-        final Player player = event.getPlayer();
-        if (player.hasMetadata("NPC") || !(event.getCause() == TeleportCause.PLUGIN || event.getCause() == TeleportCause.COMMAND)) {
-            return;
-        }
-        final User user = ess.getUser(player);
-        if (ess.getSettings().registerBackInListener() && user.isAuthorized("essentials.back.onteleport")) {
-            user.setLastLocation();
-        }
-        if (ess.getSettings().isTeleportInvulnerability()) {
-            user.enableInvulnerabilityAfterTeleport();
-        }
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onPlayerEggThrow(final PlayerEggThrowEvent event) {
-        final User user = ess.getUser(event.getPlayer());
+        final User user = redSmokes.getUser(event.getPlayer());
         final ItemStack stack = new ItemStack(Material.EGG, 1);
         if (user.hasUnlimited(stack)) {
             user.getBase().getInventory().addItem(stack);
@@ -548,10 +521,10 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onPlayerBucketEmpty(final PlayerBucketEmptyEvent event) {
-        final User user = ess.getUser(event.getPlayer());
+        final User user = redSmokes.getUser(event.getPlayer());
         if (user.hasUnlimited(new ItemStack(event.getBucket()))) {
             event.getItemStack().setType(event.getBucket());
-            ess.scheduleSyncDelayedTask(user.getBase()::updateInventory);
+            redSmokes.scheduleSyncDelayedTask(user.getBase()::updateInventory);
         }
     }
 
@@ -563,11 +536,11 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                 : event.getMessage().substring(argStartIndex); // arguments start at argStartIndex; substring from there.
 
         // If the plugin command does not exist, check if it is an alias from commands.yml
-        if (ess.getServer().getPluginCommand(cmd) == null) {
-            final Command knownCommand = ess.getKnownCommandsProvider().getKnownCommands().get(cmd);
+        if (redSmokes.getServer().getPluginCommand(cmd) == null) {
+            final Command knownCommand = redSmokes.getKnownCommandsProvider().getKnownCommands().get(cmd);
             if (knownCommand instanceof FormattedCommandAlias) {
                 final FormattedCommandAlias command = (FormattedCommandAlias) knownCommand;
-                for (String fullCommand : ess.getFormattedCommandAliasProvider().createCommands(command, event.getPlayer(), args.split(" "))) {
+                for (String fullCommand : redSmokes.getFormattedCommandAliasProvider().createCommands(command, event.getPlayer(), args.split(" "))) {
                     handlePlayerCommandPreprocess(event, fullCommand);
                 }
                 return;
@@ -583,7 +556,7 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
         final String cmd = effectiveCommand.toLowerCase(Locale.ENGLISH).split(" ")[0].replace("/", "").toLowerCase(Locale.ENGLISH);
         final PluginCommand pluginCommand = redSmokes.getServer().getPluginCommand(cmd);
 
-        final User user = ess.getUser(player);
+        final User user = redSmokes.getUser(player);
 
         if (redSmokes.getSettings().isCommandCooldownsEnabled()
                 && !user.isAuthorized("redsmokes.commandcooldowns.bypass")) {
