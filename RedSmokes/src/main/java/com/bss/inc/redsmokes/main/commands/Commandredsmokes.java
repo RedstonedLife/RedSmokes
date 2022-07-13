@@ -68,6 +68,9 @@ public class Commandredsmokes extends RedSmokesCommand {
             case "nyan":
                 runNya(server, sender, commandLabel, args);
                 break;
+            case "moo":
+                runMoo(server, sender, commandLabel, args);
+                break;
                 
         }
     }
