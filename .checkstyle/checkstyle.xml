@@ -44,7 +44,7 @@
         <module name="FallThrough">
             <property name="checkLastCaseGroup" value="true"/>
         </module>
-        
+
         <!-- https://checkstyle.org/config_whitespace.html#GenericWhitespace -->
         <module name="GenericWhitespace"/>
 
