@@ -679,91 +679,21 @@ public class RedSmokesUpgrade {
             // NOOP
         }
 
-        uuidFileConvert(ess, ignoreUFCache);
+        uuidFileConvert(redSmokes, ignoreUFCache);
 
         doneFile.setProperty("uuidFileChange", true);
         doneFile.save();
-    }
-
-    public void banFormatChange() {
-        if (doneFile.getBoolean("banFormatChange", false)) {
-            return;
-        }
-
-        ess.getLogger().info("Starting Essentials ban format conversion");
-
-        final File userdir = new File(ess.getDataFolder(), "userdata");
-        if (!userdir.exists()) {
-            return;
-        }
-
-        int countFiles = 0;
-
-        ess.getLogger().info("Found " + userdir.list().length + " files to convert...");
-
-        for (final String string : userdir.list()) {
-            if (!string.endsWith(".yml") || string.length() < 5) {
-                continue;
-            }
-
-            final int showProgress = countFiles % 250;
-
-            if (showProgress == 0) {
-                ess.getLogger().info("Converted " + countFiles + "/" + userdir.list().length);
-            }
-
-            countFiles++;
-            final File pFile = new File(userdir, string);
-            final EssentialsConfiguration conf = new EssentialsConfiguration(pFile);
-            conf.load();
-
-            final String banReason;
-            long banTimeout;
-
-            if (conf.hasProperty("ban.reason")) {
-                banReason = conf.getString("ban.reason", null);
-            } else {
-                banReason = null;
-            }
-
-            final String playerName = conf.getString("lastAccountName", null);
-            if (playerName != null && playerName.length() > 1 && banReason != null && banReason.length() > 1) {
-                try {
-                    if (conf.hasProperty("ban.timeout")) {
-                        banTimeout = Long.parseLong(conf.getString("ban.timeout", null));
-                    } else {
-                        banTimeout = 0L;
-                    }
-                } catch (final NumberFormatException n) {
-                    banTimeout = 0L;
-                }
-
-                if (BanLookup.isBanned(ess, playerName)) {
-                    updateBan(playerName, banReason, banTimeout);
-                }
-            }
-            conf.removeProperty("ban");
-            conf.save();
-        }
-
-        doneFile.setProperty("banFormatChange", true);
-        doneFile.save();
-        ess.getLogger().info("Ban format update complete.");
-    }
-
-    private void updateBan(final String playerName, final String banReason, final Long banTimeout) {
-        Bukkit.getBanList(BanList.Type.NAME).addBan(playerName, banReason, banTimeout == 0 ? null : new Date(banTimeout), Console.NAME);
     }
 
     private void repairUserMap() {
         if (doneFile.getBoolean("userMapRepaired", false)) {
             return;
         }
-        ess.getLogger().info("Starting usermap repair");
+        redSmokes.getLogger().info("Starting usermap repair");
 
-        final File userdataFolder = new File(ess.getDataFolder(), "userdata");
+        final File userdataFolder = new File(redSmokes.getDataFolder(), "userdata");
         if (!userdataFolder.isDirectory()) {
-            ess.getLogger().warning("Missing userdata folder, aborting");
+            redSmokes.getLogger().warning("Missing userdata folder, aborting");
             return;
         }
         final File[] files = userdataFolder.listFiles(YML_FILTER);
@@ -808,26 +738,26 @@ public class RedSmokesUpgrade {
                 }
 
                 if (index % 1000 == 0) {
-                    ess.getLogger().info("Reading: " + format.format((100d * (double) index) / files.length)
+                    redSmokes.getLogger().info("Reading: " + format.format((100d * (double) index) / files.length)
                             + "%");
                 }
             } catch (final IOException e) {
-                ess.getLogger().log(Level.SEVERE, "Error while reading file: ", e);
+                redSmokes.getLogger().log(Level.SEVERE, "Error while reading file: ", e);
                 return;
             }
         }
 
-        ess.getUserMap().getNames().putAll(names);
-        ess.getUserMap().reloadConfig();
+        redSmokes.getUserMap().getNames().putAll(names);
+        redSmokes.getUserMap().reloadConfig();
 
         doneFile.setProperty("userMapRepaired", true);
         doneFile.save();
-        ess.getLogger().info("Completed usermap repair.");
+        redSmokes.getLogger().info("Completed usermap repair.");
     }
 
     public void beforeSettings() {
-        if (!ess.getDataFolder().exists()) {
-            ess.getDataFolder().mkdirs();
+        if (!redSmokes.getDataFolder().exists()) {
+            redSmokes.getDataFolder().mkdirs();
         }
         moveMotdRulesToFile("motd");
         moveMotdRulesToFile("rules");
