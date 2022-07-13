@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.api.Economy;
 import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.items.AbstractItemDb;
 import com.bss.inc.redsmokes.main.items.CustomItemResolver;
@@ -106,6 +107,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         userMap = new UserMap(this);
         balanceTop = new BalanceTopImpl(this);
         permissionsHandler = new PermissionsHandler(this, false);
+        Economy.setEss(this);
     }
 
     @Override
