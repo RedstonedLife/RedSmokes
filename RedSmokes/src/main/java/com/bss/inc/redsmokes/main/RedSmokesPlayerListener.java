@@ -219,8 +219,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
     // Makes the compass item ingame always point to the first essentials home.  #EasterEgg
     // EssentialsX: This can now optionally require a permission to enable, if set in the config.
     private void updateCompass(final User user) {
-        if (redSmokes.getSettings().isCompassTowardsHomePerm() && !user.isAuthorized("essentials.home.compass")) return;
-
         final Location loc = user.getHome(user.getLocation());
         if (loc == null) {
             PaperLib.getBedSpawnLocationAsync(user.getBase(), false).thenAccept(location -> {
