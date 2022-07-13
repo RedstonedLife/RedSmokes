@@ -55,8 +55,8 @@ public class RedSmokesUpgrade {
     private final transient IRedSmokes redSmokes;
     private final transient RedSmokesConfiguration doneFile;
 
-    RedSmokesUpgrade(final IRedSmokes ) {
-        redSmokes = redSmokes;
+    RedSmokesUpgrade(final IRedSmokes provRedSmokes) {
+        redSmokes = provRedSmokes;
         if (!redSmokes.getDataFolder().exists()) {
             redSmokes.getDataFolder().mkdirs();
         }
