@@ -237,6 +237,16 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             confList.add(itemDb);
             execTimer.mark("Init(ItemDB)");
 
+            customItemResolver = new CustomItemResolver(this);
+            try {
+                itemDb.registerResolver(this, "custom_items", customItemResolver);
+                confList.add(customItemResolver);
+            } catch (final Exception e) {
+                e.printStackTrace();
+                customItemResolver = null;
+            }
+            execTimer.mark("Init(CustomItemResolver)");
+
 
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
