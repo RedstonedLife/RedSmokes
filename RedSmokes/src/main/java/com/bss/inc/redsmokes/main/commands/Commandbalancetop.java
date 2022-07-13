@@ -7,5 +7,9 @@ public class Commandbalancetop extends RedSmokesCommand {
     private static int CACHETIME = 2 * 60 * 1000;
     private static SimpleTextInput cache = new SimpleTextInput();
 
-    public Commandbalancetop
+    public Commandbalancetop() {
+        super("balancetop");
+    }
+
+    private void 
 }
