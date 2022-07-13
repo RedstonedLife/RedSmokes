@@ -218,6 +218,10 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * I would offer hosting for the SMTP side on my servers to off-load servers.
              */
 
+            userMap = new UserMap(this);
+            confList.add(userMap);
+            execTimer.mark("Init(Usermap)");
+
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
         } catch (final Error ex) {
