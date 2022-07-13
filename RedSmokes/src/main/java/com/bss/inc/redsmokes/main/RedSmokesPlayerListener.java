@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.main.provider.CommandSendListenerProvider;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import io.papermc.lib.PaperLib;
+import net.redsmokes.api.events.AsyncUserDataLoadEvent;
 import org.bukkit.BanEntry;
 import org.bukkit.BanList;
 import org.bukkit.GameMode;
@@ -321,11 +322,11 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                 final boolean newUsername = redSmokes.getSettings().isCustomNewUsernameMessage() && lastAccountName != null && !lastAccountName.equals(user.getBase().getName());
                 redSmokes.runTaskAsynchronously(() -> redSmokes.getServer().getPluginManager().callEvent(new AsyncUserDataLoadEvent(user, effectiveMessage)));
 
-                if (ess.getSettings().getMotdDelay() >= 0) {
-                    final int motdDelay = ess.getSettings().getMotdDelay() / 50;
+                if (redSmokes.getSettings().getMotdDelay() >= 0) {
+                    final int motdDelay = redSmokes.getSettings().getMotdDelay() / 50;
                     final DelayMotdTask motdTask = new DelayMotdTask(user);
                     if (motdDelay > 0) {
-                        pendingMotdTasks.put(user.getUUID(), ess.scheduleSyncDelayedTask(motdTask, motdDelay));
+                        pendingMotdTasks.put(user.getUUID(), redSmokes.scheduleSyncDelayedTask(motdTask, motdDelay));
                     } else {
                         motdTask.run();
                     }
