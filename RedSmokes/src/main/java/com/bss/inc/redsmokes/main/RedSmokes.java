@@ -348,10 +348,13 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
             execTimer.mark("Init(Providers)");
             reload();
-            
+
             backup = new Backup(this);
             permissionsHandler = new PermissionsHandler(this, settings.useBukkitPermissions());
             alternativeCommandsHandler = new AlternativeCommandsHandler(this);
+
+            timer = new RedSmokesTimer(this);
+            scheduleSyncRepeatingTask(timer, 1000, 50);
 
 
 
