@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.items.AbstractItemDb;
 import com.bss.inc.redsmokes.main.items.CustomItemResolver;
+import com.bss.inc.redsmokes.main.metrics.MetricsWrapper;
 import com.bss.inc.redsmokes.main.perm.PermissionsHandler;
 import net.redsmokes.api.IConf;
 import net.redsmokes.api.IRedSmokes;
