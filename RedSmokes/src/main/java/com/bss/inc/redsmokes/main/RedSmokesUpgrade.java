@@ -430,44 +430,10 @@ public class RedSmokesUpgrade {
         redSmokes.getLogger().info("Done converting ignore list.");
     }
 
-    private void moveMotdRulesToFile(final String name) {
-        if (doneFile.getBoolean("move" + name + "ToFile", false)) {
-            return;
-        }
-        try {
-            final File file = new File(ess.getDataFolder(), name + ".txt");
-            if (file.exists()) {
-                return;
-            }
-            final File configFile = new File(ess.getDataFolder(), "config.yml");
-            if (!configFile.exists()) {
-                return;
-            }
-            final EssentialsConfiguration conf = new EssentialsConfiguration(configFile);
-            conf.load();
-            final List<String> lines = conf.getList(name, String.class);
-            if (lines != null && !lines.isEmpty()) {
-                if (!file.createNewFile()) {
-                    throw new IOException("Failed to create file " + file);
-                }
-                final PrintWriter writer = new PrintWriter(file);
-
-                for (final String line : lines) {
-                    writer.println(line);
-                }
-                writer.close();
-            }
-            doneFile.setProperty("move" + name + "ToFile", true);
-            doneFile.save();
-        } catch (final IOException e) {
-            ess.getLogger().log(Level.SEVERE, tl("upgradingFilesError"), e);
-        }
-    }
-
     private void removeLinesFromConfig(final File file, final String regex, final String info) throws Exception {
         boolean needUpdate = false;
         final BufferedReader bReader = new BufferedReader(new FileReader(file));
-        final File tempFile = File.createTempFile("essentialsupgrade", ".tmp.yml", ess.getDataFolder());
+        final File tempFile = File.createTempFile("redsmokesupgrade", ".tmp.yml", redSmokes.getDataFolder());
         final BufferedWriter bWriter = new BufferedWriter(new FileWriter(tempFile));
         do {
             final String line = bReader.readLine();
