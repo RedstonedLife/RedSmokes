@@ -444,7 +444,44 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
     @Override
     public void onDisable() {
-        super.onDisable();
+        final boolean stopping = getServerStateProvider().isStopping();
+        if (!stopping) {
+            LOGGER.log(Level.SEVERE, tl("serverReloading"));
+        }
+        getBackup().setPendingShutdown(true);
+        for (final User user : getOnlineUsers()) {
+            if (user.isVanished()) {
+                user.setVanished(false);
+                user.sendMessage(tl("unvanishedReload"));
+            }
+            if (stopping) {
+                user.setLogoutLocation();
+                if (!user.isHidden()) {
+                    user.setLastLogout(System.currentTimeMillis());
+                }
+                user.cleanup();
+            } else {
+                user.stopTransaction();
+            }
+        }
+        if (getBackup().getTaskLock() != null && !getBackup().getTaskLock().isDone()) {
+            LOGGER.log(Level.SEVERE, tl("backupInProgress"));
+            getBackup().getTaskLock().join();
+        }
+        if (i18n != null) {
+            i18n.onDisable();
+        }
+        if (backup != null) {
+            backup.stopTask();
+        }
+
+        this.getPermissionsHandler().unregisterContexts();
+
+        Economy.setEss(null);
+        Trade.closeLog();
+        getUserMap().getUUIDMap().shutdown();
+
+        HandlerList.unregisterAll(this);
     }
 
 
