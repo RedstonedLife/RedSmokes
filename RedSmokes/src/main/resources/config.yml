@@ -438,12 +438,6 @@ real-names-on-list: false
 # More output to the console.
 debug: false
 
-# Set the locale for all messages.
-# If you don't set this, the default locale of the server will be used.
-# For example, to set language to English, set locale to en, to use the file "messages_en.properties".
-# Don't forget to remove the # in front of the line.
-# For more information, visit http://wiki.ess3.net/wiki/Locale
-#locale: en
 
 # Turn off god mode when people leave the server.
 remove-god-on-disconnect: false
