@@ -53,5 +53,9 @@ public final class Console implements IMessageRecipient {
     }
 
     @Override
-    public
+    public String getDisplayName() {
+        return Console.DISPLAY_NAME;
+    }
+
+    
 }
