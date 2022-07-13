@@ -5,6 +5,7 @@ import com.bss.inc.redsmokes.main.messaging.SimpleMessageRecipient;
 import net.redsmokes.api.IRedSmokes;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
@@ -57,5 +58,42 @@ public final class Console implements IMessageRecipient {
         return Console.DISPLAY_NAME;
     }
 
-    @
+    @Override
+    public void sendMessage(final String message) {
+        getCommandSender().sendMessage(message);
+    }
+
+    @Override
+    public boolean isReachable() {
+        return true;
+    }
+
+    /* ================================
+     * >> DELEGATE METHODS
+     * ================================ */
+
+    @Override
+    public MessageResponse sendMessage(final IMessageRecipient recipient, final String message) {
+        return this.messageRecipient.sendMessage(recipient, message);
+    }
+
+    @Override
+    public MessageResponse onReceiveMessage(final IMessageRecipient sender, final String message) {
+        return this.messageRecipient.onReceiveMessage(sender, message);
+    }
+
+    @Override
+    public IMessageRecipient getReplyRecipient() {
+        return this.messageRecipient.getReplyRecipient();
+    }
+
+    @Override
+    public void setReplyRecipient(final IMessageRecipient recipient) {
+        this.messageRecipient.setReplyRecipient(recipient);
+    }
+
+    @Override
+    public boolean isHiddenFrom(Player player) {
+        return false;
+    }
 }
