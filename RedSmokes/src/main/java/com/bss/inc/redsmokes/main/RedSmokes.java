@@ -156,6 +156,10 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                     break;
             }
 
+            if(VersionUtil.getSupportStatusClass() != null) {
+                getLogger().info(tl("serverUnsupportedClass", VersionUtil.getSupportStatusClass()));
+            }
+
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
         } catch (final Error ex) {
