@@ -9,4 +9,6 @@ authors: [RedstonedLife, xeryka]
 api-version: "1.13"
 commands:
   redsmokes:
-    description: 
+    description: Reloads RedSmokes
+    usage: /<command>
+    aliases: []
