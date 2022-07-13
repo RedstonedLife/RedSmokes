@@ -1,6 +1,8 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.provider.CommandSendListenerProvider;
+import com.bss.inc.redsmokes.main.provider.providers.BukkitCommandSendListenerProvider;
+import com.bss.inc.redsmokes.main.provider.providers.PaperCommandSendListenerProvider;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import io.papermc.lib.PaperLib;
 import net.redsmokes.api.events.AsyncUserDataLoadEvent;
@@ -109,113 +111,35 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
     }
 
     public void registerEvents() {
-        ess.getServer().getPluginManager().registerEvents(this, ess);
-
-        if (isArrowPickupEvent()) {
-            ess.getServer().getPluginManager().registerEvents(new ArrowPickupListener(), ess);
-        }
+        redSmokes.getServer().getPluginManager().registerEvents(this, ess);
 
         if (isEntityPickupEvent()) {
-            ess.getServer().getPluginManager().registerEvents(new PickupListener1_12(), ess);
+            redSmokes.getServer().getPluginManager().registerEvents(new PickupListener1_12(), ess);
         } else {
-            ess.getServer().getPluginManager().registerEvents(new PickupListenerPre1_12(), ess);
+            redSmokes.getServer().getPluginManager().registerEvents(new PickupListenerPre1_12(), ess);
         }
 
         if (isPaperCommandSendEvent()) {
-            ess.getServer().getPluginManager().registerEvents(new PaperCommandSendListenerProvider(new CommandSendFilter()), ess);
+            redSmokes.getServer().getPluginManager().registerEvents(new PaperCommandSendListenerProvider(new CommandSendFilter()), ess);
         } else if (isCommandSendEvent()) {
-            ess.getServer().getPluginManager().registerEvents(new BukkitCommandSendListenerProvider(new CommandSendFilter()), ess);
+            redSmokes.getServer().getPluginManager().registerEvents(new BukkitCommandSendListenerProvider(new CommandSendFilter()), ess);
         }
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerRespawn(final PlayerRespawnEvent event) {
-        final User user = ess.getUser(event.getPlayer());
-        updateCompass(user);
-        user.setDisplayNick();
-
-        if (ess.getSettings().isTeleportInvulnerability()) {
-            user.enableInvulnerabilityAfterTeleport();
-        }
+        final User user = redSmokes.getUser(event.getPlayer());
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerChat(final AsyncPlayerChatEvent event) {
-        final User user = ess.getUser(event.getPlayer());
-        if (user.isMuted()) {
-            event.setCancelled(true);
-
-            final String dateDiff = user.getMuteTimeout() > 0 ? DateUtil.formatDateDiff(user.getMuteTimeout()) : null;
-            if (dateDiff == null) {
-                user.sendMessage(user.hasMuteReason() ? tl("voiceSilencedReason", user.getMuteReason()) : tl("voiceSilenced"));
-            } else {
-                user.sendMessage(user.hasMuteReason() ? tl("voiceSilencedReasonTime", dateDiff, user.getMuteReason()) : tl("voiceSilencedTime", dateDiff));
-            }
-
-            ess.getLogger().info(tl("mutedUserSpeaks", user.getName(), event.getMessage()));
-        }
-        try {
-            final Iterator<Player> it = event.getRecipients().iterator();
-            while (it.hasNext()) {
-                final User u = ess.getUser(it.next());
-                if (u.isIgnoredPlayer(user)) {
-                    it.remove();
-                }
-            }
-        } catch (final UnsupportedOperationException ex) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.INFO, "Ignore could not block chat due to custom chat plugin event.", ex);
-            } else {
-                ess.getLogger().info("Ignore could not block chat due to custom chat plugin event.");
-            }
-        }
-
-        user.updateActivityOnChat(true);
-        user.setDisplayNick();
+        final User user = redSmokes.getUser(event.getPlayer());
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onPlayerMove(final PlayerMoveEvent event) {
         if (event.getFrom().getBlockX() == event.getTo().getBlockX() && event.getFrom().getBlockZ() == event.getTo().getBlockZ() && event.getFrom().getBlockY() == event.getTo().getBlockY()) {
             return;
-        }
-
-        if (!ess.getSettings().cancelAfkOnMove() && !ess.getSettings().getFreezeAfkPlayers()) {
-            event.getHandlers().unregister(this);
-
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.INFO, "Unregistering move listener");
-            }
-
-            return;
-        }
-
-        final User user = ess.getUser(event.getPlayer());
-        if (user.isAfk() && ess.getSettings().getFreezeAfkPlayers()) {
-            final Location from = event.getFrom();
-            final Location origTo = event.getTo();
-            final Location to = origTo.clone();
-            if (origTo.getY() >= from.getBlockY() + 1) {
-                user.updateActivityOnMove(true);
-                return;
-            }
-            to.setX(from.getX());
-            to.setY(from.getY());
-            to.setZ(from.getZ());
-            try {
-                if (event.getPlayer().getAllowFlight()) {
-                    // Don't teleport to a safe location here, they are either a god or flying
-                    throw new Exception();
-                }
-                event.setTo(LocationUtil.getSafeDestination(ess, to));
-            } catch (final Exception ex) {
-                event.setTo(to);
-            }
-            return;
-        }
-        final Location afk = user.getAfkPosition();
-        if (afk == null || !event.getTo().getWorld().equals(afk.getWorld()) || afk.distanceSquared(event.getTo()) > 9) {
-            user.updateActivityOnMove(true);
         }
     }
 
