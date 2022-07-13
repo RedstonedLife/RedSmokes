@@ -386,7 +386,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
             final String timeroutput = execTimer.end();
             if (getSettings().isDebug()) {
-                LOGGER.log(Level.INFO, "Essentials load " + timeroutput);
+                LOGGER.log(Level.INFO, "RedSmokes load " + timeroutput);
             }
 
         } catch (final NumberFormatException ex) {
