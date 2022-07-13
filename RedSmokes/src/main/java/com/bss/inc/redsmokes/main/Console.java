@@ -12,4 +12,9 @@ public final class Console implements IMessageRecipient {
 
     private final IRedSmokes redSmokes;
     private final IMessageRecipient messageRecipient;
+
+    private Console(final IRedSmokes redSmokes) {
+        this.redSmokes = redSmokes;
+        
+    }
 }
