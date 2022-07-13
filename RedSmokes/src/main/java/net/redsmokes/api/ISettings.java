@@ -6,4 +6,6 @@ public interface ISettings extends com.bss.inc.redsmokes.main.ISettings {
     boolean isCommandCooldownsEnabled();
 
     boolean logCommandBlockCommands();
+
+    String getItemDbType();
 }
