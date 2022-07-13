@@ -6,9 +6,13 @@ import com.bss.inc.redsmokes.main.economy.vault.VaultEconomyProvider;
 import com.bss.inc.redsmokes.main.items.AbstractItemDb;
 import com.bss.inc.redsmokes.main.items.CustomItemResolver;
 import com.bss.inc.redsmokes.main.metrics.MetricsWrapper;
+import com.bss.inc.redsmokes.main.nms.refl.providers.ReflDataWorldInfoProvider;
 import com.bss.inc.redsmokes.main.nms.refl.providers.ReflOnlineModeProvider;
 import com.bss.inc.redsmokes.main.perm.PermissionsHandler;
 import com.bss.inc.redsmokes.main.provider.*;
+import com.bss.inc.redsmokes.main.provider.providers.FixedHeightWorldInfoProvider;
+import com.bss.inc.redsmokes.main.provider.providers.ModernDataWorldInfoProvider;
+import com.bss.inc.redsmokes.main.provider.providers.ModernSignDataProvider;
 import com.bss.inc.redsmokes.main.updatecheck.UpdateChecker;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.bss.inc.redsmokes.main.utils.logging.BaseLoggerProvider;
@@ -246,6 +250,104 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 customItemResolver = null;
             }
             execTimer.mark("Init(CustomItemResolver)");
+
+            EconomyLayers.onEnable(this);
+
+            //Spawner item provider only uses one but it's here for legacy...
+            spawnerItemProvider = new BlockMetaSpawnerItemProvider();
+
+            //Spawner block providers
+            if (VersionUtil.getServerBukkitVersion().isLowerThan(VersionUtil.v1_12_0_R01)) {
+                spawnerBlockProvider = new ReflSpawnerBlockProvider();
+            } else {
+                spawnerBlockProvider = new BukkitSpawnerBlockProvider();
+            }
+
+            //Spawn Egg Providers
+            if (VersionUtil.getServerBukkitVersion().isLowerThan(VersionUtil.v1_9_R01)) {
+                spawnEggProvider = new LegacySpawnEggProvider();
+            } else if (VersionUtil.getServerBukkitVersion().isLowerThanOrEqualTo(VersionUtil.v1_12_2_R01)) {
+                spawnEggProvider = new ReflSpawnEggProvider();
+            } else {
+                spawnEggProvider = new FlatSpawnEggProvider();
+            }
+
+            //Potion Meta Provider
+            if (VersionUtil.getServerBukkitVersion().isLowerThan(VersionUtil.v1_9_R01)) {
+                potionMetaProvider = new LegacyPotionMetaProvider();
+            } else {
+                potionMetaProvider = new BasePotionDataProvider();
+            }
+
+            //Server State Provider
+            //Container Provider
+            if (PaperLib.isPaper() && VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_15_2_R01)) {
+                serverStateProvider = new PaperServerStateProvider();
+                containerProvider = new PaperContainerProvider();
+                serializationProvider = new PaperSerializationProvider();
+            } else {
+                serverStateProvider = new ReflServerStateProvider();
+            }
+
+            //Event Providers
+            if (PaperLib.isPaper()) {
+                try {
+                    Class.forName("com.destroystokyo.paper.event.player.PlayerRecipeBookClickEvent");
+                    recipeBookEventProvider = new PaperRecipeBookListener(event -> {
+                        if (this.getUser(((PlayerEvent) event).getPlayer()).isRecipeSee()) {
+                            ((Cancellable) event).setCancelled(true);
+                        }
+                    });
+                } catch (final ClassNotFoundException ignored) {
+                }
+            }
+
+            //Known Commands Provider
+            if (PaperLib.isPaper() && VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_11_2_R01)) {
+                knownCommandsProvider = new PaperKnownCommandsProvider();
+            } else {
+                knownCommandsProvider = new ReflKnownCommandsProvider();
+            }
+
+            // Command aliases provider
+            formattedCommandAliasProvider = new ReflFormattedCommandAliasProvider(PaperLib.isPaper());
+
+            // Material Tag Providers
+            if (VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_13_0_R01)) {
+                materialTagProvider = PaperLib.isPaper() ? new PaperMaterialTagProvider() : new BukkitMaterialTagProvider();
+            }
+
+            // Sync Commands Provider
+            syncCommandsProvider = new ReflSyncCommandsProvider();
+
+            if (VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_14_4_R01)) {
+                persistentDataProvider = new ModernPersistentDataProvider(this);
+            } else {
+                persistentDataProvider = new ReflPersistentDataProvider(this);
+            }
+
+            onlineModeProvider = new ReflOnlineModeProvider();
+
+            if (VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_11_2_R01)) {
+                unbreakableProvider = new ModernItemUnbreakableProvider();
+            } else {
+                unbreakableProvider = new LegacyItemUnbreakableProvider();
+            }
+
+            if (VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_17_1_R01)) {
+                worldInfoProvider = new ModernDataWorldInfoProvider();
+            } else if (VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_16_5_R01)) {
+                worldInfoProvider = new ReflDataWorldInfoProvider();
+            } else {
+                worldInfoProvider = new FixedHeightWorldInfoProvider();
+            }
+
+            if (VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_14_4_R01)) {
+                signDataProvider = new ModernSignDataProvider(this);
+            }
+
+            execTimer.mark("Init(Providers)");
+            reload();
 
 
         } catch (final NumberFormatException ex) {
