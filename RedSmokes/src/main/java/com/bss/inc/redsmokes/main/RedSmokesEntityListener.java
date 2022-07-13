@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.utils.MaterialUtil;
+import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -266,23 +268,10 @@ public class EssentialsEntityListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onFoodLevelChange(final FoodLevelChangeEvent event) {
-        if (event.getEntity() instanceof Player) {
-            final User user = ess.getUser((Player) event.getEntity());
-            if (user.isGodModeEnabled()) {
-                if (user.isGodModeEnabledRaw()) {
-                    user.getBase().setFoodLevel(20);
-                    user.getBase().setSaturation(10);
-                }
-                event.setCancelled(true);
-            }
-        }
     }
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onEntityRegainHealth(final EntityRegainHealthEvent event) {
-        if (event.getRegainReason() == RegainReason.SATIATED && event.getEntity() instanceof Player && ess.getUser((Player) event.getEntity()).isAfk() && ess.getSettings().getFreezeAfkPlayers()) {
-            event.setCancelled(true);
-        }
     }
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
