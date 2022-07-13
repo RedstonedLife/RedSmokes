@@ -363,10 +363,10 @@ public class RedSmokesConfiguration {
         } catch (final ParsingException e) {
             final File broken = new File(configFile.getAbsolutePath() + ".broken." + System.currentTimeMillis());
             if (configFile.renameTo(broken)) {
-                RedSmokes.getWrappedLogger().log(Level.SEVERE, "The file " + configFile.toString() + " is broken, it has been renamed to " + broken.toString(), e.getCause());
+                RedSmokes.getWrappedLogger().log(Level.SEVERE, "The file " + configFile + " is broken, it has been renamed to " + broken, e.getCause());
                 return;
             }
-            RedSmokes.getWrappedLogger().log(Level.SEVERE, "The file " + configFile.toString() + " is broken. A backup file has failed to be created", e.getCause());
+            RedSmokes.getWrappedLogger().log(Level.SEVERE, "The file " + configFile + " is broken. A backup file has failed to be created", e.getCause());
         } catch (final ConfigurateException e) {
             RedSmokes.getWrappedLogger().log(Level.SEVERE, e.getMessage(), e);
         } finally {
