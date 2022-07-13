@@ -612,7 +612,15 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public boolean onCommand(final CommandSender sender, final Command command, final String commandLabel, final String[] args) {
         metrics.markCommand(command.getName(), true);
         try {
-            return onCommandRedSmokes(sender, command, commandLabel, args, RedSmokes.class.getClassLoader(), "com.bss.inc.redsmokes.main.commands.Command", "redsmokes.", null);
+            return onCommandRedSmokes(
+                    sender,
+                    command,
+                    commandLabel,
+                    args,
+                    RedSmokes.class.getClassLoader(),
+                    "com.bss.inc.redsmokes.main.commands.Command",
+                    "redsmokes.",
+                    null);
         } catch (final Exception e) {
             e.printStackTrace();
         }
