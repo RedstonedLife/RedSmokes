@@ -1,8 +1,11 @@
 package com.bss.inc.redsmokes.main.signs;
 
+import com.bss.inc.redsmokes.main.I18n;
 import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
+import net.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.MaxMoneyException;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -22,15 +25,15 @@ import org.bukkit.event.block.SignChangeEvent;
 import java.util.logging.Level;
 
 public class SignBlockListener implements Listener {
-    private final transient IEssentials ess;
+    private final transient IRedSmokes redSmokes;
 
-    public SignBlockListener(final IEssentials ess) {
-        this.ess = ess;
+    public SignBlockListener(final IRedSmokes redSmokes) {
+        this.redSmokes = redSmokes;
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onSignBlockBreak(final BlockBreakEvent event) {
-        if (ess.getSettings().areSignsDisabled()) {
+        if (redSmokes.getSettings().areSignsDisabled()) {
             event.getHandlers().unregister(this);
             return;
         }
@@ -45,9 +48,9 @@ public class SignBlockListener implements Listener {
 
     public boolean protectSignsAndBlocks(final Block block, final Player player) throws MaxMoneyException {
         // prevent any signs be broken by destroying the block they are attached to
-        if (EssentialsSign.checkIfBlockBreaksSigns(block)) {
-            if (ess.getSettings().isDebug()) {
-                ess.getLogger().log(Level.INFO, "Prevented that a block was broken next to a sign.");
+        if (RedSmokesSign.checkIfBlockBreaksSigns(block)) {
+            if (redSmokes.getSettings().isDebug()) {
+                redSmokes.getLogger().log(Level.INFO, "Prevented that a block was broken next to a sign.");
             }
             return true;
         }
@@ -56,16 +59,16 @@ public class SignBlockListener implements Listener {
         if (MaterialUtil.isSign(mat)) {
             final Sign csign = (Sign) block.getState();
 
-            for (final EssentialsSign sign : ess.getSettings().enabledSigns()) {
-                if (csign.getLine(0).equalsIgnoreCase(sign.getSuccessName(ess)) && !sign.onSignBreak(block, player, ess)) {
+            for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
+                if (csign.getLine(0).equalsIgnoreCase(sign.getSuccessName(redSmokes)) && !sign.onSignBreak(block, player, redSmokes)) {
                     return true;
                 }
             }
         }
 
-        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
-            if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockBreak(block, player, ess)) {
-                ess.getLogger().log(Level.INFO, "A block was protected by a sign.");
+        for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
+            if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockBreak(block, player, redSmokes)) {
+                redSmokes.getLogger().log(Level.INFO, "A block was protected by a sign.");
                 return true;
             }
         }
@@ -74,11 +77,11 @@ public class SignBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     public void onSignSignChange2(final SignChangeEvent event) {
-        if (ess.getSettings().areSignsDisabled()) {
+        if (redSmokes.getSettings().areSignsDisabled()) {
             event.getHandlers().unregister(this);
             return;
         }
-        final User user = ess.getUser(event.getPlayer());
+        final User user = redSmokes.getUser(event.getPlayer());
 
         for (int i = 0; i < 4; i++) {
             event.setLine(i, FormatUtil.formatString(user, "redsmokes.signs", event.getLine(i)));
@@ -94,7 +97,7 @@ public class SignBlockListener implements Listener {
             // If the top sign line contains any of the success name (excluding colors), just remove all colours from the first line.
             // This is to ensure we are only modifying possible Essentials Sign and not just removing colors from the first line of all signs.
             // Top line and sign#getSuccessName() are both lowercased since contains is case-sensitive.
-            final String successName = sign.getSuccessName(ess);
+            final String successName = sign.getSuccessName(redSmokes);
             if (successName == null) {
                 event.getPlayer().sendMessage(I18n.tl("errorWithMessage",
                         "Please report this error to a staff member."));
@@ -105,8 +108,8 @@ public class SignBlockListener implements Listener {
 
                 // If this sign is not enabled and it has been requested to not protect it's name (when disabled), then do not protect the name.
                 // By lower-casing it and stripping colours.
-                if (!ess.getSettings().enabledSigns().contains(sign)
-                        && ess.getSettings().getUnprotectedSignNames().contains(sign)) {
+                if (!redSmokes.getSettings().enabledSigns().contains(sign)
+                        && redSmokes.getSettings().getUnprotectedSignNames().contains(sign)) {
                     continue;
                 }
                 event.setLine(0, lColorlessTopLine);
@@ -116,17 +119,17 @@ public class SignBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onSignSignChange(final SignChangeEvent event) {
-        if (ess.getSettings().areSignsDisabled()) {
+        if (redSmokes.getSettings().areSignsDisabled()) {
             event.getHandlers().unregister(this);
             return;
         }
 
-        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
-            if (event.getLine(0).equalsIgnoreCase(sign.getSuccessName(ess))) {
+        for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
+            if (event.getLine(0).equalsIgnoreCase(sign.getSuccessName(redSmokes))) {
                 event.setCancelled(true);
                 return;
             }
-            if (event.getLine(0).equalsIgnoreCase(sign.getTemplateName()) && !sign.onSignCreate(event, ess)) {
+            if (event.getLine(0).equalsIgnoreCase(sign.getTemplateName()) && !sign.onSignCreate(event, redSmokes)) {
                 event.setCancelled(true);
                 return;
             }
@@ -135,13 +138,13 @@ public class SignBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onSignBlockPlace(final BlockPlaceEvent event) {
-        if (ess.getSettings().areSignsDisabled()) {
+        if (redSmokes.getSettings().areSignsDisabled()) {
             event.getHandlers().unregister(this);
             return;
         }
 
         final Block against = event.getBlockAgainst();
-        if (MaterialUtil.isSign(against.getType()) && RedSmokesSign.isValidSign(ess, new RedSmokesSign.BlockSign(against))) {
+        if (MaterialUtil.isSign(against.getType()) && RedSmokesSign.isValidSign(redSmokes, new RedSmokesSign.BlockSign(against))) {
             event.setCancelled(true);
             return;
         }
@@ -149,7 +152,7 @@ public class SignBlockListener implements Listener {
         if (MaterialUtil.isSign(block.getType())) {
             return;
         }
-        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
+        for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
             if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockPlace(block, event.getPlayer(), ess)) {
                 event.setCancelled(true);
                 return;
@@ -159,18 +162,18 @@ public class SignBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onSignBlockBurn(final BlockBurnEvent event) {
-        if (ess.getSettings().areSignsDisabled()) {
+        if (redSmokes.getSettings().areSignsDisabled()) {
             event.getHandlers().unregister(this);
             return;
         }
 
         final Block block = event.getBlock();
-        if ((MaterialUtil.isSign(block.getType()) && RedSmokesSign.isValidSign(ess, new RedSmokesSign.BlockSign(block))) || RedSmokesSign.checkIfBlockBreaksSigns(block)) {
+        if ((MaterialUtil.isSign(block.getType()) && RedSmokesSign.isValidSign(redSmokes, new RedSmokesSign.BlockSign(block))) || RedSmokesSign.checkIfBlockBreaksSigns(block)) {
             event.setCancelled(true);
             return;
         }
-        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
-            if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockBurn(block, ess)) {
+        for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
+            if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockBurn(block, redSmokes)) {
                 event.setCancelled(true);
                 return;
             }
@@ -179,18 +182,18 @@ public class SignBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onSignBlockIgnite(final BlockIgniteEvent event) {
-        if (ess.getSettings().areSignsDisabled()) {
+        if (redSmokes.getSettings().areSignsDisabled()) {
             event.getHandlers().unregister(this);
             return;
         }
 
         final Block block = event.getBlock();
-        if ((MaterialUtil.isSign(block.getType()) && RedSmokesSign.isValidSign(ess, new RedSmokesSign.BlockSign(block))) || RedSmokesSign.checkIfBlockBreaksSigns(block)) {
+        if ((MaterialUtil.isSign(block.getType()) && RedSmokesSign.isValidSign(redSmokes, new RedSmokesSign.BlockSign(block))) || RedSmokesSign.checkIfBlockBreaksSigns(block)) {
             event.setCancelled(true);
             return;
         }
-        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
-            if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockIgnite(block, ess)) {
+        for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
+            if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockIgnite(block, redSmokes)) {
                 event.setCancelled(true);
                 return;
             }
@@ -199,18 +202,18 @@ public class SignBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOW)
     public void onSignBlockPistonExtend(final BlockPistonExtendEvent event) {
-        if (ess.getSettings().areSignsDisabled()) {
+        if (redSmokes.getSettings().areSignsDisabled()) {
             event.getHandlers().unregister(this);
             return;
         }
 
         for (final Block block : event.getBlocks()) {
-            if ((MaterialUtil.isSign(block.getType()) && EssentialsSign.isValidSign(ess, new EssentialsSign.BlockSign(block))) || EssentialsSign.checkIfBlockBreaksSigns(block)) {
+            if ((MaterialUtil.isSign(block.getType()) && RedSmokesSign.isValidSign(redSmokes, new RedSmokesSign.BlockSign(block))) || RedSmokesSign.checkIfBlockBreaksSigns(block)) {
                 event.setCancelled(true);
                 return;
             }
-            for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
-                if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockPush(block, ess)) {
+            for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
+                if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockPush(block, redSmokes)) {
                     event.setCancelled(true);
                     return;
                 }
@@ -220,7 +223,7 @@ public class SignBlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOW)
     public void onSignBlockPistonRetract(final BlockPistonRetractEvent event) {
-        if (ess.getSettings().areSignsDisabled()) {
+        if (redSmokes.getSettings().areSignsDisabled()) {
             event.getHandlers().unregister(this);
             return;
         }
@@ -230,12 +233,12 @@ public class SignBlockListener implements Listener {
             final Block[] affectedBlocks = new Block[] {pistonBaseBlock, pistonBaseBlock.getRelative(event.getDirection()), event.getRetractLocation().getBlock()};
 
             for (final Block block : affectedBlocks) {
-                if ((MaterialUtil.isSign(block.getType()) && RedSmokesSign.isValidSign(ess, new RedSmokesSign.BlockSign(block))) || RedSmokesSign.checkIfBlockBreaksSigns(block)) {
+                if ((MaterialUtil.isSign(block.getType()) && RedSmokesSign.isValidSign(redSmokes, new RedSmokesSign.BlockSign(block))) || RedSmokesSign.checkIfBlockBreaksSigns(block)) {
                     event.setCancelled(true);
                     return;
                 }
-                for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
-                    if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockPush(block, ess)) {
+                for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
+                    if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockPush(block, redSmokes)) {
                         event.setCancelled(true);
                         return;
                     }
