@@ -29,5 +29,10 @@ public class Commandredsmokes extends RedSmokesCommand {
             "bPermissions", // permissions (unsupported)
             "DiscordSRV" // potential for issues if EssentialsXDiscord is installed
     );
+    private static final List<String> warnPlugins = Arrays.asList(
+            "PermissionsEx",
+            "GroupManager",
+            "bPermissions"
+    );
 
 }
