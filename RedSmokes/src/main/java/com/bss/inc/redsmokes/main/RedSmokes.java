@@ -437,13 +437,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         final RedSmokesServerListener serverListener = new RedSmokesServerListener(this);
         pm.registerEvents(serverListener, this);
 
-        pm.registerEvents(tntListener, this);
-
         if (recipeBookEventProvider != null) {
             pm.registerEvents(recipeBookEventProvider, this);
         }
-
-        jails.resetListener();
     }
 
     @Override
