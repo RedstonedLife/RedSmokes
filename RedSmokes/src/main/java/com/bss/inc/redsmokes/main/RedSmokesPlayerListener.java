@@ -1,10 +1,12 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.FakeAccessor;
 import com.bss.inc.redsmokes.main.provider.CommandSendListenerProvider;
 import com.bss.inc.redsmokes.main.provider.providers.BukkitCommandSendListenerProvider;
 import com.bss.inc.redsmokes.main.provider.providers.PaperCommandSendListenerProvider;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import io.papermc.lib.PaperLib;
+import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.events.AsyncUserDataLoadEvent;
 import org.bukkit.BanEntry;
 import org.bukkit.BanList;
@@ -64,14 +66,13 @@ import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
-import static com.earth2me.essentials.I18n.tl;
 
 public class EssentialsPlayerListener implements Listener, FakeAccessor {
-    private final transient IEssentials ess;
+    private final transient IRedSmokes redSmokes;
     private final ConcurrentHashMap<UUID, Integer> pendingMotdTasks = new ConcurrentHashMap<>();
 
-    public EssentialsPlayerListener(final IEssentials parent) {
-        this.ess = parent;
+    public EssentialsPlayerListener(final IRedSmokes parent) {
+        this.redSmokes = parent;
     }
 
     private static boolean isEntityPickupEvent() {
@@ -100,20 +101,20 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
             return false;
         }
     }
-    
+
     public void registerEvents() {
-        redSmokes.getServer().getPluginManager().registerEvents(this, ess);
+        redSmokes.getServer().getPluginManager().registerEvents(this, redSmokes);
 
         if (isEntityPickupEvent()) {
-            redSmokes.getServer().getPluginManager().registerEvents(new PickupListener1_12(), ess);
+            redSmokes.getServer().getPluginManager().registerEvents(new PickupListener1_12(), redSmokes);
         } else {
-            redSmokes.getServer().getPluginManager().registerEvents(new PickupListenerPre1_12(), ess);
+            redSmokes.getServer().getPluginManager().registerEvents(new PickupListenerPre1_12(), redSmokes);
         }
 
         if (isPaperCommandSendEvent()) {
-            redSmokes.getServer().getPluginManager().registerEvents(new PaperCommandSendListenerProvider(new CommandSendFilter()), ess);
+            redSmokes.getServer().getPluginManager().registerEvents(new PaperCommandSendListenerProvider(new CommandSendFilter()), redSmokes);
         } else if (isCommandSendEvent()) {
-            redSmokes.getServer().getPluginManager().registerEvents(new BukkitCommandSendListenerProvider(new CommandSendFilter()), ess);
+            redSmokes.getServer().getPluginManager().registerEvents(new BukkitCommandSendListenerProvider(new CommandSendFilter()), redSmokes);
         }
     }
 
