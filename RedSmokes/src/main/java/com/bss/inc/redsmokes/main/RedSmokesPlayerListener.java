@@ -329,14 +329,14 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
             }
 
             if (!cooldownFound) {
-                final Entry<Pattern, Long> cooldownEntry = ess.getSettings().getCommandCooldownEntry(fullCommand);
+                final Entry<Pattern, Long> cooldownEntry = redSmokes.getSettings().getCommandCooldownEntry(fullCommand);
 
                 if (cooldownEntry != null) {
-                    if (ess.getSettings().isDebug()) {
-                        ess.getLogger().info("Applying " + cooldownEntry.getValue() + "ms cooldown on /" + fullCommand + " for" + user.getName() + ".");
+                    if (redSmokes.getSettings().isDebug()) {
+                        redSmokes.getLogger().info("Applying " + cooldownEntry.getValue() + "ms cooldown on /" + fullCommand + " for" + user.getName() + ".");
                     }
                     final Date expiry = new Date(System.currentTimeMillis() + cooldownEntry.getValue());
-                    user.addCommandCooldown(cooldownEntry.getKey(), expiry, ess.getSettings().isCommandCooldownPersistent(fullCommand));
+                    user.addCommandCooldown(cooldownEntry.getKey(), expiry, redSmokes.getSettings().isCommandCooldownPersistent(fullCommand));
                 }
             }
         }
@@ -441,7 +441,7 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
             final PluginCommand command = redSmokes.getServer().getPluginCommand(label);
 
             return command != null
-                    && (command.getPlugin() == ess || command.getPlugin().getClass().getName().startsWith("com.earth2me.essentials") || command.getPlugin().getClass().getName().startsWith("net.essentialsx"))
+                    && (command.getPlugin() == redSmokes || command.getPlugin().getClass().getName().startsWith("com.earth2me.essentials") || command.getPlugin().getClass().getName().startsWith("net.essentialsx"))
                     && (redSmokes.getSettings().isCommandOverridden(label) || (redSmokes.getAlternativeCommandsHandler().getAlternative(label) == null));
         }
     }
