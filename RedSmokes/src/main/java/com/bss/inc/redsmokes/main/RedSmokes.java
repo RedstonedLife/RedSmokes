@@ -10,6 +10,7 @@ import com.bss.inc.redsmokes.main.nms.refl.providers.ReflOnlineModeProvider;
 import com.bss.inc.redsmokes.main.perm.PermissionsHandler;
 import com.bss.inc.redsmokes.main.provider.*;
 import com.bss.inc.redsmokes.main.updatecheck.UpdateChecker;
+import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.bss.inc.redsmokes.main.utils.logging.BaseLoggerProvider;
 import net.redsmokes.api.IConf;
 import net.redsmokes.api.IRedSmokes;
@@ -134,6 +135,13 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             i18n = new I18n(this);
             i18n.onEnable();
             execTimer.mark("I18n1");
+
+            Console.setInstance(this);
+
+            switch (VersionUtil.getServerSupportStatus()) {
+                
+            }
+
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
         } catch (final Error ex) {
