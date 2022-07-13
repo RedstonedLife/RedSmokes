@@ -473,47 +473,6 @@ public class RedSmokesUpgrade {
         }
     }
 
-    private void updateUsersPowerToolsFormat() {
-        if (doneFile.getBoolean("updateUsersPowerToolsFormat", false)) {
-            return;
-        }
-        final File userdataFolder = new File(redSmokes.getDataFolder(), "userdata");
-        if (!userdataFolder.exists() || !userdataFolder.isDirectory()) {
-            return;
-        }
-        final File[] userFiles = userdataFolder.listFiles();
-
-        for (final File file : userFiles) {
-            if (!file.isFile() || !file.getName().endsWith(".yml")) {
-                continue;
-            }
-            final EssentialsConfiguration config = new EssentialsConfiguration(file);
-            try {
-                config.load();
-                if (config.hasProperty("powertools")) {
-                    final Map<String, Object> powertools = ConfigurateUtil.getRawMap(config.getSection("powertools"));
-                    if (powertools.isEmpty()) {
-                        continue;
-                    }
-                    for (final Map.Entry<String, Object> entry : powertools.entrySet()) {
-                        if (entry.getValue() instanceof String) {
-                            final List<String> temp = new ArrayList<>();
-                            temp.add((String) entry.getValue());
-                            powertools.put(entry.getKey(), temp);
-                        }
-                    }
-                    config.setRaw("powertools", powertools);
-                    config.blockingSave();
-                }
-            } catch (final RuntimeException ex) {
-                ess.getLogger().log(Level.INFO, "File: " + file);
-                throw ex;
-            }
-        }
-        doneFile.setProperty("updateUsersPowerToolsFormat", true);
-        doneFile.save();
-    }
-
     private void updateUsersHomesFormat() {
         if (doneFile.getBoolean("updateUsersHomesFormat", false)) {
             return;
