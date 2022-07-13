@@ -110,7 +110,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         permissionsHandler = new PermissionsHandler(this, false);
         Economy.setEss(this);
         confList = new ArrayList<>();
-        
+        registerListeners(server.getPluginManager());
     }
 
     @Override
