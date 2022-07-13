@@ -5,6 +5,8 @@ import com.bss.inc.redsmokes.main.User;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import org.bukkit.Server;
 
+import static com.bss.inc.redsmokes.main.I18n.tl;
+
 public class Commandbalance extends RedSmokesCommand {
     public Commandbalance() {
         super("balance");
