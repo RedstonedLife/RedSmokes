@@ -167,7 +167,7 @@ public class SignBlockListener implements Listener {
             event.setCancelled(true);
             return;
         }
-        for (final EssentialsSign sign : ess.getSettings().enabledSigns()) {
+        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
             if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockBurn(block, ess)) {
                 event.setCancelled(true);
                 return;
@@ -183,11 +183,11 @@ public class SignBlockListener implements Listener {
         }
 
         final Block block = event.getBlock();
-        if ((MaterialUtil.isSign(block.getType()) && EssentialsSign.isValidSign(ess, new EssentialsSign.BlockSign(block))) || EssentialsSign.checkIfBlockBreaksSigns(block)) {
+        if ((MaterialUtil.isSign(block.getType()) && RedSmokesSign.isValidSign(ess, new RedSmokesSign.BlockSign(block))) || RedSmokesSign.checkIfBlockBreaksSigns(block)) {
             event.setCancelled(true);
             return;
         }
-        for (final EssentialsSign sign : ess.getSettings().enabledSigns()) {
+        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
             if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockIgnite(block, ess)) {
                 event.setCancelled(true);
                 return;
