@@ -52,18 +52,18 @@ public class Commandbalancetop extends RedSmokesCommand {
         }
 
         // If there are less than 50 users in our usermap, there is no need to display a warning as these calculations should be done quickly
-        if (ess.getUserMap().getUniqueUsers() > MINUSERS) {
-            sender.sendMessage(tl("orderBalances", ess.getUserMap().getUniqueUsers()));
+        if (redSmokes.getUserMap().getUniqueUsers() > MINUSERS) {
+            sender.sendMessage(tl("orderBalances", redSmokes.getUserMap().getUniqueUsers()));
         }
 
-        ess.runTaskAsynchronously(new Viewer(sender, page, force));
+        redSmokes.runTaskAsynchronously(new Viewer(sender, page, force));
     }
 
     @Override
     protected List<String> getTabCompleteOptions(final Server server, final CommandSource sender, final String commandLabel, final String[] args) {
         if (args.length == 1) {
             final List<String> options = Lists.newArrayList("1");
-            if (!sender.isPlayer() || redSmokes.getUser(sender.getPlayer()).isAuthorized("essentials.balancetop.force")) {
+            if (!sender.isPlayer() || redSmokes.getUser(sender.getPlayer()).isAuthorized("redsmokes.balancetop.force")) {
                 options.add("force");
             }
             return options;
