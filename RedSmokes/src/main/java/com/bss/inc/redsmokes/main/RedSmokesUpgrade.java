@@ -730,7 +730,6 @@ public class RedSmokesUpgrade {
         repairUserMap();
         convertIgnoreList();
         convertStupidCamelCaseUserdataKeys();
-        convertMailList();
         purgeBrokenNpcAccounts();
     }
 }
