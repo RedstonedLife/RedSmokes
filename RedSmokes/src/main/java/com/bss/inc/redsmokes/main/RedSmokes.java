@@ -6,6 +6,7 @@ import com.bss.inc.redsmokes.main.metrics.MetricsWrapper;
 import com.bss.inc.redsmokes.main.nms.refl.providers.ReflOnlineModeProvider;
 import com.bss.inc.redsmokes.main.perm.PermissionsHandler;
 import com.bss.inc.redsmokes.main.provider.*;
+import com.bss.inc.redsmokes.main.updatecheck.UpdateChecker;
 import net.redsmokes.api.IConf;
 import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.ISettings;
@@ -56,7 +57,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient ItemUnbreakableProvider unbreakableProvider;
     private transient WorldInfoProvider worldInfoProvider;
     private transient SignDataProvider signDataProvider;
-    private 
+    private transient UpdateChecker
 
     @Override
     public void onEnable() {
