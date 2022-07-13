@@ -303,6 +303,18 @@ public class Settings implements net.redsmokes.api.ISettings {
     }
 
     @Override
+    @Deprecated
+    public boolean isTradeInStacks(final int id) {
+        return config.getBoolean("trade-in-stacks-" + id, false);
+    }
+
+    // #easteregg
+    @Override
+    public boolean isTradeInStacks(final Material type) {
+        return config.getBoolean("trade-in-stacks." + type.toString().toLowerCase().replace("_", ""), false);
+    }
+
+    @Override
     public List<RedSmokesSign> enabledSigns() {
         return enabledSigns;
     }
