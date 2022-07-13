@@ -288,7 +288,7 @@ public class EssentialsEntityListener implements Listener {
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onPotionSplashEvent(final PotionSplashEvent event) {
         for (final LivingEntity entity : event.getAffectedEntities()) {
-            if (entity instanceof Player && ess.getUser((Player) entity).isGodModeEnabled()) {
+            if (entity instanceof Player && redSmokes.getUser((Player) entity).isGodModeEnabled()) {
                 event.setIntensity(entity, 0d);
             }
         }
