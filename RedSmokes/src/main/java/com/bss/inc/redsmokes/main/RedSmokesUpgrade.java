@@ -274,7 +274,7 @@ public class RedSmokesUpgrade {
             return;
         }
 
-        final File userdataFolder = new File(ess.getDataFolder(), "userdata");
+        final File userdataFolder = new File(redSmokes.getDataFolder(), "userdata");
         if (!userdataFolder.exists() || !userdataFolder.isDirectory()) {
             return;
         }
@@ -282,33 +282,33 @@ public class RedSmokesUpgrade {
         if (userFiles.length == 0) {
             return;
         }
-        final File backupFolder = new File(ess.getDataFolder(), "userdata-npc-backup");
+        final File backupFolder = new File(redSmokes.getDataFolder(), "userdata-npc-backup");
         if (backupFolder.exists()) {
-            ess.getLogger().info("NPC backup folder already exists; skipping NPC purge.");
-            ess.getLogger().info("To finish purging broken NPC accounts, rename the \"plugins/Essentials/userdata-npc-backup\" folder and restart your server.");
+            redSmokes.getLogger().info("NPC backup folder already exists; skipping NPC purge.");
+            redSmokes.getLogger().info("To finish purging broken NPC accounts, rename the \"plugins/Essentials/userdata-npc-backup\" folder and restart your server.");
             return;
         } else if (!backupFolder.mkdir()) {
             ess.getLogger().info("Skipping NPC purge due to error creating backup folder.");
             return;
         }
 
-        ess.getLogger().info("#===========================================================================#");
-        ess.getLogger().info(" EssentialsX will now purge any NPC accounts which were incorrectly created.");
-        ess.getLogger().info(" Only NPC accounts with the default starting balance will be deleted. If");
-        ess.getLogger().info(" they turn out to be valid NPC accounts, they will be re-created as needed.");
-        ess.getLogger().info(" Any files deleted here will be backed up to the ");
-        ess.getLogger().info(" \"plugins/Essentials/userdata-npc-backup\" folder. If you notice any files");
-        ess.getLogger().info(" have been purged incorrectly, you should restore it from the backup and");
-        ess.getLogger().info(" report it to us on GitHub:");
-        ess.getLogger().info(" https://github.com/EssentialsX/Essentials/issues/new/choose");
-        ess.getLogger().info("");
-        ess.getLogger().info(" NOTE: This is a one-time process and will take several minutes if you have");
-        ess.getLogger().info(" a lot of userdata files! If you interrupt this process, EssentialsX will");
-        ess.getLogger().info(" skip the process until you rename or remove the backup folder.");
-        ess.getLogger().info("#===========================================================================#");
+        redSmokes.getLogger().info("#===========================================================================#");
+        redSmokes.getLogger().info(" RedSmokes will now purge any NPC accounts which were incorrectly created.");
+        redSmokes.getLogger().info(" Only NPC accounts with the default starting balance will be deleted. If");
+        redSmokes.getLogger().info(" they turn out to be valid NPC accounts, they will be re-created as needed.");
+        redSmokes.getLogger().info(" Any files deleted here will be backed up to the ");
+        redSmokes.getLogger().info(" \"plugins/RedSmokes/userdata-npc-backup\" folder. If you notice any files");
+        redSmokes.getLogger().info(" have been purged incorrectly, you should restore it from the backup and");
+        redSmokes.getLogger().info(" report it to us on GitHub:");
+        redSmokes.getLogger().info(" https://github.com/RedstonedLife/RedSmokes/issues/new/choose");
+        redSmokes.getLogger().info("");
+        redSmokes.getLogger().info(" NOTE: This is a one-time process and will take several minutes if you have");
+        redSmokes.getLogger().info(" a lot of userdata files! If you interrupt this process, RedSmokes will");
+        redSmokes.getLogger().info(" skip the process until you rename or remove the backup folder.");
+        redSmokes.getLogger().info("#===========================================================================#");
 
         final int totalUserFiles = userFiles.length;
-        ess.getLogger().info("Found ~" + totalUserFiles + " files under \"plugins/Essentials/userdata\"...");
+        redSmokes.getLogger().info("Found ~" + totalUserFiles + " files under \"plugins/RedSmokes/userdata\"...");
 
         final AtomicInteger movedAccounts = new AtomicInteger(0);
         final AtomicInteger totalAccounts = new AtomicInteger(0);
@@ -318,14 +318,14 @@ public class RedSmokesUpgrade {
 
         final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         final ScheduledFuture<?> feedbackTask = executor.scheduleWithFixedDelay(
-                () -> ess.getLogger().info("Scanned " + totalAccounts.get() + "/" + totalUserFiles + " accounts; moved " + movedAccounts.get() + " accounts"),
+                () -> redSmokes.getLogger().info("Scanned " + totalAccounts.get() + "/" + totalUserFiles + " accounts; moved " + movedAccounts.get() + " accounts"),
                 5, feedbackInterval, TimeUnit.SECONDS);
 
         for (final File file : userFiles) {
             if (!file.isFile() || !file.getName().endsWith(".yml")) {
                 continue;
             }
-            final EssentialsConfiguration config = new EssentialsConfiguration(file);
+            final RedSmokesConfiguration config = new RedSmokesConfiguration(file);
             try {
                 totalAccounts.incrementAndGet();
                 config.load();
@@ -339,7 +339,7 @@ public class RedSmokesUpgrade {
                 }
 
                 final BigDecimal money = config.getBigDecimal("money", null);
-                if (money == null || money.compareTo(ess.getSettings().getStartingBalance()) != 0) {
+                if (money == null || money.compareTo(redSmokes.getSettings().getStartingBalance()) != 0) {
                     continue;
                 }
 
@@ -352,10 +352,10 @@ public class RedSmokesUpgrade {
                     Files.move(file, new File(backupFolder, file.getName()));
                     movedAccounts.incrementAndGet();
                 } catch (IOException e) {
-                    ess.getLogger().log(Level.SEVERE, "Error while moving NPC file", e);
+                    redSmokes.getLogger().log(Level.SEVERE, "Error while moving NPC file", e);
                 }
             } catch (final RuntimeException ex) {
-                ess.getLogger().log(Level.INFO, "File: " + file);
+                redSmokes.getLogger().log(Level.INFO, "File: " + file);
                 feedbackTask.cancel(false);
                 executor.shutdown();
                 throw ex;
@@ -366,18 +366,18 @@ public class RedSmokesUpgrade {
         doneFile.setProperty("updatePurgeBrokenNpcAccounts", true);
         doneFile.save();
 
-        ess.getLogger().info("#===========================================================================#");
-        ess.getLogger().info(" EssentialsX has finished purging NPC accounts.");
-        ess.getLogger().info("");
-        ess.getLogger().info(" Deleted accounts: " + movedAccounts);
-        ess.getLogger().info(" Total accounts processed: " + totalAccounts);
-        ess.getLogger().info("");
-        ess.getLogger().info(" Purged accounts have been backed up to");
-        ess.getLogger().info(" \"plugins/Essentials/userdata-npc-backup\", and can be restored from there");
-        ess.getLogger().info(" if needed. Please report any files which have been incorrectly deleted");
-        ess.getLogger().info(" to us on GitHub:");
-        ess.getLogger().info(" https://github.com/EssentialsX/Essentials/issues/new/choose");
-        ess.getLogger().info("#===========================================================================#");
+        redSmokes.getLogger().info("#===========================================================================#");
+        redSmokes.getLogger().info(" RedSmokes has finished purging NPC accounts.");
+        redSmokes.getLogger().info("");
+        redSmokes.getLogger().info(" Deleted accounts: " + movedAccounts);
+        redSmokes.getLogger().info(" Total accounts processed: " + totalAccounts);
+        redSmokes.getLogger().info("");
+        redSmokes.getLogger().info(" Purged accounts have been backed up to");
+        redSmokes.getLogger().info(" \"plugins/RedSmokes/userdata-npc-backup\", and can be restored from there");
+        redSmokes.getLogger().info(" if needed. Please report any files which have been incorrectly deleted");
+        redSmokes.getLogger().info(" to us on GitHub:");
+        redSmokes.getLogger().info(" https://github.com/RedstonedLife/RedSmokes/issues/new/choose");
+        redSmokes.getLogger().info("#===========================================================================#");
     }
 
     public void convertIgnoreList() {
@@ -386,9 +386,9 @@ public class RedSmokesUpgrade {
             return;
         }
 
-        ess.getLogger().info("Attempting to migrate ignore list to UUIDs");
+        redSmokes.getLogger().info("Attempting to migrate ignore list to UUIDs");
 
-        final File userdataFolder = new File(ess.getDataFolder(), "userdata");
+        final File userdataFolder = new File(redSmokes.getDataFolder(), "userdata");
         if (!userdataFolder.exists() || !userdataFolder.isDirectory()) {
             return;
         }
@@ -398,7 +398,7 @@ public class RedSmokesUpgrade {
             if (!file.isFile() || !file.getName().endsWith(".yml")) {
                 continue;
             }
-            final EssentialsConfiguration config = new EssentialsConfiguration(file);
+            final RedSmokesConfiguration config = new RedSmokesConfiguration(file);
             try {
                 config.load();
                 if (config.hasProperty("ignore")) {
@@ -408,10 +408,10 @@ public class RedSmokesUpgrade {
                             continue;
                         }
                         if (pattern.matcher(name.trim()).matches()) {
-                            ess.getLogger().info("Detected already migrated ignore list!");
+                            redSmokes.getLogger().info("Detected already migrated ignore list!");
                             return;
                         }
-                        final User user = ess.getOfflineUser(name);
+                        final User user = redSmokes.getOfflineUser(name);
                         if (user != null && user.getBase() != null) {
                             migratedIgnores.add(user.getBase().getUniqueId().toString());
                         }
@@ -421,13 +421,13 @@ public class RedSmokesUpgrade {
                     config.blockingSave();
                 }
             } catch (final RuntimeException ex) {
-                ess.getLogger().log(Level.INFO, "File: " + file);
+                redSmokes.getLogger().log(Level.INFO, "File: " + file);
                 throw ex;
             }
         }
         doneFile.setProperty("updateUsersIgnoreListUUID", true);
         doneFile.save();
-        ess.getLogger().info("Done converting ignore list.");
+        redSmokes.getLogger().info("Done converting ignore list.");
     }
 
     public void convertKits() {
