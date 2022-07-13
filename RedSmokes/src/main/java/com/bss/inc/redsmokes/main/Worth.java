@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.commands.NotEnoughArgumentsException;
+import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import net.redsmokes.api.IRedSmokes;
