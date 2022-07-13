@@ -15,7 +15,7 @@ commands:
   balance:
     description: States the current balance of a player.
     usage: /<command> [player]
-    aliases: [bal,rbal,rbalance,money,rmoney] # Added in v1.0.1.27-dev+1380-98d201b
+    aliases: [bal,rbal,rbalance,money,rmoney]                                                                           # Added in v1.0.1.27-dev+1380-98d201b
   balancetop:
     description: Gets the top balance values.
     usage: /<command> [page]
