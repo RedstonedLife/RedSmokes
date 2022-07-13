@@ -296,6 +296,7 @@ public class Settings implements net.redsmokes.api.ISettings {
         isSafeUsermap = _isSafeUsermap();
         currencySymbol = _getCurrencySymbol();
         logCommandBlockCommands = _logCommandBlockCommands();
+        itemDbType = _getItemDbType();
         reloadCount.incrementAndGet();
     }
 
