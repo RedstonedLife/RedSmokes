@@ -26,5 +26,7 @@ public final class Console implements IMessageRecipient {
         instance = new Console(redSmokes);
     }
 
-    
+    /**
+     * 
+     */
 }
