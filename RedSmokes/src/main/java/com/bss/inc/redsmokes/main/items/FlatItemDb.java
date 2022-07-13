@@ -98,7 +98,7 @@ public class FlatItemDb extends AbstractItemDb {
             if (valid) {
                 allAliases.add(key);
             } else {
-                redSmokes.getLogger().warning(String.format("Failed to add item: \"%s\": %s", key, element.toString()));
+                redSmokes.getLogger().warning(String.format("Failed to add item: \"%s\": %s", key, element));
             }
         }
     }
