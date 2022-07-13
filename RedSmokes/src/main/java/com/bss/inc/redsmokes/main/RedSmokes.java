@@ -646,7 +646,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 return true;
             }
         }
-        Removed In RedSmokes-v1.0.0.11-dev-
+        Removed In RedSmokes-v1.0.0.11-dev+1369-a818cf2
          */
 
         try {
