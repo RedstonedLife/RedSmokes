@@ -59,7 +59,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient WorldInfoProvider worldInfoProvider;
     private transient SignDataProvider signDataProvider;
     private transient UpdateChecker updateChecker;
-    private transient Map<String, IrsCommand>
+    private transient Map<String, IrsCommand> commandMap
 
     @Override
     public void onEnable() {
