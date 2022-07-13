@@ -507,6 +507,21 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         registerListeners(pm);
     }
 
+    private IrsCommand loadCommand(final String path, final String name, final IRedSmokesModule module, final ClassLoader classLoader) throws Exception {
+        if (commandMap.containsKey(name)) {
+            return commandMap.get(name);
+        }
+        final IrsCommand cmd = (IrsCommand) classLoader.loadClass(path + name).getDeclaredConstructor().newInstance();
+        cmd.setEssentials(this);
+        cmd.setEssentialsModule(module);
+        commandMap.put(name, cmd);
+        return cmd;
+    }
+
+    public Map<String, IrsCommand> getCommandMap() {
+        return commandMap;
+    }
+
 
 
     private void handleCrash(final Throwable exception) {
