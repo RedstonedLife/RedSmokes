@@ -4,7 +4,7 @@ import com.bss.inc.redsmokes.main.items.AbstractItemDb;
 import com.bss.inc.redsmokes.main.items.CustomItemResolver;
 import com.bss.inc.redsmokes.main.metrics.MetricsWrapper;
 import com.bss.inc.redsmokes.main.perm.PermissionsHandler;
-import com.bss.inc.redsmokes.main.provider.SpawnerItemProvider;
+import com.bss.inc.redsmokes.main.provider.*;
 import net.redsmokes.api.IConf;
 import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.ISettings;
@@ -38,7 +38,12 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient I18n i18n;
     private transient MetricsWrapper metrics;
     private transient RedSmokesTimer timer;
-    private transient SpawnerItemProvider
+    private transient SpawnerItemProvider spawnerItemProvider;
+    private transient SpawnerBlockProvider spawnerBlockProvider;
+    private transient SpawnEggProvider spawnEggProvider;
+    private transient PotionMetaProvider potionMetaProvider;
+    private transient ServerStateProvider serverStateProvider;
+    private transient 
 
     @Override
     public void onEnable() {
