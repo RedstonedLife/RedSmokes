@@ -57,5 +57,5 @@ public final class Console implements IMessageRecipient {
         return Console.DISPLAY_NAME;
     }
 
-    
+    @
 }
