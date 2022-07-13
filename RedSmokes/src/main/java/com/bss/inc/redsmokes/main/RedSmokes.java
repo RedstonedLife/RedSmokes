@@ -10,6 +10,7 @@ import com.bss.inc.redsmokes.main.updatecheck.UpdateChecker;
 import net.redsmokes.api.IConf;
 import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.ISettings;
+import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -57,7 +58,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient ItemUnbreakableProvider unbreakableProvider;
     private transient WorldInfoProvider worldInfoProvider;
     private transient SignDataProvider signDataProvider;
-    private transient UpdateChecker
+    private transient UpdateChecker updateChecker;
+    private transient Map<String, IrsCommand>
 
     @Override
     public void onEnable() {
