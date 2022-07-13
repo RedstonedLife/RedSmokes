@@ -682,6 +682,14 @@ public class Settings implements net.redsmokes.api.ISettings {
     public boolean logCommandBlockCommands() {
         return logCommandBlockCommands;
     }
+    private String _getItemDbType() {
+        return config.getString("item-db-type", "auto");
+    }
+
+    @Override
+    public String getItemDbType() {
+        return itemDbType;
+    }
     @Override
     public boolean isUpdateCheckEnabled() {
         return config.getBoolean("update-check", true);
