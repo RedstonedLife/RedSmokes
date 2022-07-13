@@ -27,6 +27,6 @@ public final class Console implements IMessageRecipient {
     }
 
     /**
-     * @
+     * @deprecated Use {@link Console#getCommandSender()}
      */
 }
