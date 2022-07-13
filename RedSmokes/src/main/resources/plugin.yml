@@ -3,8 +3,7 @@ name: Essentials
 main: com.earth2me.essentials.Essentials
 # Note to developers: This next line cannot change, or the automatic versioning system will break.
 version: ${full.version}
-website: https://essentialsx.net/
-description: Provides an essential, core set of commands for Bukkit.
+description: Provides an essential, core set of commands for Bukkit to turn it into a drug house :).
 softdepend: [Vault, LuckPerms]
 authors: [RedstonedLife, xeryka]
 api-version: "1.13"
