@@ -58,6 +58,8 @@ public interface IRedSmokes extends Plugin {
     UpdateChecker getUpdateChecker();
     BukkitTask runTaskAsynchronously(Runnable run);
     BukkitTask runTaskLaterAsynchronously(Runnable run);
+    Worth getWorth();
+    BukkitTask runTaskLaterAsynchronously(Runnable run, long delay);
     BukkitTask runTaskTimerAsynchronously(Runnable run, long delay, long period);
     int scheduleSyncDelayedTask(Runnable run);
     int scheduleSyncDelayedTask(Runnable run, long delay);
