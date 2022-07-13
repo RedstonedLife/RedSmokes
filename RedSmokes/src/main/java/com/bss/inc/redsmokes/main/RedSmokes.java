@@ -187,7 +187,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * per mail the limit is 0.01 c$ up to 0.15 c$ per mail, each person can create a different provider with its own limits
              * of course it will cost the register the provider, and every feature will cost money, the following pricing scheme (by default) is this
              * Create Provider - $1,500
-             * Domain Registering - .xyz (150$), .org (950$), .edu (
+             * Domain Registering - .xyz (150$), .org (950$), .edu (4,500$) .gov (
              */
 
         } catch (final NumberFormatException ex) {
