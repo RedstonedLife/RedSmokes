@@ -42,6 +42,7 @@ import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.plugin.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
+import org.bukkit.scheduler.BukkitTask;
 import sun.util.resources.cldr.ext.CurrencyNames_pa_Arab;
 
 import java.io.File;
@@ -1067,11 +1068,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     @Override
     public int scheduleSyncRepeatingTask(final Runnable run, final long delay, final long period) {
         return this.getScheduler().scheduleSyncRepeatingTask(this, run, delay, period);
-    }
-
-    @Override
-    public TNTExplodeListener getTNTListener() {
-        return tntListener;
     }
 
     @Override
