@@ -34,7 +34,6 @@ import java.util.regex.Pattern;
 
 
 public class RedSmokesEntityListener implements Listener {
-    private static final transient Pattern powertoolPlayer = Pattern.compile("\\{player\\}");
     private final IRedSmokes redSmokes;
 
     public RedSmokesEntityListener(final IRedSmokes redSmokes) {
