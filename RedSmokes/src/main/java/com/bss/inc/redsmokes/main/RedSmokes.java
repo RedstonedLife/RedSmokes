@@ -398,11 +398,16 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     }
 
     @Override
+    public void saveConfig() {
+        // We don't use any of the bukkit config writing, as this breaks our config file formatting.
+    }
+
+    @Override
     public void onDisable() {
         super.onDisable();
     }
 
-    
+
 
     private void handleCrash(final Throwable exception) {
         final PluginManager pm = getServer().getPluginManager();
