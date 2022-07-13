@@ -759,19 +759,13 @@ public class RedSmokesUpgrade {
         if (!redSmokes.getDataFolder().exists()) {
             redSmokes.getDataFolder().mkdirs();
         }
-        moveMotdRulesToFile("motd");
-        moveMotdRulesToFile("rules");
     }
 
     public void afterSettings() {
         sanitizeAllUserFilenames();
-        updateUsersPowerToolsFormat();
         updateUsersHomesFormat();
         deleteOldItemsCsv();
-        updateSpawnsToNewSpawnsConfig();
-        updateJailsToNewJailsConfig();
         uuidFileChange();
-        banFormatChange();
         warnMetrics();
         repairUserMap();
         convertIgnoreList();
