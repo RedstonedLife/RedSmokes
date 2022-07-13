@@ -55,6 +55,10 @@ public class Commandredsmokes extends RedSmokesCommand {
             // Info commands
             case "debug":
             case "verbose":
+                runDebug(server, sender, commandLabel, args);
+                break;
+            case "ver":
+            case "version":
         }
     }
 
