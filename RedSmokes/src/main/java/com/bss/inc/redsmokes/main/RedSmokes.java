@@ -736,10 +736,13 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         pm.registerEvents(new Listener() {
             @EventHandler(priority = EventPriority.LOW)
             public void onPlayerJoin(final PlayerJoinEvent event) {
-                event.getPlayer().sendMessage("RedSmokes failed to load, read the log file");
+                event.getPlayer().sendMessage("Essentials failed to load, read the log file.");
             }
         }, this);
-        //for(final Player player : getOn)
+        for (final Player player : getOnlinePlayers()) {
+            player.sendMessage("Essentials failed to load, read the log file.");
+        }
+        this.setEnabled(false);
     }
 
     private boolean isRedSmokesPlugin(Plugin plugin) {
