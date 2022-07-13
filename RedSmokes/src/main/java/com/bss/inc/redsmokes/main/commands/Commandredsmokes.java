@@ -1,6 +1,8 @@
 package com.bss.inc.redsmokes.main.commands;
 
+import com.bss.inc.redsmokes.main.CommandSource;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
+import org.bukkit.Server;
 import org.bukkit.Sound;
 
 import java.util.Arrays;
@@ -34,6 +36,13 @@ public class Commandredsmokes extends RedSmokesCommand {
             "GroupManager",
             "bPermissions"
     );
-    private transient TuneRunnable
+    private transient TuneRunnable currentTune = null;
+
+    public Commandredsmokes() {
+        super("redsmokes");
+    }
+
+    @Override
+    public void run(final Server server, final CommandSource sender, final String commandLabel)
 
 }
