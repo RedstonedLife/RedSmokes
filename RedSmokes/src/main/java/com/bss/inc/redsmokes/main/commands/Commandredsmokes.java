@@ -95,6 +95,38 @@ public class Commandredsmokes extends RedSmokesCommand {
         sender.sendMessage(tl("redsmokesReload", redSmokes.getDescription().getVersion()));
     }
 
+    // Pop tarts.
+    private void runNya(final Server server, final CommandSource sender, final String commandLabel, final String[] args) throws Exception {
+        if (currentTune != null) {
+            currentTune.cancel();
+        }
+
+        currentTune = new TuneRunnable(NYAN_TUNE, NOTE_HARP, redSmokes::getOnlinePlayers);
+        currentTune.runTaskTimer(redSmokes, 20, 2);
+    }
+
+    // Cow farts.
+    private void runMoo(final Server server, final CommandSource sender, final String command, final String[] args) {
+        if (args.length == 2 && args[1].equals("moo")) {
+            for (final String s : CONSOLE_MOO) {
+                redSmokes.getLogger().info(s);
+            }
+            for (final Player player : redSmokes.getOnlinePlayers()) {
+                player.sendMessage(PLAYER_MOO);
+                player.playSound(player.getLocation(), MOO_SOUND, 1, 1.0f);
+            }
+        } else {
+            if (sender.isPlayer()) {
+                sender.getSender().sendMessage(PLAYER_MOO);
+                final Player player = sender.getPlayer();
+                player.playSound(player.getLocation(), MOO_SOUND, 1, 1.0f);
+
+            } else {
+                sender.getSender().sendMessage(CONSOLE_MOO);
+            }
+        }
+    }
+
     private static class TuneRunnable extends BukkitRunnable {
         private static final Map<String, Float> noteMap = ImmutableMap.<String, Float>builder()
                 .put("1F#", 0.5f)
