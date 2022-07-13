@@ -24,7 +24,7 @@ public class MetricsWrapper {
 
     public MetricsWrapper(final JavaPlugin plugin, final int pluginId, final boolean includeCommands) {
         this.plugin = plugin;
-        this.redSmokes = (RedSmokes) Bukkit.getPluginManager().getPlugin("Essentials");
+        this.redSmokes = (RedSmokes) Bukkit.getPluginManager().getPlugin("RedSmokes");
         this.metrics = new Metrics(plugin, pluginId);
 
         plugin.getLogger().info("Starting Metrics. Opt-out using the global bStats config.");
