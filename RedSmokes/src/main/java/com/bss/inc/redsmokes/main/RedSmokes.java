@@ -211,7 +211,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              *
              *
              * Note, Made by Tal A. Baskin (13th of July, 2022. 4:56 AM)
-             * If at some point 
+             * If at some point I'll have enough time, I'll try to actually make this a SMTP
              */
 
         } catch (final NumberFormatException ex) {
