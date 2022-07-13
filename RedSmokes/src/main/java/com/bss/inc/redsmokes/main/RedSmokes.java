@@ -647,7 +647,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             }
         }
         Removed In RedSmokes-v1.0.0.11-dev+1369-a818cf2
-        An unknown error was thrown, only solution was to remove 
+        An unknown error was thrown, only solution was to remove this section
          */
 
         try {
