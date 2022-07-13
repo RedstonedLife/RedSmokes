@@ -100,16 +100,7 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
             return false;
         }
     }
-
-    private static boolean isArrowPickupEvent() {
-        try {
-            Class.forName("org.bukkit.event.player.PlayerPickupArrowEvent");
-            return true;
-        } catch (final ClassNotFoundException ignored) {
-            return false;
-        }
-    }
-
+    
     public void registerEvents() {
         redSmokes.getServer().getPluginManager().registerEvents(this, ess);
 
