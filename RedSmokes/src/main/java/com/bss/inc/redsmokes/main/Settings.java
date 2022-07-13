@@ -682,6 +682,11 @@ public class Settings implements net.redsmokes.api.ISettings {
     private boolean _logCommandBlockCommands() {
         return config.getBoolean("log-command-block-commands", true);
     }
+
+    @Override
+    public boolean logCommandBlockCommands() {
+        return logCommandBlockCommands;
+    }
     @Override
     public boolean isUpdateCheckEnabled() {
         return config.getBoolean("update-check", true);
