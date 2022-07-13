@@ -108,6 +108,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         balanceTop = new BalanceTopImpl(this);
         permissionsHandler = new PermissionsHandler(this, false);
         Economy.setEss(this);
+        
     }
 
     @Override
