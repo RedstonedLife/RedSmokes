@@ -202,7 +202,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * tal.baskin@mc-mail.net
              * tal.baskin@mc-mail.com
              * When opening the email in game, you will be able to browse through the emails in a GUI, each email is a GUI containing 5 items
-             * 
+             * Item #1 - Date Information (When it was sent)
+             * Item #2 - User Information (
              */
 
         } catch (final NumberFormatException ex) {
