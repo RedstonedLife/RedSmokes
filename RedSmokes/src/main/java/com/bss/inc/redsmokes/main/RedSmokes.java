@@ -36,10 +36,7 @@ import sun.util.resources.cldr.ext.CurrencyNames_pa_Arab;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -527,6 +524,81 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public List<String> onTabComplete(final CommandSender sender, final Command command, final String commandLabel, final String[] args) {
         return onTabCompleteRedSmokes(sender, command, commandLabel, args, RedSmokes.class.getClassLoader(),
                 "com.bss.inc.redsmokes.main.commands.Command", "redsmokes.", null);
+    }
+
+    @Override
+    public List<String> onTabCompleteEssentials(final CommandSender cSender, final Command command, final String commandLabel, final String[] args,
+                                                final ClassLoader classLoader, final String commandPath, final String permissionPrefix,
+                                                final IEssentialsModule module) {
+        if (!getSettings().isCommandOverridden(command.getName()) && (!commandLabel.startsWith("e") || commandLabel.equalsIgnoreCase(command.getName()))) {
+            final Command pc = alternativeCommandsHandler.getAlternative(commandLabel);
+            if (pc instanceof PluginCommand) {
+                try {
+                    final TabCompleter completer = ((PluginCommand) pc).getTabCompleter();
+                    if (completer != null) {
+                        return completer.onTabComplete(cSender, command, commandLabel, args);
+                    }
+                } catch (final Exception ex) {
+                    LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
+                }
+            }
+        }
+
+        try {
+            // Note: The tab completer is always a player, even when tab-completing in a command block
+            User user = null;
+            if (cSender instanceof Player) {
+                user = getUser((Player) cSender);
+            }
+
+            final CommandSource sender = new CommandSource(cSender);
+
+            // Check for disabled commands
+            if (getSettings().isCommandDisabled(commandLabel)) {
+                if (getKnownCommandsProvider().getKnownCommands().containsKey(commandLabel)) {
+                    final Command newCmd = getKnownCommandsProvider().getKnownCommands().get(commandLabel);
+                    if (!(newCmd instanceof PluginIdentifiableCommand) || ((PluginIdentifiableCommand) newCmd).getPlugin() != this) {
+                        return newCmd.tabComplete(cSender, commandLabel, args);
+                    }
+                }
+                return Collections.emptyList();
+            }
+
+            final IEssentialsCommand cmd;
+            try {
+                cmd = loadCommand(commandPath, command.getName(), module, classLoader);
+            } catch (final Exception ex) {
+                sender.sendMessage(tl("commandNotLoaded", commandLabel));
+                LOGGER.log(Level.SEVERE, tl("commandNotLoaded", commandLabel), ex);
+                return Collections.emptyList();
+            }
+
+            // Check authorization
+            if (user != null && !user.isAuthorized(cmd, permissionPrefix)) {
+                return Collections.emptyList();
+            }
+
+            if (user != null && user.isJailed() && !user.isAuthorized(cmd, "essentials.jail.allow.")) {
+                return Collections.emptyList();
+            }
+
+            // Run the command
+            try {
+                if (user == null) {
+                    return cmd.tabComplete(getServer(), sender, commandLabel, command, args);
+                } else {
+                    return cmd.tabComplete(getServer(), user, commandLabel, command, args);
+                }
+            } catch (final Exception ex) {
+                showError(sender, ex, commandLabel);
+                // Tab completion shouldn't fail
+                LOGGER.log(Level.SEVERE, tl("commandFailed", commandLabel), ex);
+                return Collections.emptyList();
+            }
+        } catch (final Throwable ex) {
+            LOGGER.log(Level.SEVERE, tl("commandFailed", commandLabel), ex);
+            return Collections.emptyList();
+        }
     }
 
 
