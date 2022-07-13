@@ -119,7 +119,7 @@ public class SignBlockListener implements Listener {
             return;
         }
 
-        for (final EssentialsSign sign : ess.getSettings().enabledSigns()) {
+        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
             if (event.getLine(0).equalsIgnoreCase(sign.getSuccessName(ess))) {
                 event.setCancelled(true);
                 return;
@@ -139,7 +139,7 @@ public class SignBlockListener implements Listener {
         }
 
         final Block against = event.getBlockAgainst();
-        if (MaterialUtil.isSign(against.getType()) && EssentialsSign.isValidSign(ess, new EssentialsSign.BlockSign(against))) {
+        if (MaterialUtil.isSign(against.getType()) && RedSmokesSign.isValidSign(ess, new RedSmokesSign.BlockSign(against))) {
             event.setCancelled(true);
             return;
         }
@@ -147,7 +147,7 @@ public class SignBlockListener implements Listener {
         if (MaterialUtil.isSign(block.getType())) {
             return;
         }
-        for (final EssentialsSign sign : ess.getSettings().enabledSigns()) {
+        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
             if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockPlace(block, event.getPlayer(), ess)) {
                 event.setCancelled(true);
                 return;
@@ -163,7 +163,7 @@ public class SignBlockListener implements Listener {
         }
 
         final Block block = event.getBlock();
-        if ((MaterialUtil.isSign(block.getType()) && EssentialsSign.isValidSign(ess, new EssentialsSign.BlockSign(block))) || EssentialsSign.checkIfBlockBreaksSigns(block)) {
+        if ((MaterialUtil.isSign(block.getType()) && RedSmokesSign.isValidSign(ess, new RedSmokesSign.BlockSign(block))) || RedSmokesSign.checkIfBlockBreaksSigns(block)) {
             event.setCancelled(true);
             return;
         }
