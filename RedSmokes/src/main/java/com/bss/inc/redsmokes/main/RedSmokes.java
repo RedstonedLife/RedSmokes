@@ -195,7 +195,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              *
              * Example Emails Of Every Domain:
              * (Provider Name will be <br>mc-mail</br> for the examples)
-             * 
+             * tal.baskin@mc-mail.xyz
              *
              */
 
