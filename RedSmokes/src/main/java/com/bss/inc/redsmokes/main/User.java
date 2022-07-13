@@ -39,7 +39,7 @@ public class User extends UserData implements IUser, Comparable<User> {
     // Misc
     private transient long lastOnlineActivity;
     private transient long lastThrottledAction;
-    private transient long lastActivity = System.currentTimeMillis();
+    private final transient long lastActivity = System.currentTimeMillis();
     private long lastNotifiedAboutMailsMs;
     private transient final List<String> signCopy = Lists.newArrayList("","","","");
     private transient long lastVanishTime = System.currentTimeMillis();

@@ -88,7 +88,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient WorldInfoProvider worldInfoProvider;
     private transient SignDataProvider signDataProvider;
     private transient UpdateChecker updateChecker;
-    private transient Map<String, IrsCommand> commandMap = new HashMap<>();
+    private final transient Map<String, IrsCommand> commandMap = new HashMap<>();
 
     static {
         EconomyLayers.init();
