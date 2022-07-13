@@ -15,7 +15,7 @@ commands:
   balance:
     description: States the current balance of a player.
     usage: /<command> [player]
-    aliases: [bal,rbal,rbalance,money,rmoney ]
+    aliases: [bal,rbal,rbalance,money,rmoney]
 
 permissions:
   redsmokes.*:
