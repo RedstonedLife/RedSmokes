@@ -37,6 +37,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient I18n i18n;
     private transient MetricsWrapper metrics;
     private transient RedSmokesTimer timer;
+    private transient 
 
     @Override
     public void onEnable() {
