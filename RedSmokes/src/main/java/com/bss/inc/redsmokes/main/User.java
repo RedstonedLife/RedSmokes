@@ -30,6 +30,7 @@ public class User extends UserData implements IUser, Comparable<User> {
 
     // User Properties
     private transient boolean vanished;
+    private boolean recipeSee = false;
     private boolean hidden = false;
 
     // Misc
