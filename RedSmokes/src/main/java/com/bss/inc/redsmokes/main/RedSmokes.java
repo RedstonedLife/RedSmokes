@@ -25,6 +25,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
+import sun.util.resources.cldr.ext.CurrencyNames_pa_Arab;
 
 import java.io.File;
 import java.io.IOException;
@@ -168,6 +169,12 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             }
 
             final RedSmokesUpgrade upgrade = new RedSmokesUpgrade(this);
+            upgrade.beforeSettings();
+            execTimer.mark("Upgrade");
+
+            confList = new ArrayList<>();
+            settings = new Settings(this);
+            confList.add(settings);
             
 
         } catch (final NumberFormatException ex) {
