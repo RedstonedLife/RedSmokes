@@ -293,7 +293,7 @@ public class RedSmokesUpgrade {
             redSmokes.getLogger().info("To finish purging broken NPC accounts, rename the \"plugins/Essentials/userdata-npc-backup\" folder and restart your server.");
             return;
         } else if (!backupFolder.mkdir()) {
-            ess.getLogger().info("Skipping NPC purge due to error creating backup folder.");
+            redSmokes.getLogger().info("Skipping NPC purge due to error creating backup folder.");
             return;
         }
 
