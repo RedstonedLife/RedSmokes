@@ -7,3 +7,5 @@ description: Provides an essential, core set of commands for Bukkit to turn it i
 softdepend: [Vault, LuckPerms]
 authors: [RedstonedLife, xeryka]
 api-version: "1.13"
+commands:
+  
