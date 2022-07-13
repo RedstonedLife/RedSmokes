@@ -183,9 +183,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 }
             }
 
-            /*final RedSmokesUpgrade upgrade = new RedSmokesUpgrade(this);
+            final RedSmokesUpgrade upgrade = new RedSmokesUpgrade(this);
             upgrade.beforeSettings();
-            execTimer.mark("Upgrade");*/
+            execTimer.mark("Upgrade");
 
             confList = new ArrayList<>();
             settings = new Settings(this);
@@ -240,8 +240,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             balanceTop = new BalanceTopImpl(this);
             execTimer.mark("Init(BalanceTop)");
 
-            /*upgrade.afterSettings();
-            execTimer.mark("Upgrade2");*/
+            upgrade.afterSettings();
+            execTimer.mark("Upgrade2");
 
             worth = new Worth(this.getDataFolder());
             confList.add(worth);
