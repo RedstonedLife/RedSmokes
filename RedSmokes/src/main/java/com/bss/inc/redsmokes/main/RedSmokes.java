@@ -85,6 +85,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     @Override
     public ISettings getSettings() {return settings;}
 
+    public void setupForTesting(final)
+
     @Override
     public void onEnable() {
         try {
