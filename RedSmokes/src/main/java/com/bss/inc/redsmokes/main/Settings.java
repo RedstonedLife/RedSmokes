@@ -2,8 +2,8 @@ package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;
-import com.bss.inc.redsmokes.main.textreader.signs.RedSmokesSign;
-import com.bss.inc.redsmokes.main.textreader.signs.Signs;
+import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
+import com.bss.inc.redsmokes.main.signs.Signs;
 import com.bss.inc.redsmokes.main.utils.NumberUtil;
 import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.commands.IrsCommand;

@@ -1,2 +1,4 @@
-package com.bss.inc.redsmokes.main.textreader;public class SimpleTextInput {
+package com.bss.inc.redsmokes.main.textreader;
+
+public class SimpleTextInput {
 }

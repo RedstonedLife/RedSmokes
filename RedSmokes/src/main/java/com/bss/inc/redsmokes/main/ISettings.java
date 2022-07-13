@@ -2,7 +2,7 @@ package com.bss.inc.redsmokes.main;
 
 import net.redsmokes.api.IConf;
 import net.redsmokes.api.commands.IrsCommand;
-import com.bss.inc.redsmokes.main.textreader.signs.RedSmokesSign;
+import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import org.bukkit.Material;
 
 import java.io.File;
