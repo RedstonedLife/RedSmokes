@@ -194,8 +194,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * Client Storage (How many mails each client can store), 15 (100$), 30 (200$), 50 (500$), 100 (1,000$), UNLIMITED (15,000$, requires redsmokes.mail.no_limit)
              *
              * Example Emails Of Every Domain:
+             * (Provider Name will be 
              *
-             * 
              */
 
         } catch (final NumberFormatException ex) {
