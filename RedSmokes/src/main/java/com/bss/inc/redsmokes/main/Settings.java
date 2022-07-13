@@ -72,7 +72,6 @@ public class Settings implements net.redsmokes.api.ISettings {
     private String itemDbType; // #EasterEgg - admins can manually switch items provider if they want
     private boolean allowOldIdSigns;
     private boolean isSafeUsermap;
-
     
     public Settings(final @NotNull IRedSmokes redSmokes) {
         this.redSmokes = redSmokes;
