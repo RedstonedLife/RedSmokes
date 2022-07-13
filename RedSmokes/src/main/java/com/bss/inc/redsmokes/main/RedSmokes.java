@@ -20,7 +20,9 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,7 +61,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient WorldInfoProvider worldInfoProvider;
     private transient SignDataProvider signDataProvider;
     private transient UpdateChecker updateChecker;
-    private transient Map<String, IrsCommand> commandMap
+    private transient Map<String, IrsCommand> commandMap = new HashMap<>();
 
     @Override
     public void onEnable() {
