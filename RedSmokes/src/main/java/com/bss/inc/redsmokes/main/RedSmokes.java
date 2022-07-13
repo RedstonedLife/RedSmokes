@@ -610,7 +610,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     }
 
     @Override
-    public boolean onCommandRedSmokes(final CommandSender cSender, final Command command, final String commandLabel, final String[] args, final ClassLoader classLoader, final String commandPath, final String permissionPrefix, final IEssentialsModule module) {
+    public boolean onCommandRedSmokes(final CommandSender cSender, final Command command, final String commandLabel, final String[] args, final ClassLoader classLoader, final String commandPath, final String permissionPrefix, final IRedSmokesModule module) {
         // Allow plugins to override the command via onCommand
         if (!getSettings().isCommandOverridden(command.getName()) && (!commandLabel.startsWith("e") || commandLabel.equalsIgnoreCase(command.getName()))) {
             if (getSettings().isDebug()) {
