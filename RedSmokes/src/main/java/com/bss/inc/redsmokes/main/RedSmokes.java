@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.items.AbstractItemDb;
 import com.bss.inc.redsmokes.main.items.CustomItemResolver;
 import com.bss.inc.redsmokes.main.metrics.MetricsWrapper;
@@ -64,7 +65,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient Map<String, IrsCommand> commandMap = new HashMap<>();
 
     static {
-        
+        EconomyLayers.init();
     }
 
     @Override
