@@ -57,7 +57,6 @@ public class User extends UserData implements IUser, Comparable<User> {
     public boolean isRecipeSee() {
         return recipeSee;
     }
-
     public void setRecipeSee(final boolean recipeSee) {
         this.recipeSee = recipeSee;
     }
