@@ -253,7 +253,7 @@ public class RedSmokesUpgrade {
      * <p>
      * To quote JRoy, who suffered immensely while trying to debug and fix various related issues:
      * <p>
-     * "Essentials decided when adding its initial support for UUIDs, it wanted an implementation which would cause
+     * "RedSmokes decided when adding its initial support for UUIDs, it wanted an implementation which would cause
      * eternal pain and suffering for any person who dared touch any of the code in the future. This code that was made
      * was so bad, it managed to somehow not maintain any actual UUID support for any external integrations/plugins.
      * Up until 2.19.0 and 2.18.0 respectively, our Vault integration and entire Economy system was entirely based off
