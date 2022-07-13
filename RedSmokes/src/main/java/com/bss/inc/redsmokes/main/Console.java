@@ -17,6 +17,9 @@ public final class Console implements IMessageRecipient {
     private Console(final IRedSmokes redSmokes) {
         this.redSmokes = redSmokes;
         this.messageRecipient = new SimpleMessageRecipient(redSmokes,this);
-        
     }
+    public static Console getInstance() {
+        return instance;
+    }
+    
 }
