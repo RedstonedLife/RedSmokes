@@ -29,6 +29,7 @@ import org.bukkit.plugin.java.JavaPluginLoader;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -108,6 +109,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         balanceTop = new BalanceTopImpl(this);
         permissionsHandler = new PermissionsHandler(this, false);
         Economy.setEss(this);
+        confList = new ArrayList<>();
         
     }
 
