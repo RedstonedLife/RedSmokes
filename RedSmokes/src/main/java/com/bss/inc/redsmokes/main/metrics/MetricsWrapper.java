@@ -1,6 +1,8 @@
 package com.bss.inc.redsmokes.main.metrics;
 
 import com.bss.inc.redsmokes.main.RedSmokes;
+import com.bss.inc.redsmokes.main.economy.EconomyLayer;
+import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.AdvancedBarChart;
 import org.bstats.charts.CustomChart;
@@ -48,9 +50,9 @@ public class MetricsWrapper {
     private void addPermsChart() {
         metrics.addCustomChart(new DrilldownPie("permsPlugin", () -> {
             final Map<String, Map<String, Integer>> result = new HashMap<>();
-            final String handler = ess.getPermissionsHandler().getName();
+            final String handler = redSmokes.getPermissionsHandler().getName();
             final Map<String, Integer> backend = new HashMap<>();
-            backend.put(ess.getPermissionsHandler().getBackendName(), 1);
+            backend.put(redSmokes.getPermissionsHandler().getBackendName(), 1);
             result.put(handler, backend);
             return result;
         }));
