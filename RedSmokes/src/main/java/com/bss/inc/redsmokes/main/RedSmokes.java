@@ -743,6 +743,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     }
 
     private boolean isRedSmokesPlugin(Plugin plugin) {
-        return plugin.getDescription().getMain().contains("com.bss.inc.redsmokes") || plugin.getDescription().getMain().contains("net.essentialsx");
+        return plugin.getDescription().getMain().contains("com.bss.inc.redsmokes") || plugin.getDescription().getMain().contains("net.redsmokes");
     }
 }
