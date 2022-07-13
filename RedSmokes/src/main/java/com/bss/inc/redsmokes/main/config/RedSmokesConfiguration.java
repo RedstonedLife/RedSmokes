@@ -94,7 +94,7 @@ public class RedSmokesConfiguration {
                 .file(configFile)
                 .build();
         this.templateName = templateName;
-        RedSmokes.getWrappedLogger().log(Level.INFO, "Template Name for config is " );
+        RedSmokes.getWrappedLogger().log(Level.INFO, "Template Name for config is " + templateName);
     }
 
     public CommentedConfigurationNode getRootNode() {
