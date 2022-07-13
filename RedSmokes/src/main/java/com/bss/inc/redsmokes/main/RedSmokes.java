@@ -33,7 +33,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient UserMap userMap;
     private transient BalanceTopImpl balanceTop;
     private transient ExecuteTimer execTimer;
-    private
+    private transient 
 
     @Override
     public void onEnable() {
