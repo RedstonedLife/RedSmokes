@@ -1,6 +1,8 @@
 package com.bss.inc.redsmokes.main.commands;
 
 import com.bss.inc.redsmokes.main.CommandSource;
+import com.bss.inc.redsmokes.main.economy.EconomyLayer;
+import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.google.common.collect.ImmutableMap;
@@ -187,7 +189,7 @@ public class Commandredsmokes extends RedSmokesCommand {
         }
 
         final String layer;
-        if (ess.getSettings().isEcoDisabled()) {
+        if (redSmokes.getSettings().isEcoDisabled()) {
             layer = "Disabled";
         } else if (EconomyLayers.isLayerSelected()) {
             final EconomyLayer economyLayer = EconomyLayers.getSelectedLayer();
