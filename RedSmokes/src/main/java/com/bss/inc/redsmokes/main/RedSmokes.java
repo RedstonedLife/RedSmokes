@@ -201,7 +201,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * tal.baskin@mc-mail.gov
              * tal.baskin@mc-mail.net
              * tal.baskin@mc-mail.com
-             * When opening the email 
+             * When opening the email in game, you will be able to browse through the emails in a GUI, each email is a GUI containing 
              */
 
         } catch (final NumberFormatException ex) {
