@@ -205,7 +205,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * Item #1 - Date Information (When it was sent)
              * Item #2 - User Information (From Who: To Who:)
              * Item #3 - Digital Signature / Location Signature (If provider paid for them)
-             * Item #4
+             * Item #4 -
              */
 
         } catch (final NumberFormatException ex) {
