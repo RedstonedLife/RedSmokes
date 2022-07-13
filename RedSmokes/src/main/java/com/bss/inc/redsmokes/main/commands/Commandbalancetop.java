@@ -2,6 +2,7 @@ package com.bss.inc.redsmokes.main.commands;
 
 import com.bss.inc.redsmokes.main.CommandSource;
 import com.bss.inc.redsmokes.main.textreader.SimpleTextInput;
+import com.bss.inc.redsmokes.main.textreader.TextPager;
 
 import java.text.DateFormat;
 import java.util.Calendar;
