@@ -162,7 +162,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
             final PluginManager pm = getServer().getPluginManager();
             for(final Plugin plugin : pm.getPlugins()) {
-                
+                if (plugin.getDescription().getName().startsWith("Essentials") && !plugin.getDescription().getVersion().equals(this.getDescription().getVersion()) && !plugin.getDescription().getName().equals("EssentialsAntiCheat")) {
+                    getLogger().warning(tl("versionMismatch", plugin.getDescription().getName()));
+                }
             }
 
         } catch (final NumberFormatException ex) {
