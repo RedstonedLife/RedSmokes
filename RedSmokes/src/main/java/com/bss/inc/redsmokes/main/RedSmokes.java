@@ -745,4 +745,13 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private boolean isRedSmokesPlugin(Plugin plugin) {
         return plugin.getDescription().getMain().contains("com.bss.inc.redsmokes") || plugin.getDescription().getMain().contains("net.redsmokes");
     }
+
+    @Override
+    public void showError(final CommandSource sender, final Throwable exception, final String commandLabel) {
+        sender.sendMessage(tl("errorWithMessage", exception.getMessage()));
+        if (getSettings().isDebug()) {
+            LOGGER.log(Level.INFO, tl("errorCallingCommand", commandLabel), exception);
+        }
+    }
+
 }
