@@ -177,7 +177,10 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             confList.add(settings);
             execTimer.mark("Settings");
 
-            
+            /**
+             * Mail Service Implementation (Will be re-worked based on the EssentialsX mail service but with an added
+             * touch, 
+             */
 
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
