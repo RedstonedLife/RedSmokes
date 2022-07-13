@@ -83,9 +83,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     }
 
     @Override
-    public ISettings getSettings() {
-        
-    }
+    public ISettings getSettings() {return settings;}
 
     @Override
     public void onEnable() {
