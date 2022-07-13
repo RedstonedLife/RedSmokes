@@ -51,7 +51,7 @@ public class Commandredsmokes extends RedSmokesCommand {
     @Override
     public void run(final Server server, final CommandSource sender, final String commandLabel, final String[] args) throws Exception {
         if(args.length == 0) {showUsage(sender);}
-
+        
     }
 
     private void showUsage(final CommandSource sender) throws Exception {
