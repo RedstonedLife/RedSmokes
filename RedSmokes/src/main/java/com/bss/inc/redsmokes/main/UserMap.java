@@ -149,7 +149,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
                     uuidMap.writeUUIDMap();
                 } else if (!isUUIDMatch(uuid, keyName)) {
                     if (replace) {
-                        redSmokes.getLogger().info("Found new UUID for " + name + ". Replacing " + names.get(keyName).toString() + " with " + uuid.toString());
+                        redSmokes.getLogger().info("Found new UUID for " + name + ". Replacing " + names.get(keyName).toString() + " with " + uuid);
                         names.put(keyName, uuid);
                         uuidMap.writeUUIDMap();
                     } else {
