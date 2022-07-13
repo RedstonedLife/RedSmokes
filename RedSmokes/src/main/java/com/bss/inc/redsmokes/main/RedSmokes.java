@@ -97,6 +97,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         i18n.onEnable();
         i18n.updateLocale("en");
         Console.setInstance(this);
+
+        LOGGER.log(Level.INFO, tl());
     }
 
     @Override
