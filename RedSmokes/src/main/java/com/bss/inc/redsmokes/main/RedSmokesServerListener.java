@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.nms.refl.ReflUtil;
+import net.redsmokes.api.IRedSmokes;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -13,35 +15,35 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
-public class EssentialsServerListener implements Listener {
+public class RedSmokesServerListener implements Listener {
     private static final List<String> ignoredSLPECallers = Arrays.asList(
             ".LegacyPingHandler.channelRead(", // CB responding to pings from pre-Netty clients
             "de.dytanic.cloudnet.bridge.BukkitBootstrap", // CloudNet v2 doing... something
             "de.dytanic.cloudnet.ext.bridge.bukkit.BukkitCloudNetBridgePlugin" // CloudNet v3 doing... something else
     );
 
-    private final transient IEssentials ess;
+    private final transient IRedSmokes redSmokes;
     private final boolean isPaperSample;
     private boolean unsupportedLogged = false;
     private boolean npeWarned = false;
     private Method setSampleText;
     private Method getSampleText;
 
-    public EssentialsServerListener(final IEssentials ess) {
-        this.ess = ess;
+    public RedSmokesServerListener(final IRedSmokes redSmokes) {
+        this.redSmokes = redSmokes;
 
         if (ReflUtil.getClassCached("com.destroystokyo.paper.event.server.PaperServerListPingEvent") == null) {
             // This workaround is only necessary for older Paper builds
             setSampleText = ReflUtil.getMethodCached(ServerListPingEvent.class, "setSampleText", List.class);
             getSampleText = ReflUtil.getMethodCached(ServerListPingEvent.class, "getSampleText");
             if (setSampleText != null && getSampleText != null) {
-                ess.getLogger().info("ServerListPingEvent: Paper 1.12.2 setSampleText API");
+                redSmokes.getLogger().info("ServerListPingEvent: Paper 1.12.2 setSampleText API");
                 isPaperSample = true;
                 return;
             }
         }
 
-        ess.getLogger().info("ServerListPingEvent: Spigot iterator API");
+        redSmokes.getLogger().info("ServerListPingEvent: Spigot iterator API");
         isPaperSample = false;
     }
 
