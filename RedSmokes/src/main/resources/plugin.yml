@@ -11,4 +11,4 @@ commands:
   redsmokes:
     description: Reloads RedSmokes
     usage: /<command>
-    aliases: [rrsm,rresm,res,resversion]
+    aliases: [rrsm,rresm,rres,resversion]
