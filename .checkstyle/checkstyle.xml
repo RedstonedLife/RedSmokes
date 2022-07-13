@@ -18,9 +18,6 @@
         <property name="eachLine" value="true"/>
     </module>
 
-    <!-- https://checkstyle.org/config_misc.html#NewlineAtEndOfFile -->
-    <module name="NewlineAtEndOfFile"/>
-
     <!-- https://checkstyle.org/config_filters.html#SuppressionFilter -->
     <module name="SuppressionFilter">
         <property name="file" value="${configDirectory}/suppressions.xml"/>
@@ -33,17 +30,6 @@
         <!-- https://checkstyle.org/config_misc.html#ArrayTypeStyle -->
         <module name="ArrayTypeStyle"/>
 
-        <!-- https://checkstyle.org/config_imports.html#AvoidStarImport -->
-        <module name="AvoidStarImport"/>
-
-        <!-- https://checkstyle.org/config_misc.html#AvoidEscapedUnicodeCharacters -->
-        <module name="AvoidEscapedUnicodeCharacters">
-            <property name="allowByTailComment" value="true"/>
-            <property name="allowEscapesForControlCharacters" value="true"/>
-            <property name="allowNonPrintableEscapes" value="true"/>
-            <property name="severity" value="info"/>
-        </module>
-
         <!-- https://checkstyle.org/config_misc.html#CommentsIndentation -->
         <module name="CommentsIndentation"/>
 
@@ -53,26 +39,12 @@
         <!-- https://checkstyle.org/config_whitespace.html#EmptyForIteratorPad -->
         <module name="EmptyForIteratorPad"/>
 
-        <!-- https://checkstyle.org/config_whitespace.html#EmptyLineSeparator -->
-        <module name="EmptyLineSeparator">
-            <property name="allowMultipleEmptyLines" value="true"/>
-            <property name="allowMultipleEmptyLinesInsideClassMembers" value="true"/>
-            <property name="allowNoEmptyLineBetweenFields" value="true"/>
-            <property name="tokens"
-                      value="CLASS_DEF, CTOR_DEF, ENUM_DEF, IMPORT, INSTANCE_INIT, INTERFACE_DEF, METHOD_DEF, STATIC_IMPORT, STATIC_INIT, VARIABLE_DEF"/> <!-- remove PACKAGE_DEF, temporarily remove COMPACT_CTOR_DEF, RECORD_DEF -->
-        </module>
 
         <!-- https://checkstyle.org/config_coding.html#FallThrough -->
         <module name="FallThrough">
             <property name="checkLastCaseGroup" value="true"/>
         </module>
-
-        <!-- https://checkstyle.org/config_design.html#FinalClass -->
-        <module name="FinalClass"/>
-
-        <!-- https://checkstyle.org/config_coding.html#FinalLocalVariable -->
-        <module name="FinalLocalVariable"/>
-
+        
         <!-- https://checkstyle.org/config_whitespace.html#GenericWhitespace -->
         <module name="GenericWhitespace"/>
 
@@ -96,9 +68,6 @@
         <!-- https://checkstyle.org/config_misc.html#Indentation -->
         <module name="Indentation"/>
 
-        <!-- https://checkstyle.org/config_blocks.html#LeftCurly -->
-        <module name="LeftCurly"/>
-
         <!-- https://checkstyle.org/config_naming.html#MethodName -->
         <module name="MethodName">
             <property name="format" value="^[_]?[a-z][a-zA-Z0-9]*$"/>
@@ -106,15 +75,6 @@
 
         <!-- https://checkstyle.org/config_whitespace.html#MethodParamPad -->
         <module name="MethodParamPad"/>
-
-        <!-- https://checkstyle.org/config_javadoc.html#MissingJavadocMethod -->
-        <module name="MissingJavadocMethod">
-            <property name="allowMissingPropertyJavadoc" value="true"/>
-            <property name="tokens" value="METHOD_DEF, ANNOTATION_FIELD_DEF"/> <!-- remove CTOR_DEF, COMPACT_CTOR_DEF -->
-        </module>
-
-        <!-- https://checkstyle.org/config_javadoc.html#MissingJavadocType -->
-        <module name="MissingJavadocType"/>
 
         <!-- https://checkstyle.org/config_coding.html#NoFinalizer -->
         <module name="NoFinalizer"/>
@@ -131,10 +91,6 @@
         <module name="NoWhitespaceBefore">
             <property name="allowLineBreaks" value="true"/>
         </module>
-
-        <!-- https://checkstyle.org/config_coding.html#OneStatementPerLine -->
-        <module name="OneStatementPerLine"/>
-
         <!-- https://checkstyle.org/config_misc.html#OuterTypeFilename -->
         <module name="OuterTypeFilename"/>
 
@@ -150,19 +106,6 @@
         <!-- https://checkstyle.org/config_coding.html#RequireThis -->
         <module name="RequireThis"/>
 
-        <!-- https://checkstyle.org/config_blocks.html#RightCurly -->
-        <module name="RightCurly">
-            <property name="id" value="RightCurlyAlone"/>
-            <property name="option" value="alone"/>
-            <property name="tokens"
-                      value="ANNOTATION_DEF, CLASS_DEF, CTOR_DEF, ENUM_DEF, INSTANCE_INIT, LITERAL_FOR, LITERAL_WHILE, METHOD_DEF, STATIC_INIT"/>
-        </module>
-        <module name="RightCurly">
-            <property name="id" value="RightCurlySame"/>
-            <property name="option" value="same"/>
-            <property name="tokens"
-                      value="LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_IF, LITERAL_TRY"/> <!-- add LITERAL_DO -->
-        </module>
 
         <!-- https://checkstyle.org/config_whitespace.html#SingleSpaceSeparator -->
         <module name="SingleSpaceSeparator">
@@ -171,12 +114,6 @@
 
         <!-- https://checkstyle.org/config_whitespace.html#TypecastParenPad -->
         <module name="TypecastParenPad"/>
-
-        <!-- https://checkstyle.org/config_coding.html#UnnecessaryParentheses -->
-        <module name="UnnecessaryParentheses"/>
-
-        <!-- https://checkstyle.org/config_imports.html#UnusedImports -->
-        <module name="UnusedImports"/>
 
     </module>
 </module>
