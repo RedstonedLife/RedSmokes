@@ -117,7 +117,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public void onLoad() {
         try {
             // Vault registers their RedSmokes provider at low priority, so we have to use normal priority here
-            
+            Class.forName("net.milkbowl.vault.economy.Economy");
         }
     }
 
