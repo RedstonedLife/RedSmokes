@@ -323,12 +323,12 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                 redSmokes.runTaskAsynchronously(() -> redSmokes.getServer().getPluginManager().callEvent(new AsyncUserDataLoadEvent(user, effectiveMessage)));
 
                 /** MAIL
-                 * 
+                 *
                  */
 
-                if (user.isAuthorized("essentials.updatecheck")) {
-                    ess.runTaskAsynchronously(() -> {
-                        for (String str : ess.getUpdateChecker().getVersionMessages(false, false)) {
+                if (user.isAuthorized("redsmokes.updatecheck")) {
+                    redSmokes.runTaskAsynchronously(() -> {
+                        for (String str : redSmokes.getUpdateChecker().getVersionMessages(false, false)) {
                             user.sendMessage(str);
                         }
                     });
