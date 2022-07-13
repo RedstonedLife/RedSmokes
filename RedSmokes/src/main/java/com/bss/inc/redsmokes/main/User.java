@@ -395,7 +395,6 @@ public class User extends UserData implements IUser, Comparable<User> {
             }
             setHidden(true);
             lastVanishTime = System.currentTimeMillis();
-            redsmokes.getVanishedPlayersNew().add(getName());
             this.getBase().setMetadata("vanished", new FixedMetadataValue(redsmokes, true));
             if (isAuthorized("redsmokes.vanish.effect")) {
                 this.getBase().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1, false));
