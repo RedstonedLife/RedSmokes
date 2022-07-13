@@ -190,6 +190,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * Domain Registering - .xyz (150$), .org (950$), .edu (4,500$) .gov (15,000$ requires redsmokes.mail.gov), .net (17,500$) .com (20,500$)
              * Mail Size - 25 characters (100$) 50 characters (200$), 100 characters (300$) 250 characters (500$) 512 characters (1,250$)
              * Digital Signing (Cryptographically Signing) <- This will authenticate messages so no one can fake a message, 8,000$
+             * 
              */
 
         } catch (final NumberFormatException ex) {
