@@ -53,4 +53,5 @@ public final class Console implements IMessageRecipient {
     }
 
     @Override
+    public
 }
