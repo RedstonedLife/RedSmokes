@@ -79,5 +79,6 @@ public interface IUser {
      */
     boolean isVanished();
     void setVanished(boolean vanish);
+    Block getTargetBlock(int maxDistance);
 
 }
