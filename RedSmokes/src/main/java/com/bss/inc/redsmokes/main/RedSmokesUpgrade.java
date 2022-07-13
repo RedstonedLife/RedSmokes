@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;
 import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
 import com.google.common.base.Charsets;
@@ -487,7 +488,7 @@ public class RedSmokesUpgrade {
             if (!file.isFile() || !file.getName().endsWith(".yml")) {
                 continue;
             }
-            final EssentialsConfiguration config = new EssentialsConfiguration(file);
+            final RedSmokesConfiguration config = new RedSmokesConfiguration(file);
             try {
 
                 config.load();
@@ -521,7 +522,7 @@ public class RedSmokesUpgrade {
                 }
 
             } catch (final RuntimeException ex) {
-                ess.getLogger().log(Level.INFO, "File: " + file);
+                redSmokes.getLogger().log(Level.INFO, "File: " + file);
                 throw ex;
             }
         }
