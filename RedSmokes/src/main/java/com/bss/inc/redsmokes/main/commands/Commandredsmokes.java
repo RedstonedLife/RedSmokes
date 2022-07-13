@@ -10,6 +10,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
@@ -133,14 +136,14 @@ public class Commandredsmokes extends RedSmokesCommand {
 
     // Displays versions of EssentialsX and related plugins.
     private void runVersion(final Server server, final CommandSource sender, final String commandLabel, final String[] args) throws Exception {
-        if (sender.isPlayer() && !ess.getUser(sender.getPlayer()).isAuthorized("essentials.version")) return;
+        if (sender.isPlayer() && !redSmokes.getUser(sender.getPlayer()).isAuthorized("redsmokes.version")) return;
 
         boolean isMismatched = false;
         boolean isVaultInstalled = false;
         boolean isUnsupported = false;
         final VersionUtil.SupportStatus supportStatus = VersionUtil.getServerSupportStatus();
         final PluginManager pm = server.getPluginManager();
-        final String essVer = pm.getPlugin("Essentials").getDescription().getVersion();
+        final String essVer = pm.getPlugin("RedSmokes").getDescription().getVersion();
 
         final String serverMessageKey;
         if (supportStatus.isSupported()) {
@@ -153,28 +156,12 @@ public class Commandredsmokes extends RedSmokesCommand {
 
         sender.sendMessage(tl(serverMessageKey, "Server", server.getBukkitVersion() + " " + server.getVersion()));
         sender.sendMessage(tl(serverMessageKey, "Brand", server.getName()));
-        sender.sendMessage(tl("versionOutputFine", "EssentialsX", essVer));
+        sender.sendMessage(tl("versionOutputFine", "RedSmokes", essVer));
 
         for (final Plugin plugin : pm.getPlugins()) {
             final PluginDescriptionFile desc = plugin.getDescription();
             String name = desc.getName();
             final String version = desc.getVersion();
-
-            if (name.startsWith("Essentials") && !name.equalsIgnoreCase("Essentials")) {
-                if (officialPlugins.contains(name)) {
-                    name = name.replace("Essentials", "EssentialsX");
-
-                    if (!version.equalsIgnoreCase(essVer)) {
-                        isMismatched = true;
-                        sender.sendMessage(tl("versionOutputWarn", name, version));
-                    } else {
-                        sender.sendMessage(tl("versionOutputFine", name, version));
-                    }
-                } else {
-                    sender.sendMessage(tl("versionOutputUnsupported", name, version));
-                    isUnsupported = true;
-                }
-            }
 
             if (versionPlugins.contains(name)) {
                 if (warnPlugins.contains(name)) {
