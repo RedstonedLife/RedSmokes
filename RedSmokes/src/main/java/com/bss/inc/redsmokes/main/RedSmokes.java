@@ -94,7 +94,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         if(!dataFolder.delete()) {throw new IOException();}
         if(!dataFolder.mkdir()) {throw new IOException();}
         i18n = new I18n(this);
-        i18n
+        i18n.onEnable();
+        i18n.updateLocale();
     }
 
     @Override
