@@ -10,7 +10,6 @@ import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.event.EventPriority;
-import org.jetbrains.annotations.NotNull;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 
 import java.io.File;
