@@ -133,6 +133,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             execTimer.start();
             i18n = new I18n(this);
             i18n.onEnable();
+            execTimer.mark("I18n1");
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
         } catch (final Error ex) {
