@@ -34,7 +34,7 @@ public class ManagedFile {
         if (file.exists()) {
             try {
                 if (checkForVersion(file, redSmokes.getDescription().getVersion()) && !file.delete()) {
-                    throw new IOException("Could not delete file " + file.toString());
+                    throw new IOException("Could not delete file " + file);
                 }
             } catch (final IOException ex) {
                 RedSmokes.getWrappedLogger().log(Level.SEVERE, ex.getMessage(), ex);
@@ -112,7 +112,7 @@ public class ManagedFile {
                                 if (correct.equals(test)) {
                                     return true;
                                 } else {
-                                    RedSmokes.getWrappedLogger().warning("File " + file.toString() + " has been modified by user and file version differs, please update the file manually.");
+                                    RedSmokes.getWrappedLogger().warning("File " + file + " has been modified by user and file version differs, please update the file manually.");
                                 }
                             }
                         }

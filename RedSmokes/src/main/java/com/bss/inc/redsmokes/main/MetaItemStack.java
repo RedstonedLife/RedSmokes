@@ -58,8 +58,8 @@ public class MetaItemStack {
         }
     }
 
-    private static final transient Pattern splitPattern = Pattern.compile("[:+',;.]");
-    private static final transient Pattern hexPattern = Pattern.compile("#([0-9a-fA-F]{6})");
+    private static final Pattern splitPattern = Pattern.compile("[:+',;.]");
+    private static final Pattern hexPattern = Pattern.compile("#([0-9a-fA-F]{6})");
     private ItemStack stack;
     private FireworkEffect.Builder builder = FireworkEffect.builder();
     private PotionEffectType pEffectType;
