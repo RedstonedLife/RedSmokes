@@ -1,2 +1,4 @@
-package com.bss.inc.redsmokes.main;public class Worth {
+package com.bss.inc.redsmokes.main;
+
+public class Worth {
 }
