@@ -231,12 +231,7 @@ public class Commandredsmokes extends RedSmokesCommand {
             final List<String> options = Lists.newArrayList();
             options.add("reload");
             options.add("version");
-            options.add("dump");
-            options.add("commands");
             options.add("debug");
-            options.add("reset");
-            options.add("cleanup");
-            options.add("homes");
             //options.add("uuidconvert");
             //options.add("uuidtest");
             //options.add("nya");
