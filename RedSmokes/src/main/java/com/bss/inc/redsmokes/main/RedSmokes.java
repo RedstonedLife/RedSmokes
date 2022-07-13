@@ -651,8 +651,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             final CommandSource sender = new CommandSource(cSender);
 
             //Print version even if admin command is not available #easteregg
-            if (commandLabel.equalsIgnoreCase("essversion")) {
-                sender.sendMessage("This server is running Essentials " + getDescription().getVersion());
+            if (commandLabel.equalsIgnoreCase("redversion")) {
+                sender.sendMessage("This server is running RedSmokes " + getDescription().getVersion());
                 return true;
             }
 
