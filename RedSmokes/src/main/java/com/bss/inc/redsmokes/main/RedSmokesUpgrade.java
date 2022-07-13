@@ -201,7 +201,7 @@ public class RedSmokesUpgrade {
 
         redSmokes.getLogger().info("Attempting to migrate legacy userdata keys to Configurate");
 
-        final File userdataFolder = new File(ess.getDataFolder(), "userdata");
+        final File userdataFolder = new File(redSmokes.getDataFolder(), "userdata");
         if (!userdataFolder.exists() || !userdataFolder.isDirectory()) {
             return;
         }
@@ -480,7 +480,7 @@ public class RedSmokesUpgrade {
         if (doneFile.getBoolean("updateUsersHomesFormat", false)) {
             return;
         }
-        final File userdataFolder = new File(ess.getDataFolder(), "userdata");
+        final File userdataFolder = new File(redSmokes.getDataFolder(), "userdata");
         if (!userdataFolder.exists() || !userdataFolder.isDirectory()) {
             return;
         }
