@@ -46,7 +46,7 @@ public class Commandbalancetop extends RedSmokesCommand {
             }
         }
 
-        if (!force && ess.getBalanceTop().getCacheAge() > System.currentTimeMillis() - CACHETIME) {
+        if (!force && redSmokes.getBalanceTop().getCacheAge() > System.currentTimeMillis() - CACHETIME) {
             outputCache(sender, page);
             return;
         }
