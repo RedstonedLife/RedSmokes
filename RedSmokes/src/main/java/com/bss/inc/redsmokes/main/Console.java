@@ -6,6 +6,8 @@ import net.redsmokes.api.IRedSmokes;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 
+import java.util.UUID;
+
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public final class Console implements IMessageRecipient {
@@ -38,6 +40,16 @@ public final class Console implements IMessageRecipient {
 
     public CommandSender getCommandSender() {
         return redSmokes.getServer().getConsoleSender();
+    }
+
+    @Override
+    public String getName() {
+        return Console.NAME;
+    }
+
+    @Override
+    public UUID getUUID() {
+        return null;
     }
 
     @Override
