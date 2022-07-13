@@ -68,11 +68,11 @@ import java.util.regex.Pattern;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
-public class EssentialsPlayerListener implements Listener, FakeAccessor {
+public class RedSmokesPlayerListener implements Listener, FakeAccessor {
     private final transient IRedSmokes redSmokes;
     private final ConcurrentHashMap<UUID, Integer> pendingMotdTasks = new ConcurrentHashMap<>();
 
-    public EssentialsPlayerListener(final IRedSmokes parent) {
+    public RedSmokesPlayerListener(final IRedSmokes parent) {
         this.redSmokes = parent;
     }
 
