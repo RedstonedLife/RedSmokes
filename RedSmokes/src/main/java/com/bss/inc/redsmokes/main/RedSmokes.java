@@ -183,7 +183,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * your Minecraft UUID, Upon joining if you would like to receive emails you can register an email address
              * in-game it will be GUI based, in-console it will look like so /register-mail (provider) (username)
              * example: /register-mail mc-mail.com tal.baskin, the following email address will be attached to your
-             * UUID and look in-game like so 
+             * UUID and look in-game like so <br>tal.baskin@mc-mail.com</br>, Users can create email providers, and charge
+             * per mail
              */
 
         } catch (final NumberFormatException ex) {
