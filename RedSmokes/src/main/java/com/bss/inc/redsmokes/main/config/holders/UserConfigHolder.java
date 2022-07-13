@@ -162,7 +162,7 @@ public class UserConfigHolder {
         this.baltopExempt = value;
     }
 
-    private @NonNull Timestamps timestamps = new Timestamps();
+    private final @NonNull Timestamps timestamps = new Timestamps();
 
     public Timestamps timestamps() {
         return this.timestamps;
