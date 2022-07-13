@@ -54,6 +54,13 @@ public class User extends UserData implements IUser, Comparable<User> {
     public boolean isAuthorized(final IrsCommand cmd, final String permissionPrefix) {
         return isAuthorized(permissionPrefix + (cmd.getName().equals("r") ? "msg" : cmd.getName()));
     }
+    public boolean isRecipeSee() {
+        return recipeSee;
+    }
+
+    public void setRecipeSee(final boolean recipeSee) {
+        this.recipeSee = recipeSee;
+    }
     public boolean canInteractVanished() {
         return isAuthorized("redsmokes.vanish.interact");
     }
