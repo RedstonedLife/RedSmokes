@@ -221,11 +221,11 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerQuit(final PlayerQuitEvent event) {
-        final User user = ess.getUser(event.getPlayer());
+        final User user = redSmokes.getUser(event.getPlayer());
 
         final Integer pendingId = pendingMotdTasks.remove(user.getUUID());
         if (pendingId != null) {
-            ess.getScheduler().cancelTask(pendingId);
+            redSmokes.getScheduler().cancelTask(pendingId);
         }
 
         if (hideJoinQuitMessages() || (ess.getSettings().allowSilentJoinQuit() && user.isAuthorized("essentials.silentquit"))) {
@@ -276,12 +276,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(final PlayerJoinEvent event) {
-        final String joinMessage = event.getJoinMessage();
-        ess.runTaskAsynchronously(() -> delayedJoin(event.getPlayer(), joinMessage));
-
-        if (hideJoinQuitMessages() || ess.getSettings().allowSilentJoinQuit() || ess.getSettings().isCustomJoinMessage()) {
-            event.setJoinMessage(null);
-        }
     }
 
     public void delayedJoin(final Player player, final String message) {
