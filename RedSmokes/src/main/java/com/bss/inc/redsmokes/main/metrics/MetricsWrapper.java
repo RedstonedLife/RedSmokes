@@ -83,7 +83,7 @@ public class MetricsWrapper {
     }
 
     private void addReleaseBranchChart() {
-        metrics.addCustomChart(new SimplePie("releaseBranch", ess.getUpdateChecker()::getVersionBranch));
+        metrics.addCustomChart(new SimplePie("releaseBranch", redSmokes.getUpdateChecker()::getVersionBranch));
     }
 
     private void addCommandsChart() {
