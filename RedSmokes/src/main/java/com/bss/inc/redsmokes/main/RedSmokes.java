@@ -371,6 +371,15 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 }
             });
 
+            metrics = new MetricsWrapper(this, 858, true);
+
+            execTimer.mark("Init(External)");
+
+            final String timeroutput = execTimer.end();
+            if (getSettings().isDebug()) {
+                LOGGER.log(Level.INFO, "Essentials load " + timeroutput);
+            }
+
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
         } catch (final Error ex) {
