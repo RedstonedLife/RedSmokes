@@ -305,7 +305,7 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
         class DelayJoinTask implements Runnable {
             @Override
             public void run() {
-                final User user = ess.getUser(player);
+                final User user = redSmokes.getUser(player);
 
                 if (!user.getBase().isOnline()) {
                     return;
@@ -335,41 +335,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                 }
                 user.getConfirmingPayments().clear();
                 user.stopTransaction();
-            }
-
-            class DelayMotdTask implements Runnable {
-                private final User user;
-
-                DelayMotdTask(final User user) {
-                    this.user = user;
-                }
-
-                @Override
-                public void run() {
-                    pendingMotdTasks.remove(user.getUUID());
-
-                    IText tempInput = null;
-
-                    if (!ess.getSettings().isCommandDisabled("motd")) {
-                        try {
-                            tempInput = new TextInput(user.getSource(), "motd", true, ess);
-                        } catch (final IOException ex) {
-                            if (ess.getSettings().isDebug()) {
-                                ess.getLogger().log(Level.WARNING, ex.getMessage(), ex);
-                            } else {
-                                ess.getLogger().log(Level.WARNING, ex.getMessage());
-                            }
-                        }
-                    }
-
-                    final IText input = tempInput;
-
-                    if (input != null && !input.getLines().isEmpty() && user.isAuthorized("essentials.motd")) {
-                        final IText output = new KeywordReplacer(input, user.getSource(), ess);
-                        final TextPager pager = new TextPager(output, true);
-                        pager.showPage("1", null, "motd", user.getSource());
-                    }
-                }
             }
         }
 
