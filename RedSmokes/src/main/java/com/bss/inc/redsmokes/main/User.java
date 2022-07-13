@@ -407,7 +407,6 @@ public class User extends UserData implements IUser, Comparable<User> {
                 p.showPlayer(getBase());
             }
             setHidden(false);
-            redsmokes.getVanishedPlayersNew().remove(getName());
             this.getBase().setMetadata("vanished", new FixedMetadataValue(redsmokes, false));
             if (isAuthorized("redsmokes.vanish.effect")) {
                 this.getBase().removePotionEffect(PotionEffectType.INVISIBILITY);
