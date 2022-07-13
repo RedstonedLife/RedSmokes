@@ -1,15 +1,12 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.OfflinePlayer;
+import com.google.common.cache.*;
 import net.redsmokes.api.IConf;
 import net.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.api.UserDoesNotExistException;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
 import com.google.common.util.concurrent.UncheckedExecutionException;
 import org.bukkit.entity.Player;
 
@@ -45,8 +42,8 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
         super();
         this.redSmokes=redSmokes;
         uuidMap = new UUIDMap(redSmokes);
-        //RemovalListener<UUID, User> remListener = new UserMapRemovalListener();
-        //users = CacheBuilder.newBuilder().maximumSize(ess.getSettings().getMaxUserCacheCount()).softValues().removalListener(remListener).build(this);
+        RemovalListener<UUID, User> remListener = new UserMapRemovalListener();
+        users = CacheBuilder.newBuilder().maximumSize(redSmokes.getSettings().getMaxUserCacheCount()).softValues().removalListener(remListener).build(this);
         final CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder();
         final int maxCount =redSmokes.getSettings().getMaxUserCacheCount();
         try {
