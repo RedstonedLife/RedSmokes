@@ -315,24 +315,19 @@ public class Settings implements net.redsmokes.api.ISettings {
     }
 
     @Override
-    public boolean isCommandCooldownsEnabled() {
-        return commandCooldowns != null;
-    }
-
-    @Override
     public long getCommandCooldownMs(final String label) {
-        final Entry<Pattern, Long> result = getCommandCooldownEntry(label);
+        final Map.Entry<Pattern, Long> result = getCommandCooldownEntry(label);
         return result != null ? result.getValue() : -1; // return cooldown in milliseconds
     }
 
     @Override
-    public Entry<Pattern, Long> getCommandCooldownEntry(final String label) {
+    public Map.Entry<Pattern, Long> getCommandCooldownEntry(final String label) {
         if (isCommandCooldownsEnabled()) {
-            for (final Entry<Pattern, Long> entry : this.commandCooldowns.entrySet()) {
+            for (final Map.Entry<Pattern, Long> entry : this.commandCooldowns.entrySet()) {
                 // Check if label matches current pattern (command-cooldown in config)
                 final boolean matches = entry.getKey().matcher(label).matches();
                 if (isDebug()) {
-                    ess.getLogger().info(String.format("Checking command '%s' against cooldown '%s': %s", label, entry.getKey(), matches));
+                    redSmokes.getLogger().info(String.format("Checking command '%s' against cooldown '%s': %s", label, entry.getKey(), matches));
                 }
 
                 if (matches) {
