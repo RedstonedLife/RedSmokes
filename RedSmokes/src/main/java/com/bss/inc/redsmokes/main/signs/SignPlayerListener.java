@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main.signs;
 
+import com.bss.inc.redsmokes.main.RedSmokes;
+import com.bss.inc.redsmokes.main.utils.MaterialUtil;
 import net.redsmokes.api.IRedSmokes;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -53,16 +55,16 @@ public class SignPlayerListener implements Listener {
         final Material mat = block.getType();
         if (MaterialUtil.isSign(mat)) {
             final String csign = ((Sign) block.getState()).getLine(0);
-            for (final EssentialsSign sign : ess.getSettings().enabledSigns()) {
-                if (csign.equalsIgnoreCase(sign.getSuccessName(ess))) {
-                    sign.onSignInteract(block, event.getPlayer(), ess);
+            for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
+                if (csign.equalsIgnoreCase(sign.getSuccessName(redSmokes))) {
+                    sign.onSignInteract(block, event.getPlayer(), redSmokes);
                     event.setCancelled(true);
                     return;
                 }
             }
         } else {
-            for (final EssentialsSign sign : ess.getSettings().enabledSigns()) {
-                if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockInteract(block, event.getPlayer(), ess)) {
+            for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
+                if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockInteract(block, event.getPlayer(), redSmokes)) {
                     event.setCancelled(true);
                     return;
                 }
