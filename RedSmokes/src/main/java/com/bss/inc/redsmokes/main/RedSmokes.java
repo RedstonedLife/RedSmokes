@@ -24,6 +24,7 @@ import net.redsmokes.api.ISettings;
 import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
+import org.bukkit.command.Command;
 import org.bukkit.event.*;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -482,6 +483,28 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         getUserMap().getUUIDMap().shutdown();
 
         HandlerList.unregisterAll(this);
+    }
+
+    @Override
+    public void reload() {
+        Trade.closeLog();
+
+        for (final IConf iConf : confList) {
+            iConf.reloadConfig();
+            execTimer.mark("Reload(" + iConf.getClass().getSimpleName() + ")");
+        }
+
+        i18n.updateLocale(settings.getLocale());
+        for (final String commandName : this.getDescription().getCommands().keySet()) {
+            final Command command = this.getCommand(commandName);
+            if (command != null) {
+                command.setDescription(tl(commandName + "CommandDescription"));
+                command.setUsage(tl(commandName + "CommandUsage"));
+            }
+        }
+
+        final PluginManager pm = getServer().getPluginManager();
+        registerListeners(pm);
     }
 
 
