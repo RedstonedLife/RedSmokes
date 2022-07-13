@@ -4,6 +4,7 @@ import com.bss.inc.redsmokes.main.commands.NotEnoughArgumentsException;
 import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
+import net.redsmokes.api.IConf;
 import net.redsmokes.api.IRedSmokes;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
