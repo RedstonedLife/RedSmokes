@@ -8,4 +8,5 @@ softdepend: [Vault, LuckPerms]
 authors: [RedstonedLife, xeryka]
 api-version: "1.13"
 commands:
-  
+  redsmokes:
+    description: 
