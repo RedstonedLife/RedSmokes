@@ -766,7 +766,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public BukkitScheduler getScheduler() {
         return this.getServer().getScheduler();
     }
-    
+
     @Override
     public Worth getWorth() {
         return worth;
