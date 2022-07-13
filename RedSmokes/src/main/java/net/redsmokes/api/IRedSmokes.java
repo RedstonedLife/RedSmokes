@@ -9,14 +9,7 @@ import org.bukkit.scheduler.BukkitTask;
 import java.util.Collection;
 
 public interface IRedSmokes extends com.bss.inc.redsmokes.main.IRedSmokes {
-    /**
-     * Get a list of players who are vanished.
-     *
-     * @return A list of players who are vanished
-     */
 
-
-    BukkitTask runTaskLaterAsynchronously(Runnable run, long delay);
 
     /**
      * Get the spawn egg provider for the current platform.
