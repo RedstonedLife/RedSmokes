@@ -72,9 +72,9 @@ public final class StringUtil {
                 buf.append(joinListSkip(seperator, skip, ((Collection) each).toArray()));
             } else {
                 try {
-                    buf.append(each.toString());
+                    buf.append(each);
                 } catch (final Exception e) {
-                    buf.append(each.toString());
+                    buf.append(each);
                 }
             }
         }
