@@ -13,6 +13,8 @@ import com.google.common.collect.Lists;
 import org.bukkit.Statistic;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -183,6 +185,15 @@ public class User extends UserData implements IUser, Comparable<User> {
             redsmokes.getServer().getPluginManager().callEvent(transactionEvent);
         } else {
             throw new ChargeException(tl("notEnoughMoney", NumberUtil.displayCurrency(value, redsmokes)));
+        }
+    }
+
+    public ItemStack getItemInHand() {
+        if (VersionUtil.getServerBukkitVersion().isLowerThan(VersionUtil.v1_9_R01)) {
+            return getBase().getInventory().getItemInHand();
+        } else {
+            final PlayerInventory inventory = getBase().getInventory();
+            return inventory.getItemInMainHand() != null ? inventory.getItemInMainHand() : inventory.getItemInOffHand();
         }
     }
 
