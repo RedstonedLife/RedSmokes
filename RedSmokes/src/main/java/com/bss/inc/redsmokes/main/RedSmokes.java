@@ -101,6 +101,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         Console.setInstance(this);
 
         LOGGER.log(Level.INFO, tl("usingTempFolderForTesting"));
+        LOGGER.log(Level.INFO, dataFolder.toString());
     }
 
     @Override
