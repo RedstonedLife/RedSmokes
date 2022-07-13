@@ -127,6 +127,115 @@ public class Commandredsmokes extends RedSmokesCommand {
         }
     }
 
+    // Displays versions of EssentialsX and related plugins.
+    private void runVersion(final Server server, final CommandSource sender, final String commandLabel, final String[] args) throws Exception {
+        if (sender.isPlayer() && !ess.getUser(sender.getPlayer()).isAuthorized("essentials.version")) return;
+
+        boolean isMismatched = false;
+        boolean isVaultInstalled = false;
+        boolean isUnsupported = false;
+        final VersionUtil.SupportStatus supportStatus = VersionUtil.getServerSupportStatus();
+        final PluginManager pm = server.getPluginManager();
+        final String essVer = pm.getPlugin("Essentials").getDescription().getVersion();
+
+        final String serverMessageKey;
+        if (supportStatus.isSupported()) {
+            serverMessageKey = "versionOutputFine";
+        } else if (supportStatus == VersionUtil.SupportStatus.UNSTABLE) {
+            serverMessageKey = "versionOutputUnsupported";
+        } else {
+            serverMessageKey = "versionOutputWarn";
+        }
+
+        sender.sendMessage(tl(serverMessageKey, "Server", server.getBukkitVersion() + " " + server.getVersion()));
+        sender.sendMessage(tl(serverMessageKey, "Brand", server.getName()));
+        sender.sendMessage(tl("versionOutputFine", "EssentialsX", essVer));
+
+        for (final Plugin plugin : pm.getPlugins()) {
+            final PluginDescriptionFile desc = plugin.getDescription();
+            String name = desc.getName();
+            final String version = desc.getVersion();
+
+            if (name.startsWith("Essentials") && !name.equalsIgnoreCase("Essentials")) {
+                if (officialPlugins.contains(name)) {
+                    name = name.replace("Essentials", "EssentialsX");
+
+                    if (!version.equalsIgnoreCase(essVer)) {
+                        isMismatched = true;
+                        sender.sendMessage(tl("versionOutputWarn", name, version));
+                    } else {
+                        sender.sendMessage(tl("versionOutputFine", name, version));
+                    }
+                } else {
+                    sender.sendMessage(tl("versionOutputUnsupported", name, version));
+                    isUnsupported = true;
+                }
+            }
+
+            if (versionPlugins.contains(name)) {
+                if (warnPlugins.contains(name)) {
+                    sender.sendMessage(tl("versionOutputUnsupported", name, version));
+                    isUnsupported = true;
+                } else {
+                    sender.sendMessage(tl("versionOutputFine", name, version));
+                }
+            }
+
+            if (name.equals("Vault")) isVaultInstalled = true;
+        }
+
+        final String layer;
+        if (ess.getSettings().isEcoDisabled()) {
+            layer = "Disabled";
+        } else if (EconomyLayers.isLayerSelected()) {
+            final EconomyLayer economyLayer = EconomyLayers.getSelectedLayer();
+            layer = economyLayer.getName() + " (" + economyLayer.getBackendName() + ")";
+        } else {
+            layer = "None";
+        }
+        sender.sendMessage(tl("versionOutputEconLayer", layer));
+
+        if (isMismatched) {
+            sender.sendMessage(tl("versionMismatchAll"));
+        }
+
+        if (!isVaultInstalled) {
+            sender.sendMessage(tl("versionOutputVaultMissing"));
+        }
+
+        if (isUnsupported) {
+            sender.sendMessage(tl("versionOutputUnsupportedPlugins"));
+        }
+
+        switch (supportStatus) {
+            case NMS_CLEANROOM:
+                sender.sendMessage(ChatColor.DARK_RED + tl("serverUnsupportedCleanroom"));
+                break;
+            case DANGEROUS_FORK:
+                sender.sendMessage(ChatColor.DARK_RED + tl("serverUnsupportedDangerous"));
+                break;
+            case UNSTABLE:
+                sender.sendMessage(ChatColor.DARK_RED + tl("serverUnsupportedMods"));
+                break;
+            case OUTDATED:
+                sender.sendMessage(ChatColor.RED + tl("serverUnsupported"));
+                break;
+            case LIMITED:
+                sender.sendMessage(ChatColor.RED + tl("serverUnsupportedLimitedApi"));
+                break;
+        }
+        if (VersionUtil.getSupportStatusClass() != null) {
+            sender.sendMessage(ChatColor.RED + tl("serverUnsupportedClass", VersionUtil.getSupportStatusClass()));
+        }
+
+        sender.sendMessage(tl("versionFetching"));
+        ess.runTaskAsynchronously(() -> {
+            for (String str : ess.getUpdateChecker().getVersionMessages(true, true)) {
+                sender.sendMessage(str);
+            }
+        });
+    }
+
     private static class TuneRunnable extends BukkitRunnable {
         private static final Map<String, Float> noteMap = ImmutableMap.<String, Float>builder()
                 .put("1F#", 0.5f)
