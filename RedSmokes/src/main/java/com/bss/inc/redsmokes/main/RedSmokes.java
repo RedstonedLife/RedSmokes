@@ -360,7 +360,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             Economy.setEss(this);
             execTimer.mark("RegHandler");
 
-            // Register /hat and /back default permissions
+            // Register and /back default permissions
             PermissionsDefaults.registerAllBackDefaults();
 
             updateChecker = new UpdateChecker(this);
