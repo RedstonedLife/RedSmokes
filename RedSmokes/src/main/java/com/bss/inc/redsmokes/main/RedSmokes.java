@@ -371,7 +371,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 }
             });
 
-            metrics = new MetricsWrapper(this, 858, true);
+            metrics = new MetricsWrapper(this, 0, true);
 
             execTimer.mark("Init(External)");
 
