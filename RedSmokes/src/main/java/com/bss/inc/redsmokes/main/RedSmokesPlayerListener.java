@@ -232,7 +232,7 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
         if (user.isVanished()) {
             user.setVanished(false);
         }
-        user.setLogoutLocation();
+        user.setLogoutLocation(user.getLocation());
         if (user.isRecipeSee()) {
             user.getBase().getOpenInventory().getTopInventory().clear();
         }
