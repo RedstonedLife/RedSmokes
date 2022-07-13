@@ -91,7 +91,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public void setupForTesting(final Server server) throws IOException, InvalidDescriptionException {
         LOGGER = new BaseLoggerProvider(this, BUKKIT_LOGGER);
         final File dataFolder = File.createTempFile("redsmokestest", "");
-        if(!dataFolder.delete()) {throw new 
+        if(!dataFolder.delete()) {throw new IOException();}
+        
     }
 
     @Override
