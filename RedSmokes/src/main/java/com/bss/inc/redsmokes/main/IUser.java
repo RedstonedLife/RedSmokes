@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import net.redsmokes.api.MaxMoneyException;
 import net.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.config.entities.CommandCooldown;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 import java.math.BigDecimal;
