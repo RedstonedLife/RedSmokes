@@ -1,1 +1,10 @@
-name: RedSmokes
+# This determines the command prefix when there are conflicts (/name:home, /name:help, etc.)
+name: Essentials
+main: com.earth2me.essentials.Essentials
+# Note to developers: This next line cannot change, or the automatic versioning system will break.
+version: ${full.version}
+website: https://essentialsx.net/
+description: Provides an essential, core set of commands for Bukkit.
+softdepend: [Vault, LuckPerms]
+authors: [RedstonedLife, ocauth]
+api-version: "1.13"
