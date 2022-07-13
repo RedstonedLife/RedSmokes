@@ -7,6 +7,7 @@ import com.bss.inc.redsmokes.main.items.AbstractItemDb;
 import com.bss.inc.redsmokes.main.items.CustomItemResolver;
 import com.bss.inc.redsmokes.main.metrics.MetricsWrapper;
 import com.bss.inc.redsmokes.main.nms.refl.providers.*;
+import com.bss.inc.redsmokes.main.perm.PermissionsDefaults;
 import com.bss.inc.redsmokes.main.perm.PermissionsHandler;
 import com.bss.inc.redsmokes.main.provider.*;
 import com.bss.inc.redsmokes.main.provider.providers.*;
@@ -356,7 +357,19 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             timer = new RedSmokesTimer(this);
             scheduleSyncRepeatingTask(timer, 1000, 50);
 
+            Economy.setEss(this);
+            execTimer.mark("RegHandler");
 
+            // Register /hat and /back default permissions
+            PermissionsDefaults.registerAllBackDefaults();
+
+            updateChecker = new UpdateChecker(this);
+            runTaskAsynchronously(() -> {
+                getLogger().log(Level.INFO, tl("versionFetching"));
+                for (String str : updateChecker.getVersionMessages(false, true)) {
+                    getLogger().log(getSettings().isUpdateCheckEnabled() ? Level.WARNING : Level.INFO, str);
+                }
+            });
 
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
