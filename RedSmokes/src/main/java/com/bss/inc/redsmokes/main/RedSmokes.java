@@ -13,14 +13,18 @@ import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.ISettings;
 import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Bukkit;
+import org.bukkit.Server;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.java.JavaPluginLoader;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +74,13 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
     public RedSmokes() {}
 
-    
+    protected RedSmokes(final JavaPluginLoader loader, final PluginDescriptionFile description, final File dataFolder, final File file) {
+        super(loader, description, dataFolder, file);
+    }
+
+    public RedSmokes(final Server server) {
+        super(new JavaPluginLoader(server), new PluginDescriptionFile("RedSmokes", "", ""))
+    }
 
     @Override
     public void onEnable() {
