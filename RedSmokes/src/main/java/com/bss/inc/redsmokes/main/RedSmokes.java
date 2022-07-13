@@ -63,6 +63,10 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient UpdateChecker updateChecker;
     private transient Map<String, IrsCommand> commandMap = new HashMap<>();
 
+    static {
+        
+    }
+
     @Override
     public void onEnable() {
         try {
