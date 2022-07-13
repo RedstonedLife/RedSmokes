@@ -43,6 +43,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     private Map<String, BigDecimal> commandCosts;
     private List<RedSmokesSign> enabledSigns = new ArrayList<>();
     private boolean signsEnabled = false;
+    private boolean logCommandBlockCommands;
     private boolean debug = false;
     private boolean configDebug = false;
     // #easteregg
