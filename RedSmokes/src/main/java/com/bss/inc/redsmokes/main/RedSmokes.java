@@ -210,7 +210,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * Item #6 - Delete Mail
              *
              *
-             * Note
+             * Note, Made by Tal A. Baskin (13th of July, 2022
              */
 
         } catch (final NumberFormatException ex) {
