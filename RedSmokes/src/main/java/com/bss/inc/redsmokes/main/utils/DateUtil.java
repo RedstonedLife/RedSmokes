@@ -1,6 +1,6 @@
 package com.bss.inc.redsmokes.main.utils;
 
-import java.util.Calender;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
