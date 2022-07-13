@@ -1,5 +1,7 @@
 package com.bss.inc.redsmokes.main.signs;
 
+import com.bss.inc.redsmokes.main.User;
+import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.MaterialUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -61,7 +63,7 @@ public class SignBlockListener implements Listener {
             }
         }
 
-        for (final EssentialsSign sign : ess.getSettings().enabledSigns()) {
+        for (final RedSmokesSign sign : ess.getSettings().enabledSigns()) {
             if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockBreak(block, player, ess)) {
                 ess.getLogger().log(Level.INFO, "A block was protected by a sign.");
                 return true;
@@ -79,7 +81,7 @@ public class SignBlockListener implements Listener {
         final User user = ess.getUser(event.getPlayer());
 
         for (int i = 0; i < 4; i++) {
-            event.setLine(i, FormatUtil.formatString(user, "essentials.signs", event.getLine(i)));
+            event.setLine(i, FormatUtil.formatString(user, "redsmokes.signs", event.getLine(i)));
         }
 
         final String lColorlessTopLine = ChatColor.stripColor(event.getLine(0)).toLowerCase().trim();
@@ -88,7 +90,7 @@ public class SignBlockListener implements Listener {
         }
         //We loop through all sign types here to prevent clashes with preexisting signs later
         for (final Signs signs : Signs.values()) {
-            final EssentialsSign sign = signs.getSign();
+            final RedSmokesSign sign = signs.getSign();
             // If the top sign line contains any of the success name (excluding colors), just remove all colours from the first line.
             // This is to ensure we are only modifying possible Essentials Sign and not just removing colors from the first line of all signs.
             // Top line and sign#getSuccessName() are both lowercased since contains is case-sensitive.
