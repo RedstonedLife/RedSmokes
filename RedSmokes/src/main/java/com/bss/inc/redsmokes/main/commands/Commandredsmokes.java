@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import static com.bss.inc.redsmokes.main.I18n.tl;
+
 public class Commandredsmokes extends RedSmokesCommand {
 
     private static final Sound NOTE_HARP = EnumUtil.valueOf(Sound.class, "BLOCK_NOTE_BLOCK_HARP", "BLOCK_NOTE_HARP", "NOTE_PIANO");
@@ -85,6 +87,12 @@ public class Commandredsmokes extends RedSmokesCommand {
     private void runDebug(final Server server, final CommandSource sender, final String commandLabel, final String[] args) throws Exception {
         redSmokes.getSettings().setDebug(!redSmokes.getSettings().isDebug());
         sender.sendMessage("RedSmokes " + redSmokes.getDescription().getVersion() + " debug mode " + (redSmokes.getSettings().isDebug() ? "enabled" : "disabled"));
+    }
+
+    // Reloads all reloadable configs.
+    private void runReload(final Server server, final CommandSource sender, final String commandLabel, final String[] args) throws Exception {
+        redSmokes.reload();
+        sender.sendMessage(tl("redsmokesReload", redSmokes.getDescription().getVersion()));
     }
 
     private static class TuneRunnable extends BukkitRunnable {
