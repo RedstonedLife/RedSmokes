@@ -60,6 +60,7 @@ public class Settings implements net.redsmokes.api.ISettings {
     private NumberFormat currencyFormat;
     private List<RedSmokesSign> unprotectedSigns = Collections.emptyList();
     private List<String> defaultEnabledConfirmCommands;
+    private String itemDbType; // #EasterEgg - admins can manually switch items provider if they want
     private boolean allowOldIdSigns;
     private boolean isSafeUsermap;
 
