@@ -154,46 +154,6 @@ public class RedSmokesUpgrade {
         redSmokes.getLogger().info("To rerun the conversion type /essentials uuidconvert");
     }
 
-    public void convertMailList() {
-        if (doneFile.getBoolean("updateUsersMailList", false)) {
-            return;
-        }
-
-        final File userdataFolder = new File(redSmokes.getDataFolder(), "userdata");
-        if (!userdataFolder.exists() || !userdataFolder.isDirectory()) {
-            return;
-        }
-        final File[] userFiles = userdataFolder.listFiles();
-        for (File file : userFiles) {
-            if (!file.isFile() || !file.getName().endsWith(".yml")) {
-                continue;
-            }
-            final RedSmokesConfiguration config = new RedSmokesConfiguration(file);
-            try {
-                config.load();
-                if (config.hasProperty("mail") && config.isList("mail")) {
-                    final ArrayList<MailMessage> messages = new ArrayList<>();
-                    for (String mailStr : Collections.synchronizedList(config.getList("mail", String.class))) {
-                        if (mailStr == null) {
-                            continue;
-                        }
-                        messages.add(new MailMessage(false, true, null, null, 0L, 0L, mailStr));
-                    }
-
-                    config.removeProperty("mail");
-                    config.setExplicitList("mail", messages, new TypeToken<List<MailMessage>>() {}.getType());
-                    config.blockingSave();
-                }
-            } catch (RuntimeException ex) {
-                redSmokes.getLogger().log(Level.INFO, "File: " + file);
-                throw ex;
-            }
-        }
-        doneFile.setProperty("updateUsersMailList", true);
-        doneFile.save();
-        redSmokes.getLogger().info("Done converting mail list.");
-    }
-
     public void convertStupidCamelCaseUserdataKeys() {
         if (doneFile.getBoolean("updateUsersStupidLegacyPathNames", false)) {
             return;
