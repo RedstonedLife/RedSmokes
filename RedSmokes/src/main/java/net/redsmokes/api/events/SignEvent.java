@@ -1,7 +1,7 @@
 package net.redsmokes.api.events;
 
 import net.redsmokes.api.IUser;
-import com.bss.inc.redsmokes.main.textreader.signs.RedSmokesSign;
+import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
