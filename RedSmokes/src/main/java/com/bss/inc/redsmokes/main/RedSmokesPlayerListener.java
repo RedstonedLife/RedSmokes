@@ -227,7 +227,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
         if (pendingId != null) {
             redSmokes.getScheduler().cancelTask(pendingId);
         }
-
         user.startTransaction();
         if (user.isVanished()) {
             user.setVanished(false);
@@ -240,7 +239,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
             user.setLastLogout(System.currentTimeMillis());
         }
         user.stopTransaction();
-
         user.dispose();
     }
 
