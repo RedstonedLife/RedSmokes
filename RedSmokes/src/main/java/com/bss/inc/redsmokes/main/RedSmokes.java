@@ -105,7 +105,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         settings = new Settings(this);
         userMap = new UserMap(this);
         balanceTop = new BalanceTopImpl(this);
-        permissionsHandler = new PermissionsHandler(this, )
+        permissionsHandler = new PermissionsHandler(this, false);
     }
 
     @Override
