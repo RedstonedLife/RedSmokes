@@ -122,148 +122,26 @@ public class EssentialsEntityListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onEntityDamage(final EntityDamageEvent event) {
-        if (event.getEntity() instanceof Player && ess.getUser((Player) event.getEntity()).isGodModeEnabled()) {
-            final Player player = (Player) event.getEntity();
-            player.setFireTicks(0);
-            player.setRemainingAir(player.getMaximumAir());
-            event.setCancelled(true);
-        }
     }
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onEntityCombust(final EntityCombustEvent event) {
-        if (event.getEntity() instanceof Player && ess.getUser((Player) event.getEntity()).isGodModeEnabled()) {
-            event.setCancelled(true);
-        }
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onEntityCombustByEntity(final EntityCombustByEntityEvent event) {
-        if (event.getCombuster() instanceof Arrow && event.getEntity() instanceof Player) {
-            final Arrow combuster = (Arrow) event.getCombuster();
-            if (combuster.getShooter() instanceof Player) {
-                final Player shooter = (Player) combuster.getShooter();
-                if (shooter.hasMetadata("NPC")) {
-                    return;
-                }
-                final User srcCombuster = ess.getUser(shooter.getUniqueId());
-                if (srcCombuster.isGodModeEnabled() && !srcCombuster.isAuthorized("essentials.god.pvp")) {
-                    event.setCancelled(true);
-                }
-                if (srcCombuster.isHidden() && !srcCombuster.isAuthorized("essentials.vanish.pvp")) {
-                    event.setCancelled(true);
-                }
-            }
-        }
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerDeathEvent(final PlayerDeathEvent event) {
-        final Entity entity = event.getEntity();
-        if (entity.hasMetadata("NPC")) {
-            return;
-        }
-        final User user = ess.getUser(event.getEntity());
-        if (ess.getSettings().infoAfterDeath()) {
-            final Location loc = user.getLocation();
-            user.sendMessage(tl("infoAfterDeath", loc.getWorld().getName(), loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
-        }
-        if (user.isAuthorized("essentials.back.ondeath") && !ess.getSettings().isCommandDisabled("back")) {
-            user.setLastLocation();
-            user.sendMessage(tl("backAfterDeath"));
-        }
-        if (!ess.getSettings().areDeathMessagesEnabled()) {
-            event.setDeathMessage("");
-        }
     }
 
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerDeathExpEvent(final PlayerDeathEvent event) {
-        final User user = ess.getUser(event.getEntity());
-        if (user.isAuthorized("essentials.keepxp")) {
-            event.setKeepLevel(true);
-            event.setDroppedExp(0);
-        }
     }
 
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerDeathInvEvent(final PlayerDeathEvent event) {
-        final User user = ess.getUser(event.getEntity());
-        if (user.isAuthorized("essentials.keepinv")) {
-            event.setKeepInventory(true);
-            event.getDrops().clear();
-            final ISettings.KeepInvPolicy vanish = ess.getSettings().getVanishingItemsPolicy();
-            final ISettings.KeepInvPolicy bind = ess.getSettings().getBindingItemsPolicy();
-            if (VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_11_2_R01) && (vanish != ISettings.KeepInvPolicy.KEEP || bind != ISettings.KeepInvPolicy.KEEP)) {
-                for (final ItemStack stack : event.getEntity().getInventory()) {
-                    if (stack != null && !MaterialUtil.isAir(stack.getType())) {
-                        if (stack.getEnchantments().containsKey(Enchantment.VANISHING_CURSE)) {
-                            if (vanish == ISettings.KeepInvPolicy.DELETE) {
-                                event.getEntity().getInventory().remove(stack);
-                            } else if (vanish == ISettings.KeepInvPolicy.DROP) {
-                                event.getDrops().add(stack);
-                                event.getEntity().getInventory().remove(stack);
-                            }
-                        }
-                        if (stack.getEnchantments().containsKey(Enchantment.BINDING_CURSE)) {
-                            if (bind == ISettings.KeepInvPolicy.DELETE) {
-                                event.getEntity().getInventory().remove(stack);
-                            } else if (bind == ISettings.KeepInvPolicy.DROP) {
-                                event.getEntity().getInventory().remove(stack);
-                                event.getDrops().add(stack);
-                            }
-                        }
-                    }
-                }
-
-                // Now check armor
-                final ItemStack[] armor = event.getEntity().getInventory().getArmorContents();
-                for (int i = 0; i < armor.length; i++) {
-                    final ItemStack stack = armor[i];
-                    if (stack != null && !MaterialUtil.isAir(stack.getType())) {
-                        if (stack.getEnchantments().containsKey(Enchantment.VANISHING_CURSE)) {
-                            if (vanish == ISettings.KeepInvPolicy.DELETE) {
-                                armor[i] = null;
-                            } else if (vanish == ISettings.KeepInvPolicy.DROP) {
-                                if (!event.getDrops().contains(stack)) {
-                                    event.getDrops().add(stack);
-                                }
-                                armor[i] = null;
-                            }
-                        }
-                        if (stack.getEnchantments().containsKey(Enchantment.BINDING_CURSE)) {
-                            if (bind == ISettings.KeepInvPolicy.DELETE) {
-                                armor[i] = null;
-                            } else if (bind == ISettings.KeepInvPolicy.DROP) {
-                                if (!event.getDrops().contains(stack)) {
-                                    event.getDrops().add(stack);
-                                }
-                                armor[i] = null;
-                            }
-                        }
-                    }
-                }
-                event.getEntity().getInventory().setArmorContents(armor);
-
-                // Now check offhand
-                if (VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_9_R01)) {
-                    final ItemStack stack = event.getEntity().getInventory().getItemInOffHand();
-                    //noinspection ConstantConditions
-                    if (stack != null && !MaterialUtil.isAir(stack.getType())) {
-                        final boolean isVanish = stack.getEnchantments().containsKey(Enchantment.VANISHING_CURSE);
-                        final boolean isBind = stack.getEnchantments().containsKey(Enchantment.BINDING_CURSE);
-                        if (isVanish || isBind) {
-                            event.getEntity().getInventory().setItemInOffHand(null);
-                            if ((isVanish && vanish == ISettings.KeepInvPolicy.DROP) || (isBind && bind == ISettings.KeepInvPolicy.DROP)) {
-                                if (!event.getDrops().contains(stack)) {
-                                    event.getDrops().add(stack);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
