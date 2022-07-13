@@ -642,7 +642,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
             if (bSenderBlock != null) {
                 if (getSettings().logCommandBlockCommands()) {
-                    LOGGER.log(Level.INFO, "CommandBlock at " + bSenderBlock.getX() + "," + bSenderBlock.getY() + "," + bSenderBlock.getZ() + " issued server command: /" + commandLabel + " " + EssentialsCommand.getFinalArg(args, 0));
+                    LOGGER.log(Level.INFO, "CommandBlock at " + bSenderBlock.getX() + "," + bSenderBlock.getY() + "," + bSenderBlock.getZ() + " issued server command: /" + commandLabel + " " + RedSmokesCommand.getFinalArg(args, 0));
                 }
             } else if (user == null) {
                 LOGGER.log(Level.INFO, cSender.getName()+ " issued server command: /" + commandLabel + " " + RedSmokesCommand.getFinalArg(args, 0));
