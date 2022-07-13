@@ -40,7 +40,7 @@ public class Commandbalancetop extends RedSmokesCommand {
             try {
                 page = Integer.parseInt(args[0]);
             } catch (final NumberFormatException ex) {
-                if (args[0].equalsIgnoreCase("force") && (!sender.isPlayer() || ess.getUser(sender.getPlayer()).isAuthorized("essentials.balancetop.force"))) {
+                if (args[0].equalsIgnoreCase("force") && (!sender.isPlayer() || redSmokes.getUser(sender.getPlayer()).isAuthorized("redsmokes.balancetop.force"))) {
                     force = true;
                 }
             }
