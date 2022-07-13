@@ -1,5 +1,8 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.main.items.AbstractItemDb;
+import com.bss.inc.redsmokes.main.items.CustomItemResolver;
+import com.bss.inc.redsmokes.main.perm.PermissionsHandler;
 import net.redsmokes.api.IConf;
 import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.ISettings;
@@ -23,7 +26,12 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient ISettings settings;
     private transient List<IConf> confList;
     private transient Backup backup;
-    private transient
+    private transient AbstractItemDb itemDb;
+    private transient CustomItemResolver customItemResolver;
+    private transient PermissionsHandler permissionsHandler;
+    private transient AlternativeCommandsHandler alternativeCommandsHandler;
+    private transient UserMap userMap;
+    private 
 
     @Override
     public void onEnable() {
