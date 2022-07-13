@@ -4,6 +4,7 @@ import com.bss.inc.redsmokes.main.api.Economy;
 import com.bss.inc.redsmokes.main.commands.NoChargeException;
 import com.bss.inc.redsmokes.main.commands.NotEnoughArgumentsException;
 import com.bss.inc.redsmokes.main.commands.QuietAbortException;
+import com.bss.inc.redsmokes.main.commands.RedSmokesCommand;
 import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.economy.vault.VaultEconomyProvider;
 import com.bss.inc.redsmokes.main.items.AbstractItemDb;
@@ -643,7 +644,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                     LOGGER.log(Level.INFO, "CommandBlock at " + bSenderBlock.getX() + "," + bSenderBlock.getY() + "," + bSenderBlock.getZ() + " issued server command: /" + commandLabel + " " + EssentialsCommand.getFinalArg(args, 0));
                 }
             } else if (user == null) {
-                LOGGER.log(Level.INFO, cSender.getName()+ " issued server command: /" + commandLabel + " " + EssentialsCommand.getFinalArg(args, 0));
+                LOGGER.log(Level.INFO, cSender.getName()+ " issued server command: /" + commandLabel + " " + RedSmokesCommand.getFinalArg(args, 0));
             }
 
             final CommandSource sender = new CommandSource(cSender);
@@ -671,7 +672,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 return true;
             }
 
-            final IEssentialsCommand cmd;
+            final IrsCommand cmd;
             try {
                 cmd = loadCommand(commandPath, command.getName(), module, classLoader);
             } catch (final Exception ex) {
@@ -684,15 +685,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             if (user != null && !user.isAuthorized(cmd, permissionPrefix)) {
                 LOGGER.log(Level.INFO, tl("deniedAccessCommand", user.getName()));
                 user.sendMessage(tl("noAccessCommand"));
-                return true;
-            }
-
-            if (user != null && user.isJailed() && !user.isAuthorized(cmd, "essentials.jail.allow.")) {
-                if (user.getJailTimeout() > 0) {
-                    user.sendMessage(tl("playerJailedFor", user.getName(), user.getFormattedJailTime()));
-                } else {
-                    user.sendMessage(tl("jailMessage"));
-                }
                 return true;
             }
 
