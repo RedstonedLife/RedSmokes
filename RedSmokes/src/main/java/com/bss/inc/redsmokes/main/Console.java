@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.messaging.IMessageRecipient;
+import com.bss.inc.redsmokes.main.messaging.SimpleMessageRecipient;
 import net.redsmokes.api.IRedSmokes;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
@@ -15,6 +16,7 @@ public final class Console implements IMessageRecipient {
 
     private Console(final IRedSmokes redSmokes) {
         this.redSmokes = redSmokes;
+        this.messageRecipient = new SimpleMessageRecipient(redSmokes,this);
         
     }
 }
