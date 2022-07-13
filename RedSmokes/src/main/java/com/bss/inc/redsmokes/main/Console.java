@@ -1,4 +1,4 @@
 package com.bss.inc.redsmokes.main;
 
-public class Console {
+public class Console implements {
 }
