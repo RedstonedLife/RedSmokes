@@ -540,7 +540,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public List<String> onTabCompleteRedSmokes(final CommandSender cSender, final Command command, final String commandLabel, final String[] args,
                                                 final ClassLoader classLoader, final String commandPath, final String permissionPrefix,
                                                 final IRedSmokesModule module) {
-        if (!getSettings().isCommandOverridden(command.getName()) && (!commandLabel.startsWith("e") || commandLabel.equalsIgnoreCase(command.getName()))) {
+        if (!getSettings().isCommandOverridden(command.getName()) && (!commandLabel.startsWith("r") || commandLabel.equalsIgnoreCase(command.getName()))) {
             final Command pc = alternativeCommandsHandler.getAlternative(commandLabel);
             if (pc instanceof PluginCommand) {
                 try {
