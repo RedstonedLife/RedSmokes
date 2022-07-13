@@ -1,5 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.OfflinePlayer;
 import com.bss.inc.redsmokes.main.api.Economy;
 import com.bss.inc.redsmokes.main.commands.*;
 import com.bss.inc.redsmokes.main.economy.EconomyLayers;
@@ -40,12 +41,12 @@ import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.plugin.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -765,17 +766,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public BukkitScheduler getScheduler() {
         return this.getServer().getScheduler();
     }
-
-    @Override
-    public IJails getJails() {
-        return jails;
-    }
-
-    @Override
-    public Warps getWarps() {
-        return warps;
-    }
-
+    
     @Override
     public Worth getWorth() {
         return worth;
@@ -786,15 +777,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         return backup;
     }
 
-    @Override
-    public Kits getKits() {
-        return kits;
-    }
-
-    @Override
-    public RandomTeleport getRandomTeleport() {
-        return randomTeleport;
-    }
 
     @Override
     public UpdateChecker getUpdateChecker() {
