@@ -1,11 +1,13 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;
+import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Maps;
 import com.google.common.io.Files;
 import com.google.gson.reflect.TypeToken;
 import net.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.services.mail.MailMessage;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -64,10 +66,10 @@ public class RedSmokesUpgrade {
         doneFile.load();
     }
 
-    public static void uuidFileConvert(final IEssentials ess, final Boolean ignoreUFCache) {
-        ess.getLogger().info("Starting Essentials UUID userdata conversion");
+    public static void uuidFileConvert(final IRedSmokes redSmokes, final Boolean ignoreUFCache) {
+        redSmokes.getLogger().info("Starting Essentials UUID userdata conversion");
 
-        final File userdir = new File(ess.getDataFolder(), "userdata");
+        final File userdir = new File(redSmokes.getDataFolder(), "userdata");
         if (!userdir.exists()) {
             return;
         }
@@ -77,7 +79,7 @@ public class RedSmokesUpgrade {
         int countEssCache = 0;
         int countBukkit = 0;
 
-        ess.getLogger().info("Found " + userdir.list().length + " files to convert...");
+        redSmokes.getLogger().info("Found " + userdir.list().length + " files to convert...");
 
         for (final String string : userdir.list()) {
             if (!string.endsWith(".yml") || string.length() < 5) {
@@ -87,20 +89,20 @@ public class RedSmokesUpgrade {
             final int showProgress = countFiles % 250;
 
             if (showProgress == 0) {
-                ess.getUserMap().getUUIDMap().forceWriteUUIDMap();
-                ess.getLogger().info("Converted " + countFiles + "/" + userdir.list().length);
+                redSmokes.getUserMap().getUUIDMap().forceWriteUUIDMap();
+                redSmokes.getLogger().info("Converted " + countFiles + "/" + userdir.list().length);
             }
 
             countFiles++;
 
             final String name = string.substring(0, string.length() - 4);
-            final EssentialsUserConfiguration config;
+            final RedSmokesUserConfiguration config;
             UUID uuid = null;
             try {
                 uuid = UUID.fromString(name);
             } catch (final IllegalArgumentException ex) {
                 final File file = new File(userdir, string);
-                final EssentialsConfiguration conf = new EssentialsConfiguration(file);
+                final RedSmokesConfiguration conf = new RedSmokesConfiguration(file);
                 conf.load();
                 conf.setProperty("lastAccountName", name);
                 conf.save();
@@ -120,7 +122,7 @@ public class RedSmokesUpgrade {
                             break;
                         }
 
-                        final org.bukkit.OfflinePlayer player = ess.getServer().getOfflinePlayer(name);
+                        final org.bukkit.OfflinePlayer player = redSmokes.getServer().getOfflinePlayer(name);
                         uuid = player.getUniqueId();
                     }
 
@@ -132,19 +134,19 @@ public class RedSmokesUpgrade {
 
                 if (uuid != null) {
                     conf.blockingSave();
-                    config = new EssentialsUserConfiguration(name, uuid, new File(userdir, uuid + ".yml"));
+                    config = new RedSmokesUserConfiguration(name, uuid, new File(userdir, uuid + ".yml"));
                     config.convertLegacyFile();
-                    ess.getUserMap().trackUUID(uuid, name, false);
+                    redSmokes.getUserMap().trackUUID(uuid, name, false);
                     continue;
                 }
                 countFails++;
             }
         }
-        ess.getUserMap().getUUIDMap().forceWriteUUIDMap();
+        redSmokes.getUserMap().getUUIDMap().forceWriteUUIDMap();
 
-        ess.getLogger().info("Converted " + countFiles + "/" + countFiles + ".  Conversion complete.");
-        ess.getLogger().info("Converted via cache: " + countEssCache + " :: Converted via lookup: " + countBukkit + " :: Failed to convert: " + countFails);
-        ess.getLogger().info("To rerun the conversion type /essentials uuidconvert");
+        redSmokes.getLogger().info("Converted " + countFiles + "/" + countFiles + ".  Conversion complete.");
+        redSmokes.getLogger().info("Converted via cache: " + countEssCache + " :: Converted via lookup: " + countBukkit + " :: Failed to convert: " + countFails);
+        redSmokes.getLogger().info("To rerun the conversion type /essentials uuidconvert");
     }
 
     public void convertMailList() {
@@ -152,7 +154,7 @@ public class RedSmokesUpgrade {
             return;
         }
 
-        final File userdataFolder = new File(ess.getDataFolder(), "userdata");
+        final File userdataFolder = new File(redSmokes.getDataFolder(), "userdata");
         if (!userdataFolder.exists() || !userdataFolder.isDirectory()) {
             return;
         }
@@ -161,7 +163,7 @@ public class RedSmokesUpgrade {
             if (!file.isFile() || !file.getName().endsWith(".yml")) {
                 continue;
             }
-            final EssentialsConfiguration config = new EssentialsConfiguration(file);
+            final RedSmokesConfiguration config = new RedSmokesConfiguration(file);
             try {
                 config.load();
                 if (config.hasProperty("mail") && config.isList("mail")) {
@@ -178,13 +180,13 @@ public class RedSmokesUpgrade {
                     config.blockingSave();
                 }
             } catch (RuntimeException ex) {
-                ess.getLogger().log(Level.INFO, "File: " + file);
+                redSmokes.getLogger().log(Level.INFO, "File: " + file);
                 throw ex;
             }
         }
         doneFile.setProperty("updateUsersMailList", true);
         doneFile.save();
-        ess.getLogger().info("Done converting mail list.");
+        redSmokes.getLogger().info("Done converting mail list.");
     }
 
     public void convertStupidCamelCaseUserdataKeys() {
@@ -192,7 +194,7 @@ public class RedSmokesUpgrade {
             return;
         }
 
-        ess.getLogger().info("Attempting to migrate legacy userdata keys to Configurate");
+        redSmokes.getLogger().info("Attempting to migrate legacy userdata keys to Configurate");
 
         final File userdataFolder = new File(ess.getDataFolder(), "userdata");
         if (!userdataFolder.exists() || !userdataFolder.isDirectory()) {
@@ -204,7 +206,7 @@ public class RedSmokesUpgrade {
             if (!file.isFile() || !file.getName().endsWith(".yml")) {
                 continue;
             }
-            final EssentialsConfiguration config = new EssentialsConfiguration(file);
+            final RedSmokesConfiguration config = new RedSmokesConfiguration(file);
             try {
                 config.load();
 
@@ -233,13 +235,13 @@ public class RedSmokesUpgrade {
                 }
                 config.blockingSave();
             } catch (final RuntimeException ex) {
-                ess.getLogger().log(Level.INFO, "File: " + file);
+                redSmokes.getLogger().log(Level.INFO, "File: " + file);
                 throw ex;
             }
         }
         doneFile.setProperty("updateUsersStupidLegacyPathNames", true);
         doneFile.save();
-        ess.getLogger().info("Done converting legacy userdata keys to Configurate.");
+        redSmokes.getLogger().info("Done converting legacy userdata keys to Configurate.");
     }
 
     /**
