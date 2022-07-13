@@ -50,11 +50,11 @@ public class EssentialsServerListener implements Listener {
         if (isPaperSample) {
             try {
                 final List<String> playerNames = (List<String>) getSampleText.invoke(event, null);
-                playerNames.removeIf(player -> ess.getUser(player).isVanished());
+                playerNames.removeIf(player -> redSmokes.getUser(player).isVanished());
                 setSampleText.invoke(event, playerNames);
             } catch (final IllegalAccessException | InvocationTargetException | ClassCastException e) {
                 if (!unsupportedLogged && shouldWarnSLPECaller(e)) {
-                    ess.getLogger().log(Level.WARNING, "Unable to hide players from server list ping "
+                    redSmokes.getLogger().log(Level.WARNING, "Unable to hide players from server list ping "
                             + "using Paper 1.12 method!", e);
                     unsupportedLogged = true;
                 }
