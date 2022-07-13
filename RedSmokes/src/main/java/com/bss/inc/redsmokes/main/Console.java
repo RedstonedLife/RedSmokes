@@ -37,6 +37,6 @@ public final class Console implements IMessageRecipient {
     }
 
     public CommandSender getCommandSender() {
-        
+        return redSmokes.getServer().getConsoleSender();
     }
 }
