@@ -23,7 +23,7 @@ commands:
   backup:
     description: Runs the backup if configured.
     usage: /<command>
-    aliases: []                                                                                                         # Added in v1.0.1.48-
+    aliases: []                                                                                                         # Added in v1.0.1.48-dev+1452-38f9780
 
 permissions:
   redsmokes.*:
