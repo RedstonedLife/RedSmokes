@@ -228,6 +228,11 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             upgrade.afterSettings();
             execTimer.mark("Upgrade2");
 
+            itemDb = getItemDbFromConfig();
+            confList.add(itemDb);
+            execTimer.mark("Init(ItemDB)");
+
+
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
         } catch (final Error ex) {
