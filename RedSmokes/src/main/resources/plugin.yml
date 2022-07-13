@@ -15,4 +15,5 @@ commands:
 
 permissions:
   redsmokes.*:
+    default: op
     
