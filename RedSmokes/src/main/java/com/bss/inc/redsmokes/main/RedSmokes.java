@@ -188,7 +188,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * of course it will cost the register the provider, and every feature will cost money, the following pricing scheme (by default) is this
              * Create Provider - $1,500
              * Domain Registering - .xyz (150$), .org (950$), .edu (4,500$) .gov (15,000$ requires redsmokes.mail.gov), .net (17,500$) .com (20,500$)
-             * Mail Size - 25 characters (100$) 50 characters (200$), 100 characters (300$) 250 characters (500$)
+             * Mail Size - 25 characters (100$) 50 characters (200$), 100 characters (300$) 250 characters (500$) 512 characters (
              */
 
         } catch (final NumberFormatException ex) {
