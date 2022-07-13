@@ -47,6 +47,8 @@ import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.bss.inc.redsmokes.main.I18n.tl;
+
 
 public class RedSmokesUpgrade {
     private static final FileFilter YML_FILTER = pathname -> pathname.isFile() && pathname.getName().endsWith(".yml");
@@ -475,7 +477,7 @@ public class RedSmokesUpgrade {
         if (doneFile.getBoolean("updateUsersPowerToolsFormat", false)) {
             return;
         }
-        final File userdataFolder = new File(ess.getDataFolder(), "userdata");
+        final File userdataFolder = new File(redSmokes.getDataFolder(), "userdata");
         if (!userdataFolder.exists() || !userdataFolder.isDirectory()) {
             return;
         }
