@@ -41,7 +41,7 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
 
     private static final String WARN_UUID_NOT_REPLACE = "Found UUID {0} for player {1}, but player already has a UUID ({2}). Not replacing UUID in usermap.";
 
-    public UserMap(final IRedSmokes redSmokes) {
+    public UserMap(final net.redsmokes.api.IRedSmokes redSmokes) {
         super();
         this.redSmokes=redSmokes;
         uuidMap = new UUIDMap(redSmokes);
