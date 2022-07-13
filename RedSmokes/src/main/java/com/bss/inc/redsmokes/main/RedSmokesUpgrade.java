@@ -1,8 +1,10 @@
 package com.bss.inc.redsmokes.main;
 
+import com.bss.inc.redsmokes.FakeWorld;
 import com.bss.inc.redsmokes.main.config.ConfigurateUtil;
 import com.bss.inc.redsmokes.main.config.RedSmokesConfiguration;
 import com.bss.inc.redsmokes.main.config.RedSmokesUserConfiguration;
+import com.bss.inc.redsmokes.main.utils.StringUtil;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Maps;
 import com.google.common.io.Files;
@@ -534,7 +536,7 @@ public class RedSmokesUpgrade {
         if (doneFile.getBoolean("sanitizeAllUserFilenames", false)) {
             return;
         }
-        final File usersFolder = new File(ess.getDataFolder(), "userdata");
+        final File usersFolder = new File(redSmokes.getDataFolder(), "userdata");
         if (!usersFolder.exists()) {
             return;
         }
@@ -551,15 +553,15 @@ public class RedSmokesUpgrade {
             final File tmpFile = new File(listOfFile.getParentFile(), sanitizedFilename + ".tmp");
             final File newFile = new File(listOfFile.getParentFile(), sanitizedFilename);
             if (!listOfFile.renameTo(tmpFile)) {
-                ess.getLogger().log(Level.WARNING, tl("userdataMoveError", filename, sanitizedFilename));
+                redSmokes.getLogger().log(Level.WARNING, tl("userdataMoveError", filename, sanitizedFilename));
                 continue;
             }
             if (newFile.exists()) {
-                ess.getLogger().log(Level.WARNING, tl("duplicatedUserdata", filename, sanitizedFilename));
+                redSmokes.getLogger().log(Level.WARNING, tl("duplicatedUserdata", filename, sanitizedFilename));
                 continue;
             }
             if (!tmpFile.renameTo(newFile)) {
-                ess.getLogger().log(Level.WARNING, tl("userdataMoveBackError", sanitizedFilename, sanitizedFilename));
+                redSmokes.getLogger().log(Level.WARNING, tl("userdataMoveBackError", sanitizedFilename, sanitizedFilename));
             }
         }
         doneFile.setProperty("sanitizeAllUserFilenames", true);
@@ -567,7 +569,7 @@ public class RedSmokesUpgrade {
     }
 
     private World getFakeWorld(final String name) {
-        final File bukkitDirectory = ess.getDataFolder().getParentFile().getParentFile();
+        final File bukkitDirectory = redSmokes.getDataFolder().getParentFile().getParentFile();
         final File worldDirectory = new File(bukkitDirectory, name);
         if (worldDirectory.exists() && worldDirectory.isDirectory()) {
             return new FakeWorld(worldDirectory.getName(), World.Environment.NORMAL);
@@ -592,7 +594,7 @@ public class RedSmokesUpgrade {
         if (doneFile.getBoolean("deleteOldItemsCsv", false)) {
             return;
         }
-        final File file = new File(ess.getDataFolder(), "items.csv");
+        final File file = new File(redSmokes.getDataFolder(), "items.csv");
         if (file.exists()) {
             try {
                 final Set<BigInteger> oldconfigs = new HashSet<>();
