@@ -9,6 +9,8 @@ import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.economy.vault.VaultEconomyProvider;
 import com.bss.inc.redsmokes.main.items.AbstractItemDb;
 import com.bss.inc.redsmokes.main.items.CustomItemResolver;
+import com.bss.inc.redsmokes.main.items.FlatItemDb;
+import com.bss.inc.redsmokes.main.items.LegacyItemDb;
 import com.bss.inc.redsmokes.main.metrics.MetricsWrapper;
 import com.bss.inc.redsmokes.main.nms.refl.providers.*;
 import com.bss.inc.redsmokes.main.perm.PermissionsDefaults;
@@ -1101,23 +1103,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     }
 
     @Override
-    public EssentialsTimer getTimer() {
+    public RedSmokesTimer getTimer() {
         return timer;
-    }
-
-    @Override
-    public MailService getMail() {
-        return mail;
-    }
-
-    @Override
-    public List<String> getVanishedPlayers() {
-        return Collections.unmodifiableList(new ArrayList<>(vanishedPlayers));
-    }
-
-    @Override
-    public Collection<String> getVanishedPlayersNew() {
-        return vanishedPlayers;
     }
 
     @Override
@@ -1241,10 +1228,10 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         }
     }
 
-    private static class EssentialsWorldListener implements Listener, Runnable {
+    private static class RedSmokesWorldListener implements Listener, Runnable {
         private transient final IRedSmokes redSmokes;
 
-        EssentialsWorldListener(final IRedSmokes redSmokes) {
+        RedSmokesWorldListener(final IRedSmokes redSmokes) {
             this.redSmokes = redSmokes;
         }
 
