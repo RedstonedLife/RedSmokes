@@ -28,6 +28,7 @@ import net.redsmokes.api.IConf;
 import net.redsmokes.api.IRedSmokes;
 import net.redsmokes.api.ISettings;
 import net.redsmokes.api.commands.IrsCommand;
+import net.redsmokes.api.services.BalanceTop;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.block.Block;
