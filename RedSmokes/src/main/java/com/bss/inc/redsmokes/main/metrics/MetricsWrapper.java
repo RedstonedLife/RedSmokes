@@ -15,14 +15,14 @@ import java.util.Map;
 
 public class MetricsWrapper {
 
-    private final RedSmokes ess;
+    private final RedSmokes redSmokes;
     private final Metrics metrics;
     private final JavaPlugin plugin;
     private final Map<String, Boolean> commands = new HashMap<>();
 
     public MetricsWrapper(final JavaPlugin plugin, final int pluginId, final boolean includeCommands) {
         this.plugin = plugin;
-        this.RedSmokes = (RedSmokes) Bukkit.getPluginManager().getPlugin("Essentials");
+        this.redSmokes = (RedSmokes) Bukkit.getPluginManager().getPlugin("Essentials");
         this.metrics = new Metrics(plugin, pluginId);
 
         plugin.getLogger().info("Starting Metrics. Opt-out using the global bStats config.");
