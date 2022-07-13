@@ -318,19 +318,8 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                 updateCompass(user);
 
                 // Check for new username. If they don't want the message, let's just say it's false.
-                final boolean newUsername = ess.getSettings().isCustomNewUsernameMessage() && lastAccountName != null && !lastAccountName.equals(user.getBase().getName());
-
-                if (!ess.getVanishedPlayersNew().isEmpty() && !user.isAuthorized("essentials.vanish.see")) {
-                    for (final String p : ess.getVanishedPlayersNew()) {
-                        final Player toVanish = ess.getServer().getPlayerExact(p);
-                        if (toVanish != null && toVanish.isOnline()) {
-                            user.getBase().hidePlayer(toVanish);
-                            if (ess.getSettings().isDebug()) {
-                                ess.getLogger().info("Hiding vanished player: " + p);
-                            }
-                        }
-                    }
-                }
+                final boolean newUsername = redSmokes.getSettings().isCustomNewUsernameMessage() && lastAccountName != null && !lastAccountName.equals(user.getBase().getName());
+                
 
                 if (user.isAuthorized("essentials.sleepingignored")) {
                     user.getBase().setSleepingIgnored(true);
