@@ -199,6 +199,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * tal.baskin@mc-mail.org
              * tal.baskin@mc-mail.edu
              * tal.baskin@mc-mail.gov
+             * tal.baskin@mc-mail.net
+             * tal.baskin@mc-mail.com
              *
              */
 
