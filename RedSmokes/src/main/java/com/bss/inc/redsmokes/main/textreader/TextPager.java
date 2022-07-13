@@ -1,13 +1,15 @@
 package com.bss.inc.redsmokes.main.textreader;
 
+import com.bss.inc.redsmokes.main.CommandSource;
 import com.bss.inc.redsmokes.main.I18n;
 
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
 public class TextPager {
-    public class TextPager {
         private final transient IText text;
         private final transient boolean onePage;
 
