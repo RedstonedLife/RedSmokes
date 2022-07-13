@@ -994,52 +994,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     }
 
     @Override
-    public int broadcastMessage(final String message) {
-        return broadcastMessage(null, null, message, true, u -> false);
-    }
-
-    @Override
-    public int broadcastMessage(final IUser sender, final String message) {
-        return broadcastMessage(sender, null, message, false, u -> false);
-    }
-
-    @Override
-    public int broadcastMessage(final IUser sender, final String message, final Predicate<IUser> shouldExclude) {
-        return broadcastMessage(sender, null, message, false, shouldExclude);
-    }
-
-    @Override
-    public int broadcastMessage(final String permission, final String message) {
-        return broadcastMessage(null, permission, message, false, u -> false);
-    }
-
-    private int broadcastMessage(final IUser sender, final String permission, final String message, final boolean keywords, final Predicate<IUser> shouldExclude) {
-        if (sender != null && sender.isHidden()) {
-            return 0;
-        }
-
-        IText broadcast = new SimpleTextInput(message);
-
-        final Collection<Player> players = getOnlinePlayers();
-        for (final Player player : players) {
-            final User user = getUser(player);
-            if ((permission == null && (sender == null || !user.isIgnoredPlayer(sender))) || (permission != null && user.isAuthorized(permission))) {
-                if (shouldExclude.test(user)) {
-                    continue;
-                }
-                if (keywords) {
-                    broadcast = new KeywordReplacer(broadcast, new CommandSource(player), this, false);
-                }
-                for (final String messageText : broadcast.getLines()) {
-                    user.sendMessage(messageText);
-                }
-            }
-        }
-
-        return players.size();
-    }
-
-    @Override
     public BukkitTask runTaskAsynchronously(final Runnable run) {
         return this.getScheduler().runTaskAsynchronously(this, run);
     }
