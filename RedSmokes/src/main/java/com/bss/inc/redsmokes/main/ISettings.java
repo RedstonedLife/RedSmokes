@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import net.redsmokes.api.IConf;
 import net.redsmokes.api.commands.IrsCommand;
 import com.bss.inc.redsmokes.main.signs.RedSmokesSign;
+import org.bukkit.Material;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -31,6 +32,9 @@ public interface ISettings extends IConf {
     Set<String> getDisabledCommands();
     boolean isVerboseCommandUsages();
     boolean isCommandOverridden(String name);
+    @Deprecated
+    boolean isTradeInStacks(int id);
+    boolean isTradeInStacks(Material type);
     boolean isDebug();
     void setDebug(boolean debug);
     boolean isEcoDisabled();
