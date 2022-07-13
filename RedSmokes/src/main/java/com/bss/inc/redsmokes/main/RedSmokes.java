@@ -660,7 +660,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             if (getSettings().isCommandDisabled(commandLabel)) {
                 if (getKnownCommandsProvider().getKnownCommands().containsKey(commandLabel)) {
                     final Command newCmd = getKnownCommandsProvider().getKnownCommands().get(commandLabel);
-                    if (!(newCmd instanceof PluginIdentifiableCommand) || !isEssentialsPlugin(((PluginIdentifiableCommand) newCmd).getPlugin())) {
+                    if (!(newCmd instanceof PluginIdentifiableCommand) || !isRedSmokesPlugin(((PluginIdentifiableCommand) newCmd).getPlugin())) {
                         return newCmd.execute(cSender, commandLabel, args);
                     }
                 }
@@ -740,5 +740,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             }
         }, this);
         //for(final Player player : getOn)
+    }
+
+    private boolean isRedSmokesPlugin(Plugin plugin) {
+        return plugin.getDescription().getMain().contains("com.earth2me.essentials") || plugin.getDescription().getMain().contains("net.essentialsx");
     }
 }
