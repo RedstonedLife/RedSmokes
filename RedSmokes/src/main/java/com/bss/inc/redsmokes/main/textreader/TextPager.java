@@ -141,5 +141,4 @@ public class TextPager {
                 sender.sendMessage(tl("readNextPage", commandName, pageStr + " " + (page + 1)));
             }
         }
-    }
 }
