@@ -60,7 +60,7 @@ public class RedSmokesUpgrade {
         if (!redSmokes.getDataFolder().exists()) {
             redSmokes.getDataFolder().mkdirs();
         }
-        doneFile = new EssentialsConfiguration(new File(ess.getDataFolder(), "upgrades-done.yml"));
+        doneFile = new RedSmokesConfiguration(new File(redSmokes.getDataFolder(), "upgrades-done.yml"));
         doneFile.load();
     }
 
