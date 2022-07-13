@@ -14,9 +14,7 @@ public interface IRedSmokes extends com.bss.inc.redsmokes.main.IRedSmokes {
      *
      * @return A list of players who are vanished
      */
-    Collection<String> getVanishedPlayersNew();
-
-    Worth getWorth();
+    
 
     BukkitTask runTaskLaterAsynchronously(Runnable run, long delay);
 

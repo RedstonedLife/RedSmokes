@@ -52,10 +52,6 @@ public interface IRedSmokes extends Plugin {
     I18n getI18n();
     User getOfflineUser(String name);
     World getWorld(String name);
-    int broadcastMessage(String message);
-    int broadcastMessage(IUser sender, String message);
-    int broadcastMessage(IUser sender, String message, Predicate<IUser> shouldExclude);
-    int broadcastMessage(String permission, String message);
     ISettings getSettings();
     BukkitScheduler getScheduler();
     Backup getBackup();
