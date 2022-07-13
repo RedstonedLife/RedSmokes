@@ -34,6 +34,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.bss.inc.redsmokes.main.I18n.tl;
+
 public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
     private static final Logger BUKKIT_LOGGER = Logger.getLogger("RedSmokes");
@@ -98,7 +100,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         i18n.updateLocale("en");
         Console.setInstance(this);
 
-        LOGGER.log(Level.INFO, tl());
+        LOGGER.log(Level.INFO, tl("usingTempFolderForTesting"));
     }
 
     @Override
