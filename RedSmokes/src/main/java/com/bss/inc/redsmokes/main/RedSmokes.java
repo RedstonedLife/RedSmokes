@@ -31,7 +31,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient PermissionsHandler permissionsHandler;
     private transient AlternativeCommandsHandler alternativeCommandsHandler;
     private transient UserMap userMap;
-    private transient
+    private transient BalanceTopImpl
 
     @Override
     public void onEnable() {
