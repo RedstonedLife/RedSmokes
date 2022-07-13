@@ -176,8 +176,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
         }
 
         final long currentTime = System.currentTimeMillis();
-        dUser.checkMuteTimeout(currentTime);
-        dUser.updateActivity(false, AfkStatusChangeEvent.Cause.JOIN);
         dUser.stopTransaction();
 
         class DelayJoinTask implements Runnable {
