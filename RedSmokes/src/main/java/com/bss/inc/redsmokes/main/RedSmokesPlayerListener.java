@@ -322,25 +322,9 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                 final boolean newUsername = redSmokes.getSettings().isCustomNewUsernameMessage() && lastAccountName != null && !lastAccountName.equals(user.getBase().getName());
                 redSmokes.runTaskAsynchronously(() -> redSmokes.getServer().getPluginManager().callEvent(new AsyncUserDataLoadEvent(user, effectiveMessage)));
 
-                if (redSmokes.getSettings().getMotdDelay() >= 0) {
-                    final int motdDelay = redSmokes.getSettings().getMotdDelay() / 50;
-                    final DelayMotdTask motdTask = new DelayMotdTask(user);
-                    if (motdDelay > 0) {
-                        pendingMotdTasks.put(user.getUUID(), redSmokes.scheduleSyncDelayedTask(motdTask, motdDelay));
-                    } else {
-                        motdTask.run();
-                    }
-                }
-
-                if (!ess.getSettings().isCommandDisabled("mail") && user.isAuthorized("essentials.mail")) {
-                    if (user.getUnreadMailAmount() == 0) {
-                        if (ess.getSettings().isNotifyNoNewMail()) {
-                            user.sendMessage(tl("noNewMail")); // Only notify if they want us to.
-                        }
-                    } else {
-                        user.notifyOfMail();
-                    }
-                }
+                /** MAIL
+                 * 
+                 */
 
                 if (user.isAuthorized("essentials.updatecheck")) {
                     ess.runTaskAsynchronously(() -> {
