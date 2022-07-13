@@ -287,27 +287,13 @@ public class EssentialsEntityListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onPotionSplashEvent(final PotionSplashEvent event) {
-        for (final LivingEntity entity : event.getAffectedEntities()) {
-            if (entity instanceof Player && redSmokes.getUser((Player) entity).isGodModeEnabled()) {
-                event.setIntensity(entity, 0d);
-            }
-        }
     }
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onEntityShootBow(final EntityShootBowEvent event) {
-        if (event.getEntity() instanceof Player) {
-            final User user = redSmokes.getUser((Player) event.getEntity());
-        }
     }
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onEntityTarget(final EntityTargetEvent event) {
-        if (event.getTarget() instanceof Player) {
-            final User user = redSmokes.getUser((Player) event.getTarget());
-            if (user.isVanished()) {
-                event.setCancelled(true);
-            }
-        }
     }
 }
