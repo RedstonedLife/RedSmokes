@@ -526,7 +526,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     @Override
     public List<String> onTabComplete(final CommandSender sender, final Command command, final String commandLabel, final String[] args) {
         return onTabCompleteRedSmokes(sender, command, commandLabel, args, RedSmokes.class.getClassLoader(),
-                "com.earth2me.essentials.commands.Command", "essentials.", null);
+                "com.bss.inc.redsmokes.main.commands.Command", "redsmokes.", null);
     }
 
 
