@@ -618,7 +618,7 @@ public class RedSmokesUpgrade {
                 doneFile.setProperty("deleteOldItemsCsv", true);
                 doneFile.save();
             } catch (final IOException ex) {
-                ess.getLogger().log(Level.SEVERE, ex.getMessage(), ex);
+                redSmokes.getLogger().log(Level.SEVERE, ex.getMessage(), ex);
             }
         }
     }
