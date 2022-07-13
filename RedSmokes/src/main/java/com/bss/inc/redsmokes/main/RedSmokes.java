@@ -34,6 +34,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.plugin.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
@@ -757,4 +758,504 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         }
     }
 
+    @Override
+    public BukkitScheduler getScheduler() {
+        return this.getServer().getScheduler();
+    }
+
+    @Override
+    public IJails getJails() {
+        return jails;
+    }
+
+    @Override
+    public Warps getWarps() {
+        return warps;
+    }
+
+    @Override
+    public Worth getWorth() {
+        return worth;
+    }
+
+    @Override
+    public Backup getBackup() {
+        return backup;
+    }
+
+    @Override
+    public Kits getKits() {
+        return kits;
+    }
+
+    @Override
+    public RandomTeleport getRandomTeleport() {
+        return randomTeleport;
+    }
+
+    @Override
+    public UpdateChecker getUpdateChecker() {
+        return updateChecker;
+    }
+
+    @Deprecated
+    @Override
+    public User getUser(final Object base) {
+        if (base instanceof Player) {
+            return getUser((Player) base);
+        }
+        if (base instanceof org.bukkit.OfflinePlayer) {
+            return getUser(((org.bukkit.OfflinePlayer) base).getUniqueId());
+        }
+        if (base instanceof UUID) {
+            return getUser((UUID) base);
+        }
+        if (base instanceof String) {
+            return getOfflineUser((String) base);
+        }
+        return null;
+    }
+
+    //This will return null if there is not a match.
+    @Override
+    public User getUser(final String base) {
+        return getOfflineUser(base);
+    }
+
+    //This will return null if there is not a match.
+    @Override
+    public User getUser(final UUID base) {
+        return userMap.getUser(base);
+    }
+
+    //This will return null if there is not a match.
+    @Override
+    public User getOfflineUser(final String name) {
+        final User user = userMap.getUser(name);
+        if (user != null && user.getBase() instanceof OfflinePlayer) {
+            //This code should attempt to use the last known name of a user, if Bukkit returns name as null.
+            final String lastName = user.getLastAccountName();
+            if (lastName != null) {
+                ((OfflinePlayer) user.getBase()).setName(lastName);
+            } else {
+                ((OfflinePlayer) user.getBase()).setName(name);
+            }
+        }
+        return user;
+    }
+
+    @Override
+    public User matchUser(final Server server, final User sourceUser, final String searchTerm, final Boolean getHidden, final boolean getOffline) throws PlayerNotFoundException {
+        final User user;
+        Player exPlayer;
+
+        try {
+            exPlayer = server.getPlayer(UUID.fromString(searchTerm));
+        } catch (final IllegalArgumentException ex) {
+            if (getOffline) {
+                exPlayer = server.getPlayerExact(searchTerm);
+            } else {
+                exPlayer = server.getPlayer(searchTerm);
+            }
+        }
+
+        if (exPlayer != null) {
+            user = getUser(exPlayer);
+        } else {
+            user = getUser(searchTerm);
+        }
+
+        if (user != null) {
+            if (!getOffline && !user.getBase().isOnline()) {
+                throw new PlayerNotFoundException();
+            }
+
+            if (getHidden || canInteractWith(sourceUser, user)) {
+                return user;
+            } else { // not looking for hidden and cannot interact (i.e is hidden)
+                if (getOffline && user.getName().equalsIgnoreCase(searchTerm)) { // if looking for offline and got an exact match
+                    return user;
+                }
+            }
+            throw new PlayerNotFoundException();
+        }
+        final List<Player> matches = server.matchPlayer(searchTerm);
+
+        if (matches.isEmpty()) {
+            final String matchText = searchTerm.toLowerCase(Locale.ENGLISH);
+            for (final User userMatch : getOnlineUsers()) {
+                if (getHidden || canInteractWith(sourceUser, userMatch)) {
+                    final String displayName = FormatUtil.stripFormat(userMatch.getDisplayName()).toLowerCase(Locale.ENGLISH);
+                    if (displayName.contains(matchText)) {
+                        return userMatch;
+                    }
+                }
+            }
+        } else {
+            for (final Player player : matches) {
+                final User userMatch = getUser(player);
+                if (userMatch.getDisplayName().startsWith(searchTerm) && (getHidden || canInteractWith(sourceUser, userMatch))) {
+                    return userMatch;
+                }
+            }
+            final User userMatch = getUser(matches.get(0));
+            if (getHidden || canInteractWith(sourceUser, userMatch)) {
+                return userMatch;
+            }
+        }
+        throw new PlayerNotFoundException();
+    }
+
+    @Override
+    public boolean canInteractWith(final CommandSource interactor, final User interactee) {
+        if (interactor == null) {
+            return !interactee.isHidden();
+        }
+
+        if (interactor.isPlayer()) {
+            return canInteractWith(getUser(interactor.getPlayer()), interactee);
+        }
+
+        return true; // console
+    }
+
+    @Override
+    public boolean canInteractWith(final User interactor, final User interactee) {
+        if (interactor == null) {
+            return !interactee.isHidden();
+        }
+
+        if (interactor.equals(interactee)) {
+            return true;
+        }
+
+        return interactor.getBase().canSee(interactee.getBase());
+    }
+
+    //This will create a new user if there is not a match.
+    @Override
+    public User getUser(final Player base) {
+        if (base == null) {
+            return null;
+        }
+
+        if (userMap == null) {
+            LOGGER.log(Level.WARNING, "Essentials userMap not initialized");
+            return null;
+        }
+
+        User user = userMap.getUser(base.getUniqueId());
+
+        if (user == null) {
+            if (getSettings().isDebug()) {
+                LOGGER.log(Level.INFO, "Constructing new userfile from base player " + base.getName());
+            }
+            user = new User(base, this);
+        } else {
+            user.update(base);
+        }
+        return user;
+    }
+
+    private void handleCrash(final Throwable exception) {
+        final PluginManager pm = getServer().getPluginManager();
+        LOGGER.log(Level.SEVERE, exception.toString());
+        exception.printStackTrace();
+        pm.registerEvents(new Listener() {
+            @EventHandler(priority = EventPriority.LOW)
+            public void onPlayerJoin(final PlayerJoinEvent event) {
+                event.getPlayer().sendMessage("Essentials failed to load, read the log file.");
+            }
+        }, this);
+        for (final Player player : getOnlinePlayers()) {
+            player.sendMessage("Essentials failed to load, read the log file.");
+        }
+        this.setEnabled(false);
+    }
+
+    @Override
+    public World getWorld(final String name) {
+        if (name.matches("[0-9]+")) {
+            final int worldId = Integer.parseInt(name);
+            if (worldId < getServer().getWorlds().size()) {
+                return getServer().getWorlds().get(worldId);
+            }
+        }
+        return getServer().getWorld(name);
+    }
+
+    @Override
+    public void addReloadListener(final IConf listener) {
+        confList.add(listener);
+    }
+
+    @Override
+    public int broadcastMessage(final String message) {
+        return broadcastMessage(null, null, message, true, u -> false);
+    }
+
+    @Override
+    public int broadcastMessage(final IUser sender, final String message) {
+        return broadcastMessage(sender, null, message, false, u -> false);
+    }
+
+    @Override
+    public int broadcastMessage(final IUser sender, final String message, final Predicate<IUser> shouldExclude) {
+        return broadcastMessage(sender, null, message, false, shouldExclude);
+    }
+
+    @Override
+    public int broadcastMessage(final String permission, final String message) {
+        return broadcastMessage(null, permission, message, false, u -> false);
+    }
+
+    private int broadcastMessage(final IUser sender, final String permission, final String message, final boolean keywords, final Predicate<IUser> shouldExclude) {
+        if (sender != null && sender.isHidden()) {
+            return 0;
+        }
+
+        IText broadcast = new SimpleTextInput(message);
+
+        final Collection<Player> players = getOnlinePlayers();
+        for (final Player player : players) {
+            final User user = getUser(player);
+            if ((permission == null && (sender == null || !user.isIgnoredPlayer(sender))) || (permission != null && user.isAuthorized(permission))) {
+                if (shouldExclude.test(user)) {
+                    continue;
+                }
+                if (keywords) {
+                    broadcast = new KeywordReplacer(broadcast, new CommandSource(player), this, false);
+                }
+                for (final String messageText : broadcast.getLines()) {
+                    user.sendMessage(messageText);
+                }
+            }
+        }
+
+        return players.size();
+    }
+
+    @Override
+    public BukkitTask runTaskAsynchronously(final Runnable run) {
+        return this.getScheduler().runTaskAsynchronously(this, run);
+    }
+
+    @Override
+    public BukkitTask runTaskLaterAsynchronously(final Runnable run, final long delay) {
+        return this.getScheduler().runTaskLaterAsynchronously(this, run, delay);
+    }
+
+    @Override
+    public BukkitTask runTaskTimerAsynchronously(final Runnable run, final long delay, final long period) {
+        return this.getScheduler().runTaskTimerAsynchronously(this, run, delay, period);
+    }
+
+    @Override
+    public int scheduleSyncDelayedTask(final Runnable run) {
+        return this.getScheduler().scheduleSyncDelayedTask(this, run);
+    }
+
+    @Override
+    public int scheduleSyncDelayedTask(final Runnable run, final long delay) {
+        return this.getScheduler().scheduleSyncDelayedTask(this, run, delay);
+    }
+
+    @Override
+    public int scheduleSyncRepeatingTask(final Runnable run, final long delay, final long period) {
+        return this.getScheduler().scheduleSyncRepeatingTask(this, run, delay, period);
+    }
+
+    @Override
+    public TNTExplodeListener getTNTListener() {
+        return tntListener;
+    }
+
+    @Override
+    public PermissionsHandler getPermissionsHandler() {
+        return permissionsHandler;
+    }
+
+    @Override
+    public AlternativeCommandsHandler getAlternativeCommandsHandler() {
+        return alternativeCommandsHandler;
+    }
+
+    @Override
+    public IItemDb getItemDb() {
+        return itemDb;
+    }
+
+    @Override
+    public UserMap getUserMap() {
+        return userMap;
+    }
+
+    @Override
+    public BalanceTop getBalanceTop() {
+        return balanceTop;
+    }
+
+    @Override
+    public I18n getI18n() {
+        return i18n;
+    }
+
+    @Override
+    public EssentialsTimer getTimer() {
+        return timer;
+    }
+
+    @Override
+    public MailService getMail() {
+        return mail;
+    }
+
+    @Override
+    public List<String> getVanishedPlayers() {
+        return Collections.unmodifiableList(new ArrayList<>(vanishedPlayers));
+    }
+
+    @Override
+    public Collection<String> getVanishedPlayersNew() {
+        return vanishedPlayers;
+    }
+
+    @Override
+    public Collection<Player> getOnlinePlayers() {
+        return (Collection<Player>) getServer().getOnlinePlayers();
+    }
+
+    @Override
+    public Iterable<User> getOnlineUsers() {
+        final List<User> onlineUsers = new ArrayList<>();
+        for (final Player player : getOnlinePlayers()) {
+            onlineUsers.add(getUser(player));
+        }
+        return onlineUsers;
+    }
+
+    @Override
+    public SpawnerItemProvider getSpawnerItemProvider() {
+        return spawnerItemProvider;
+    }
+
+    @Override
+    public SpawnerBlockProvider getSpawnerBlockProvider() {
+        return spawnerBlockProvider;
+    }
+
+    @Override
+    public SpawnEggProvider getSpawnEggProvider() {
+        return spawnEggProvider;
+    }
+
+    @Override
+    public PotionMetaProvider getPotionMetaProvider() {
+        return potionMetaProvider;
+    }
+
+    @Override
+    public CustomItemResolver getCustomItemResolver() {
+        return customItemResolver;
+    }
+
+    @Override
+    public ServerStateProvider getServerStateProvider() {
+        return serverStateProvider;
+    }
+
+    public MaterialTagProvider getMaterialTagProvider() {
+        return materialTagProvider;
+    }
+
+    @Override
+    public ContainerProvider getContainerProvider() {
+        return containerProvider;
+    }
+
+    @Override
+    public KnownCommandsProvider getKnownCommandsProvider() {
+        return knownCommandsProvider;
+    }
+
+    @Override
+    public SerializationProvider getSerializationProvider() {
+        return serializationProvider;
+    }
+
+    @Override
+    public FormattedCommandAliasProvider getFormattedCommandAliasProvider() {
+        return formattedCommandAliasProvider;
+    }
+
+    @Override
+    public SyncCommandsProvider getSyncCommandsProvider() {
+        return syncCommandsProvider;
+    }
+
+    @Override
+    public PersistentDataProvider getPersistentDataProvider() {
+        return persistentDataProvider;
+    }
+
+    @Override
+    public ReflOnlineModeProvider getOnlineModeProvider() {
+        return onlineModeProvider;
+    }
+
+    @Override
+    public ItemUnbreakableProvider getItemUnbreakableProvider() {
+        return unbreakableProvider;
+    }
+
+    @Override
+    public WorldInfoProvider getWorldInfoProvider() {
+        return worldInfoProvider;
+    }
+
+    @Override
+    public SignDataProvider getSignDataProvider() {
+        return signDataProvider;
+    }
+
+    @Override
+    public PluginCommand getPluginCommand(final String cmd) {
+        return this.getCommand(cmd);
+    }
+
+    private AbstractItemDb getItemDbFromConfig() {
+        final String setting = settings.getItemDbType();
+
+        if (setting.equalsIgnoreCase("json")) {
+            return new FlatItemDb(this);
+        } else if (setting.equalsIgnoreCase("csv")) {
+            return new LegacyItemDb(this);
+        } else {
+            final VersionUtil.BukkitVersion version = VersionUtil.getServerBukkitVersion();
+
+            if (version.isHigherThanOrEqualTo(VersionUtil.v1_13_0_R01)) {
+                return new FlatItemDb(this);
+            } else {
+                return new LegacyItemDb(this);
+            }
+        }
+    }
+
+    private static class EssentialsWorldListener implements Listener, Runnable {
+        private transient final IRedSmokes redSmokes;
+
+        EssentialsWorldListener(final IRedSmokes redSmokes) {
+            this.redSmokes = redSmokes;
+        }
+
+        @EventHandler(priority = EventPriority.LOW)
+        public void onWorldLoad(final WorldLoadEvent event) {
+            PermissionsDefaults.registerBackDefaultFor(event.getWorld());
+        }
+
+        @Override
+        public void run() {
+            redSmokes.reload();
+        }
+    }
 }
