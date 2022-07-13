@@ -42,8 +42,8 @@ public class UserMap extends CacheLoader<String, User> implements IConf {
         super();
         this.redSmokes=redSmokes;
         uuidMap = new UUIDMap(redSmokes);
-        RemovalListener<UUID, User> remListener = new UserMapRemovalListener();
-        users = CacheBuilder.newBuilder().maximumSize(redSmokes.getSettings().getMaxUserCacheCount()).softValues().removalListener(remListener).build(this);
+        //RemovalListener<UUID, User> remListener = new UserMapRemovalListener();
+        //users = CacheBuilder.newBuilder().maximumSize(redSmokes.getSettings().getMaxUserCacheCount()).softValues().removalListener(remListener).build(this);
         final CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder();
         final int maxCount =redSmokes.getSettings().getMaxUserCacheCount();
         try {
