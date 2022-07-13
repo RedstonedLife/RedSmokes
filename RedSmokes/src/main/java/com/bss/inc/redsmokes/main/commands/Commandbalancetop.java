@@ -56,7 +56,7 @@ public class Commandbalancetop extends RedSmokesCommand {
             sender.sendMessage(tl("orderBalances", redSmokes.getUserMap().getUniqueUsers()));
         }
 
-        redSmokes+.runTaskAsynchronously(new Viewer(sender, page, force));
+        redSmokes.runTaskAsynchronously(new Viewer(sender, page, force));
     }
 
     @Override
