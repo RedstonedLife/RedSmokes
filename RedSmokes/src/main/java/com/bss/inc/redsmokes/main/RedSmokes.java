@@ -402,6 +402,50 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         // We don't use any of the bukkit config writing, as this breaks our config file formatting.
     }
 
+    private void registerListeners(final PluginManager pm) {
+        HandlerList.unregisterAll(this);
+
+        if (getSettings().isDebug()) {
+            LOGGER.log(Level.INFO, "Registering Listeners");
+        }
+
+        final RedSmokesPluginListener pluginListener = new RedSmokesPluginListener(this);
+        pm.registerEvents(pluginListener, this);
+        confList.add(pluginListener);
+
+        final RedSmokesPlayerListener playerListener = new RedSmokesPlayerListener(this);
+        playerListener.registerEvents();
+
+        final RedSmokesBlockListener blockListener = new RedSmokesBlockListener(this);
+        pm.registerEvents(blockListener, this);
+
+        final SignBlockListener signBlockListener = new SignBlockListener(this);
+        pm.registerEvents(signBlockListener, this);
+
+        final SignPlayerListener signPlayerListener = new SignPlayerListener(this);
+        pm.registerEvents(signPlayerListener, this);
+
+        final SignEntityListener signEntityListener = new SignEntityListener(this);
+        pm.registerEvents(signEntityListener, this);
+
+        final RedSmokesEntityListener entityListener = new RedSmokesEntityListener(this);
+        pm.registerEvents(entityListener, this);
+
+        final RedSmokesWorldListener worldListener = new RedSmokesWorldListener(this);
+        pm.registerEvents(worldListener, this);
+
+        final RedSmokesServerListener serverListener = new RedSmokesServerListener(this);
+        pm.registerEvents(serverListener, this);
+
+        pm.registerEvents(tntListener, this);
+
+        if (recipeBookEventProvider != null) {
+            pm.registerEvents(recipeBookEventProvider, this);
+        }
+
+        jails.resetListener();
+    }
+
     @Override
     public void onDisable() {
         super.onDisable();
