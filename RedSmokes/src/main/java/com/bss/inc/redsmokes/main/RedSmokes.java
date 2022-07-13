@@ -205,7 +205,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * Item #1 - Date Information (When it was sent)
              * Item #2 - User Information (From Who: To Who:)
              * Item #3 - Digital Signature / Location Signature (If provider paid for them)
-             * Item #4 - Reply
+             * Item #4 - Reply To Mail
+             * Item #5 - View Content (Book & Quil GUI)
+             * Item #6 - Delete Mail
              */
 
         } catch (final NumberFormatException ex) {
