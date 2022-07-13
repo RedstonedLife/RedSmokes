@@ -225,6 +225,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             balanceTop = new BalanceTopImpl(this);
             execTimer.mark("Init(BalanceTop)");
 
+            upgrade.afterSettings();
+            execTimer.mark("Upgrade2");
+
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
         } catch (final Error ex) {
