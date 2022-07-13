@@ -236,18 +236,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
         if (user.isRecipeSee()) {
             user.getBase().getOpenInventory().getTopInventory().clear();
         }
-
-        final ArrayList<HumanEntity> viewers = new ArrayList<>(user.getBase().getInventory().getViewers());
-        for (final HumanEntity viewer : viewers) {
-            if (viewer instanceof Player) {
-                final User uviewer = ess.getUser((Player) viewer);
-                if (uviewer.isInvSee()) {
-                    uviewer.getBase().closeInventory();
-                }
-            }
-        }
-
-        user.updateActivity(false, AfkStatusChangeEvent.Cause.QUIT);
         if (!user.isHidden()) {
             user.setLastLogout(System.currentTimeMillis());
         }
