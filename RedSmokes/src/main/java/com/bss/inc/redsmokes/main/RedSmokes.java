@@ -212,6 +212,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              *
              * Note, Made by Tal A. Baskin (13th of July, 2022. 4:56 AM)
              * If at some point I'll have enough time, I'll try to actually make this a SMTP Mail Manager so theoretically I could give it a domain I own
+             * for example, example.com. And users/admins can register a mail under it, so if an admin wants to send an email (I will add a discord-interpreter)
+             * so users could register an email from the discord, like so /register-email
              */
 
         } catch (final NumberFormatException ex) {
