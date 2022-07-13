@@ -11,6 +11,7 @@ import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.utils.*;
 import com.google.common.collect.Lists;
 import org.bukkit.Statistic;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
@@ -416,6 +417,14 @@ public class User extends UserData implements IUser, Comparable<User> {
                 getBase().setSleepingIgnored(false);
             }
         }
+    }
+    @Override
+    public Block getTargetBlock(int maxDistance) {
+        final Block block;
+        if (VersionUtil.getServerBukkitVersion().isLowerThan(VersionUtil.v1_13_2_R01) || (block = base.getTargetBlockExact(maxDistance)) == null) {
+            return base.getTargetBlock(null, maxDistance);
+        }
+        return block;
     }
     public boolean checkSignThrottle() {
         if (isSignThrottled()) {
