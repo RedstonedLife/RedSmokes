@@ -3,9 +3,15 @@ package com.bss.inc.redsmokes.main.commands;
 import com.bss.inc.redsmokes.main.CommandSource;
 import com.bss.inc.redsmokes.main.textreader.SimpleTextInput;
 import com.bss.inc.redsmokes.main.textreader.TextPager;
+import com.bss.inc.redsmokes.main.utils.NumberUtil;
+import com.google.common.collect.Lists;
+import net.redsmokes.api.services.BalanceTop;
+import org.bukkit.Server;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
-import java.util.Calendar;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
 
@@ -57,7 +63,7 @@ public class Commandbalancetop extends RedSmokesCommand {
     protected List<String> getTabCompleteOptions(final Server server, final CommandSource sender, final String commandLabel, final String[] args) {
         if (args.length == 1) {
             final List<String> options = Lists.newArrayList("1");
-            if (!sender.isPlayer() || ess.getUser(sender.getPlayer()).isAuthorized("essentials.balancetop.force")) {
+            if (!sender.isPlayer() || redSmokes.getUser(sender.getPlayer()).isAuthorized("essentials.balancetop.force")) {
                 options.add("force");
             }
             return options;
@@ -79,23 +85,23 @@ public class Commandbalancetop extends RedSmokesCommand {
 
         @Override
         public void run() {
-            if (ess.getSettings().isEcoDisabled()) {
-                if (ess.getSettings().isDebug()) {
-                    ess.getLogger().info("Internal economy functions disabled, aborting baltop.");
+            if (redSmokes.getSettings().isEcoDisabled()) {
+                if (redSmokes.getSettings().isDebug()) {
+                    redSmokes.getLogger().info("Internal economy functions disabled, aborting baltop.");
                 }
                 return;
             }
 
-            final boolean fresh = force || ess.getBalanceTop().isCacheLocked() || ess.getBalanceTop().getCacheAge() <= System.currentTimeMillis() - CACHETIME;
-            final CompletableFuture<Void> future = fresh ? ess.getBalanceTop().calculateBalanceTopMapAsync() : CompletableFuture.completedFuture(null);
+            final boolean fresh = force || redSmokes.getBalanceTop().isCacheLocked() || redSmokes.getBalanceTop().getCacheAge() <= System.currentTimeMillis() - CACHETIME;
+            final CompletableFuture<Void> future = fresh ? redSmokes.getBalanceTop().calculateBalanceTopMapAsync() : CompletableFuture.completedFuture(null);
             future.thenRun(() -> {
                 if (fresh) {
                     final SimpleTextInput newCache = new SimpleTextInput();
-                    newCache.getLines().add(tl("serverTotal", NumberUtil.displayCurrency(ess.getBalanceTop().getBalanceTopTotal(), ess)));
+                    newCache.getLines().add(tl("serverTotal", NumberUtil.displayCurrency(redSmokes.getBalanceTop().getBalanceTopTotal(), redSmokes)));
                     int pos = 1;
-                    for (final Map.Entry<UUID, BalanceTop.Entry> entry : ess.getBalanceTop().getBalanceTopCache().entrySet()) {
-                        if (ess.getSettings().showZeroBaltop() || entry.getValue().getBalance().compareTo(BigDecimal.ZERO) > 0) {
-                            newCache.getLines().add(tl("balanceTopLine", pos, entry.getValue().getDisplayName(), NumberUtil.displayCurrency(entry.getValue().getBalance(), ess)));
+                    for (final Map.Entry<UUID, BalanceTop.Entry> entry : redSmokes.getBalanceTop().getBalanceTopCache().entrySet()) {
+                        if (redSmokes.getSettings().showZeroBaltop() || entry.getValue().getBalance().compareTo(BigDecimal.ZERO) > 0) {
+                            newCache.getLines().add(tl("balanceTopLine", pos, entry.getValue().getDisplayName(), NumberUtil.displayCurrency(entry.getValue().getBalance(), redSmokes)));
                         }
                         pos++;
                     }
