@@ -283,17 +283,13 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
         }
     }
 
-    private boolean hideJoinQuitMessages() {
-        return ess.getSettings().hasJoinQuitMessagePlayerCount() && ess.getServer().getOnlinePlayers().size() > ess.getSettings().getJoinQuitMessagePlayerCount();
-    }
-
     public void delayedJoin(final Player player, final String message) {
         if (!player.isOnline()) {
             return;
         }
 
-        ess.getBackup().onPlayerJoin();
-        final User dUser = ess.getUser(player);
+        redSmokes.getBackup().onPlayerJoin();
+        final User dUser = redSmokes.getUser(player);
 
         dUser.startTransaction();
         if (dUser.isNPC()) {
@@ -319,7 +315,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                 final String lastAccountName = user.getLastAccountName(); // For comparison
                 user.setLastAccountName(user.getBase().getName());
                 user.setLastLogin(currentTime);
-                user.setDisplayNick();
                 updateCompass(user);
 
                 // Check for new username. If they don't want the message, let's just say it's false.
