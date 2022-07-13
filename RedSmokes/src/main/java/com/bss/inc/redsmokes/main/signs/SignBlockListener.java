@@ -153,7 +153,7 @@ public class SignBlockListener implements Listener {
             return;
         }
         for (final RedSmokesSign sign : redSmokes.getSettings().enabledSigns()) {
-            if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockPlace(block, event.getPlayer(), ess)) {
+            if (sign.areHeavyEventRequired() && sign.getBlocks().contains(block.getType()) && !sign.onBlockPlace(block, event.getPlayer(), redSmokes)) {
                 event.setCancelled(true);
                 return;
             }
