@@ -93,7 +93,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         final File dataFolder = File.createTempFile("redsmokestest", "");
         if(!dataFolder.delete()) {throw new IOException();}
         if(!dataFolder.mkdir()) {throw new IOException();}
-        i18n = 
+        i18n = new I18n()
     }
 
     @Override
