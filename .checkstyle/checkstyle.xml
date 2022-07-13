@@ -64,7 +64,7 @@
                       value="Consider using special escape sequence instead of octal value or Unicode escaped value."/>
             <property name="tokens" value="CHAR_LITERAL, STRING_LITERAL"/>
         </module>
-        
+
         <!-- https://checkstyle.org/config_naming.html#MethodName -->
         <module name="MethodName">
             <property name="format" value="^[_]?[a-z][a-zA-Z0-9]*$"/>

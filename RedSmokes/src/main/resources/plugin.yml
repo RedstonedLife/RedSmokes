@@ -19,7 +19,7 @@ commands:
   balancetop:
     description: Gets the top balance values.
     usage: /<command> [page]
-    aliases: [balancetop,baltop]
+    aliases: [balancetop,baltop]                                                                                        # Added in v1.0.1.47-dev+1441-0f2d0e6
 
 permissions:
   redsmokes.*:
