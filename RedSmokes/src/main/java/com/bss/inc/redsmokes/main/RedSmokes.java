@@ -26,6 +26,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.command.PluginIdentifiableCommand;
+import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -527,9 +530,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     }
 
     @Override
-    public List<String> onTabCompleteEssentials(final CommandSender cSender, final Command command, final String commandLabel, final String[] args,
+    public List<String> onTabCompleteRedSmokes(final CommandSender cSender, final Command command, final String commandLabel, final String[] args,
                                                 final ClassLoader classLoader, final String commandPath, final String permissionPrefix,
-                                                final IEssentialsModule module) {
+                                                final I module) {
         if (!getSettings().isCommandOverridden(command.getName()) && (!commandLabel.startsWith("e") || commandLabel.equalsIgnoreCase(command.getName()))) {
             final Command pc = alternativeCommandsHandler.getAlternative(commandLabel);
             if (pc instanceof PluginCommand) {
@@ -564,7 +567,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 return Collections.emptyList();
             }
 
-            final IEssentialsCommand cmd;
+            final IrsCommand cmd;
             try {
                 cmd = loadCommand(commandPath, command.getName(), module, classLoader);
             } catch (final Exception ex) {
@@ -578,9 +581,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 return Collections.emptyList();
             }
 
-            if (user != null && user.isJailed() && !user.isAuthorized(cmd, "essentials.jail.allow.")) {
-                return Collections.emptyList();
-            }
 
             // Run the command
             try {
