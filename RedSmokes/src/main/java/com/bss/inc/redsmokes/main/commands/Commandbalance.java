@@ -22,7 +22,7 @@ public class Commandbalance extends RedSmokesCommand {
         }
 
         final User target = getPlayer(server, args, 0, false, true);
-        sender.sendMessage(tl("balanceOther", target.isHidden() ? target.getName() : target.getDisplayName(), NumberUtil.displayCurrency(target.getMoney(), ess)));
+        sender.sendMessage(tl("balanceOther", target.isHidden() ? target.getName() : target.getDisplayName(), NumberUtil.displayCurrency(target.getMoney(), redSmokes)));
     }
 
     @Override
