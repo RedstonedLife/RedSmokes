@@ -6,6 +6,7 @@ import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.Sound;
@@ -15,10 +16,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
@@ -225,6 +223,36 @@ public class Commandredsmokes extends RedSmokesCommand {
                 sender.sendMessage(str);
             }
         });
+    }
+
+    @Override
+    protected List<String> getTabCompleteOptions(final Server server, final CommandSource sender, final String commandLabel, final String[] args) {
+        if (args.length == 1) {
+            final List<String> options = Lists.newArrayList();
+            options.add("reload");
+            options.add("version");
+            options.add("dump");
+            options.add("commands");
+            options.add("debug");
+            options.add("reset");
+            options.add("cleanup");
+            options.add("homes");
+            //options.add("uuidconvert");
+            //options.add("uuidtest");
+            //options.add("nya");
+            //options.add("moo");
+            return options;
+        }
+
+        switch (args[0]) {
+            case "moo":
+                if (args.length == 2) {
+                    return Lists.newArrayList("moo");
+                }
+                break;
+        }
+
+        return Collections.emptyList();
     }
 
     private static class TuneRunnable extends BukkitRunnable {
