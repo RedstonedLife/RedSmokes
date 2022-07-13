@@ -222,6 +222,9 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             confList.add(userMap);
             execTimer.mark("Init(Usermap)");
 
+            balanceTop = new BalanceTopImpl(this);
+            execTimer.mark("Init(BalanceTop)");
+
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
         } catch (final Error ex) {
