@@ -616,6 +616,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         } catch (final Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
