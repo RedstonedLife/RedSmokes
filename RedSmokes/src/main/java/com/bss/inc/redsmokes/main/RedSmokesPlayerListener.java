@@ -333,36 +333,7 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                         }
                     });
                 }
-
-                if (user.isAuthorized("essentials.fly.safelogin")) {
-                    user.getBase().setFallDistance(0);
-                    if (LocationUtil.shouldFly(ess, user.getLocation())) {
-                        user.getBase().setAllowFlight(true);
-                        user.getBase().setFlying(true);
-                        if (ess.getSettings().isSendFlyEnableOnJoin()) {
-                            user.getBase().sendMessage(tl("flyMode", tl("enabled"), user.getDisplayName()));
-                        }
-                    }
-                }
-
-                if (!user.isAuthorized("essentials.speed")) {
-                    user.getBase().setFlySpeed(0.1f);
-                    user.getBase().setWalkSpeed(0.2f);
-                }
-
-                if (user.isSocialSpyEnabled() && !user.isAuthorized("essentials.socialspy")) {
-                    user.setSocialSpyEnabled(false);
-                    ess.getLogger().log(Level.INFO, "Set socialspy to false for {0} because they had it enabled without permission.", user.getName());
-                }
-
-                if (user.isGodModeEnabled() && !user.isAuthorized("essentials.god")) {
-                    user.setGodModeEnabled(false);
-                    ess.getLogger().log(Level.INFO, "Set god mode to false for {0} because they had it enabled without permission.", user.getName());
-                }
-
-                user.setConfirmingClearCommand(null);
                 user.getConfirmingPayments().clear();
-
                 user.stopTransaction();
             }
 
