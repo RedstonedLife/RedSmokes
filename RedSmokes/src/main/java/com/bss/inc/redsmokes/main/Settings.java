@@ -299,7 +299,7 @@ public class Settings implements net.redsmokes.api.ISettings {
         allowOldIdSigns = _allowOldIdSigns();
         isSafeUsermap = _isSafeUsermap();
         currencySymbol = _getCurrencySymbol();
-
+        logCommandBlockCommands = _logCommandBlockCommands();
         reloadCount.incrementAndGet();
     }
 
