@@ -252,7 +252,7 @@ public abstract class UserData extends PlayerExtension implements IConf {
         return logoutLocation != null ? logoutLocation.location() : null;
     }
 
-    public void setLogoutLocation(final Location loc) {
+    public void setLogoutLocation() {
         if (loc == null || loc.getWorld() == null) {
             return;
         }
