@@ -43,6 +43,6 @@ public class Commandredsmokes extends RedSmokesCommand {
     }
 
     @Override
-    public void run(final Server server, final CommandSource sender, final String commandLabel)
+    public void run(final Server server, final CommandSource sender, final String commandLabel, final String[] args)
 
 }
