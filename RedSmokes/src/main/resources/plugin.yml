@@ -6,5 +6,5 @@ version: ${full.version}
 website: https://essentialsx.net/
 description: Provides an essential, core set of commands for Bukkit.
 softdepend: [Vault, LuckPerms]
-authors: [RedstonedLife, ocauth]
+authors: [RedstonedLife, xeryka]
 api-version: "1.13"
