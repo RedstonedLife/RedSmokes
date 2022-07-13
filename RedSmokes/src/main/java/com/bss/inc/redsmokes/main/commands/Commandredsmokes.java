@@ -2,7 +2,9 @@ package com.bss.inc.redsmokes.main.commands;
 
 import com.bss.inc.redsmokes.main.CommandSource;
 import com.bss.inc.redsmokes.main.utils.EnumUtil;
+import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.google.common.collect.ImmutableMap;
+import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -229,8 +231,8 @@ public class Commandredsmokes extends RedSmokesCommand {
         }
 
         sender.sendMessage(tl("versionFetching"));
-        ess.runTaskAsynchronously(() -> {
-            for (String str : ess.getUpdateChecker().getVersionMessages(true, true)) {
+        redSmokes.runTaskAsynchronously(() -> {
+            for (String str : redSmokes.getUpdateChecker().getVersionMessages(true, true)) {
                 sender.sendMessage(str);
             }
         });
