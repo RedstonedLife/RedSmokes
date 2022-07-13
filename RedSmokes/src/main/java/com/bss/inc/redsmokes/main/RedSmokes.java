@@ -139,7 +139,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             Console.setInstance(this);
 
             switch (VersionUtil.getServerSupportStatus()) {
-                
+                case NMS_CLEANROOM:
             }
 
         } catch (final NumberFormatException ex) {
