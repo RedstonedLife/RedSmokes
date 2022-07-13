@@ -129,6 +129,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             LOGGER = RedSmokesLogger.getLoggerProvider(this);
             RedSmokesLogger.updatePluginLogger(this);
 
+            execTimer = new ExecuteTimer();
+            execTimer.start();
             
         } catch (final NumberFormatException ex) {
             handleCrash(ex);
