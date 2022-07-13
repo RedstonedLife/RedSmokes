@@ -459,7 +459,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 user.sendMessage(tl("unvanishedReload"));
             }
             if (stopping) {
-                user.setLogoutLocation();
+                user.setLogoutLocation(user.getLocation());
                 if (!user.isHidden()) {
                     user.setLastLogout(System.currentTimeMillis());
                 }
