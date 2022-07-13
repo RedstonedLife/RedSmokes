@@ -290,7 +290,7 @@ public class RedSmokesUpgrade {
         final File backupFolder = new File(redSmokes.getDataFolder(), "userdata-npc-backup");
         if (backupFolder.exists()) {
             redSmokes.getLogger().info("NPC backup folder already exists; skipping NPC purge.");
-            redSmokes.getLogger().info("To finish purging broken NPC accounts, rename the \"plugins/Essentials/userdata-npc-backup\" folder and restart your server.");
+            redSmokes.getLogger().info("To finish purging broken NPC accounts, rename the \"plugins/RedSmokes/userdata-npc-backup\" folder and restart your server.");
             return;
         } else if (!backupFolder.mkdir()) {
             redSmokes.getLogger().info("Skipping NPC purge due to error creating backup folder.");
