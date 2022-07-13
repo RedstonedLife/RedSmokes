@@ -723,13 +723,9 @@ public class RedSmokesUpgrade {
 
     public void afterSettings() {
         sanitizeAllUserFilenames();
-        updateUsersHomesFormat();
-        deleteOldItemsCsv();
         uuidFileChange();
         warnMetrics();
         repairUserMap();
-        convertIgnoreList();
-        convertStupidCamelCaseUserdataKeys();
         purgeBrokenNpcAccounts();
     }
 }
