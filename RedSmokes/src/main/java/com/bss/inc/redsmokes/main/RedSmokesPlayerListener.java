@@ -321,10 +321,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                 final boolean newUsername = redSmokes.getSettings().isCustomNewUsernameMessage() && lastAccountName != null && !lastAccountName.equals(user.getBase().getName());
                 
 
-                if (user.isAuthorized("essentials.sleepingignored")) {
-                    user.getBase().setSleepingIgnored(true);
-                }
-
                 final String effectiveMessage;
                 if (ess.getSettings().allowSilentJoinQuit() && (user.isAuthorized("essentials.silentjoin") || user.isAuthorized("essentials.silentjoin.vanish"))) {
                     if (user.isAuthorized("essentials.silentjoin.vanish")) {
