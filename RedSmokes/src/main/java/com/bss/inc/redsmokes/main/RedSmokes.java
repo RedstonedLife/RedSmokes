@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import net.redsmokes.api.IRedSmokes;
+import net.redsmokes.api.ISettings;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -17,6 +18,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
     private static final Logger BUKKIT_LOGGER = Logger.getLogger("RedSmokes");
     private static Logger LOGGER = null;
+    private transient ISettings settings;
+    private transient List<IConf>
 
     @Override
     public void onEnable() {
