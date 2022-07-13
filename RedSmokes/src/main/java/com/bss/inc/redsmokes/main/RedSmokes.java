@@ -68,6 +68,10 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         EconomyLayers.init();
     }
 
+    public RedSmokes() {}
+
+    
+
     @Override
     public void onEnable() {
         try {
