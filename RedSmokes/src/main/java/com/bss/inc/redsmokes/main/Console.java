@@ -35,4 +35,8 @@ public final class Console implements IMessageRecipient {
     public static CommandSender getCommandSender(final Server server) throws Exception {
         return server.getConsoleSender();
     }
+
+    public CommandSender getCommandSender() {
+        
+    }
 }
