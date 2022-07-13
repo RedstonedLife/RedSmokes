@@ -23,6 +23,6 @@ public final class Console implements IMessageRecipient {
     }
 
     static void setInstance(final IRedSmokes redSmokes) { // Called in RedSmokes#onEnable()
-        
+        instance = new Console()
     }
 }
