@@ -175,6 +175,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
             confList = new ArrayList<>();
             settings = new Settings(this);
             confList.add(settings);
+            execTimer.mark("Settings");
+
             
 
         } catch (final NumberFormatException ex) {
