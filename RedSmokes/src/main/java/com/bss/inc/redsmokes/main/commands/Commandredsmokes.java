@@ -71,7 +71,9 @@ public class Commandredsmokes extends RedSmokesCommand {
             case "moo":
                 runMoo(server, sender, commandLabel, args);
                 break;
-                
+            default:
+                showUsage(sender);
+                break;
         }
     }
 
