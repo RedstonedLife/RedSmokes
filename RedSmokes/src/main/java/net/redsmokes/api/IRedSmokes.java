@@ -11,6 +11,8 @@ import java.util.Collection;
 public interface IRedSmokes extends com.bss.inc.redsmokes.main.IRedSmokes {
 
 
+    Worth getWorth();
+
     /**
      * Get the spawn egg provider for the current platform.
      *
