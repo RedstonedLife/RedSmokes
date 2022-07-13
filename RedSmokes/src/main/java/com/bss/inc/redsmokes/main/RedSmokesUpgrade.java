@@ -670,8 +670,8 @@ public class RedSmokesUpgrade {
             return;
         }
 
-        ess.getLogger().info("#### Starting Essentials UUID userdata conversion in a few seconds. ####");
-        ess.getLogger().info("We recommend you take a backup of your server before upgrading from the old username system.");
+        redSmokes.getLogger().info("#### Starting RedSmokes UUID userdata conversion in a few seconds. ####");
+        redSmokes.getLogger().info("We recommend you take a backup of your server before upgrading from the old username system.");
 
         try {
             Thread.sleep(15000);
