@@ -19,8 +19,11 @@ commands:
   balancetop:
     description: Gets the top balance values.
     usage: /<command> [page]
-    aliases: [balancetop,baltop]
-    # Added in v1.0.1.47-dev+1441-0f2d0e6
+    aliases: [balancetop,baltop]                                                                                        # Added in v1.0.1.47-dev+1441-0f2d0e6
+  backup:
+    description: Runs the backup if configured.
+    usage: /<command>
+    aliases: [ebackup]
 
 permissions:
   redsmokes.*:
