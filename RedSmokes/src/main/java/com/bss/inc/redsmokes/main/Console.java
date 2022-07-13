@@ -3,6 +3,7 @@ package com.bss.inc.redsmokes.main;
 import com.bss.inc.redsmokes.main.messaging.IMessageRecipient;
 import com.bss.inc.redsmokes.main.messaging.SimpleMessageRecipient;
 import net.redsmokes.api.IRedSmokes;
+import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 
 import static com.bss.inc.redsmokes.main.I18n.tl;
@@ -31,5 +32,7 @@ public final class Console implements IMessageRecipient {
      * @deprecated Use {@link Console#getCommandSender()}
      */
     @Deprecated
-    public static CommandSender getCommand
+    public static CommandSender getCommandSender(final Server server) throws Exception {
+        return server.getConsoleSender();
+    }
 }
