@@ -196,7 +196,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
 
                 // Check for new username. If they don't want the message, let's just say it's false.
                 final boolean newUsername = lastAccountName != null && !lastAccountName.equals(user.getBase().getName());
-                redSmokes.runTaskAsynchronously(() -> redSmokes.getServer().getPluginManager().callEvent(new AsyncUserDataLoadEvent(user, effectiveMessage)));
 
                 /** MAIL
                  *
