@@ -114,6 +114,14 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     }
 
     @Override
+    public void onLoad() {
+        try {
+            // Vault registers their RedSmokes provider at low priority, so we have to use normal priority here
+            
+        }
+    }
+
+    @Override
     public void onEnable() {
         try {
             if(BUKKIT_LOGGER != super.getLogger()) {
@@ -142,7 +150,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public void onDisable() {
         super.onDisable();
     }
-    
+
     private void handleCrash(final Throwable exception) {
         final PluginManager pm = getServer().getPluginManager();
         LOGGER.log(Level.SEVERE, exception.toString());
