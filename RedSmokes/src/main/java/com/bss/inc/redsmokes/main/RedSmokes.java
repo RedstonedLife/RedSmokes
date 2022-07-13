@@ -92,6 +92,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         LOGGER = new BaseLoggerProvider(this, BUKKIT_LOGGER);
         final File dataFolder = File.createTempFile("redsmokestest", "");
         if(!dataFolder.delete()) {throw new IOException();}
+        if(!dataFolder.mkdir()) {throw new IOException();}
         
     }
 
