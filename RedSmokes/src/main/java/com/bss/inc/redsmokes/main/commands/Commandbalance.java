@@ -46,3 +46,4 @@ public class Commandbalance extends RedSmokesCommand {
         }
 
     }
+}
