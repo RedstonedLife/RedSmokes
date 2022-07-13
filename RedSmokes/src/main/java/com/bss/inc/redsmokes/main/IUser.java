@@ -20,7 +20,7 @@ public interface IUser {
         Will be deprecated in the future included in <b>SoyuzCore</b> and will be imported from its API.
 
         <p>SoyuzCore</p>
-        SoyuzCore is a private project by <p href="https://github.com/RedstonedLife">Tal A. Baskin</p> as part of a
+        SoyuzCore is a private project by <a href="https://github.com/RedstonedLife">Tal A. Baskin</a> as part of a
         RP-CMP meant to simulate a geopolitical world with established countries with constitutions, laws, etc....
      */
     void giveMoney(BigDecimal value) throws MaxMoneyException;
