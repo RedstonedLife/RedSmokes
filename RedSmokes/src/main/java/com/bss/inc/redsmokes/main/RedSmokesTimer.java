@@ -46,7 +46,6 @@ public class RedSmokesTimer implements Runnable {
                 final User user = redSmokes.getUser(player);
                 onlineUsers.add(user.getBase().getUniqueId());
                 user.setLastOnlineActivity(currentTime);
-                user.checkActivity();
             } catch (final Exception e) {
                 redSmokes.getLogger().log(Level.WARNING, "RedSmokesTimer Error: ", e);
             }
