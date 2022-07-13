@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 public class UserMap extends CacheLoader<String, User> implements IConf {
     private static boolean legacy = false;
     private static Method getLegacy;
-    private final transient IRedSmokes redSmokes;
+    private final transient net.redsmokes.api.IRedSmokes redSmokes;
     private final transient ConcurrentSkipListSet<UUID> keys = new ConcurrentSkipListSet<>();
     private final transient ConcurrentSkipListMap<String, UUID> names = new ConcurrentSkipListMap<>();
     private final transient ConcurrentSkipListMap<UUID, ArrayList<String>> history = new ConcurrentSkipListMap<>();
