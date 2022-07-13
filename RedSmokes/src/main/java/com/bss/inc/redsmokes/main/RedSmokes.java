@@ -51,7 +51,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private transient MaterialTagProvider materialTagProvider;
     private transient SyncCommandsProvider syncCommandsProvider;
     private transient PersistentDataProvider persistentDataProvider;
-    private transient
+    private transient 
 
     @Override
     public void onEnable() {
