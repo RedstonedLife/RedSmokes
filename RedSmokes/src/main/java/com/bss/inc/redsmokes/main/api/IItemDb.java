@@ -90,7 +90,6 @@ public interface IItemDb {
     /**
      * Converts the given {@link ItemStack} to a string representation that can be saved.
      * This is typically used for /createkit but can be used by other plugins for various purposes too.
-     * Note that this will try registered resolvers first - to avoid this, use {@link net.ess3.api.IItemDb#serialize(ItemStack, boolean)} instead.
      *
      * @param is The stack to serialize
      * @return A string representing the given stack
