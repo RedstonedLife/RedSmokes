@@ -21,5 +21,6 @@ public final class Console implements IMessageRecipient {
     public static Console getInstance() {
         return instance;
     }
+
     
 }
