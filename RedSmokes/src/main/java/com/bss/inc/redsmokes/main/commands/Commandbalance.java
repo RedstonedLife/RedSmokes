@@ -27,7 +27,7 @@ public class Commandbalance extends RedSmokesCommand {
 
     @Override
     public void run(final Server server, final User user, final String commandLabel, final String[] args) throws Exception {
-        if (args.length == 1 && user.isAuthorized("essentials.balance.others")) {
+        if (args.length == 1 && user.isAuthorized("redsmokes.balance.others")) {
             final User target = getPlayer(server, args, 0, true, true);
             user.sendMessage(tl("balanceOther", target.isHidden() ? target.getName() : target.getDisplayName(), NumberUtil.displayCurrency(target.getMoney(), redSmokes)));
         } else if (args.length < 2) {
@@ -39,7 +39,7 @@ public class Commandbalance extends RedSmokesCommand {
 
     @Override
     protected List<String> getTabCompleteOptions(final Server server, final CommandSource sender, final String commandLabel, final String[] args) {
-        if (args.length == 1 && sender.isAuthorized("essentials.balance.others", redSmokes)) {
+        if (args.length == 1 && sender.isAuthorized("redsmokes.balance.others", redSmokes)) {
             return getPlayers(server, sender);
         } else {
             return Collections.emptyList();
