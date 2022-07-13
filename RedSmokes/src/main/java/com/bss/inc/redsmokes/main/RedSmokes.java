@@ -204,7 +204,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * When opening the email in game, you will be able to browse through the emails in a GUI, each email is a GUI containing 5 items
              * Item #1 - Date Information (When it was sent)
              * Item #2 - User Information (From Who: To Who:)
-             * Item #3 - Digital Signature
+             * Item #3 - Digital Signature / Location Signature (If provider paid for them)
+             * Item #4
              */
 
         } catch (final NumberFormatException ex) {
