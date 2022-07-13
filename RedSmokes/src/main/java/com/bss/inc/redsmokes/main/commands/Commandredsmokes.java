@@ -34,5 +34,6 @@ public class Commandredsmokes extends RedSmokesCommand {
             "GroupManager",
             "bPermissions"
     );
+    private transient TuneRunnable
 
 }
