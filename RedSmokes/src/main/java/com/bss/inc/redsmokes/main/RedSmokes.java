@@ -191,7 +191,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
              * Mail Size - 25 characters (100$) 50 characters (200$), 100 characters (300$) 250 characters (500$) 512 characters (1,250$)
              * Digital Signing (Cryptographically Signing) <- This will authenticate messages so no one can fake a message, 8,000$
              * Location Signing <- This will sign an email with the X,Y,Z,Pitch,Yaw & World Information, 2,500$
-             * Client Storage (How many mails each client can store), 15 (100$), 30 (200$), 50 (500$), 100 (1,000$), UNLIMITED (
+             * Client Storage (How many mails each client can store), 15 (100$), 30 (200$), 50 (500$), 100 (1,000$), UNLIMITED (15,000$, requires redsmokes.mail.
              */
 
         } catch (final NumberFormatException ex) {
