@@ -29,6 +29,7 @@ public interface ISettings extends IConf {
     BigDecimal getStartingBalance();
     boolean isCommandDisabled(final IrsCommand cmd);
     boolean isCommandDisabled(String label);
+    
     Set<String> getDisabledCommands();
     boolean isVerboseCommandUsages();
     boolean isCommandOverridden(String name);
