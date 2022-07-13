@@ -1,10 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.main.api.Economy;
-import com.bss.inc.redsmokes.main.commands.NoChargeException;
-import com.bss.inc.redsmokes.main.commands.NotEnoughArgumentsException;
-import com.bss.inc.redsmokes.main.commands.QuietAbortException;
-import com.bss.inc.redsmokes.main.commands.RedSmokesCommand;
+import com.bss.inc.redsmokes.main.commands.*;
 import com.bss.inc.redsmokes.main.economy.EconomyLayers;
 import com.bss.inc.redsmokes.main.economy.vault.VaultEconomyProvider;
 import com.bss.inc.redsmokes.main.items.AbstractItemDb;
@@ -21,6 +18,7 @@ import com.bss.inc.redsmokes.main.signs.SignBlockListener;
 import com.bss.inc.redsmokes.main.signs.SignEntityListener;
 import com.bss.inc.redsmokes.main.signs.SignPlayerListener;
 import com.bss.inc.redsmokes.main.updatecheck.UpdateChecker;
+import com.bss.inc.redsmokes.main.utils.FormatUtil;
 import com.bss.inc.redsmokes.main.utils.VersionUtil;
 import com.bss.inc.redsmokes.main.utils.logging.BaseLoggerProvider;
 import io.papermc.lib.PaperLib;
@@ -962,21 +960,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         return user;
     }
 
-    private void handleCrash(final Throwable exception) {
-        final PluginManager pm = getServer().getPluginManager();
-        LOGGER.log(Level.SEVERE, exception.toString());
-        exception.printStackTrace();
-        pm.registerEvents(new Listener() {
-            @EventHandler(priority = EventPriority.LOW)
-            public void onPlayerJoin(final PlayerJoinEvent event) {
-                event.getPlayer().sendMessage("Essentials failed to load, read the log file.");
-            }
-        }, this);
-        for (final Player player : getOnlinePlayers()) {
-            player.sendMessage("Essentials failed to load, read the log file.");
-        }
-        this.setEnabled(false);
-    }
 
     @Override
     public World getWorld(final String name) {
