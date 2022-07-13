@@ -298,9 +298,6 @@ public class EssentialsEntityListener implements Listener {
     public void onEntityShootBow(final EntityShootBowEvent event) {
         if (event.getEntity() instanceof Player) {
             final User user = redSmokes.getUser((Player) event.getEntity());
-            if (user.isAfk()) {
-                user.updateActivityOnInteract(true);
-            }
         }
     }
 
