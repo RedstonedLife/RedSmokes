@@ -81,6 +81,12 @@ public class Commandredsmokes extends RedSmokesCommand {
         throw new NotEnoughArgumentsException();
     }
 
+    // Toggles debug mode.
+    private void runDebug(final Server server, final CommandSource sender, final String commandLabel, final String[] args) throws Exception {
+        redSmokes.getSettings().setDebug(!redSmokes.getSettings().isDebug());
+        sender.sendMessage("RedSmokes " + redSmokes.getDescription().getVersion() + " debug mode " + (redSmokes.getSettings().isDebug() ? "enabled" : "disabled"));
+    }
+
     private static class TuneRunnable extends BukkitRunnable {
         private static final Map<String, Float> noteMap = ImmutableMap.<String, Float>builder()
                 .put("1F#", 0.5f)
