@@ -1,6 +1,6 @@
 # This determines the command prefix when there are conflicts (/name:home, /name:help, etc.)
 name: Essentials
-main: com.earth2me.essentials.Essentials
+main: com.bss.inc.redsmokes.main.RedSmokes
 # Note to developers: This next line cannot change, or the automatic versioning system will break.
 version: ${full.version}
 description: Provides an essential, core set of commands for Bukkit to turn it into a drug house :).
