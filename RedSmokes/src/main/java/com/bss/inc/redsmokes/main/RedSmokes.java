@@ -650,11 +650,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
             final CommandSource sender = new CommandSource(cSender);
 
-            // New mail notification
-            if (user != null && !getSettings().isCommandDisabled("mail") && !command.getName().equals("mail") && user.isAuthorized("essentials.mail")) {
-                user.notifyOfMail();
-            }
-
             //Print version even if admin command is not available #easteregg
             if (commandLabel.equalsIgnoreCase("essversion")) {
                 sender.sendMessage("This server is running Essentials " + getDescription().getVersion());
