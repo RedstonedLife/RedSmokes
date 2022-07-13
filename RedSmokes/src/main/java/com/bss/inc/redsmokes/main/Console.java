@@ -1,4 +1,6 @@
 package com.bss.inc.redsmokes.main;
 
-public class Console implements {
+import com.bss.inc.redsmokes.main.messaging.IMessageRecipient;
+
+public class Console implements IMessageRecipient {
 }
