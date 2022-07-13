@@ -243,9 +243,6 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
                 event.allow();
                 return;
             }
-            if (redSmokes.getSettings().isCustomServerFullMessage()) {
-                event.disallow(Result.KICK_FULL, tl("serverFull"));
-            }
         }
     }
 
