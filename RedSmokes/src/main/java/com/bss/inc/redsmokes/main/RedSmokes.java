@@ -627,7 +627,6 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
                 try {
                     pc.execute(cSender, commandLabel, args);
                 } catch (final Exception ex) {
-                    ex.printStackTrace();
                     LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
                     cSender.sendMessage(tl("internalError"));
                 }
