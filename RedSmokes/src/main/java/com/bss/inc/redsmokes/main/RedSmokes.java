@@ -25,6 +25,7 @@ import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.*;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -521,6 +522,13 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     public Map<String, IrsCommand> getCommandMap() {
         return commandMap;
     }
+
+    @Override
+    public List<String> onTabComplete(final CommandSender sender, final Command command, final String commandLabel, final String[] args) {
+        return onTabCompleteRedSmokes(sender, command, commandLabel, args, RedSmokes.class.getClassLoader(),
+                "com.earth2me.essentials.commands.Command", "essentials.", null);
+    }
+
 
 
 
