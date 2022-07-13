@@ -348,10 +348,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
 
             execTimer.mark("Init(Providers)");
             reload();
-
-            // The item spawn blacklist is loaded with all other settings, before the item
-            // DB, but it depends on the item DB, so we need to reload it again here:
-            ((Settings) settings)._lateLoadItemSpawnBlacklist();
+            
             backup = new Backup(this);
             permissionsHandler = new PermissionsHandler(this, settings.useBukkitPermissions());
             alternativeCommandsHandler = new AlternativeCommandsHandler(this);
