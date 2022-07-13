@@ -28,6 +28,7 @@ import net.redsmokes.api.ISettings;
 import net.redsmokes.api.commands.IrsCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
+import org.bukkit.block.Block;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
