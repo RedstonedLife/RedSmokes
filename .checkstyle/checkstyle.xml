@@ -55,8 +55,8 @@
 
         <!-- https://checkstyle.org/config_whitespace.html#EmptyLineSeparator -->
         <module name="EmptyLineSeparator">
-            <property name="allowMultipleEmptyLines" value="false"/>
-            <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
+            <property name="allowMultipleEmptyLines" value="true"/>
+            <property name="allowMultipleEmptyLinesInsideClassMembers" value="true"/>
             <property name="allowNoEmptyLineBetweenFields" value="true"/>
             <property name="tokens"
                       value="CLASS_DEF, CTOR_DEF, ENUM_DEF, IMPORT, INSTANCE_INIT, INTERFACE_DEF, METHOD_DEF, STATIC_IMPORT, STATIC_INIT, VARIABLE_DEF"/> <!-- remove PACKAGE_DEF, temporarily remove COMPACT_CTOR_DEF, RECORD_DEF -->
