@@ -402,6 +402,8 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
         super.onDisable();
     }
 
+    
+
     private void handleCrash(final Throwable exception) {
         final PluginManager pm = getServer().getPluginManager();
         LOGGER.log(Level.SEVERE, exception.toString());
