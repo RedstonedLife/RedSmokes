@@ -1,6 +1,7 @@
 package com.bss.inc.redsmokes.main;
 
 import com.bss.inc.redsmokes.OfflinePlayer;
+import net.redsmokes.api.IConf;
 import net.redsmokes.api.MaxMoneyException;
 import com.bss.inc.redsmokes.main.api.UserDoesNotExistException;
 import com.bss.inc.redsmokes.main.utils.StringUtil;
