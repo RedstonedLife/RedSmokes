@@ -43,6 +43,7 @@ public class RedSmokes extends JavaPlugin implements IRedSmokes {
     private static final Logger BUKKIT_LOGGER = Logger.getLogger("RedSmokes");
     private static Logger LOGGER = null;
     private transient ISettings settings;
+    private transient Worth worth;
     private transient List<IConf> confList;
     private transient Backup backup;
     private transient AbstractItemDb itemDb;
