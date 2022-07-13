@@ -1,6 +1,10 @@
 package com.bss.inc.redsmokes.main.textreader;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class SimpleTextInput implements IText {
     private final transient List<String> lines = new ArrayList<>();
